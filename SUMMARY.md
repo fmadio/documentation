@@ -2,6 +2,7 @@
 
 * [Introduction](README.md)
 * [General System Architecture](general-system-architecture.md)
+* [Hardware](hardware.md)
 
 ## Configuration
 

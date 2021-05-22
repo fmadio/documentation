@@ -18,7 +18,7 @@ Select the tools menu from the top toolbar, as shown in the image below.
 
 And finally select the Power Cycle / Reboot button to restart the system
 
-![](../.gitbook/assets/image%20%286%29.png)
+![](../.gitbook/assets/image%20%286%29%20%281%29.png)
 
 added some random comments
 
