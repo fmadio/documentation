@@ -1,4 +1,8 @@
 # Table of contents
 
-* [FMADIO10/20 GbE Packet Capture Manual](README.md)
+* [FMADIO 20G Gen2](README.md)
+
+## Configuration
+
+* [Untitled](configuration/untitled.md)
 
