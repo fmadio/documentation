@@ -51,5 +51,7 @@ Capture ports can be configured in the following way
 | 8 | 25Gbps | QSFP28 \(Not released yet\) |
 | 8 | 10Gbps | QSFP+ Breakout Cables |
 
+**PPS Connector**
 
+The PPS connector is a 1 Pulse Per Second time synchronization cable. It runs on a 3.3V trigger signal the interface is SMA Coaxial cable
 
