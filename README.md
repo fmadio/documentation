@@ -1,4 +1,12 @@
-# FMADIO10/20 GbE Packet Capture Manual
+---
+description: Hardware
+---
 
-Page is too long and couldn't be imported.
+# Introduction
+
+FMADIO 100G Gen2 system is woot bit of network systems architecture
+
+adding some edits via github
+
+ **hello from github** 
 
