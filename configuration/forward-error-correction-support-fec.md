@@ -1,5 +1,7 @@
 # Forward Error Correction Support \(FEC\)
 
+#### FW Version: 7130+
+
 Support for FEC is built into all 100G capable Packet Capture systems. By default its turned off and requires manual setting to enable the port to link up.
 
 Enabling FEC support requires editing the file
