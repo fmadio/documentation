@@ -1,22 +1,23 @@
 # General System Architecture
 
-#### FMADIO10/FMADIO20
-
-System includes the following items :  
+FMADIO 100G Gen2 System,  
 
 
-* x1 1U FMADIO10 or FMADIO20 Packet sniffer system \(A\)
-* x1 GPS PPS -&gt; PPS In SMA Coax Cable \(B\)
-* x1 110V Japanese/American Power connector \(C\)
-* x1 Rack mount Rail Kit \(optional\) \(D\)
+**SKU  Capture \(64G RAM + 32 CPUs\)**
 
-**\(A\) 1U FMADIO10 OR FMADIO20 PACKET SNIFFER DEVICE**
+* FMADIO100GV2-1U-16T
+* FMADIO100GV2-1U-38T
+* FMADIO100GV2-1U-76T
+* FMADIO100Gv2-1U-156T
 
-\*\*\*\*
+**SKU Analytics \( 576GB RAM + 96CPU\)**
 
-Architecture
+* FMADIO100GV2-1U-16T-ANALYTICS
+* FMADIO100GV2-1U-38-ANALYTICS
+* FMADIO100GV2-1U-76T-ANALYTICS
+* FMADIO100Gv2-1U-156T-ANALYTICS
 
-
+**High Level Architecture**
 
 ![](.gitbook/assets/image%20%281%29.png)
 
