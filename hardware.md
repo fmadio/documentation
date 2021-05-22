@@ -14,7 +14,7 @@ Spec sheet as follows
 
 
 
-![FMADIO 100G Gen2 Specsheet](.gitbook/assets/image%20%289%29.png)
+![FMADIO 100G Gen2 Specsheet](.gitbook/assets/image%20%2811%29.png)
 
 
 
