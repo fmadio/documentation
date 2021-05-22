@@ -1,5 +1,7 @@
 # Capture Port IP/MAC
 
+#### FW Version: 7130+
+
 By default FMADIO devices capture ports operate without any MAC or IP information. It receives and records any and all ethernet traffic on the wire. Its essentially a black hole high speed data recorder. 
 
 However there are some situations where the Capture interfaces need an IP MAC address, this is for ERSPAN IP targets, and also having the capture ports directly join Mulitcast groups. The follow demonstrates how to setup IP MAC Address,
