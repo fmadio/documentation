@@ -1,8 +1,8 @@
 # Table of contents
 
 * [Introduction](README.md)
-* [Network Port Layout](network-port-layout.md)
 * [Hardware](hardware.md)
+* [Network Port Layout](network-port-layout.md)
 
 ## Configuration
 
