@@ -4,9 +4,11 @@ description: Hardware
 
 # Introduction
 
-FMADIO 100G Gen2 system is woot bit of network systems architecture
+FMADIO 20G Gen2 System
 
-adding some edits via github
+System is End of Sale.
 
- **hello from github** 
+End of Life 2026
+
+
 
