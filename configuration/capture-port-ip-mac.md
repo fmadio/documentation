@@ -12,7 +12,7 @@ NOTE: Enabling this feature reduces the total number of Pre Capture filter rules
 | 14 | Capture Port 0 MAC filter |
 | 13 | Capture Port 1 MAC Filter |
 
-Depending on the capture port port configuration 2 ports or 8 ports, a maximum of 9 pre-capture filter rules may be used
+Depending on the capture port port configuration \(2 ports or 8 ports\), a maximum of 9 pre-capture filter rules may be used.
 
 #### CONFIG
 
