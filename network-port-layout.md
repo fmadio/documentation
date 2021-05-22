@@ -2,11 +2,11 @@
 
 Layout of the network ports is as follows. for FMADIO100G v2 1U Capture System \(10G SFP+ management\)
 
-![](.gitbook/assets/image%20%2811%29.png)
+![FMADIO100G Gen2 1U Capture Port Layout](.gitbook/assets/image%20%2811%29.png)
 
 Layout of the network ports for FMADIO100G v2 1U Analytics System \(40G QSFP+ Management\)
 
-![](.gitbook/assets/tbd.png)
+![FMADIO100G Gen2 1U Analytics Port Layout](.gitbook/assets/tbd.png)
 
 **1Gbe Management Ports**
 
