@@ -20,7 +20,7 @@ Next is configuring the IGMP groups and port configuration. Example configuratio
 /opt/fmadio/etc/igmp.lua
 ```
 
-Example of that is as follows. 
+Example igmp.lua file is as follows.
 
 ```lua
 local Port0 = {}
