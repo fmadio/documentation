@@ -12,3 +12,11 @@ System includes the following items :
 
 **\(A\) 1U FMADIO10 OR FMADIO20 PACKET SNIFFER DEVICE**
 
+\*\*\*\*
+
+Architecture
+
+
+
+![](.gitbook/assets/image%20%281%29.png)
+
