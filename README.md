@@ -2,7 +2,7 @@
 description: Hardware
 ---
 
-# FMADIO20G Gen3
+# Introduction
 
 #### FMADIO10
 
@@ -10,7 +10,7 @@ The FMADIO10 packet capture device is our entry level full sustained line rate 1
 
 
 
-![](.gitbook/assets/image%20%281%29%20%281%29%20%281%29.png)
+![](.gitbook/assets/image%20%281%29%20%281%29%20%281%29%20%281%29.png)
 
 
 

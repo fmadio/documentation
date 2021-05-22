@@ -14,8 +14,6 @@ Will look like this. Select Brose Files, selecting an ISO image + Start the Medi
 
 ![](../.gitbook/assets/image%20%286%29.png)
 
-
-
 System will boot Ubuntu \(for example\), we are using \( systemrescue 8.01 amd64\)
 
 [https://sourceforge.net/projects/systemrescuecd/files/sysresccd-x86/8.01/systemrescue-8.01-amd64.iso/download](https://sourceforge.net/projects/systemrescuecd/files/sysresccd-x86/8.01/systemrescue-8.01-amd64.iso/download)
@@ -28,15 +26,11 @@ If a particular boot stage is taking too long Ctrl-C can skip it
 
 ![](../.gitbook/assets/image.png)
 
-
-
 After SystemRescue CD has booted, the above is seen. Note the total number of bytes transfered over the Virtual ISO.
 
-First step is to find the FMADIO OS and Persistant storage devices, Use the "lsblk" tool 
+First step is to find the FMADIO OS and Persistant storage devices, Use the "lsblk" tool
 
 ![](../.gitbook/assets/image%20%288%29.png)
-
-
 
 Looking foor a small \(15GB\) partition as the OS boot disk. In this case its sda1 and a large \(224GB or larger\) partition for the Persistent storage
 
@@ -66,10 +60,7 @@ Are you sure you want to continue connecting (yes/no)? yes
 Warning: Permanently added '192.168.2.121' (ECDSA) to the list of known hosts.
 root@192.168.2.121's password:
 [root@sysrescue ~]#
-
 ```
-
-
 
 Next mount the FMAD OS and Persistant storage disks. They may be sda\* or nvme0n1p\* in this example its mapped to sda
 
@@ -80,7 +71,6 @@ Next mount the FMAD OS and Persistant storage disks. They may be sda\* or nvme0n
 [root@sysrescue /mnt]# mount /dev/sda1 system/
 [root@sysrescue /mnt]# mount /dev/sda2 store0/
 [root@sysrescue /mnt]#
-
 ```
 
 Next check the contents, it should look roughtly like this
@@ -107,22 +97,5 @@ drwxr-xr-x  2 root   root      4096 Dec 17  2019 stream
 drwx------  4 nobody root      4096 Dec 29 03:23 tmp
 drwxrwxrwx 10 root   root      4096 Mar 23 10:25 tmp2
 [root@sysrescue /mnt]#
-
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
