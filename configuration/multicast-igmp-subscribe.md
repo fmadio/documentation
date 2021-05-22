@@ -1,5 +1,7 @@
 # Multicast IGMP Subscribe
 
+#### FW Version: 7130+
+
 There are many cases where the FMADIO Packet Capture system should subscribe to Multicast traffic via the capture Port.
 
 
@@ -126,4 +128,26 @@ return { Port0, Port1, Interval = 30e9, }
 ```
 
 Note each Capture port \(Port0/Port1\) is subscribing to a different MC Group. Also the interval for broadcasting the joins by default is 60sec. In the above example this is reduced to 30sec \(Interval = 30e9  is in nanoseconds\)
+
+After editing the file confirm the syntax is correct by running the command as follows
+
+```bash
+fmadio@fmadio100v2-228U:~$ fmadiolua /mnt/store0/etc/igmp.lua
+fmad fmadlua May 22 2021
+calibrating...
+0 : 2095078768           2.0951 cycles/nsec offset:4.921 Mhz
+Cycles/Sec 2095078768.0000 Std:       0 cycle std(  0.00000000) Target:2.10 Ghz
+argv fmadiolua
+failed to open self? [fmadiolua]
+loading filename [/mnt/store0/etc/igmp.lua]
+done 0.000352Sec 0.000006Min
+fmadio@fmadio100v2-228U:~$
+
+```
+
+There should not be any syntax errors or error statements. 
+
+Changes to this file requires the capture to be restarted. Please stop the current capture, then restart it. After the restart the system will issue the IGMP joins based on the above.
+
+Troubleshooting logfile can be seen in /mnt/store0/log/fnic\_ping.cur
 
