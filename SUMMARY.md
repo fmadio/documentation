@@ -9,6 +9,7 @@
 
 * [Network Configuration \(GUI\)](configuration/network-configuration-gui.md)
 * [Network Configuration \(CLI\)](configuration/network-configuration-cli.md)
+* [Capture Port IP/MAC](configuration/capture-port-ip-mac.md)
 
 ## Troubleshooting
 
