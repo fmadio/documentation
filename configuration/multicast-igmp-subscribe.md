@@ -4,8 +4,6 @@
 
 There are many cases where the FMADIO Packet Capture system should subscribe to Multicast traffic via the capture Port.
 
-
-
 ![](../.gitbook/assets/image%20%2821%29.png)
 
 In the above example each capture port is connected to 2 separate switches \(e.g. Market Data Feed A and B\) such that each capture port receives the a direct Market data feed, instead of relying on SPAN/Mirror sessions in a passive setup.
