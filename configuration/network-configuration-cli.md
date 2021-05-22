@@ -2,8 +2,6 @@
 
 Modifying the network configuration setting in a restricted Colocation environment can be far easier to achieve via the command line. The first step is SSH into the system, change to the specified directory and view the current network settings, as shown below
 
-
-
 ```text
 aaron@display0:/tmp$ ssh fmadio@192.168.11.75
 fmadio@192.168.11.75's password:
@@ -55,8 +53,6 @@ local Config =
 }
 return Config
 ```
-
-
 
 In the example configuration file above, the network ports are mapped as follows
 
