@@ -147,5 +147,29 @@ There should not be any syntax errors or error statements.
 
 Changes to this file requires the capture to be restarted. Please stop the current capture, then restart it. After the restart the system will issue the IGMP joins based on the above.
 
-Troubleshooting logfile can be seen in /mnt/store0/log/fnic\_ping.cur
+Troubleshooting logfile can be seen in /mnt/store0/log/fnic\_ping.cur this logfile should list all the IGMP joins that get issued, example as follows.
+
+```bash
+Port cap0 Change 00:af:a0:02:00:00 192.168.15.170
+Port cap1 Change 00:af:a0:02:01:00 192.168.15.171
+Port cap0 Change 00:af:a0:02:00:00 192.168.15.170
+Port cap1 Change 00:af:a0:02:01:00 192.168.15.171
+Port cap0 Change 00:af:a0:02:00:00 192.168.15.170
+Port cap1 Change 00:af:a0:02:01:00 192.168.15.171
+IGMP cap0:    0 : VLAN:     0 IGMP Group:233. 43.202.  1 Port: 11101
+IGMP cap0:    1 : VLAN:     0 IGMP Group:233. 43.202.  2 Port: 11102
+IGMP cap0:    2 : VLAN:     0 IGMP Group:233. 43.202.  3 Port: 11103
+IGMP cap0:    3 : VLAN:     0 IGMP Group:233. 43.202.  4 Port: 11104
+IGMP cap0:    4 : VLAN:     0 IGMP Group:233. 43.202.  5 Port: 11105
+IGMP cap0:    5 : VLAN:     0 IGMP Group:233. 43.202.  6 Port: 11106
+IGMP cap0:    6 : VLAN:     0 IGMP Group:233. 43.202.  7 Port: 11107
+IGMP cap0:    7 : VLAN:     0 IGMP Group:233. 43.202.  8 Port: 11108
+IGMP cap0:    8 : VLAN:     0 IGMP Group:233. 43.202.  9 Port: 11109
+.
+.
+.
+.
+
+
+```
 
