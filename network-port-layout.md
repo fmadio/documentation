@@ -30,15 +30,15 @@ FMADIO100Gv2 Capture systems,
 
 | Port Count | Port Speed | Interface |
 | :--- | :--- | :--- |
-| 2 | 10G | SFP+  |
+| 2 | 10G | SFP+                                     |
 | 2 | 1G | SFP |
 
 FMADIO100G Gen2 Analytics Systems
 
 | Port Count | Port Speed | Interface |
 | :--- | :--- | :--- |
-| 2 | 40Gbps | QSFP+ |
-| 4 | 10Gbps | QSFP+ Breakout Cables |
+| 2 | 40Gbps | QSFP+   |
+| 4 | 10Gbps | QSFP+ Breakout Cables    |
 
 **Capture Port**
 
