@@ -1,4 +1,4 @@
 # Table of contents
 
-* [FMADIO10/20 GbE Packet Capture Manual](README.md)
+* [FMADIO40G Gen3](README.md)
 

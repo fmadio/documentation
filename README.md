@@ -1,4 +1,8 @@
-# FMADIO10/20 GbE Packet Capture Manual
+---
+description: Hardware
+---
 
-Page is too long and couldn't be imported.
+# FMADIO40G Gen3
+
+FMADIO 40G Gen3
 
