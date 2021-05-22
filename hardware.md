@@ -2,9 +2,9 @@
 
 FMADIO 100G Hardware looks as follows
 
-![FMADIO 100G Gen2 Side](.gitbook/assets/_mg_8152.png)
+![FMADIO100G Gen2 1U Packet Capture System](.gitbook/assets/image%20%2822%29.png)
 
-![](.gitbook/assets/_mg_8157.png)
+![FMADIO 100G Gen2 1U Packet System Side](.gitbook/assets/image%20%2823%29.png)
 
 Spec sheet as follows
 
