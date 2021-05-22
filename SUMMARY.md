@@ -10,7 +10,8 @@
 * [Network Configuration \(GUI\)](configuration/network-configuration-gui.md)
 * [Network Configuration \(CLI\)](configuration/network-configuration-cli.md)
 
----
+## Troubleshooting
 
-* [System Recovery](system-recovery.md)
+* [System Recovery](troubleshooting/system-recovery.md)
+* [Untitled](troubleshooting/untitled.md)
 

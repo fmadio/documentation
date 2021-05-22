@@ -4,15 +4,15 @@ In the unlikely event of a complete boot failure, system can be recovered by boo
 
 Start by going to the BMC interface \(default IP is 192.168.0.93\) contact us for default login/password
 
-![](.gitbook/assets/image%20%285%29.png)
+![](../.gitbook/assets/image%20%285%29.png)
 
 Start the Remote HTML KVM
 
-![](.gitbook/assets/image%20%2810%29.png)
+![](../.gitbook/assets/image%20%2810%29.png)
 
 Will look like this. Select Brose Files, selecting an ISO image + Start the Media
 
-![](.gitbook/assets/image%20%286%29.png)
+![](../.gitbook/assets/image%20%286%29.png)
 
 
 
@@ -20,13 +20,13 @@ System will boot Ubuntu \(for example\), we are using \( systemrescue 8.01 amd64
 
 [https://sourceforge.net/projects/systemrescuecd/files/sysresccd-x86/8.01/systemrescue-8.01-amd64.iso/download](https://sourceforge.net/projects/systemrescuecd/files/sysresccd-x86/8.01/systemrescue-8.01-amd64.iso/download)
 
-![](.gitbook/assets/image%20%287%29.png)
+![](../.gitbook/assets/image%20%287%29.png)
 
 System will boot as follows, it may take several minutes depending on the speed of the HTML &lt;-&gt; FMADIO System connection. Recommend the closer the HTML instance is to the FMAD device the better.
 
 If a particular boot stage is taking too long Ctrl-C can skip it
 
-![](.gitbook/assets/image.png)
+![](../.gitbook/assets/image.png)
 
 
 
@@ -34,7 +34,7 @@ After SystemRescue CD has booted, the above is seen. Note the total number of by
 
 First step is to find the FMADIO OS and Persistant storage devices, Use the "lsblk" tool 
 
-![](.gitbook/assets/image%20%288%29.png)
+![](../.gitbook/assets/image%20%288%29.png)
 
 
 
