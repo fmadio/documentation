@@ -2,7 +2,6 @@
 
 * [Introduction](README.md)
 * [Hardware](hardware.md)
-* [Untitled](untitled.md)
 * [Network Port Layout](network-port-layout.md)
 
 ## Configuration
