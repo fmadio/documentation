@@ -32,7 +32,7 @@ And finally select the Power Cycle / Reboot button to restart the system
 ![](../../.gitbook/assets/image%20%286%29.png)
 
 
-
+added some random comments
 
 
 
