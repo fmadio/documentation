@@ -55,3 +55,7 @@ Capture ports can be configured in the following way
 
 The PPS connector is a 1 Pulse Per Second time synchronization cable. It runs on a 3.3V trigger signal the interface is SMA Coaxial cable
 
+**Serial Port**
+
+Standard RJ45 Serial port connector
+
