@@ -12,5 +12,3 @@
 
 ## Troubleshooting
 
-* [System Recovery](troubleshooting/system-recovery.md)
-
