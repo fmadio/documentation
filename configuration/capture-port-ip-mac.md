@@ -6,7 +6,7 @@ However there are some situations where the Capture interfaces need an IP MAC ad
 
 Using FMAIO DPI Engine we can filter out low bandwidth traffic such as ARP/ICMP requests without any effect on the 100Gbps / 149Mpps packet capture performance. As seen below using a few of the PreCapture filter rules and forwarding a few packets to our ARP/ICMP/IGMP software network stack running on the x86 Server. This allows full ARP and ICMP protocol support on the capture interfaces.
 
-![FMADIO Packet Capture DPI ARP ICMP Network Architecture](../.gitbook/assets/image%20%2827%29.png)
+![FMADIO Packet Capture DPI ARP ICMP Network Architecture](../.gitbook/assets/image%20%2828%29.png)
 
 NOTE: Enabling this feature reduces the total number of Pre Capture filter rules, It requires
 
