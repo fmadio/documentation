@@ -4,6 +4,12 @@ By default FMADIO devices capture ports operate without any MAC or IP informatio
 
 However there are some situations where the Capture interfaces need an IP MAC address, this is for ERSPAN IP targets, and also having the capture ports directly join Mulitcast groups. The follow demonstrates how to setup IP MAC Address,
 
+Using FMAIO DPI Engine we can filter out low bandwidth traffic such as ARP/ICMP requests without any effect on the 100Gbps / 149Mpps packet capture performance. As seen below using a few of the PreCapture filter rules and forwarding a few packets to our ARP/ICMP/IGMP software network stack running on the x86 Server. This allows full ARP and ICMP protocol support on the capture interfaces.
+
+![](../.gitbook/assets/image%20%2824%29.png)
+
+
+
 NOTE: Enabling this feature reduces the total number of Pre Capture filter rules, It requires
 
 | Rule Number | Description |
