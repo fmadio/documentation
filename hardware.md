@@ -1,4 +1,4 @@
-# Hardware
+# ハードウェアのレイアウト
 
 FMADIO 100G Hardware looks as follows
 
