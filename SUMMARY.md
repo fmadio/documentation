@@ -10,3 +10,7 @@
 * [Network Configuration \(CLI\)](configuration/network-configuration-cli.md)
 * [Untitled](configuration/untitled.md)
 
+---
+
+* [System Recovery](system-recovery.md)
+
