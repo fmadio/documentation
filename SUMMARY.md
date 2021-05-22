@@ -9,7 +9,6 @@
 
 * [Network Configuration \(GUI\)](configuration/network-configuration-gui.md)
 * [Network Configuration \(CLI\)](configuration/network-configuration-cli.md)
-* [Untitled](configuration/untitled.md)
 
 ---
 
