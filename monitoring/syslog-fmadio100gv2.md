@@ -24,10 +24,10 @@ Example SYSLOG for FMADIO 100G Gen2 output
 * PER
   * Peripheral Temperature
 * NIC
-  * FPGA Tempature
+  * FPGA Temperature
 * AirIn
   * Ambient Air In temperature. Sensor located **after** the U.2 SSDs
-* Transciver
+* Transceiver
   * Temperature of each QSFP Transceiver
 
 
