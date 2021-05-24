@@ -12,7 +12,11 @@
 * [Capture Port IP/MAC](configuration/capture-port-ip-mac.md)
 * [Multicast IGMP Subscribe](configuration/multicast-igmp-subscribe.md)
 * [Forward Error Correction Support \(FEC\)](configuration/forward-error-correction-support-fec.md)
-* [Monitor Alerts](configuration/monitor-alerts.md)
+
+## Monitoring
+
+* [Alerts](monitoring/monitor-alerts.md)
+* [Syslog FMADIO100Gv2](monitoring/syslog-fmadio100gv2.md)
 
 ## Troubleshooting
 

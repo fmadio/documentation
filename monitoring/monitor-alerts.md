@@ -1,4 +1,4 @@
-# Monitor Alerts
+# Alerts
 
 #### FW Version: 7135+
 
