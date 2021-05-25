@@ -74,10 +74,13 @@ return L
 
 In addition fmadio packet capture system uses msrtp as the email client, it requires smtp configuration file 
 
+```text
+/opt/fmadio/etc/msmtp.rc
+```
+
 Example configuration as follows. Please edit to match the email smtp provier
 
 ```text
-fmadio@fmadio20v2-149:/mnt/store0/etc$ cat msmtp.rc
 defaults
 tls on
 tls_certcheck off
