@@ -1,4 +1,14 @@
-# FMADIO10/20 GbE Packet Capture Manual
+---
+description: Hardware
+---
 
-Page is too long and couldn't be imported.
+# Introduction
+
+FMADIO 20G Gen2 System
+
+System is End of Sale.
+
+End of Life 2026
+
+
 
