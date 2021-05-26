@@ -6,7 +6,7 @@ Layout of the network ports is as follows. for FMADIO100G v2 1U Capture System \
 
 Layout of the network ports for FMADIO100G v2 1U Analytics System \(40G QSFP+ Management\)
 
-![FMADIO100G Gen2 1U Analytics Port Layout](.gitbook/assets/tbd.png)
+![](.gitbook/assets/20210526_fmadio100v2-analytics-rear-1-.jpg)
 
 **1Gbe Management Ports**
 
