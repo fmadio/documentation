@@ -271,3 +271,11 @@ Can see the new state says its "clean, degraded, recovering" and individual disk
 
 During  the rebuild, the write back performance from SSD to HDD will be reduced, however capture rate to the SSDs \(1TB-4TB\) is not impacted at all. e.g. full 20Gbps line rate is no problem.
 
+Typically it takes 8H-24H to completely rebuild an array depending on the total storage size, monitoring the completion status is shown here, in the output of mdadm --detail /dev/md0
+
+```text
+
+ Rebuild Status : 7% complete
+
+```
+
