@@ -213,7 +213,7 @@ fmadio@fmadio20-049:~$
 
 Notice in this case the "State" is "clean, degraded" and one drive is removed
 
-![](.gitbook/assets/image%20%2831%29.png)
+![](.gitbook/assets/image%20%2832%29.png)
 
 
 

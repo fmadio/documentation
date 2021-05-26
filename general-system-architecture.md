@@ -1,4 +1,4 @@
 # General System Architecture
 
-FMADIO20G Gen2 Systems
+FMADIO20G Gen1 Systems
 
