@@ -2,19 +2,12 @@
 
 Over the lifetime of a system HDD can fail, both PSU and HDD are the most common hardware failure parts. To replace a HDD is straight forward, follow the steps as below
 
-### 1\) Add in new mount point 
+### 1\) Add in new HDD mount point 
 
 use the command "devblk\_info.lua" as follows to find the un-used HDD serial number
 
 ```text
 fmadio@fmadio20-049:~$ devblk_info.lua
-fmad fmadlua Oct  2 2019
-calibrating...
-0 : 3500000498           3.5000 cycles/nsec offset:0.000 Mhz
-Cycles/Sec 3500000498.0000 Std:       0 cycle std(  0.00000000) Target:3.50 Ghz
-argv /opt/fmadio/bin/fmadiolua
-loading filename [/opt/fmadio/bin/devblk_info.lua]
-ls: /sys/block/nvme*: No such file or directory
      sda       ata1   0:0:0:0              SanDisk SDSSDXPS240G 153837400469        os0
      sdd       ata7   6:0:0:0                TOSHIBA MD04ACA400 153DKAT0FSAA       hdd0
      sde       ata8   7:0:0:0                TOSHIBA MD04ACA400 X522KQVMFSAA
@@ -29,12 +22,11 @@ ls: /sys/block/nvme*: No such file or directory
      sdl 0000:05:00.0   12:1:14:0            SanDisk SDSSDXPS240G 153762402953       ssd6
      sdm 0000:05:00.0   12:1:15:0            SanDisk SDSSDXPS240G 150645401496       ssd4
 Total Devices: 13
-done 0.181291Sec 0.003022Min
 fmadio@fmadio20-049:~$
 
 ```
 
-Notice the serial number "X522KQVMFSAA" has no drive assignment.
+Notice in the above output, the serial number "X522KQVMFSAA" has no drive assignment, while all other disks have a mount point \(os\*, hdd\*, ssd\*\)
 
 Edit the file /opt/fmadio/etc/disk.lua, before setting is shown below
 
@@ -95,9 +87,9 @@ fmadio@fmadio20-049:~$ devblk_info.lua
 
 ### 2\) Reboot the system
 
-reboot the system so the new drive mappings the links in /opt/fmadio/disk/hdd\* shoud have links for hdd0, hdd1, hdd2, hdd3. 
+Reboot the system so the new HDD drive mappings gets updated. The files in /opt/fmadio/disk/hdd\* should have links for hdd0, hdd1, hdd2, hdd3. 
 
-NOTE: the actual /dev/sd\* value changes psuedo randomdly and not important. Its why we map using the disks serial number
+NOTE: the actual /dev/sd\* value changes psuedo randomly and not important. Its why we map using the disks serial number
 
 ```text
 fmadio@fmadio20-049:~$ ls -al /opt/fmadio/disk/hdd*
@@ -106,7 +98,6 @@ lrwxrwxrwx    1 root     root             8 May 25 15:10 /opt/fmadio/disk/hdd1 -
 lrwxrwxrwx    1 root     root             8 May 25 15:10 /opt/fmadio/disk/hdd2 -> /dev/sdc
 lrwxrwxrwx    1 root     root             8 May 25 15:10 /opt/fmadio/disk/hdd3 -> /dev/sdb
 fmadio@fmadio20-049:~$
-
 ```
 
 ### 3\) Start the RAID array
@@ -140,7 +131,6 @@ sdj         8:144  1 223.6G  0 disk
 sdk         8:160  1 223.6G  0 disk
 sdl         8:176  1 223.6G  0 disk
 sdm         8:192  1 223.6G  0 disk
-
 ```
 
 The following shows if /dev/md0 has not been started, notice the md0 partitions are missing
@@ -164,7 +154,6 @@ sdk      8:160  1 223.6G  0 disk
 sdl      8:176  1 223.6G  0 disk
 sdm      8:192  1 223.6G  0 disk
 fmadio@fmadio20-049:~$
-
 ```
 
 To force assembly of the array as follows
@@ -174,16 +163,14 @@ $ sudo mdadm --assemble /dev/md0 --force /opt/fmadio/disk/hdd0 /opt/fmadio/disk/
 mdadm: no RAID superblock on /opt/fmadio/disk/hdd1
 mdadm: /opt/fmadio/disk/hdd1 has no superblock - assembly aborted
 fmadio@fmadio20-049:~$ 
-
 ```
 
-In the above its showing HDD1 is missing \(e.g. the failed drive\). Please remove it from the array assembly command as follows
+In the above its showing HDD1 is missing \(e.g. the failed drive\). Please remove it \(/opt/fmadio/disk/hdd1\)  from the array and run the assembly command again as follows
 
 ```text
 fmadio@fmadio20-049:~$ sudo mdadm --assemble /dev/md0 --force /opt/fmadio/disk/hdd0  /opt/fmadio/disk/hdd2 /opt/fmadio/disk/hdd3
 mdadm: /dev/md0 has been started with 3 drives (out of 4).
 fmadio@fmadio20-049:~$
-
 ```
 
 Then get details of the array status with \(mdadm --detail /dev/md0\)
@@ -222,7 +209,6 @@ Working Devices : 3
        2       8       48        2      active sync   /dev/sdd
        6       0        0        6      removed
 fmadio@fmadio20-049:~$
-
 ```
 
 Notice in this case the "State" is "clean, degraded" and one drive is removed
@@ -239,7 +225,6 @@ Next add the new drive to the array using the \(mdadm --add /dev/md0 \) command 
 fmadio@fmadio20-049:~$ sudo mdadm --add /dev/md0 /opt/fmadio/disk/hdd1
 mdadm: added /opt/fmadio/disk/hdd1
 fmadio@fmadio20-049:~$
-
 ```
 
 Then check the status of the updated array
@@ -280,10 +265,9 @@ Working Devices : 4
        2       8       48        2      active sync   /dev/sdd
        4       8       64        3      spare rebuilding   /dev/sde
 fmadio@fmadio20-049:~$
-
 ```
 
 Can see the new state says its "clean, degraded, recovering" and individual disk state is "spare rebuilding"
 
-Durning the rebuild time the write back performance from SSD to HDD will be reduced, however capture rate to the SSDs \(1TB-4TB\) is not impacted at all.
+During  the rebuild, the write back performance from SSD to HDD will be reduced, however capture rate to the SSDs \(1TB-4TB\) is not impacted at all. e.g. full 20Gbps line rate is no problem.
 
