@@ -13,3 +13,7 @@
 
 * [System Recovery](troubleshooting/system-recovery.md)
 
+## Maintenance
+
+* [SSD Hardware replacement](maintenance/ssd-hardware-replacement.md)
+
