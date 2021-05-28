@@ -13,6 +13,7 @@
 * [Multicast IGMP Subscribe](configuration/multicast-igmp-subscribe.md)
 * [Forward Error Correction Support \(FEC\)](configuration/forward-error-correction-support-fec.md)
 * [Syslog](configuration/syslog.md)
+* [Automatic Push PCAP](configuration/automatic-push-pcap.md)
 
 ## API
 

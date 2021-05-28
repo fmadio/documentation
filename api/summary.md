@@ -10,7 +10,7 @@ The FMADIO API is simple and designed for easy scripting integration.
 
 Note: Replace the IP 1.1.1.1 with the host IP of your FMADIO device.
 
-
+### Device Operation
 
 {% api-method method="get" host=" http://1.1.1.1/sysmaster/capture\_start?StreamName=<capture name>" path="" %}
 {% api-method-summary %}
@@ -48,7 +48,193 @@ Name of the capture to start
 {% endapi-method-spec %}
 {% endapi-method %}
 
+{% api-method method="get" host=" http://1.1.1.1/sysmaster/capture\_stop" path="" %}
+{% api-method-summary %}
+Capture Stop
+{% endapi-method-summary %}
 
+{% api-method-description %}
+
+{% endapi-method-description %}
+
+{% api-method-spec %}
+{% api-method-request %}
+
+{% api-method-response %}
+{% api-method-response-example httpCode=200 %}
+{% api-method-response-example-description %}
+
+{% endapi-method-response-example-description %}
+
+```
+
+```
+{% endapi-method-response-example %}
+{% endapi-method-response %}
+{% endapi-method-spec %}
+{% endapi-method %}
+
+{% api-method method="get" host="http://1.1.1.1/sysmaster/status" path="" %}
+{% api-method-summary %}
+Capture Status
+{% endapi-method-summary %}
+
+{% api-method-description %}
+
+{% endapi-method-description %}
+
+{% api-method-spec %}
+{% api-method-request %}
+
+{% api-method-response %}
+{% api-method-response-example httpCode=200 %}
+{% api-method-response-example-description %}
+
+{% endapi-method-response-example-description %}
+
+```
+
+```
+{% endapi-method-response-example %}
+{% endapi-method-response %}
+{% endapi-method-spec %}
+{% endapi-method %}
+
+### Downloading PCAP
+
+{% api-method method="get" host="http://1.1.1.1/stream/list" path="" %}
+{% api-method-summary %}
+List All Captures
+{% endapi-method-summary %}
+
+{% api-method-description %}
+
+{% endapi-method-description %}
+
+{% api-method-spec %}
+{% api-method-request %}
+
+{% api-method-response %}
+{% api-method-response-example httpCode=200 %}
+{% api-method-response-example-description %}
+
+{% endapi-method-response-example-description %}
+
+```
+
+```
+{% endapi-method-response-example %}
+{% endapi-method-response %}
+{% endapi-method-spec %}
+{% endapi-method %}
+
+{% api-method method="get" host="http://1.1.1.1/stream/ssize?StreamName=<capture sname>&StreamView=<split mode>" path="" %}
+{% api-method-summary %}
+Split Capture by filesize
+{% endapi-method-summary %}
+
+{% api-method-description %}
+
+{% endapi-method-description %}
+
+{% api-method-spec %}
+{% api-method-request %}
+{% api-method-query-parameters %}
+{% api-method-parameter name="StreamView" type="string" required=false %}
+
+{% endapi-method-parameter %}
+
+{% api-method-parameter name="StreamName" type="string" required=false %}
+
+{% endapi-method-parameter %}
+{% endapi-method-query-parameters %}
+{% endapi-method-request %}
+
+{% api-method-response %}
+{% api-method-response-example httpCode=200 %}
+{% api-method-response-example-description %}
+
+{% endapi-method-response-example-description %}
+
+```
+
+```
+{% endapi-method-response-example %}
+{% endapi-method-response %}
+{% endapi-method-spec %}
+{% endapi-method %}
+
+{% api-method method="get" host="http://1.1.1.1/stream/stime?StreamName=<capture sname>&StreamView=<split mode>" path="" %}
+{% api-method-summary %}
+Split Capture by time
+{% endapi-method-summary %}
+
+{% api-method-description %}
+
+{% endapi-method-description %}
+
+{% api-method-spec %}
+{% api-method-request %}
+{% api-method-query-parameters %}
+{% api-method-parameter name="TSEnd" type="integer" required=false %}
+
+{% endapi-method-parameter %}
+
+{% api-method-parameter name="TSBegin" type="integer" required=false %}
+
+{% endapi-method-parameter %}
+
+{% api-method-parameter name="StreamName" type="string" required=false %}
+
+{% endapi-method-parameter %}
+{% endapi-method-query-parameters %}
+{% endapi-method-request %}
+
+{% api-method-response %}
+{% api-method-response-example httpCode=200 %}
+{% api-method-response-example-description %}
+
+{% endapi-method-response-example-description %}
+
+```
+
+```
+{% endapi-method-response-example %}
+{% endapi-method-response %}
+{% endapi-method-spec %}
+{% endapi-method %}
+
+{% api-method method="get" host="http://1.1.1.1/pcap/single?StreamName=<capture name>" path="" %}
+{% api-method-summary %}
+Full Single PCAP Download
+{% endapi-method-summary %}
+
+{% api-method-description %}
+
+{% endapi-method-description %}
+
+{% api-method-spec %}
+{% api-method-request %}
+{% api-method-query-parameters %}
+{% api-method-parameter name="StreamName" type="string" required=false %}
+
+{% endapi-method-parameter %}
+{% endapi-method-query-parameters %}
+{% endapi-method-request %}
+
+{% api-method-response %}
+{% api-method-response-example httpCode=200 %}
+{% api-method-response-example-description %}
+
+{% endapi-method-response-example-description %}
+
+```
+
+```
+{% endapi-method-response-example %}
+{% endapi-method-response %}
+{% endapi-method-spec %}
+{% endapi-method %}
 
 | Description | Url |
 | :--- | :--- |
