@@ -14,6 +14,11 @@
 * [Forward Error Correction Support \(FEC\)](configuration/forward-error-correction-support-fec.md)
 * [Syslog](configuration/syslog.md)
 
+## API
+
+* [Summary](api/summary.md)
+* [Usage Guide](api/usage-guide.md)
+
 ## Monitoring
 
 * [Alerts](monitoring/monitor-alerts.md)
