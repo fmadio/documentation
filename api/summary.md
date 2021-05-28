@@ -12,7 +12,7 @@ Note: Replace the IP 1.1.1.1 with the host IP of your FMADIO device.
 
 {% api-method method="get" host=" http://1.1.1.1/sysmaster/capture\_start?StreamName=<capture name>" path="" %}
 {% api-method-summary %}
-
+Capture Start
 {% endapi-method-summary %}
 
 {% api-method-description %}
