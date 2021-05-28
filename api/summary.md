@@ -24,7 +24,7 @@ Capture Start
 {% api-method-spec %}
 {% api-method-request %}
 {% api-method-path-parameters %}
-{% api-method-parameter name="StreamName" type="string" required=false %}
+{% api-method-parameter name="StreamName" type="string" required=true %}
 Name of the capture to start
 {% endapi-method-parameter %}
 {% endapi-method-path-parameters %}
