@@ -34,8 +34,11 @@ Name of the capture to start
 
 {% endapi-method-response-example-description %}
 
-```
-{"Status":true,"Str":"[Fri May 28 09:47:13 2021] successfully started capture [test1234]"}
+```javascript
+{
+  "Status": true,
+  "Str": "[Fri May 28 09:48:34 2021] successfully started capture [test1234]"
+}
 
 ```
 {% endapi-method-response-example %}
