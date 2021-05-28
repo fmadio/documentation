@@ -14,7 +14,11 @@ To remove the M.2 SSD drives remove the screwes shown as follows
 
 ![](../.gitbook/assets/image%20%2833%29.png)
 
-The PCIe Bracket can then be removed, allowing for the PCIe card to be removed from the bracket.
+The PCIe riser is detached from the motherboard
+
+SSD PCIe card is removed from the Riser
+
+SSD PCIe black heatsink is removed from the board
 
 After the PCIe card has been removed, the SSDs are accessible as follows
 
