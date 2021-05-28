@@ -10,6 +10,8 @@ The FMADIO API is simple and designed for easy scripting integration.
 
 Note: Replace the IP 1.1.1.1 with the host IP of your FMADIO device.
 
+
+
 {% api-method method="get" host=" http://1.1.1.1/sysmaster/capture\_start?StreamName=<capture name>" path="" %}
 {% api-method-summary %}
 Capture Start
@@ -45,6 +47,8 @@ Name of the capture to start
 {% endapi-method-response %}
 {% endapi-method-spec %}
 {% endapi-method %}
+
+
 
 | Description | Url |
 | :--- | :--- |
