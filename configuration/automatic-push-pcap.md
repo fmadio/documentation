@@ -372,5 +372,7 @@ sudo /opt/fmadio/bin/stream_cat --uid push_1622272417078768896 capture1_20210521
 
 ```
 
-A correct example is shown in the above section [https://docs.fmad.io/fmadio-documentation/configuration/automatic-push-pcap\#logfiles](https://docs.fmad.io/fmadio-documentation/configuration/automatic-push-pcap#logfiles)
+A correctly functionality example log is shown in the above section 
+
+ [https://docs.fmad.io/fmadio-documentation/configuration/automatic-push-pcap\#logfiles](https://docs.fmad.io/fmadio-documentation/configuration/automatic-push-pcap#logfiles)
 
