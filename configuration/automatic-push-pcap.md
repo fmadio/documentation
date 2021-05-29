@@ -327,7 +327,9 @@ PCAP Nano
 
 ### Manual Offline mode
 
-In addition to log files its sometimes easier to debug via the CLI interface. Manaually starting the push on specific capture files can use the following CLI command
+In addition to log files its sometimes easier to debug via the CLI interface, by manually starting the push on specific capture files. This can also be helpful to push historical PCAP files.
+
+This is done as the following CLI command
 
 ```bash
 sudo /opt/fmadio/analytics/push_realtime.lua --force --offline <capture name>
@@ -339,30 +341,36 @@ Example output of successful offline mode run is shown below.
 
 ```bash
 fmadio@fmadio20n40v3-363:~$ sudo /opt/fmadio/analytics/push_realtime.lua  --force --offline capture1_20210521_0101
-fmad fmadlua May 28 2021
-calibrating...
-0 : 2992962814           2.9930 cycles/nsec offset:7.037 Mhz
-Cycles/Sec 2992962814.0000 Std:       0 cycle std(  0.00000000) Target:3.00 Ghz
-argv /opt/fmadio/bin/fmadiolua
-argv --offline
-argv capture1_20210521_0101
 loading filename [/opt/fmadio/analytics/push_realtime.lua]
-sudo /opt/fmadio/bin/stream_cat --uid push_1622271486724484096 capture1_20210521_0101  | /opt/fmadio/bin/pcap_split --uid push_1622271486724484096 -o /mnt/remote0/push/  --split-time 60e9 --filename-epoch-sec-startend > /mnt/store0/log/push_pcap-all_20210529_1558 2>&1 &
-stream_cat UID [push_1622271486724484096]
+sudo /opt/fmadio/bin/stream_cat --uid push_1622272417078768896 capture1_20210521_0101  | /opt/fmadio/bin/pcap_split --uid push_1622272417078768896 -o /mnt/remote0/push/  --split-time 60e9 --filename-epoch-sec-startend > /mnt/store0/log/push_pcap-all_20210529_1613 2>&1 &
+stream_cat UID [push_1622272417078768896]
 stream_cat ioqueue: 4
-calibrating...
-[Sat May 29 15:58:06 2021] push [pcap-all                                 : stream_cat:true split:true]
-0 : 2992962178           2.9930 cycles/nsec offset:7.038 Mhz
-Cycles/Sec 2992962178.0000 Std:       0 cycle std(  0.00000000) Target:3.00 Ghz
+[Sat May 29 16:13:37 2021] push [pcap-all                                 : stream_cat:true split:true]
 StartChunkID: 28872404
 StartChunk: 28872404 Offset: 0 Stride: 1
 StartChunk: 28872404
-ctrl-c 0
-write: 8 expect    64 errno:32
-stream_cat: main.c:679: OutputPCAP: Assertion `wlen == LengthPayload' failed.
-^Csignal
-[Sat May 29 15:58:20 2021] push [pcap-all                                 : stream_cat:false split:false]
-Sat May 29 15:58:20 2021 stream cat existed
+[Sat May 29 16:13:52 2021] push [pcap-all                                 : stream_cat:true split:true]
+[Sat May 29 16:14:07 2021] push [pcap-all                                 : stream_cat:true split:true]
+.
+.
+.
 
 ```
+
+Note the following repeated status line indicates the push is operating successfully
+
+```bash
+stream_cat:true split:true
+```
+
+For problems the logfile shown in the above command line here `/mnt/store0/log/push_pcap-all_20210529_1613` 
+
+at the end of the command line can be helpful to debug
+
+```bash
+sudo /opt/fmadio/bin/stream_cat --uid push_1622272417078768896 capture1_20210521_0101  | /opt/fmadio/bin/pcap_split --uid push_1622272417078768896 -o /mnt/remote0/push/  --split-time 60e9 --filename-epoch-sec-startend > /mnt/store0/log/push_pcap-all_20210529_1613 2>&1 &
+
+```
+
+A correct example is shown in the above section [https://docs.fmad.io/fmadio-documentation/configuration/automatic-push-pcap\#logfiles](https://docs.fmad.io/fmadio-documentation/configuration/automatic-push-pcap#logfiles)
 
