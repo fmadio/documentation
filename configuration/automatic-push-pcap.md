@@ -287,6 +287,8 @@ Configuration is a simple boolean type only
 
 **Requires FW:7157+**
 
+**Default \(nil\)**
+
 Pipe commands are processed on a per PCAP split basis before the end transport is applied. Examples to use this are to GZIP or compress files before sending to the endpoint.
 
 This is a generic stdin/stdout linux application, gzip, lz4 are current examples, Other options are possible, please contact us for more details
@@ -306,6 +308,8 @@ The above runs gzip with compression level 1 on the split PCAP before sending to
 ### FileSuffix
 
 **Requires FW:7157+**
+
+**Default \(nil\)**
 
 By default the split PCAP filename suff is `.pcap`  For most operations that is sufficient, however for more complicated operations such as GZIP compressing with PipeCmd a .pcap.gz file suffix is more appropriate. The Following is an example config target that compresses and outputs splits in .pcap.gz file format
 
