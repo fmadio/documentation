@@ -379,16 +379,54 @@ Note the following repeated status line indicates the push is operating successf
 stream_cat:true split:true
 ```
 
-For problems the logfile shown in the above command line here `/mnt/store0/log/push_pcap-all_20210529_1613` 
+For problems per push target, the logfile shown in the above command line here `/mnt/store0/log/push_pcap-all.cur` 
 
-at the end of the command line can be helpful to debug
+A good way to debug that is running tail -F /mnt/store0/log/push\_pcap-all.cur to monitor it such as the following
 
 ```bash
-sudo /opt/fmadio/bin/stream_cat --uid push_1622272417078768896 capture1_20210521_0101  | /opt/fmadio/bin/pcap_split --uid push_1622272417078768896 -o /mnt/remote0/push/  --split-time 60e9 --filename-epoch-sec-startend > /mnt/store0/log/push_pcap-all_20210529_1613 2>&1 &
+$ tail -F /mnt/store0/log/push_pcap-all.cur
+args
+  --uid
+  push_1622275884783852032
+  -o
+  ssh://mnt/store0/tmp2/rclone/everything
+  --split-time
+  60e9
+  --filename-tstr-HHMMSS
+  --pipe-cmd
+  gzip -c -1
+  --rclone
+  --filename-suffix
+  .pcap.gz
+--uid
+UID [push_1622275884783852032]
+-o
+--split-time
+Split Every 4768169126130614272 Sec
+--filename-tstr-HHMMSS
+Filename TimeString HHMMSS
+--pipe-cmd
+pipe cmd [gzip -c -1]
+--rclone
+Output Mode RClone
+--filename-suffix
+Filename Suffix [.pcap.gz]
+PCAP Nano
+[gzip -c -1 | rclone --config=/opt/fmadio/etc/rclone.conf rcat ssh://mnt/store0/tmp2/rclone/everything_20210521_010600.pcap.gz.pending]
+[0.000 H][2021-05-21 01:05:40] ssh://mnt/store0/tmp2/rclone/everything_20210521_010600.pcap.gz : Total Bytes 0.000 GB Speed: 0.003Gbps : New Split
+[0.000 H][2021-05-21 01:05:40] ssh://mnt/store0/tmp2/rclone/everything_20210521_010600.pcap.gz : Total Bytes 0.080 GB Speed: 0.552Gbps
+[0.001 H][2021-05-21 01:05:40] ssh://mnt/store0/tmp2/rclone/everything_20210521_010600.pcap.gz : Total Bytes 0.160 GB Speed: 0.558Gbps
+[0.001 H][2021-05-21 01:05:40] ssh://mnt/store0/tmp2/rclone/everything_20210521_010600.pcap.gz : Total Bytes 0.240 GB Speed: 0.563Gbps
+[0.001 H][2021-05-21 01:05:40] ssh://mnt/store0/tmp2/rclone/everything_20210521_010600.pcap.gz : Total Bytes 0.320 GB Speed: 0.565Gbps
+[0.002 H][2021-05-21 01:05:40] ssh://mnt/store0/tmp2/rclone/everything_20210521_010600.pcap.gz : Total Bytes 0.400 GB Speed: 0.566Gbps
+[0.002 H][2021-05-21 01:05:40] ssh://mnt/store0/tmp2/rclone/everything_20210521_010600.pcap.gz : Total Bytes 0.480 GB Speed: 0.567Gbps
+[0.002 H][2021-05-21 01:05:40] ssh://mnt/store0/tmp2/rclone/everything_20210521_010600.pcap.gz : Total Bytes 0.560 GB Speed: 0.568Gbps
+[0.003 H][2021-05-21 01:05:41] ssh://mnt/store0/tmp2/rclone/everything_20210521_010600.pcap.gz : Total Bytes 0.640 GB Speed: 0.568Gbps
+.
+.
+.
 
 ```
 
-A correctly functionality example log is shown in the above section 
 
- [https://docs.fmad.io/fmadio-documentation/configuration/automatic-push-pcap\#logfiles](https://docs.fmad.io/fmadio-documentation/configuration/automatic-push-pcap#logfiles)
 
