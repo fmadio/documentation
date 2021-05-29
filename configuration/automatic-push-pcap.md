@@ -265,6 +265,8 @@ Screenshot of 24/7 schedule is shown below
 
 ## Troubleshooting
 
+### Logfiles
+
 Configuration problems often occour when setting up the system. The following log files can be used to debug
 
 ```bash
@@ -320,6 +322,47 @@ PCAP Nano
 [0.001 H][2021-05-24 18:51:04] /mnt/remote0/push/1621849860-1621849920.pcap : Total Bytes 0.320 GB Speed: 0.601Gbps
 [0.001 H][2021-05-24 18:51:04] /mnt/remote0/push/1621849860-1621849920.pcap : Total Bytes 0.400 GB Speed: 0.661Gbps
 [0.002 H][2021-05-24 18:51:04] /mnt/remote0/push/1621849860-1621849920.pcap : Total Bytes 0.480 GB Speed: 0.711Gbps
+
+```
+
+### Manual Offline mode
+
+In addition to log files its sometimes easier to debug via the CLI interface. Manaually starting the push on specific capture files can use the following CLI command
+
+```bash
+sudo /opt/fmadio/analytics/push_realtime.lua --force --offline <capture name>
+```
+
+Replace capture name with the complete name of the capture. Also ensure push scheduler has been disabled
+
+Example output of successful offline mode run is shown below.
+
+```bash
+fmadio@fmadio20n40v3-363:~$ sudo /opt/fmadio/analytics/push_realtime.lua  --force --offline capture1_20210521_0101
+fmad fmadlua May 28 2021
+calibrating...
+0 : 2992962814           2.9930 cycles/nsec offset:7.037 Mhz
+Cycles/Sec 2992962814.0000 Std:       0 cycle std(  0.00000000) Target:3.00 Ghz
+argv /opt/fmadio/bin/fmadiolua
+argv --offline
+argv capture1_20210521_0101
+loading filename [/opt/fmadio/analytics/push_realtime.lua]
+sudo /opt/fmadio/bin/stream_cat --uid push_1622271486724484096 capture1_20210521_0101  | /opt/fmadio/bin/pcap_split --uid push_1622271486724484096 -o /mnt/remote0/push/  --split-time 60e9 --filename-epoch-sec-startend > /mnt/store0/log/push_pcap-all_20210529_1558 2>&1 &
+stream_cat UID [push_1622271486724484096]
+stream_cat ioqueue: 4
+calibrating...
+[Sat May 29 15:58:06 2021] push [pcap-all                                 : stream_cat:true split:true]
+0 : 2992962178           2.9930 cycles/nsec offset:7.038 Mhz
+Cycles/Sec 2992962178.0000 Std:       0 cycle std(  0.00000000) Target:3.00 Ghz
+StartChunkID: 28872404
+StartChunk: 28872404 Offset: 0 Stride: 1
+StartChunk: 28872404
+ctrl-c 0
+write: 8 expect    64 errno:32
+stream_cat: main.c:679: OutputPCAP: Assertion `wlen == LengthPayload' failed.
+^Csignal
+[Sat May 29 15:58:20 2021] push [pcap-all                                 : stream_cat:false split:false]
+Sat May 29 15:58:20 2021 stream cat existed
 
 ```
 
