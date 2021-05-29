@@ -222,19 +222,93 @@ Full libpcap BPF filter can be applied to reduce the total PCAP size or segment 
     FilterBPF = "net 192.168.1.0/24 and tcp" 
 ```
 
-The above example is an example "net 192.168.1.0/24 and tcp" slightly more complicated BPF and shows the flexibility and wide range of options available. Technically there is no limit on the complexity of the BPF filter, we recommend to keep it as simple as possible to reduce the CPU load.
+The above is an example BPF filter "net 192.168.1.0/24 and tcp" its a slightly more complicated BPF and shows the flexibility and wide range of options available. Technically there is no limit on the complexity of the BPF filter, we recommend to keep it as simple as possible to reduce the CPU load
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align:left">Command</th>
+      <th style="text-align:left">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align:left">FilterBPF</td>
+      <td style="text-align:left">
+        <p>Enter a full tcpdump equivlent BPF filter expression</p>
+        <p></p>
+        <p>example host filter</p>
+        <p><code>FilterBPF=&quot;host 192.168.1.1&quot;</code>
+        </p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+## ANALYTICS CONFIGURATION
+
+In addition to`/opt/fmadio/etc/push_realtime.lua`Analytics scheduler must be set to start the push operation. Example configuration to push files 24/7  
 
 
+![Analytics Schedule to Push PCAP 24/7](../.gitbook/assets/image%20%2842%29.png)
 
-#### The above example uses a standard TCP filter
+## Troubleshooting
 
-#### ANALYTICS CONFIGURATION
+Configuration problems often occour when setting up the system. The following log files can be used to debug
 
-In addition to`/opt/fmadio/etc/push_realtime.lua`Analytics scheduler must be set to start the push operation. Configuration must be set as follows  
-  
-![](https://fmad.io/images/fmadio10-manual/20210321_analytics_push.png)  
-  
-Currently it only pushes the currently active capture.
+```bash
+/mnt/store0/log/analytics_push_realtime.cur
+```
 
+Monitoring the output can be as follows
 
+```bash
+fmadio@fmadio20v3-287:/mnt/store0/log$ tail -F analytics_push_realtime.cur
+[Sat May 29 15:36:46 2021] push [pcap-all                                 : stream_cat:true split:true]
+[Sat May 29 15:37:01 2021] push [pcap-all                                 : stream_cat:true split:true]
+[Sat May 29 15:37:16 2021] push [pcap-all                                 : stream_cat:true split:true]
+[Sat May 29 15:37:31 2021] push [pcap-all                                 : stream_cat:true split:true]
+[Sat May 29 15:37:46 2021] push [pcap-all                                 : stream_cat:true split:true]
+[Sat May 29 15:38:01 2021] push [pcap-all                                 : stream_cat:true split:true]
+[Sat May 29 15:38:16 2021] push [pcap-all                                 : stream_cat:true split:true]
+
+```
+
+In addition each Push entry has a log file with the following format. The Desc value is described 
+
+[https://docs.fmad.io/fmadio-documentation/configuration/automatic-push-pcap\#desc](https://docs.fmad.io/fmadio-documentation/configuration/automatic-push-pcap#desc)
+
+```bash
+/mnt/store0/log/push_<Desc value>_YYYYMMDD_HHMM
+```
+
+Example output of correct functionality is as follows
+
+```bash
+fmadio@fmadio20v3-287:/mnt/store0/log$ head -n 100 push_pcap-all_20210524_1851
+args
+  --uid
+  push_1621849863557502976
+  -o
+  /mnt/remote0/push/
+  --split-time
+  60e9
+  --filename-epoch-sec-startend
+--uid
+UID [push_1621849863557502976]
+-o
+--split-time
+Split Every 4768169126130614272 Sec
+--filename-epoch-sec-startend
+Filename EPOCH Sec Start/End
+PCAP Nano
+[0.001 H][2021-05-24 18:51:04] /mnt/remote0/push/1621849860-1621849920.pcap : Total Bytes 0.000 GB Speed: 0.000Gbps : New Split
+[0.001 H][2021-05-24 18:51:04] /mnt/remote0/push/1621849860-1621849920.pcap : Total Bytes 0.080 GB Speed: 0.256Gbps
+[0.001 H][2021-05-24 18:51:04] /mnt/remote0/push/1621849860-1621849920.pcap : Total Bytes 0.160 GB Speed: 0.418Gbps
+[0.001 H][2021-05-24 18:51:04] /mnt/remote0/push/1621849860-1621849920.pcap : Total Bytes 0.240 GB Speed: 0.518Gbps
+[0.001 H][2021-05-24 18:51:04] /mnt/remote0/push/1621849860-1621849920.pcap : Total Bytes 0.320 GB Speed: 0.601Gbps
+[0.001 H][2021-05-24 18:51:04] /mnt/remote0/push/1621849860-1621849920.pcap : Total Bytes 0.400 GB Speed: 0.661Gbps
+[0.002 H][2021-05-24 18:51:04] /mnt/remote0/push/1621849860-1621849920.pcap : Total Bytes 0.480 GB Speed: 0.711Gbps
+
+```
 
