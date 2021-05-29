@@ -82,7 +82,7 @@ For example the above push logfiles will go to /mnt/store0/log/push\_pcap-all\_\
 Specifies how the output files are written. Currently there are 2 modes, standard linux file "File" and rclone which provides multiple end points such as FTP, S3, Google Drive, Azure Cloud and many more.
 
 ```lua
-    Mode      = "File",
+    Mode      = "FILE",
 ```
 
 #### Options
