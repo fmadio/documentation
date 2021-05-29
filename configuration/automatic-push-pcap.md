@@ -63,6 +63,26 @@ The second example shows pushing all TCP data on the network 192.168.1.0/24 to t
 
 Note `FilterBP=net 192.168.1.0/24 and tcp`  This applies a full BPF \(Berkley Packet Filter [https://en.wikipedia.org/wiki/Berkeley\_Packet\_Filter](https://en.wikipedia.org/wiki/Berkeley_Packet_Filter) \) with the filter "tcp" on the packets before writing it to the location. This results in only TCP data written to the /mnt/remote0/push/tcp\_\*.pcap output files
 
+### Supported Endpoints
+
+| Mode                                       | Description |
+| :--- | :--- |
+| linux file | linux file on FMADIO capture system |
+| NFS | remote NFS mountpoint on FMADIO capture system |
+| SFTP | remote SSH file system via rclone \( [https://rclone.org/sftp/](https://rclone.org/sftp/) \) |
+| FTP | FTP push via rclone \( [https://rclone.org/ftp/](https://rclone.org/ftp/) \) |
+| S3 | S3 protocol via rclone \( [https://rclone.org/s3/](https://rclone.org/s3/) \) |
+| Google Drive | Google drive via rclone \( [https://rclone.org/drive/](https://rclone.org/drive/) \) |
+| Digital Ocean | Digital Ocan Spaces via rclone \( [https://rclone.org/s3/\#digitalocean-spaces](https://rclone.org/s3/#digitalocean-spaces) \) |
+| Azure Blob | Microsoft Azure Blob via rclone \( [https://rclone.org/azureblob/](https://rclone.org/azureblob/) \) |
+| Dropbox | Dropbox via rclone \( [https://rclone.org/dropbox/](https://rclone.org/dropbox/) \) |
+| Hadoop HDFS | Hadoop file system via rclone \( [https://rclone.org/hdfs/](https://rclone.org/hdfs/) \) |
+| Ceph | Ceph S3 interface via rclone \(   [https://rclone.org/s3/](https://rclone.org/s3/) \) |
+
+and many more, see the rclone documentation for full list of endpoints supported
+
+[https://rclone.org/docs/](https://rclone.org/docs/)
+
 ## Command Reference
 
 Following is a description of each option for per push target.
