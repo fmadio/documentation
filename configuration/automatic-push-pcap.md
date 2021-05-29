@@ -190,7 +190,7 @@ Specifies how to split filename is encoded. Different downstream applications re
       </td>
     </tr>
     <tr>
-      <td style="text-align:left">--filename-timestr-HHMMSS</td>
+      <td style="text-align:left">--filename-tstr-HHMMSS</td>
       <td style="text-align:left">
         <p>writes the YYYYMMDD_HHMMSS style file name.</p>
         <p></p>
@@ -200,7 +200,7 @@ Specifies how to split filename is encoded. Different downstream applications re
       </td>
     </tr>
     <tr>
-      <td style="text-align:left">--filename-timestr-HHMMSS_NS</td>
+      <td style="text-align:left">--filename-tstr-HHMMSS_NS</td>
       <td style="text-align:left">
         <p>writes the YYYYMMDD_HHMMSS.MSEC.USEC.NSEC style file name.</p>
         <p></p>
