@@ -108,10 +108,6 @@ Specifies how the output files are written. Currently there are 2 modes, standar
         </p>
       </td>
     </tr>
-    <tr>
-      <td style="text-align:left"></td>
-      <td style="text-align:left"></td>
-    </tr>
   </tbody>
 </table>
 
@@ -131,7 +127,6 @@ In the above example, because we are using the "FILE" mode, this specifies a ful
 | :--- | :--- |
 | /mnt/remote0/push/all | FILE mode output PCAP files will be written for example as `/mnt/remote0/push/all_`_`20210101_010101.cap`_ |
 | gdrive://pcap/all | RCLONE mode output PCAP files written be written to the rclone configured google drive endpoint into the google drive directory `/pcap/`  |
-|  |  |
 
 **SPLIT**
 
