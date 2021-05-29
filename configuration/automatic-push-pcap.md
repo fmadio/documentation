@@ -121,7 +121,7 @@ Full remote path of the target PCAPs + the leading prefix of the remote output.
     Path      = "/mnt/remote0/push/all",
 ```
 
-In the above example, because we are using the "FILE" mode, this specifies a full 
+The above example uses the "FILE" mode, which specifies a full linux system file path. 
 
 | Command                                               | Description |
 | :--- | :--- |
