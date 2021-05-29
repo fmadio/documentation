@@ -1,6 +1,6 @@
 # Automatic Push PCAP
 
-FMADIO Packet Capture systems provide a built in Push mode to transfer capture PCAP data on a regular schedule to a remote system. An example is pushing 1minute PCAPs to a remote NFS share
+FMADIO Packet Capture systems provide a built in Push mode to transfer capture PCAP data on a regular schedule to a remote system. An example is pushing 1minute PCAPs to a remote NFS share or an S3 storage bucket.
 
 Configuration is via configuration scripts located:
 
@@ -77,7 +77,7 @@ For example the above push logfiles will go to /mnt/store0/log/push\_pcap-all\_\
 
 ### **MODE**
 
-Specifies how the output files are written. Currently there are 2 modes, standard linux file "File" and rclone which provides mutliple end points such as FTP, S3, Google Drive, Azure Cloud and many more.
+Specifies how the output files are written. Currently there are 2 modes, standard linux file "File" and rclone which provides multiple end points such as FTP, S3, Google Drive, Azure Cloud and many more.
 
 ```lua
     Mode      = "File",
@@ -130,7 +130,7 @@ In the above example, because we are using the "FILE" mode, this specifies a ful
 | Command                                               | Description |
 | :--- | :--- |
 | /mnt/remote0/push/all | FILE mode output PCAP files will be written for example as `/mnt/remote0/push/all_`_`20210101_010101.cap`_ |
-| gdrive://pcap/all | RCLONE mode output PCAP files written be written to the rclone configured google drive endpoint into the google drive directory /pcap/  |
+| gdrive://pcap/all | RCLONE mode output PCAP files written be written to the rclone configured google drive endpoint into the google drive directory `/pcap/`  |
 |  |  |
 
 **SPLIT**
