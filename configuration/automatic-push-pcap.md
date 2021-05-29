@@ -16,24 +16,66 @@ local Config = {}
 
 Config.Target = {}
 
-table.insert(Config.Target, { Desc = "pcap-all", Mode = "File", Path = "/mnt/remote0/push/",   Split="--split-time 60e9", FileName="--filename-epoch-sec-startend", FilterBPF=nil })
+-- push all pcap data to /mnt/remote0/push/all_*.pcap
+table.insert(Config.Target, 
+{
+    Desc     = "pcap-all",
+    Mode     = "File",
+    Path     = "/mnt/remote0/push/all",
+    Split    ="--split-time 60e9",
+    FileName =  "--filename-epoch-sec-startend",
+    FilterBPF = nil 
+})
+
+-- push all tcp data to /mnt/remote0/push/tcp_*.pcap
+table.insert(Config.Target, 
+{
+    Desc = "pcap-tcp", 
+    Mode = "File", 
+    Path = "/mnt/remote0/push/tcp",   
+    Split="--split-time 60e9", 
+    FileName="--filename-epoch-sec-startend", 
+    FilterBPF="tcp" 
+})
 
 return Config
-
-fmadio@fmadio20v3-287:/mnt/store0/etc$
 ```
 
-Multiple push targets can be specified. In the above example all PCAP data is sent to the remote NFS share mounted on /mnt/remote0. See NFS mount configuration for details on setting up /mnt/remote0 mounting points.  
-Configuration options as follows  
-  
+Multiple push targets can be specified, there is no real limit however throughput does get effected.
 
+In the above example thre are 2 push rules
 
-**DESC**
+#### A\) Push all packet data \(no filter\)
 
-Text field providing user information about the push target. Recommend no spaces or special characters.  
+This push target sends all PCAP data the remote NFS share mounted on 
 
+/mnt/remote0
 
-**MODE**
+See NFS mount configuration section for details on setting up /mnt/remote0 mounting points.
+
+The sepcified is "FilterBPF=nil" meaning there is no filter, thus all traffic is pushed
+
+#### B\) Push all TCP data 
+
+The second example shows pushing all TCP data to the specified /mnt/remote0/push/ directory with a PCAP file prefix of "tcp\_\*"
+
+Note FilterBP=tcp  This applies a full BPF \(Berkley Packet Filter \( [https://en.wikipedia.org/wiki/Berkeley\_Packet\_Filter](https://en.wikipedia.org/wiki/Berkeley_Packet_Filter) \) with the filter "tcp" on the packets before writing it to the location. This results in only TCP data written to the /mnt/remote0/push/tcp\_\*.pcap output files
+
+## Command Reference
+
+Following is a description of each option for per push target.
+
+### **DESC**
+
+Provides a text human readable description for each push target. It is also used for for log file description
+
+```lua
+    Desc     = "pcap-all",
+```
+
+For example the above push logfiles will go to /mnt/store0/log/push\_pcap-all\_\* this can be helpful for troubleshooting any problems
+
+### **MODE**
 
 - File : write a file \(currently this is the only mode\)  
 
