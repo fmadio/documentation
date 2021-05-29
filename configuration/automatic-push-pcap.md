@@ -69,6 +69,8 @@ Following is a description of each option for per push target.
 
 ### **DESC**
 
+**Required**
+
 Provides a text human readable description for each push target. It is also used for for log file description
 
 ```lua
@@ -78,6 +80,8 @@ Provides a text human readable description for each push target. It is also used
 For example the above push logfiles will go to /mnt/store0/log/push\_pcap-all\_\* this can be helpful for troubleshooting any problems
 
 ### **MODE**
+
+**Default \(FILE\)**
 
 Specifies how the output files are written. Currently there are 2 modes, standard linux file "File" and rclone which provides multiple end points such as FTP, S3, Google Drive, Azure Cloud and many more.
 
@@ -125,6 +129,8 @@ Specifies how the output files are written. Currently there are 2 modes, standar
 
 ### **PATH**
 
+**Required**
+
 Full remote path of the target PCAPs + the leading prefix of the remote output. 
 
 ```lua
@@ -140,6 +146,8 @@ The above example uses the "FILE" mode, which specifies a full linux system file
 
 ### **SPLIT**
 
+**Required**
+
 This specifies how to split the incoming PCAP data, either by Bytes or by Time. Following example is splitting by Time
 
 ```lua
@@ -152,6 +160,8 @@ This specifies how to split the incoming PCAP data, either by Bytes or by Time. 
 | --split-byte &lt;bytes&gt; | Splits PCAP data by Size. argument is in bytes, Scientific notation can be used |
 
 ### **FILENAME**
+
+**Required**
 
 Specifies how to split filename is encoded. Different downstream applications require specific encodings. If your downstream applications need an encoding not listed, please contact us for support.
 
@@ -224,6 +234,8 @@ Specifies how to split filename is encoded. Different downstream applications re
 
 ### **FILTERBPF**
 
+**Default \(nil\)**
+
 Full libpcap BPF filter can be applied to reduce the total PCAP size or segment specific list of PCAPs . The system uses the native libpcap library, everything that tcpdump supports FilterBPF also supports.
 
 ```lua
@@ -255,6 +267,8 @@ The above is an example BPF filter "net 192.168.1.0/24 and tcp" its a slightly m
 
 ### DECAP
 
+**Default \(false\)**
+
 In addition to FilterBPF full packet de-encapsulation can be performed before the BPF filter is applied. This for example can decode VLAN, ERSPAN, GRE tunnels and many more. This enables the BPF filter is applied on the inner payload instead of the encapsulated output,
 
 Example configuration is
@@ -268,6 +282,54 @@ Configuration is a simple boolean type only
 | Command                                         | Description |
 | :--- | :--- |
 | Decap | boolean value of "true" enables Packet De-encapsulation |
+
+### PipeCmd
+
+**Requires FW:7157+**
+
+Pipe commands are processed on a per PCAP split basis before the end transport is applied. Examples to use this are to GZIP or compress files before sending to the endpoint.
+
+This is a generic stdin/stdout linux application, gzip, lz4 are current examples, Other options are possible, please contact us for more details
+
+```bash
+PipeCmd="gzip -1 -c"
+```
+
+The above runs gzip with compression level 1 on the split PCAP before sending to the output location. Some examples are shown below
+
+| Command                                      | Description |
+| :--- | :--- |
+| gzip -c -1 | Run GZIP on split PCAPs with fastest compression mode |
+| gzip -c -9 | Run GZIP on split PCAPs in maximum compression mode |
+| lz4 -c | Run LZ4 compression on split PCAPs for fast compression |
+
+### FileSuffix
+
+**Requires FW:7157+**
+
+By default the split PCAP filename suff is `.pcap`  For most operations that is sufficient, however for more complicated operations such as GZIP compressing with PipeCmd a .pcap.gz file suffix is more appropriate. The Following is an example config target that compresses and outputs splits in .pcap.gz file format
+
+```lua
+table.insert(Config.Target, 
+{ 
+    Desc       = "pcap-all-gz", 
+    Mode       = "rclone", 
+    Path       = "s3-fmad://pcap/all", 
+    Split      = "--split-time 60e9", 
+    FileName   = "--filename-tstr-HHMMSS", 
+    FilterBPF  = nil, 
+    PipeCmd    = "gzip -c", 
+    FileSuffix = ".pcap.gz" 
+})
+```
+
+The above example pushes gzip 1minute PCAP splits to an S3 protocol storage device
+
+| Command  | Description |
+| :--- | :--- |
+| .pcap | Default suffix. |
+| .pcap.gz | GZIP Compressed PCAP |
+| .pcap.lz4 | LZ4 compressed PCAP |
 
 ## Analytics Scheduler
 
