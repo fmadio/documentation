@@ -106,6 +106,14 @@ Specifies how the output files are written. Currently there are 2 modes, standar
         <p>use rclone as the end point file. Note rclone needs to be setup and configured
           before remote push is started</p>
         <p></p>
+        <p>For RCLONE Config please see their documentation</p>
+        <p><a href="https://rclone.org/commands/rclone_config/">https://rclone.org/commands/rclone_config/</a>
+        </p>
+        <p></p>
+        <p>FMADIO by default stores config file into</p>
+        <p><code>/opt/fmadio/etc/rclone.conf</code>
+        </p>
+        <p></p>
         <p><b>Requires FW:7157+ </b>
         </p>
       </td>
