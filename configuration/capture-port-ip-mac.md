@@ -20,7 +20,7 @@ NOTE: Enabling this feature reduces the total number of Pre Capture filter rules
 
 Depending on the capture port port configuration \(2 ports or 8 ports\), a maximum of 9 pre-capture filter rules may be used.
 
-#### CONFIG
+### CONFIG
 
 To Configure IP/MAC information for the capture ports. edit the files below, by adding 2 new sections \["cap0"\] and \["cap1"\] i the configuration file
 
