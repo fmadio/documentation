@@ -245,10 +245,19 @@ The above is an example BPF filter "net 192.168.1.0/24 and tcp" its a slightly m
   </tbody>
 </table>
 
-## ANALYTICS CONFIGURATION
+## Analytics Scheduler
 
-In addition to`/opt/fmadio/etc/push_realtime.lua`Analytics scheduler must be set to start the push operation. Example configuration to push files 24/7  
+In addition to configuration of
 
+`/opt/fmadio/etc/push_realtime.lua`
+
+To specify when the Push operation occurs the Analytics scheduler must be configured. This is on the "CONFIG" tab of the FMADIO GUI. An Example configuration to push files 24/7, note the "Analytics Engine" filename must be exactly
+
+```bash
+push_realtime
+```
+
+Screenshot of 24/7 schedule is shown below
 
 ![Analytics Schedule to Push PCAP 24/7](../.gitbook/assets/image%20%2842%29.png)
 
