@@ -1,14 +1,20 @@
 # Network Port Layout
 
+### FMADIO100G Gen2 Capture 
+
 Layout of the network ports is as follows. for FMADIO100G v2 1U Capture System \(10G SFP+ management\)
 
 ![FMADIO100G Gen2 1U Capture Port Layout](.gitbook/assets/image%20%2811%29.png)
 
+### FMADIO100G Gen2 Analytics
+
 Layout of the network ports for FMADIO100G v2 1U Analytics System \(40G QSFP+ Management\)
 
-![](.gitbook/assets/20210526_fmadio100v2-analytics-rear-1-.jpg)
+![FMADIO100G Gen2 1U Analytics Port Layout](.gitbook/assets/20210526_fmadio100v2-analytics-rear-1-.jpg)
 
-**1Gbe Management Ports**
+## **Port Description**
+
+### **1Gbe Management Ports**
 
 Systems shipped Prior to April 2021, default 1G management port is "L2"
 
@@ -18,11 +24,11 @@ This was made as L1 port can bridge the IPMI/BMC port \(single RJ45 connection f
 
 
 
-**IPMI Port**
+### **IPMI Port**
 
 The IPMI Port is used for out of band communication with the system. It allows power on/off and KVM capabilities. Highly recommend connecting this. Default IP address is 192.168.0.93/24
 
-**Management Port**
+### **Management Port**
 
 The Management ports can be 10G SFP+ or 40G QSFP+ depending on the system configuration. These can be run in standard, or link bonded / redundant setup.
 
@@ -40,7 +46,7 @@ FMADIO100G Gen2 Analytics Systems
 | 2 | 40Gbps | QSFP+   |
 | 4 | 10Gbps | QSFP+ Breakout Cables    |
 
-**Capture Port**
+### **Capture Port**
 
 Capture ports can be configured in the following way
 
@@ -51,11 +57,11 @@ Capture ports can be configured in the following way
 | 8 | 25Gbps | QSFP28 \(Not released yet\) |
 | 8 | 10Gbps | QSFP+ Breakout Cables |
 
-**PPS Connector**
+### **PPS Connector**
 
 The PPS connector is a 1 Pulse Per Second time synchronization cable. It runs on a 3.3V trigger signal the interface is SMA Coaxial cable
 
-**Serial Port**
+### **Serial Port**
 
 Standard RJ45 Serial port connector
 
