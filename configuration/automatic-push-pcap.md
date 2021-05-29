@@ -245,6 +245,22 @@ The above is an example BPF filter "net 192.168.1.0/24 and tcp" its a slightly m
   </tbody>
 </table>
 
+### DECAP
+
+In addition to FilterBPF full packet de-encapsulation can be performed before the BPF filter is applied. This for example can decode VLAN, ERSPAN, GRE tunnels and many more. This enables the BPF filter is applied on the inner payload instead of the encapsulated output,
+
+Example configuration is
+
+```lua
+Decap = true,
+```
+
+Configuration is a simple boolean type only
+
+| Command                                         | Description |
+| :--- | :--- |
+| Decap | boolean value of "true" enables Packet De-encapsulation |
+
 ## Analytics Scheduler
 
 In addition to configuration of
