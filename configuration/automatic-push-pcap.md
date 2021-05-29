@@ -222,7 +222,9 @@ Full libpcap BPF filter can be applied to reduce the total PCAP size or segment 
     FilterBPF = "net 192.168.1.0/24 and tcp" 
 ```
 
-The above example is an example "net 192.168.1.0/24 and tcp" slightly more complicated BPF and shows the flexiblity and wide range of options avaliable
+The above example is an example "net 192.168.1.0/24 and tcp" slightly more complicated BPF and shows the flexibility and wide range of options available. Technically there is no limit on the complexity of the BPF filter, we recommend to keep it as simple as possible to reduce the CPU load.
+
+
 
 #### The above example uses a standard TCP filter
 
