@@ -130,25 +130,83 @@ The above example uses the "FILE" mode, which specifies a full linux system file
 | /mnt/remote0/push/all | FILE mode output PCAP files will be written for example as `/mnt/remote0/push/all_`_`20210101_010101.cap`_ |
 | gdrive://pcap/all | RCLONE mode output PCAP files written be written to the rclone configured google drive endpoint into the google drive directory `/pcap/`  |
 
-**SPLIT**
+### **SPLIT**
 
-What kind of split mode to apply:
+This specifies how to split the incoming PCAP data, either by Bytes or by Time. Following example is splitting by Time
 
---split-time \(time in nanonseconds\) : the example is 1 minute \(60e9 nanonseconds\)
+```lua
+    Split     = "--split-time 60e9",
+```
 
---split-byte \(bytes\) : the number of bytes to split by. scientific notation can be used \(e.g 1e9 for 1GB\)
+| Command                                               | Description |
+| :--- | :--- |
+| --split-time &lt;nano seconds&gt; | Splits PCAP data by time, argument is in nanoseconds Scientific notation can be used |
+| --split-byte &lt;bytes&gt; | Splits PCAP data by Size. argument is in bytes, Scientific notation can be used |
 
-**FILENAME**
+### **FILENAME**
 
-Specifies how the split filename is encoded  
+Specifies how to split filename is encoded. Different downstream applications require specific encodings. If your downstream applications need an encoding not listed, please contact us for support.
 
+```lua
+    FileName  = "--filename-epoch-sec-startend", 
+```
 
-  
- `--filename-epoch-sec-startend : writes the sec epoch start/end time as the file name. (e.g. 1616334655-1616334755.pcap)  
- --filename-epoch-sec : writes the sec epoch start time as the file name. (e.g. 1616334655.pcap)  
- --filename-timestr-HHMM : writes the YYYYMMDD_HHMM style file name. (e.g. 2021 Dec 1st 23:50 20211201_2350.pcap)  
- --filename-timestr-HHMMSS : writes the YYYYMMDD_HHMMSS style file name. (e.g. 2021 Dec 1st 23:50:59 20211201_235059.pcap)  
- --filename-timestr-HHMMSS_NS : writes the YYYYMMDD_HHMMSS.MSEC.USEC.NSEC style file name. (e.g. 2021 Dec 1st 23:50:59 123456789nsec 20211201_235059.123.456.789.pcap)`  
+<table>
+  <thead>
+    <tr>
+      <th style="text-align:left">Command</th>
+      <th style="text-align:left">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align:left">--filename-epoch-sec-startend</td>
+      <td style="text-align:left">
+        <p>writes the sec epoch start/end time as the file name</p>
+        <p></p>
+        <p><code>1616334655-1616334755.pcap</code>
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left">--filename-epoch-sec</td>
+      <td style="text-align:left">
+        <p>writes the sec epoch start time as the file name.</p>
+        <p></p>
+        <p><code>1616334655.pcap</code>
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left">--filename-tstr-HHMM</td>
+      <td style="text-align:left">
+        <p>writes the YYYYMMDD_HHMM style file name.</p>
+        <p></p>
+        <p>e.g. 2021 Dec 1st 23:50</p>
+        <p><code>20211201_2350.pcap</code>
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left">--filename-timestr-HHMMSS</td>
+      <td style="text-align:left">
+        <p>writes the YYYYMMDD_HHMMSS style file name.</p>
+        <p>e.g. 2021 Dec 1st 23:50:59</p>
+        <p><code>20211201_235059.pcap</code>
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left">--filename-timestr-HHMMSS_NS</td>
+      <td style="text-align:left">
+        <p>writes the YYYYMMDD_HHMMSS.MSEC.USEC.NSEC style file name.</p>
+        <p>e.g. 2021 Dec 1st 23:50:59 123456789nsec<code>20211201_235059.123.456.789.pcap</code>
+        </p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
   
 
 
