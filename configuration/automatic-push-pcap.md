@@ -164,6 +164,7 @@ Specifies how to split filename is encoded. Different downstream applications re
       <td style="text-align:left">
         <p>writes the sec epoch start/end time as the file name</p>
         <p></p>
+        <p>e.g March 21, 2021 1:50:55</p>
         <p><code>1616334655-1616334755.pcap</code>
         </p>
       </td>
@@ -173,6 +174,7 @@ Specifies how to split filename is encoded. Different downstream applications re
       <td style="text-align:left">
         <p>writes the sec epoch start time as the file name.</p>
         <p></p>
+        <p>e.g March 21, 2021 1:50:55</p>
         <p><code>1616334655.pcap</code>
         </p>
       </td>
@@ -191,6 +193,7 @@ Specifies how to split filename is encoded. Different downstream applications re
       <td style="text-align:left">--filename-timestr-HHMMSS</td>
       <td style="text-align:left">
         <p>writes the YYYYMMDD_HHMMSS style file name.</p>
+        <p></p>
         <p>e.g. 2021 Dec 1st 23:50:59</p>
         <p><code>20211201_235059.pcap</code>
         </p>
@@ -200,6 +203,7 @@ Specifies how to split filename is encoded. Different downstream applications re
       <td style="text-align:left">--filename-timestr-HHMMSS_NS</td>
       <td style="text-align:left">
         <p>writes the YYYYMMDD_HHMMSS.MSEC.USEC.NSEC style file name.</p>
+        <p></p>
         <p>e.g. 2021 Dec 1st 23:50:59 123456789nsec<code>20211201_235059.123.456.789.pcap</code>
         </p>
       </td>
