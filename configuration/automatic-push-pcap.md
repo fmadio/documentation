@@ -37,7 +37,7 @@ table.insert(Config.Target,
     Path      = "/mnt/remote0/push/tcp",   
     Split     = "--split-time 60e9", 
     FileName  = "--filename-epoch-sec-startend", 
-    FilterBPF = "tcp" 
+    FilterBPF = "net 192.168.1.0/24 and tcp" 
 })
 
 return Config
@@ -57,11 +57,11 @@ See NFS mount configuration section for details on setting up /mnt/remote0 mount
 
 The sepcified is "FilterBPF=nil" meaning there is no filter, thus all traffic is pushed
 
-#### B\) Push all TCP data 
+#### B\) Push all TCP data from network 192.168.1.0/24
 
-The second example shows pushing all TCP data to the specified /mnt/remote0/push/ directory with a PCAP file prefix of "tcp\_\*"
+The second example shows pushing all TCP data on the network 192.168.1.0/24 to the specified /mnt/remote0/push/ directory with a PCAP file prefix of "tcp\_\*"
 
-Note FilterBP=tcp  This applies a full BPF \(Berkley Packet Filter [https://en.wikipedia.org/wiki/Berkeley\_Packet\_Filter](https://en.wikipedia.org/wiki/Berkeley_Packet_Filter) \) with the filter "tcp" on the packets before writing it to the location. This results in only TCP data written to the /mnt/remote0/push/tcp\_\*.pcap output files
+Note `FilterBP=net 192.168.1.0/24 and tcp`  This applies a full BPF \(Berkley Packet Filter [https://en.wikipedia.org/wiki/Berkeley\_Packet\_Filter](https://en.wikipedia.org/wiki/Berkeley_Packet_Filter) \) with the filter "tcp" on the packets before writing it to the location. This results in only TCP data written to the /mnt/remote0/push/tcp\_\*.pcap output files
 
 ## Command Reference
 
@@ -214,16 +214,17 @@ Specifies how to split filename is encoded. Different downstream applications re
   
 
 
-**FILTERBPF**
+### **FILTERBPF**
 
-Full libpcap BPF filter can be applied to reduce the total PCAP size. Example might be  
-`"tcp"`
+Full libpcap BPF filter can be applied to reduce the total PCAP size or segment specific list of PCAPs . The system uses the native libpcap library, everything that tcpdump supports FilterBPF also supports.
 
-  
-to write TCP only traffic. A more likely example is to exclude backup traffic from specific ip  
-`"not host 192.168.1.100"`
+```lua
+    FilterBPF = "net 192.168.1.0/24 and tcp" 
+```
 
-\`\`
+The above example is an example "net 192.168.1.0/24 and tcp" slightly more complicated BPF and shows the flexiblity and wide range of options avaliable
+
+#### The above example uses a standard TCP filter
 
 #### ANALYTICS CONFIGURATION
 
