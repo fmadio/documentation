@@ -251,7 +251,9 @@ In addition to configuration of
 
 `/opt/fmadio/etc/push_realtime.lua`
 
-To specify when the Push operation occurs the Analytics scheduler must be configured. This is on the "CONFIG" tab of the FMADIO GUI. An Example configuration to push files 24/7, note the "Analytics Engine" filename must be exactly
+To specify when the Push operation occurs the Analytics scheduler must be configured. This is on the "CONFIG" tab of the FMADIO GUI. An Example configuration to push files 24/7, 
+
+The "Analytics Engine" field must be exactly the following text. 
 
 ```bash
 push_realtime
