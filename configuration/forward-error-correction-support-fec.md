@@ -4,6 +4,8 @@
 
 Support for FEC is built into all 100G capable Packet Capture systems. By default its turned off and requires manual setting to enable the port to link up.
 
+### Configuration
+
 Enabling FEC support requires editing the file
 
 ```text
@@ -55,7 +57,7 @@ fmadio@fmadio100v2-228U:~$
 
 Once complete, please reboot the system and FEC should be enabled on boot.
 
-#### Manual FEC settings
+### Manual FEC settings
 
 FEC settings can be overridden and set manually per the following commands
 
