@@ -85,17 +85,53 @@ Specifies how the output files are written. Currently there are 2 modes, standar
 
 #### Options
 
-| Command | Description |
-| :--- | :--- |
-| File | output a regular linux file. this can be ln the local file system or over a remote NFS mount |
-| rclone | use rclone as the end point file. Note rclone needs to be setup and configured before remote push is started |
+<table>
+  <thead>
+    <tr>
+      <th style="text-align:left">Command</th>
+      <th style="text-align:left">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align:left">FILE</td>
+      <td style="text-align:left">output a regular linux file. this can be ln the local file system or over
+        a remote NFS mount</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">RCLONE</td>
+      <td style="text-align:left">
+        <p>use rclone as the end point file. Note rclone needs to be setup and configured
+          before remote push is started</p>
+        <p></p>
+        <p><b>Requires FW:7157+ </b>
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left"></td>
+      <td style="text-align:left"></td>
+    </tr>
+  </tbody>
+</table>
 
  
 
-**PATH**
+### **PATH**
 
-Full remote path of the target PCAPs. This include any subdirectories within the NFS mount the PCAPs are to be written to  
+Full remote path of the target PCAPs + the leading prefix of the remote output. 
 
+```lua
+    Path      = "/mnt/remote0/push/all",
+```
+
+In the above example, because we are using the "FILE" mode, this specifies a full 
+
+| Command                                               | Description |
+| :--- | :--- |
+| /mnt/remote0/push/all | FILE mode output PCAP files will be written for example as `/mnt/remote0/push/all_`_`20210101_010101.cap`_ |
+| gdrive://pcap/all | RCLONE mode output PCAP files written be written to the rclone configured google drive endpoint into the google drive directory /pcap/  |
+|  |  |
 
 **SPLIT**
 
