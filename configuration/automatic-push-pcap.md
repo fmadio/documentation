@@ -1,5 +1,7 @@
 # Automatic Push PCAP
 
+**Requires FW:6979+**
+
 FMADIO Packet Capture systems provide a built in Push mode to transfer capture PCAP data on a regular schedule to a remote system. An example is pushing 1minute PCAPs to a remote NFS share or an S3 storage bucket.
 
 Configuration is via configuration scripts located:
