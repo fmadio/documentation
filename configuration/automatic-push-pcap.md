@@ -19,23 +19,23 @@ Config.Target = {}
 -- push all pcap data to /mnt/remote0/push/all_*.pcap
 table.insert(Config.Target, 
 {
-    Desc     = "pcap-all",
-    Mode     = "File",
-    Path     = "/mnt/remote0/push/all",
-    Split    ="--split-time 60e9",
-    FileName =  "--filename-epoch-sec-startend",
+    Desc      = "pcap-all",
+    Mode      = "File",
+    Path      = "/mnt/remote0/push/all",
+    Split     = "--split-time 60e9",
+    FileName  = "--filename-epoch-sec-startend",
     FilterBPF = nil 
 })
 
 -- push all tcp data to /mnt/remote0/push/tcp_*.pcap
 table.insert(Config.Target, 
 {
-    Desc = "pcap-tcp", 
-    Mode = "File", 
-    Path = "/mnt/remote0/push/tcp",   
-    Split="--split-time 60e9", 
-    FileName="--filename-epoch-sec-startend", 
-    FilterBPF="tcp" 
+    Desc      = "pcap-tcp", 
+    Mode      = "File", 
+    Path      = "/mnt/remote0/push/tcp",   
+    Split     = "--split-time 60e9", 
+    FileName  = "--filename-epoch-sec-startend", 
+    FilterBPF = "tcp" 
 })
 
 return Config
@@ -59,7 +59,7 @@ The sepcified is "FilterBPF=nil" meaning there is no filter, thus all traffic is
 
 The second example shows pushing all TCP data to the specified /mnt/remote0/push/ directory with a PCAP file prefix of "tcp\_\*"
 
-Note FilterBP=tcp  This applies a full BPF \(Berkley Packet Filter \( [https://en.wikipedia.org/wiki/Berkeley\_Packet\_Filter](https://en.wikipedia.org/wiki/Berkeley_Packet_Filter) \) with the filter "tcp" on the packets before writing it to the location. This results in only TCP data written to the /mnt/remote0/push/tcp\_\*.pcap output files
+Note FilterBP=tcp  This applies a full BPF \(Berkley Packet Filter [https://en.wikipedia.org/wiki/Berkeley\_Packet\_Filter](https://en.wikipedia.org/wiki/Berkeley_Packet_Filter) \) with the filter "tcp" on the packets before writing it to the location. This results in only TCP data written to the /mnt/remote0/push/tcp\_\*.pcap output files
 
 ## Command Reference
 
@@ -77,8 +77,20 @@ For example the above push logfiles will go to /mnt/store0/log/push\_pcap-all\_\
 
 ### **MODE**
 
-- File : write a file \(currently this is the only mode\)  
+Specifies how the output files are written. Currently there are 2 modes, standard linux file "File" and rclone which provides mutliple end points such as FTP, S3, Google Drive, Azure Cloud and many more.
 
+```lua
+    Mode      = "File",
+```
+
+#### Options
+
+| Command | Description |
+| :--- | :--- |
+| File | output a regular linux file. this can be ln the local file system or over a remote NFS mount |
+| rclone | use rclone as the end point file. Note rclone needs to be setup and configured before remote push is started |
+
+ 
 
 **PATH**
 
