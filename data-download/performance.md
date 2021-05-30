@@ -106,9 +106,7 @@ NOTE: throughput is heavily dependent on the packet size mix of the capture. Lag
   </tbody>
 </table>
 
-## Man
-
-## ual local file system
+## Manual local file system
 
 Standard pipe to file = 8.8Gbps using linux pipe to file
 
