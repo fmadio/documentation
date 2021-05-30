@@ -103,13 +103,6 @@ NOTE: throughput is heavily dependent on the packet size mix of the capture. Lag
       <td style="text-align:left"></td>
       <td style="text-align:left">1.7Gbpbs</td>
     </tr>
-    <tr>
-      <td style="text-align:left"></td>
-      <td style="text-align:left"></td>
-      <td style="text-align:left"></td>
-      <td style="text-align:left"></td>
-      <td style="text-align:left"></td>
-    </tr>
   </tbody>
 </table>
 
