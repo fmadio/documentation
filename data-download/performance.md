@@ -198,3 +198,112 @@ fmadio@fmadio20n40v3-363:/opt/fmadio/analytics$ sudo stream_cat -v test9k_202105
 1M Offset:   15GB Pkt:1622282588_773973543 Length:9200 Capture:9200 ChunkID:29548274 8.636Gbps CPUIdle:0.000
 ```
 
+### HTTP on local host
+
+local host HTTP download ~ 6.2Gbps
+
+```text
+fmadio@fmadio20n40v3-363:/opt/fmadio/analytics$ curl -u user:pass -s  "http://localhost/pcap/single?StreamName=test9k_20210529_1902" | pipe_mon --local-bytes  > /dev/null
+
+LocalPipe 818937856 Bytes 6534731708 Bps 00:00:01 | 0.819 GB 6534.732 Mbps | Target 0.000 Mbps
+LocalPipe 1628307456 Bytes 6459537883 Bps 00:00:02 | 1.628 GB 6459.538 Mbps | Target 0.000 Mbps
+LocalPipe 2438987776 Bytes 6469417812 Bps 00:00:03 | 2.439 GB 6469.418 Mbps | Target 0.000 Mbps
+LocalPipe 3231449088 Bytes 6324536906 Bps 00:00:04 | 3.231 GB 6324.537 Mbps | Target 0.000 Mbps
+LocalPipe 4039114752 Bytes 6444755845 Bps 00:00:05 | 4.039 GB 6444.756 Mbps | Target 0.000 Mbps
+LocalPipe 4839702528 Bytes 6389507958 Bps 00:00:06 | 4.840 GB 6389.508 Mbps | Target 0.000 Mbps
+LocalPipe 5641994240 Bytes 6402493926 Bps 00:00:07 | 5.642 GB 6402.494 Mbps | Target 0.000 Mbps
+LocalPipe 6444417024 Bytes 6403559078 Bps 00:00:08 | 6.444 GB 6403.559 Mbps | Target 0.000 Mbps
+LocalPipe 7245660160 Bytes 6392818727 Bps 00:00:09 | 7.246 GB 6392.819 Mbps | Target 0.000 Mbps
+LocalPipe 8045068288 Bytes 6380023149 Bps 00:00:10 | 8.045 GB 6380.023 Mbps | Target 0.000 Mbps
+LocalPipe 8848146432 Bytes 6409364455 Bps 00:00:11 | 8.848 GB 6409.364 Mbps | Target 0.000 Mbps
+LocalPipe 9659613184 Bytes 6473375523 Bps 00:00:12 | 9.660 GB 6473.376 Mbps | Target 0.000 Mbps
+
+```
+
+### HTTPS on local host
+
+local host HTTPS download = 3.3Gbps
+
+```text
+fmadio@fmadio20n40v3-363:/opt/fmadio/analytics$ curl -u user:pass -s -k  "https://localhost/pcap/single?StreamName=test9k_20210529_1902" | pipe_mon --local-bytes  > /dev/null
+
+LocalPipe 605159424 Bytes 4828459859 Bps 00:00:01 | 0.605 GB 4828.460 Mbps | Target 0.000 Mbps
+LocalPipe 1197211648 Bytes 4724728813 Bps 00:00:02 | 1.197 GB 4724.729 Mbps | Target 0.000 Mbps
+LocalPipe 1787559936 Bytes 4710501317 Bps 00:00:03 | 1.788 GB 4710.501 Mbps | Target 0.000 Mbps
+LocalPipe 2376728576 Bytes 4701632651 Bps 00:00:04 | 2.377 GB 4701.633 Mbps | Target 0.000 Mbps
+LocalPipe 2967601152 Bytes 4715474849 Bps 00:00:05 | 2.968 GB 4715.475 Mbps | Target 0.000 Mbps
+LocalPipe 3553230848 Bytes 4673974271 Bps 00:00:06 | 3.553 GB 4673.974 Mbps | Target 0.000 Mbps
+LocalPipe 4000186368 Bytes 3567065368 Bps 00:00:07 | 4.000 GB 3567.065 Mbps | Target 0.000 Mbps
+LocalPipe 4413456384 Bytes 3298046933 Bps 00:00:08 | 4.413 GB 3298.047 Mbps | Target 0.000 Mbps
+LocalPipe 4827774976 Bytes 3306335798 Bps 00:00:09 | 4.828 GB 3306.336 Mbps | Target 0.000 Mbps
+LocalPipe 5238030336 Bytes 3273864766 Bps 00:00:10 | 5.238 GB 3273.865 Mbps | Target 0.000 Mbps
+LocalPipe 5650382848 Bytes 3290488579 Bps 00:00:11 | 5.650 GB 3290.489 Mbps | Target 0.000 Mbps
+LocalPipe 6062342144 Bytes 3287665615 Bps 00:00:12 | 6.062 GB 3287.666 Mbps | Target 0.000 Mbps
+LocalPipe 6475087872 Bytes 3294125805 Bps 00:00:13 | 6.475 GB 3294.126 Mbps | Target 0.000 Mbps
+LocalPipe 6889275392 Bytes 3303543281 Bps 00:00:14 | 6.889 GB 3303.543 Mbps | Target 0.000 Mbps
+LocalPipe 7301234688 Bytes 3287167179 Bps 00:00:15 | 7.301 GB 3287.167 Mbps | Target 0.000 Mbps
+LocalPipe 7717650432 Bytes 3322749934 Bps 00:00:16 | 7.718 GB 3322.750 Mbps | Target 0.000 Mbps
+LocalPipe 8135770112 Bytes 3336692453 Bps 00:00:17 | 8.136 GB 3336.692 Mbps | Target 0.000 Mbps
+LocalPipe 8552710144 Bytes 3326999809 Bps 00:00:18 | 8.553 GB 3327.000 Mbps | Target 0.000 Mbps
+LocalPipe 8973058048 Bytes 3354286823 Bps 00:00:19 | 8.973 GB 3354.287 Mbps | Target 0.000 Mbps
+LocalPipe 9399566336 Bytes 3403930909 Bps 00:00:20 | 9.400 GB 3403.931 Mbps | Target 0.000 Mbps
+
+```
+
+### HTTP on remote 1G 
+
+1G link is the bottleneck ~  0.9Gbps
+
+```text
+fmadio@fmadio100v2-228U:~$  curl -u user:pass -s -k  "https://192.168.2.225/pcap/single?StreamName=test9k_20210529_1902" | pipe_mon --local-bytes  > /dev/null
+LocalPipe 166330368 Bytes 927814503 Bps 00:00:01 | 0.166 GB 927.815 Mbps | Target 0.000 Mbps
+LocalPipe 333316096 Bytes 932791270 Bps 00:00:02 | 0.333 GB 932.791 Mbps | Target 0.000 Mbps
+LocalPipe 500301824 Bytes 932874648 Bps 00:00:04 | 0.500 GB 932.875 Mbps | Target 0.000 Mbps
+LocalPipe 665321472 Bytes 921817653 Bps 00:00:05 | 0.665 GB 921.818 Mbps | Target 0.000 Mbps
+LocalPipe 831651840 Bytes 929096659 Bps 00:00:07 | 0.832 GB 929.097 Mbps | Target 0.000 Mbps
+LocalPipe 996016128 Bytes 917807466 Bps 00:00:08 | 0.996 GB 917.807 Mbps | Target 0.000 Mbps
+LocalPipe 1163132928 Bytes 933238679 Bps 00:00:10 | 1.163 GB 933.239 Mbps | Target 0.000 Mbps
+LocalPipe 1329332224 Bytes 928205077 Bps 00:00:11 | 1.329 GB 928.205 Mbps | Target 0.000 Mbps
+LocalPipe 1495138304 Bytes 926206867 Bps 00:00:12 | 1.495 GB 926.207 Mbps | Target 0.000 Mbps
+LocalPipe 1660813312 Bytes 925473395 Bps 00:00:14 | 1.661 GB 925.473 Mbps | Target 0.000 Mbps
+LocalPipe 1827667968 Bytes 931651862 Bps 00:00:15 | 1.828 GB 931.652 Mbps | Target 0.000 Mbps
+LocalPipe 1994260480 Bytes 930385558 Bps 00:00:17 | 1.994 GB 930.386 Mbps | Target 0.000 Mbps
+LocalPipe 2160852992 Bytes 930127777 Bps 00:00:18 | 2.161 GB 930.128 Mbps | Target 0.000 Mbps
+LocalPipe 2327445504 Bytes 930038204 Bps 00:00:20 | 2.327 GB 930.038 Mbps | Target 0.000 Mbps
+LocalPipe 2494431232 Bytes 932802994 Bps 00:00:21 | 2.494 GB 932.803 Mbps | Target 0.000 Mbps
+LocalPipe 2660237312 Bytes 925971515 Bps 00:00:22 | 2.660 GB 925.972 Mbps | Target 0.000 Mbps
+LocalPipe 2826436608 Bytes 928112424 Bps 00:00:24 | 2.826 GB 928.112 Mbps | Target 0.000 Mbps
+LocalPipe 2992111616 Bytes 925527034 Bps 00:00:25 | 2.992 GB 925.527 Mbps | Target 0.000 Mbps
+
+```
+
+### HTTPS on remote 10G
+
+10G link HTTPS download ~ 1.7Gbps
+
+```text
+fmadio@fmadio100v2-228U:~$  curl -u fmadio:100g -s -k  "https://192.168.15.225/pcap/single?StreamName=test9k_20210529_1902" | pipe_mon --local-bytes  > /dev/null
+
+LocalPipe 305790976 Bytes 1707039342 Bps 00:00:01 | 0.306 GB 1707.039 Mbps | Target 0.000 Mbps
+LocalPipe 612237312 Bytes 1711520992 Bps 00:00:02 | 0.612 GB 1711.521 Mbps | Target 0.000 Mbps
+LocalPipe 919339008 Bytes 1715025565 Bps 00:00:04 | 0.919 GB 1715.026 Mbps | Target 0.000 Mbps
+LocalPipe 1227751424 Bytes 1722767466 Bps 00:00:05 | 1.228 GB 1722.767 Mbps | Target 0.000 Mbps
+LocalPipe 1535246336 Bytes 1717408524 Bps 00:00:07 | 1.535 GB 1717.409 Mbps | Target 0.000 Mbps
+LocalPipe 1841430528 Bytes 1709901716 Bps 00:00:08 | 1.841 GB 1709.902 Mbps | Target 0.000 Mbps
+LocalPipe 2147745792 Bytes 1711122237 Bps 00:00:10 | 2.148 GB 1711.122 Mbps | Target 0.000 Mbps
+LocalPipe 2455633920 Bytes 1720100662 Bps 00:00:11 | 2.456 GB 1720.101 Mbps | Target 0.000 Mbps
+LocalPipe 2762866688 Bytes 1716251145 Bps 00:00:12 | 2.763 GB 1716.251 Mbps | Target 0.000 Mbps
+LocalPipe 3070361600 Bytes 1717679541 Bps 00:00:14 | 3.070 GB 1717.680 Mbps | Target 0.000 Mbps
+LocalPipe 3378380800 Bytes 1720775250 Bps 00:00:15 | 3.378 GB 1720.775 Mbps | Target 0.000 Mbps
+LocalPipe 3684040704 Bytes 1707462492 Bps 00:00:17 | 3.684 GB 1707.462 Mbps | Target 0.000 Mbps
+LocalPipe 4003463168 Bytes 1783957320 Bps 00:00:18 | 4.003 GB 1783.957 Mbps | Target 0.000 Mbps
+LocalPipe 4303486976 Bytes 1675754912 Bps 00:00:20 | 4.303 GB 1675.755 Mbps | Target 0.000 Mbps
+LocalPipe 4611768320 Bytes 1721719137 Bps 00:00:21 | 4.612 GB 1721.719 Mbps | Target 0.000 Mbps
+LocalPipe 4916510720 Bytes 1702167210 Bps 00:00:22 | 4.917 GB 1702.167 Mbps | Target 0.000 Mbps
+LocalPipe 5225971712 Bytes 1724637586 Bps 00:00:24 | 5.226 GB 1724.638 Mbps | Target 0.000 Mbps
+LocalPipe 5550112768 Bytes 1810395082 Bps 00:00:25 | 5.550 GB 1810.395 Mbps | Target 0.000 Mbps
+
+```
+
+
+
