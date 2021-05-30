@@ -12,7 +12,110 @@ the output of stream\_cat is a standard PCAP via the stdout pipe
 
 NOTE: throughput is heavily dependent on the packet size mix of the capture. Lager packet sizes get a better over all throughput
 
-## Manual local file system
+<table>
+  <thead>
+    <tr>
+      <th style="text-align:left">Transport</th>
+      <th style="text-align:left">
+        <p>Physical</p>
+        <p>Interface</p>
+      </th>
+      <th style="text-align:left">64B Packet</th>
+      <th style="text-align:left">IMIX Packet</th>
+      <th style="text-align:left">9200 Jumbo Packet</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align:left">Local File System</td>
+      <td style="text-align:left">NA</td>
+      <td style="text-align:left"></td>
+      <td style="text-align:left"></td>
+      <td style="text-align:left">8.8Gbps</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">Local File System (rclone)</td>
+      <td style="text-align:left">NA</td>
+      <td style="text-align:left"></td>
+      <td style="text-align:left"></td>
+      <td style="text-align:left">2.4Gbps</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">NFS Remote</td>
+      <td style="text-align:left">10G</td>
+      <td style="text-align:left"></td>
+      <td style="text-align:left"></td>
+      <td style="text-align:left">5.4Gbps</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">SSH Pipe</td>
+      <td style="text-align:left">1G</td>
+      <td style="text-align:left"></td>
+      <td style="text-align:left"></td>
+      <td style="text-align:left">0.48Gbps</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">SSH Pipe</td>
+      <td style="text-align:left">10G</td>
+      <td style="text-align:left"></td>
+      <td style="text-align:left"></td>
+      <td style="text-align:left">048Gbps</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">SSH Pipe (arcfour)</td>
+      <td style="text-align:left">10G</td>
+      <td style="text-align:left"></td>
+      <td style="text-align:left"></td>
+      <td style="text-align:left">1.2Gbps</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">NetCat TCP</td>
+      <td style="text-align:left">10G</td>
+      <td style="text-align:left"></td>
+      <td style="text-align:left"></td>
+      <td style="text-align:left">8.8Gbps</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">HTTP localhost</td>
+      <td style="text-align:left"></td>
+      <td style="text-align:left"></td>
+      <td style="text-align:left"></td>
+      <td style="text-align:left">6.2Gbps</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">HTTPS localhost</td>
+      <td style="text-align:left"></td>
+      <td style="text-align:left"></td>
+      <td style="text-align:left"></td>
+      <td style="text-align:left">3.3Gbps</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">HTTP remote</td>
+      <td style="text-align:left">1G</td>
+      <td style="text-align:left"></td>
+      <td style="text-align:left"></td>
+      <td style="text-align:left">0.9Gbps</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">HTTPS remote</td>
+      <td style="text-align:left">10G</td>
+      <td style="text-align:left"></td>
+      <td style="text-align:left"></td>
+      <td style="text-align:left">1.7Gbpbs</td>
+    </tr>
+    <tr>
+      <td style="text-align:left"></td>
+      <td style="text-align:left"></td>
+      <td style="text-align:left"></td>
+      <td style="text-align:left"></td>
+      <td style="text-align:left"></td>
+    </tr>
+  </tbody>
+</table>
+
+## Man
+
+## ual local file system
 
 Standard pipe to file = 8.8Gbps using linux pipe to file
 
