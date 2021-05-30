@@ -20,9 +20,18 @@ NOTE: throughput is heavily dependent on the packet size mix of the capture. Lag
         <p>Physical</p>
         <p>Interface</p>
       </th>
-      <th style="text-align:left">64B Packet</th>
-      <th style="text-align:left">9200B Jumbo Packet</th>
-      <th style="text-align:left">IMIX Packet</th>
+      <th style="text-align:left">
+        <p>64B</p>
+        <p>Packet</p>
+      </th>
+      <th style="text-align:left">
+        <p>9200B Jumbo</p>
+        <p>Packet</p>
+      </th>
+      <th style="text-align:left">
+        <p>IMIX</p>
+        <p>Packet</p>
+      </th>
     </tr>
   </thead>
   <tbody>
