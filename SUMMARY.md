@@ -15,6 +15,10 @@
 * [Syslog](configuration/syslog.md)
 * [Automatic Push PCAP](configuration/automatic-push-pcap.md)
 
+## Data Download
+
+* [Performance](data-download/performance.md)
+
 ## API
 
 * [Summary](api/summary.md)
@@ -28,8 +32,4 @@
 ## Troubleshooting
 
 * [System Recovery](troubleshooting/system-recovery.md)
-
-## Data Download
-
-* [Performance](data-download/performance.md)
 
