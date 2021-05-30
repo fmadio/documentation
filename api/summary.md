@@ -4,7 +4,7 @@ description: A summary for developers to access a FMADIO device using the API.
 
 # Summary
 
-### FMADIO API
+## FMADIO API
 
 The FMADIO API is simple and designed for easy scripting integration.
 
@@ -25,7 +25,7 @@ Capture Start
 {% api-method-request %}
 {% api-method-query-parameters %}
 {% api-method-parameter name="StreamName" type="string" required=true %}
-
+Stream capture name
 {% endapi-method-parameter %}
 {% endapi-method-query-parameters %}
 {% endapi-method-request %}
@@ -144,11 +144,11 @@ Split Capture by filesize
 {% api-method-request %}
 {% api-method-query-parameters %}
 {% api-method-parameter name="StreamView" type="string" required=true %}
-
+Stream time slice name \(see description\)
 {% endapi-method-parameter %}
 
 {% api-method-parameter name="StreamName" type="string" required=true %}
-
+Stream capture name
 {% endapi-method-parameter %}
 {% endapi-method-query-parameters %}
 {% endapi-method-request %}
@@ -219,7 +219,7 @@ Single PCAP Download
 {% api-method-spec %}
 {% api-method-request %}
 {% api-method-query-parameters %}
-{% api-method-parameter name="FIlterBPF" type="string" required=false %}
+{% api-method-parameter name="FilterBPF" type="string" required=false %}
 
 {% endapi-method-parameter %}
 
@@ -344,7 +344,7 @@ Get system status information
 
 
 
-### V1 API
+## V1 API
 
 The FMADIO V1 API uses endpoints with parameters. All V1 versions of the API endpoints shall have the format:
 
