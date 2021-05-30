@@ -28,14 +28,14 @@ NOTE: throughput is heavily dependent on the packet size mix of the capture. Lag
   <tbody>
     <tr>
       <td style="text-align:left">Local File System</td>
-      <td style="text-align:left">NA</td>
+      <td style="text-align:left">local</td>
       <td style="text-align:left"></td>
       <td style="text-align:left">8.8Gbps</td>
       <td style="text-align:left"></td>
     </tr>
     <tr>
       <td style="text-align:left">Local File System (rclone)</td>
-      <td style="text-align:left">NA</td>
+      <td style="text-align:left">local</td>
       <td style="text-align:left"></td>
       <td style="text-align:left">2.4Gbps</td>
       <td style="text-align:left"></td>
@@ -77,14 +77,14 @@ NOTE: throughput is heavily dependent on the packet size mix of the capture. Lag
     </tr>
     <tr>
       <td style="text-align:left">HTTP localhost</td>
-      <td style="text-align:left"></td>
+      <td style="text-align:left">local</td>
       <td style="text-align:left"></td>
       <td style="text-align:left">6.2Gbps</td>
       <td style="text-align:left"></td>
     </tr>
     <tr>
       <td style="text-align:left">HTTPS localhost</td>
-      <td style="text-align:left"></td>
+      <td style="text-align:left">local</td>
       <td style="text-align:left"></td>
       <td style="text-align:left">3.3Gbps</td>
       <td style="text-align:left"></td>
