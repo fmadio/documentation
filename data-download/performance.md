@@ -21,8 +21,8 @@ NOTE: throughput is heavily dependent on the packet size mix of the capture. Lag
         <p>Interface</p>
       </th>
       <th style="text-align:left">64B Packet</th>
+      <th style="text-align:left">9200B Jumbo Packet</th>
       <th style="text-align:left">IMIX Packet</th>
-      <th style="text-align:left">9200 Jumbo Packet</th>
     </tr>
   </thead>
   <tbody>
@@ -30,78 +30,78 @@ NOTE: throughput is heavily dependent on the packet size mix of the capture. Lag
       <td style="text-align:left">Local File System</td>
       <td style="text-align:left">NA</td>
       <td style="text-align:left"></td>
-      <td style="text-align:left"></td>
       <td style="text-align:left">8.8Gbps</td>
+      <td style="text-align:left"></td>
     </tr>
     <tr>
       <td style="text-align:left">Local File System (rclone)</td>
       <td style="text-align:left">NA</td>
       <td style="text-align:left"></td>
-      <td style="text-align:left"></td>
       <td style="text-align:left">2.4Gbps</td>
+      <td style="text-align:left"></td>
     </tr>
     <tr>
       <td style="text-align:left">NFS Remote</td>
       <td style="text-align:left">10G</td>
       <td style="text-align:left"></td>
-      <td style="text-align:left"></td>
       <td style="text-align:left">5.4Gbps</td>
+      <td style="text-align:left"></td>
     </tr>
     <tr>
       <td style="text-align:left">SSH Pipe</td>
       <td style="text-align:left">1G</td>
       <td style="text-align:left"></td>
-      <td style="text-align:left"></td>
       <td style="text-align:left">0.48Gbps</td>
+      <td style="text-align:left"></td>
     </tr>
     <tr>
       <td style="text-align:left">SSH Pipe</td>
       <td style="text-align:left">10G</td>
       <td style="text-align:left"></td>
-      <td style="text-align:left"></td>
       <td style="text-align:left">048Gbps</td>
+      <td style="text-align:left"></td>
     </tr>
     <tr>
       <td style="text-align:left">SSH Pipe (arcfour)</td>
       <td style="text-align:left">10G</td>
       <td style="text-align:left"></td>
-      <td style="text-align:left"></td>
       <td style="text-align:left">1.2Gbps</td>
+      <td style="text-align:left"></td>
     </tr>
     <tr>
       <td style="text-align:left">NetCat TCP</td>
       <td style="text-align:left">10G</td>
       <td style="text-align:left"></td>
-      <td style="text-align:left"></td>
       <td style="text-align:left">8.8Gbps</td>
+      <td style="text-align:left"></td>
     </tr>
     <tr>
       <td style="text-align:left">HTTP localhost</td>
       <td style="text-align:left"></td>
       <td style="text-align:left"></td>
-      <td style="text-align:left"></td>
       <td style="text-align:left">6.2Gbps</td>
+      <td style="text-align:left"></td>
     </tr>
     <tr>
       <td style="text-align:left">HTTPS localhost</td>
       <td style="text-align:left"></td>
       <td style="text-align:left"></td>
-      <td style="text-align:left"></td>
       <td style="text-align:left">3.3Gbps</td>
+      <td style="text-align:left"></td>
     </tr>
     <tr>
       <td style="text-align:left">HTTP remote</td>
       <td style="text-align:left">1G</td>
       <td style="text-align:left"></td>
-      <td style="text-align:left"></td>
       <td style="text-align:left">0.9Gbps</td>
+      <td style="text-align:left"></td>
     </tr>
     <tr>
       <td style="text-align:left">HTTPS remote</td>
       <td style="text-align:left">10G</td>
       <td style="text-align:left"></td>
-      <td style="text-align:left"></td>
       <td style="text-align:left">1.7Gbpbs</td>
+      <td style="text-align:left"></td>
     </tr>
   </tbody>
 </table>
