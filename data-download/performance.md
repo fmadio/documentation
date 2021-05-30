@@ -378,7 +378,7 @@ LocalPipe 2992111616 Bytes 925527034 Bps 00:00:25 | 2.992 GB 925.527 Mbps | Targ
 10G link HTTPS download ~ 1.7Gbps
 
 ```text
-fmadio@fmadio100v2-228U:~$  curl -u fmadio:100g -s -k  "https://192.168.15.225/pcap/single?StreamName=test9k_20210529_1902" | pipe_mon --local-bytes  > /dev/null
+fmadio@fmadio100v2-228U:~$  curl -u user:pass -s -k  "https://192.168.15.225/pcap/single?StreamName=test9k_20210529_1902" | pipe_mon --local-bytes  > /dev/null
 
 LocalPipe 305790976 Bytes 1707039342 Bps 00:00:01 | 0.306 GB 1707.039 Mbps | Target 0.000 Mbps
 LocalPipe 612237312 Bytes 1711520992 Bps 00:00:02 | 0.612 GB 1711.521 Mbps | Target 0.000 Mbps
