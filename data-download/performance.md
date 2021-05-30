@@ -2,19 +2,19 @@
 
 Download performance examples using the CLI interface to extract PCAP data to downstream systems.
 
-Please use "stream\_dump" to list all captures which can be used with 
+Please use "stream\_dump" to list all captures which can be used with
 
 ```text
-sudo stream_cat -v  <capture name> |  .... 
+sudo stream_cat -v  <capture name> |  ....
 ```
 
 the output of stream\_cat is a standard PCAP via the stdout pipe
 
 NOTE: throughput is heavily dependent on the packet size mix of the capture. Lager packet sizes get a better over all throughput
 
-### Manual local file system
+## Manual local file system
 
-Standard pipe to file = 8.8Gbps clearly some bottlenecks with rclone
+Standard pipe to file = 8.8Gbps using linux pipe to file
 
 ```text
 fmadio@fmadio20n40v3-363:/opt/fmadio/analytics$ sudo stream_cat -v test9k_20210529_1902 > /mnt/store0/tmp2/blah.pcap
@@ -34,10 +34,9 @@ fmadio@fmadio20n40v3-363:/opt/fmadio/analytics$ sudo stream_cat -v test9k_202105
 1M Offset:   12GB Pkt:1622282588_104470038 Length:9200 Capture:9200 ChunkID:29535325 8.819Gbps CPUIdle:0.000
 1M Offset:   13GB Pkt:1622282588_320895306 Length:9200 Capture:9200 ChunkID:29539511 8.642Gbps CPUIdle:0.000
 1M Offset:   14GB Pkt:1622282588_544388720 Length:9200 Capture:9200 ChunkID:29543834 8.924Gbps CPUIdle:0.000
-
 ```
 
-### Manual Rclone local file system
+## Manual Rclone local file system
 
 local file system writes ~ 2.4Gbps
 
@@ -65,11 +64,9 @@ fmadio@fmadio20n40v3-363:/opt/fmadio/analytics$ sudo stream_cat -v test9k_202105
 0M Offset:    4GB Pkt:1622282586_469693866 Length:9200 Capture:9200 ChunkID:29503700 2.449Gbps CPUIdle:0.000
 0M Offset:    4GB Pkt:1622282586_529584009 Length:9200 Capture:9200 ChunkID:29504858 2.389Gbps CPUIdle:0.000
 0M Offset:    5GB Pkt:1622282586_590508196 Length:9200 Capture:9200 ChunkID:29506037 2.428Gbps CPUIdle:0.000
-
-
 ```
 
-### Manual NFS remote filesystem \(10G Management\)
+## Manual NFS remote filesystem \(10G Management\)
 
 Commands to write data to an NFS share over a 10G management interface ~ 5Gbps throughput
 
@@ -91,10 +88,9 @@ fmadio@fmadio20n40v3-363:/opt/fmadio/analytics$ sudo stream_cat -v test9k_202105
 0M Offset:    7GB Pkt:1622282587_103929106 Length:9200 Capture:9200 ChunkID:29515970 4.629Gbps CPUIdle:0.000
 0M Offset:    8GB Pkt:1622282587_228624524 Length:9200 Capture:9200 ChunkID:29518382 4.979Gbps CPUIdle:0.000
 1M Offset:    8GB Pkt:1622282587_368959022 Length:9200 Capture:9200 ChunkID:29521096 5.604Gbps CPUIdle:0.000
-
 ```
 
-### Manual SSH  \(1G Management\)
+## Manual SSH  \(1G Management\)
 
 Stock SSH over 1G management port = 0.48Gbps
 
@@ -120,10 +116,9 @@ fmadio@fmadio20n40v3-363:/opt/fmadio/analytics$ sudo stream_cat -v test9k_202105
 0M Offset:    0GB Pkt:1622282585_680736982 Length:9200 Capture:9200 ChunkID:29488438 0.475Gbps CPUIdle:0.000
 0M Offset:    0GB Pkt:1622282585_692709135 Length:9200 Capture:9200 ChunkID:29488669 0.477Gbps CPUIdle:0.000
 0M Offset:    0GB Pkt:1622282585_704675750 Length:9200 Capture:9200 ChunkID:29488901 0.478Gbps CPUIdle:0.000
-
 ```
 
-### Manual SSH \(10G Management\)
+## Manual SSH \(10G Management\)
 
 Stock SSH over 10G management port also ~ 0.48 Gbps
 
@@ -152,7 +147,7 @@ fmadio@fmadio20n40v3-363:/opt/fmadio/analytics$ sudo stream_cat -v test9k_202105
 0M Offset:    1GB Pkt:1622282585_728784387 Length:9200 Capture:9200 ChunkID:29489367 0.413Gbps CPUIdle:0.0
 ```
 
-### Manual SSH arcfour \(10G Management\)
+## Manual SSH arcfour \(10G Management\)
 
 Using arcfour cipher "-c arcfour" performance is about 1.2Gbps
 
@@ -176,10 +171,9 @@ fmadio@fmadio20n40v3-363:/opt/fmadio/analytics$ sudo stream_cat -v test9k_202105
 0M Offset:    2GB Pkt:1622282585_935715193 Length:9200 Capture:9200 ChunkID:29493369 1.236Gbps CPUIdle:0.000
 0M Offset:    2GB Pkt:1622282585_967401494 Length:9200 Capture:9200 ChunkID:29493982 1.265Gbps CPUIdle:0.000
 0M Offset:    2GB Pkt:1622282585_999126569 Length:9200 Capture:9200 ChunkID:29494596 1.266Gbps CPUIdle:0.000
-
 ```
 
-### Manual unencrypted TCP netcat \(10G Management\)
+## Manual unencrypted TCP netcat \(10G Management\)
 
 using netcat on a 10G Management interface over TCP results in near line rate throughput
 
@@ -202,8 +196,5 @@ fmadio@fmadio20n40v3-363:/opt/fmadio/analytics$ sudo stream_cat -v test9k_202105
 1M Offset:   13GB Pkt:1622282588_338390081 Length:9200 Capture:9200 ChunkID:29539849 9.139Gbps CPUIdle:0.000
 1M Offset:   14GB Pkt:1622282588_557542580 Length:9200 Capture:9200 ChunkID:29544088 8.751Gbps CPUIdle:0.000
 1M Offset:   15GB Pkt:1622282588_773973543 Length:9200 Capture:9200 ChunkID:29548274 8.636Gbps CPUIdle:0.000
-
 ```
-
-
 

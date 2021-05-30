@@ -371,7 +371,7 @@ push_realtime
 
 Screenshot of 24/7 schedule is shown below
 
-![Analytics Schedule to Push PCAP 24/7](../.gitbook/assets/image%20%2842%29.png)
+![Analytics Schedule to Push PCAP 24/7](../.gitbook/assets/image%20%2842%29%20%281%29.png)
 
 ## Troubleshooting
 
