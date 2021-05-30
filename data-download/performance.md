@@ -148,6 +148,31 @@ fmadio@fmadio20n40v3-363:/opt/fmadio/analytics$ sudo stream_cat -v test9k_202105
 
 ```
 
+### Manual local file system
+
+Standard pipe to file = 8.8Gbps clearly some bottlenecks with rclone
+
+```text
+fmadio@fmadio20n40v3-363:/opt/fmadio/analytics$ sudo stream_cat -v test9k_20210529_1902 > /mnt/store0/tmp2/blah.pcap
+
+0M Offset:    0GB Pkt:1622282576_055251189 Length: 240 Capture: 240 ChunkID:29484752 0.823Gbps CPUIdle:0.000
+0M Offset:    1GB Pkt:1622282585_715451427 Length:9200 Capture:9200 ChunkID:29489109 8.997Gbps CPUIdle:0.000
+0M Offset:    2GB Pkt:1622282585_944249315 Length:9200 Capture:9200 ChunkID:29493535 9.136Gbps CPUIdle:0.000
+0M Offset:    3GB Pkt:1622282586_162785050 Length:9200 Capture:9200 ChunkID:29497764 8.730Gbps CPUIdle:0.000
+0M Offset:    4GB Pkt:1622282586_391276769 Length:9200 Capture:9200 ChunkID:29502183 9.124Gbps CPUIdle:0.000
+0M Offset:    5GB Pkt:1622282586_566815046 Length:9200 Capture:13296 ChunkID:29505578 7.009Gbps CPUIdle:0.000
+0M Offset:    6GB Pkt:1622282586_787764113 Length:9200 Capture:9200 ChunkID:29509852 8.823Gbps CPUIdle:0.000
+0M Offset:    7GB Pkt:1622282587_009307881 Length:9200 Capture:9200 ChunkID:29514137 8.846Gbps CPUIdle:0.000
+0M Offset:    8GB Pkt:1622282587_231564003 Length:9200 Capture:9200 ChunkID:29518438 8.879Gbps CPUIdle:0.000
+1M Offset:    9GB Pkt:1622282587_454907757 Length:9200 Capture:9200 ChunkID:29522758 8.918Gbps CPUIdle:0.000
+1M Offset:   10GB Pkt:1622282587_663225292 Length:9200 Capture:9200 ChunkID:29526788 7.426Gbps CPUIdle:0.000
+1M Offset:   11GB Pkt:1622282587_883709136 Length:9200 Capture:9200 ChunkID:29531053 8.804Gbps CPUIdle:0.000
+1M Offset:   12GB Pkt:1622282588_104470038 Length:9200 Capture:9200 ChunkID:29535325 8.819Gbps CPUIdle:0.000
+1M Offset:   13GB Pkt:1622282588_320895306 Length:9200 Capture:9200 ChunkID:29539511 8.642Gbps CPUIdle:0.000
+1M Offset:   14GB Pkt:1622282588_544388720 Length:9200 Capture:9200 ChunkID:29543834 8.924Gbps CPUIdle:0.000
+
+```
+
 ### Manual Rclone local file system
 
 local file system writes ~ 2.4Gbps
@@ -177,31 +202,6 @@ fmadio@fmadio20n40v3-363:/opt/fmadio/analytics$ sudo stream_cat -v test9k_202105
 0M Offset:    4GB Pkt:1622282586_529584009 Length:9200 Capture:9200 ChunkID:29504858 2.389Gbps CPUIdle:0.000
 0M Offset:    5GB Pkt:1622282586_590508196 Length:9200 Capture:9200 ChunkID:29506037 2.428Gbps CPUIdle:0.000
 
-
-```
-
-### Manual local file system
-
-Standard pipe to file = 8.8Gbps clearly some bottlenecks with rclone
-
-```text
-fmadio@fmadio20n40v3-363:/opt/fmadio/analytics$ sudo stream_cat -v test9k_20210529_1902 > /mnt/store0/tmp2/blah.pcap
-
-0M Offset:    0GB Pkt:1622282576_055251189 Length: 240 Capture: 240 ChunkID:29484752 0.823Gbps CPUIdle:0.000
-0M Offset:    1GB Pkt:1622282585_715451427 Length:9200 Capture:9200 ChunkID:29489109 8.997Gbps CPUIdle:0.000
-0M Offset:    2GB Pkt:1622282585_944249315 Length:9200 Capture:9200 ChunkID:29493535 9.136Gbps CPUIdle:0.000
-0M Offset:    3GB Pkt:1622282586_162785050 Length:9200 Capture:9200 ChunkID:29497764 8.730Gbps CPUIdle:0.000
-0M Offset:    4GB Pkt:1622282586_391276769 Length:9200 Capture:9200 ChunkID:29502183 9.124Gbps CPUIdle:0.000
-0M Offset:    5GB Pkt:1622282586_566815046 Length:9200 Capture:13296 ChunkID:29505578 7.009Gbps CPUIdle:0.000
-0M Offset:    6GB Pkt:1622282586_787764113 Length:9200 Capture:9200 ChunkID:29509852 8.823Gbps CPUIdle:0.000
-0M Offset:    7GB Pkt:1622282587_009307881 Length:9200 Capture:9200 ChunkID:29514137 8.846Gbps CPUIdle:0.000
-0M Offset:    8GB Pkt:1622282587_231564003 Length:9200 Capture:9200 ChunkID:29518438 8.879Gbps CPUIdle:0.000
-1M Offset:    9GB Pkt:1622282587_454907757 Length:9200 Capture:9200 ChunkID:29522758 8.918Gbps CPUIdle:0.000
-1M Offset:   10GB Pkt:1622282587_663225292 Length:9200 Capture:9200 ChunkID:29526788 7.426Gbps CPUIdle:0.000
-1M Offset:   11GB Pkt:1622282587_883709136 Length:9200 Capture:9200 ChunkID:29531053 8.804Gbps CPUIdle:0.000
-1M Offset:   12GB Pkt:1622282588_104470038 Length:9200 Capture:9200 ChunkID:29535325 8.819Gbps CPUIdle:0.000
-1M Offset:   13GB Pkt:1622282588_320895306 Length:9200 Capture:9200 ChunkID:29539511 8.642Gbps CPUIdle:0.000
-1M Offset:   14GB Pkt:1622282588_544388720 Length:9200 Capture:9200 ChunkID:29543834 8.924Gbps CPUIdle:0.000
 
 ```
 
