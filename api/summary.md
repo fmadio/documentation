@@ -18,7 +18,7 @@ Capture Start
 {% endapi-method-summary %}
 
 {% api-method-description %}
-
+This Command starts a capture running on the device.
 {% endapi-method-description %}
 
 {% api-method-spec %}
@@ -54,7 +54,8 @@ Capture Stop
 {% endapi-method-summary %}
 
 {% api-method-description %}
-
+Stops any currently capturing process.   
+NOTE: this does NOT stop scheduled captures.
 {% endapi-method-description %}
 
 {% api-method-spec %}
@@ -83,7 +84,7 @@ Capture Status
 {% endapi-method-summary %}
 
 {% api-method-description %}
-
+Returns Capture status of currently active capture.
 {% endapi-method-description %}
 
 {% api-method-spec %}
@@ -96,7 +97,29 @@ Capture Status
 {% endapi-method-response-example-description %}
 
 ```
-
+$ curl -u fmadio:100g http://192.168.2.75/sysmaster/status
+uptime,                                             0D 1H 57M
+packets_received,                                222652795259
+packets_dropped,                                            0
+packets_errors,                                        300000
+packets_captured,                                222265863667
+bytes_captured,                                20084978997482
+bytes_pending,                                              0
+bytes_disk,                                    21817945751552
+bytes_overflow,                                 230924484608
+bytes_overflow_now,                                            0
+capture0_link,                                              up
+capture0_link_uptime,                                0D 1H 57M
+capture0_link_speed,                                     10000
+capture1_link,                                              up
+capture1_link_uptime,                                0D 1H 57M
+capture1_link_speed,                                     10000
+capture_bytes,                                              0
+capture_packets,                                            0
+capture_bps,                                                0
+capture_pps,                                                0
+capture_name,                                     TestCapture
+capture_active,                                          true
 ```
 {% endapi-method-response-example %}
 {% endapi-method-response %}
@@ -111,7 +134,7 @@ List All Captures
 {% endapi-method-summary %}
 
 {% api-method-description %}
-
+Lists all captures on the device.
 {% endapi-method-description %}
 
 {% api-method-spec %}
@@ -124,7 +147,11 @@ List All Captures
 {% endapi-method-response-example-description %}
 
 ```
-
+$ curl -u fmadio:100g http://192.168.2.75/stream/list
+{"Path":"/capture/","StreamList":true,"List":[
+    {"id":"1","Path":"TestCapture_20180702_1127","PCAP":"/pcap/single?StreamName=TestCapture_20180702_1127&","Filter":"/en.filter.html?StreamName=TestCapture_20180702_1127&","Analytics":"/en.analytics.html?StreamName=TestCapture_20180702_1127&","TCPScope":"/en.tcpscope.html?StreamName=TestCapture_20180702_1127&","Link":"/en.files.html?Fn=view&StreamName=TestCapture_20180702_1127&","Date":1.5304988337881e+18,"Size":168169046016,"Del":"/pcap/del?StreamName=TestCapture_20180702_1127&rand=1530498848939065088&","IsActive":false,"Type":"","Desc":"Mon . 11:33:53 . 02-07-2018"},
+    {"id":"2","Path":"TestCapture_20180702_1118","PCAP":"/pcap/single?StreamName=TestCapture_20180702_1118&","Filter":"/en.filter.html?StreamName=TestCapture_20180702_1118&","Analytics":"/en.analytics.html?StreamName=TestCapture_20180702_1118&","TCPScope":"/en.tcpscope.html?StreamName=TestCapture_20180702_1118&","Link":"/en.files.html?Fn=view&StreamName=TestCapture_20180702_1118&","Date":1.5304978842841e+18,"Size":0,"Del":"/pcap/del?StreamName=TestCapture_20180702_1118&rand=1530498848939096064&","IsActive":false,"Type":"","Desc":"Mon . 11:18:04 . 02-07-2018"}
+]}
 ```
 {% endapi-method-response-example %}
 {% endapi-method-response %}
@@ -137,7 +164,21 @@ Split Capture by filesize
 {% endapi-method-summary %}
 
 {% api-method-description %}
-
+Lists splits for a specific capture based on file size.   
+Usually this is a 2 step process of   
+1\) get the split list   
+2\) download a specific split.  
+Split options are:  
+ `Split_1MB   
+Split_10MB   
+Split_100MB   
+Split_250MB   
+Split_1GB   
+Split_2GB   
+Split_5GB   
+Split_10GB   
+Split_100GB   
+Split_1TB`
 {% endapi-method-description %}
 
 {% api-method-spec %}
@@ -173,22 +214,33 @@ Split Capture by time
 {% endapi-method-summary %}
 
 {% api-method-description %}
-
+Lists splits for a specific capture based on a time unit.  
+Usually this is a 2 step process of   
+1\) get the split list   
+2\) download a specific split  
+Split options are:  
+ `Split_1sec   
+Split_10sec   
+Split_1min   
+Split_10min   
+Split_15min   
+Split_1hour   
+Split_2hour   
+Split_4hour   
+Split_6hour   
+Split_8hour   
+Split_12hour`
 {% endapi-method-description %}
 
 {% api-method-spec %}
 {% api-method-request %}
 {% api-method-query-parameters %}
-{% api-method-parameter name="TSEnd" type="integer" required=true %}
-
-{% endapi-method-parameter %}
-
-{% api-method-parameter name="TSBegin" type="integer" required=true %}
-
+{% api-method-parameter name="StreamView" type="string" required=true %}
+Split options for the time split \(see description\)
 {% endapi-method-parameter %}
 
 {% api-method-parameter name="StreamName" type="string" required=true %}
-
+Stream capture name.
 {% endapi-method-parameter %}
 {% endapi-method-query-parameters %}
 {% endapi-method-request %}
