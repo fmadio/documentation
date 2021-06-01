@@ -265,22 +265,26 @@ Single PCAP Download
 {% endapi-method-summary %}
 
 {% api-method-description %}
-
+Download entire capture as a single file.   
+Piping to a file or any other analysis tools is possible.
 {% endapi-method-description %}
 
 {% api-method-spec %}
 {% api-method-request %}
 {% api-method-query-parameters %}
 {% api-method-parameter name="FilterBPF" type="string" required=false %}
-
+BPF Filter to be applied to the stream
 {% endapi-method-parameter %}
 
 {% api-method-parameter name="Compression" type="string" required=false %}
-
+Compress the returned stream with gzip.   
+'fast'      Fastest compression but not smallest  
+'best'    Slowest compression smallest size  
+1-9        The range from 'fast' to 'best' 
 {% endapi-method-parameter %}
 
 {% api-method-parameter name="StreamName" type="string" required=true %}
-
+Stream capture name.
 {% endapi-method-parameter %}
 {% endapi-method-query-parameters %}
 {% endapi-method-request %}
@@ -299,40 +303,48 @@ Single PCAP Download
 {% endapi-method-spec %}
 {% endapi-method %}
 
+Compression example:  
+`curl -u fmadio:100g "http://192.168.2.75/pcap/single?StreamName=TestCapture_20180702_1127&Compression=fast"`
+
+FilterBPF example:  
+`curl -u fmadio:100g "http://192.168.2.75/pcap/single?StreamName=hitcon_20180702_1503_58&" -G --data-urlencode "FilterBPF=tcp"`
+
 {% api-method method="get" host="http://1.1.1.1/pcap/splittime?StreamName=<string>&Start=<int>&Stop=<int>&FilterBPF=<string>&FilterRE=<string>&FilterPort=<int>" path="" %}
 {% api-method-summary %}
 Split PCAP Time Download
 {% endapi-method-summary %}
 
 {% api-method-description %}
-
+Download the capture with a time filter.   
+Note: the nanosecond Epoch Start is 1530498788000000000.   
+Removing the nanosecond part convert epoch to date/time.
 {% endapi-method-description %}
 
 {% api-method-spec %}
 {% api-method-request %}
 {% api-method-query-parameters %}
 {% api-method-parameter name="FilterPort" type="integer" required=false %}
-
+Download the capture specifying the port capture number.
 {% endapi-method-parameter %}
 
 {% api-method-parameter name="FilterRE" type="string" required=false %}
-
+Download the capture with using a RegEx DPI filter.
 {% endapi-method-parameter %}
 
 {% api-method-parameter name="FilterBPF" type="string" required=false %}
-
+BPF Filter to be applied to the stream.
 {% endapi-method-parameter %}
 
 {% api-method-parameter name="StreamName" type="string" required=true %}
-
+Stream capture name.
 {% endapi-method-parameter %}
 
 {% api-method-parameter name="Stop" type="integer" required=true %}
-
+Stop time in nanoseconds epoch.
 {% endapi-method-parameter %}
 
 {% api-method-parameter name="Start" type="integer" required=true %}
-Start time in nanoseconds epoch
+Start time in nanoseconds epoch.
 {% endapi-method-parameter %}
 {% endapi-method-query-parameters %}
 {% endapi-method-request %}
@@ -387,7 +399,30 @@ Get system status information
 {% endapi-method-response-example-description %}
 
 ```
-
+{
+	"uptime":"0D 7H 16M",
+	"packets_received":1454363817,
+	"packets_dropped":0,
+	"packets_errors":0,
+	"packets_captured":1454363968,
+	"packets_oldest":"19 May 2014 15:48:38",
+	"packets_oldest_ts":"1400482118411568128",
+	"capture_days":"1505D  0H 57M",
+	"bytes_captured":105800185305,
+	"bytes_pending":0,
+	"bytes_disk":171117117440,
+	"bytes_overflow":0,
+	"smart_errors":0,
+	"raid_errors":0,
+	"raid_status":"clean : raid5",
+	"stream_errors":0,
+	"chunk_errors":0,
+	"ecc_errors":0,
+.
+.
+.
+.
+}
 ```
 {% endapi-method-response-example %}
 {% endapi-method-response %}
@@ -418,22 +453,25 @@ Single PCAP Download
 {% endapi-method-summary %}
 
 {% api-method-description %}
-Get system status information
+Download entire capture as a single file. Piping to a file or any other analysis tools is possible.
 {% endapi-method-description %}
 
 {% api-method-spec %}
 {% api-method-request %}
 {% api-method-query-parameters %}
 {% api-method-parameter name="FilterBPF" type="string" required=false %}
-
+BPF Filter to be applied to the stream.
 {% endapi-method-parameter %}
 
 {% api-method-parameter name="Compression" type="string" required=false %}
-
+Compress the returned stream with gzip.   
+'fast'   Fastest compression but not smallest.  
+'best'  Slowest compression smallest size.  
+1-9      The range from 'fast' to 'best'
 {% endapi-method-parameter %}
 
 {% api-method-parameter name="StreamName" type="string" required=true %}
-
+Stream capture name.
 {% endapi-method-parameter %}
 {% endapi-method-query-parameters %}
 {% endapi-method-request %}
@@ -445,7 +483,22 @@ Get system status information
 {% endapi-method-response-example-description %}
 
 ```
-
+$ curl -u fmadio:100g "http://192.168.2.75/api/v1/pcap/single?StreamName=TestCapture_20180702_1127&&FilterBPF=tcp" | tcpdump  -r - -nn | head
+11:33:08.000000 66:77:88:99:aa:bb > 00:44:44:44:44:44 Null Information, send seq 22, rcv seq 1, Flags [Poll], length 54
+        0x0000:  0000 2c03 153a 2d03 153a 2e03 153a 2f03  ..,..:-..:...:/.
+        0x0010:  153a 3003 153a 3103 153a 3203 153a 3303  .:0..:1..:2..:3.
+        0x0020:  153a 3403 153a 3503 153a 3603 153a 3703  .:4..:5..:6..:7.
+        0x0030:  153a a878 4e26                           .:.xN&
+11:33:08.000000 66:77:88:99:aa:bb > 00:33:33:33:33:33 Null Information, send seq 22, rcv seq 1, Flags [Poll], length 54
+        0x0000:  0000 2c03 152a 2d03 152a 2e03 152a 2f03  ..,..*-..*...*/.
+        0x0010:  152a 3003 152a 3103 152a 3203 152a 3303  .*0..*1..*2..*3.
+        0x0020:  152a 3403 152a 3503 152a 3603 152a 3703  .*4..*5..*6..*7.
+        0x0030:  152a 7b57 491d                           .*{WI.
+.
+.
+.
+.
+.   
 ```
 {% endapi-method-response-example %}
 {% endapi-method-response %}
@@ -465,19 +518,19 @@ Split PCAP Time Download
 {% api-method-request %}
 {% api-method-query-parameters %}
 {% api-method-parameter name="FilterBPF" type="string" required=false %}
-
+BPF Filter to be applied to the stream.
 {% endapi-method-parameter %}
 
 {% api-method-parameter name="StreamName" type="string" required=true %}
-
+Stream capture name.
 {% endapi-method-parameter %}
 
 {% api-method-parameter name="Stop" type="integer" required=true %}
-
+Stop time in nanoseconds epoch.
 {% endapi-method-parameter %}
 
 {% api-method-parameter name="Start" type="integer" required=true %}
-Start time in nanoseconds epoch
+Start time in nanoseconds epoch.
 {% endapi-method-parameter %}
 {% endapi-method-query-parameters %}
 {% endapi-method-request %}
@@ -528,23 +581,26 @@ Get system status information
 {% endapi-method-parameter %}
 
 {% api-method-parameter name="Compression" type="string" required=false %}
-
+Compress the returned stream with gzip.   
+'fast'    Fastest compression but not smallest.   
+'best'   Slowest compression smallest size.   
+1-9       The range from 'fast' to 'best'
 {% endapi-method-parameter %}
 
 {% api-method-parameter name="TSMax" type="integer" required=false %}
-
+Maximum nanosecond of packets to download.
 {% endapi-method-parameter %}
 
 {% api-method-parameter name="TSMode" type="string" required=false %}
-
+Time Range mode to use for time: msecs or nanos..
 {% endapi-method-parameter %}
 
 {% api-method-parameter name="TSBegin" type="integer" required=true %}
-
+Start time in nanoseconds epoch.
 {% endapi-method-parameter %}
 
 {% api-method-parameter name="TSEnd" type="integer" required=true %}
-
+Stop time in nanoseconds epoch.
 {% endapi-method-parameter %}
 {% endapi-method-query-parameters %}
 {% endapi-method-request %}
