@@ -570,7 +570,8 @@ TimeRange PCAP Download
 {% endapi-method-summary %}
 
 {% api-method-description %}
-Get system status information
+Download a timerange of pcap data that can cross over a maximum of two packets.  
+The timerange results may be a portion of a single pcap stream, or a portion of two streams that share a connected time series.
 {% endapi-method-description %}
 
 {% api-method-spec %}
