@@ -70,7 +70,7 @@ List of known and tested transcivers that work with the system. Other transciver
     <tr>
       <td style="text-align:left">100G CR4</td>
       <td style="text-align:left">100Gbps</td>
-      <td style="text-align:left"></td>
+      <td style="text-align:left">DAC</td>
       <td style="text-align:left">Passive Twinax</td>
       <td style="text-align:left">Generic</td>
     </tr>
@@ -89,6 +89,13 @@ List of known and tested transcivers that work with the system. Other transciver
       <td style="text-align:left">40Gbps</td>
       <td style="text-align:left">LC</td>
       <td style="text-align:left">OS2 SMF</td>
+      <td style="text-align:left">Generic</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">40G CR4</td>
+      <td style="text-align:left">40Gbps</td>
+      <td style="text-align:left">DAC</td>
+      <td style="text-align:left">Passive Twinax</td>
       <td style="text-align:left">Generic</td>
     </tr>
   </tbody>
