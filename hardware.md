@@ -45,7 +45,10 @@ List of known and tested transcivers that work with the system. Other transciver
       <td style="text-align:left">100Gbps</td>
       <td style="text-align:left">LC</td>
       <td style="text-align:left">OS2 SMF</td>
-      <td style="text-align:left">Generic</td>
+      <td style="text-align:left">
+        <p>Generic</p>
+        <p>Finisar FTLC1154RDPL</p>
+      </td>
     </tr>
     <tr>
       <td style="text-align:left">100G CWDM4</td>
