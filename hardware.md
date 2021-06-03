@@ -20,7 +20,9 @@ Spec sheet as follows
 
 ### Transceiver Support
 
-List of known and tested transcivers that work with the system. Other transciver types should be ok, please check with support@fmad.io for clarification
+List of known and tested transcivers that work with the system. Other transciver types should be ok, please check with support@fmad.io for clarification.
+
+FMADIO Packet Capture systems are **Transceiver Vendor neutral,** 3rd party optics are fully supported.
 
 <table>
   <thead>
