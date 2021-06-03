@@ -68,11 +68,28 @@ List of known and tested transcivers that work with the system. Other transciver
       </td>
     </tr>
     <tr>
+      <td style="text-align:left">100G CR4</td>
+      <td style="text-align:left">100Gbps</td>
       <td style="text-align:left"></td>
-      <td style="text-align:left"></td>
-      <td style="text-align:left"></td>
-      <td style="text-align:left"></td>
-      <td style="text-align:left"></td>
+      <td style="text-align:left">Passive Twinax</td>
+      <td style="text-align:left">Generic</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">40G SR4</td>
+      <td style="text-align:left">40Gbps</td>
+      <td style="text-align:left">MPO12</td>
+      <td style="text-align:left">OM4 MMF</td>
+      <td style="text-align:left">
+        <p>Generic</p>
+        <p>Finisar FTL410QE4C</p>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left">40G LR4</td>
+      <td style="text-align:left">40Gbps</td>
+      <td style="text-align:left">LC</td>
+      <td style="text-align:left">OS2 SMF</td>
+      <td style="text-align:left">Generic</td>
     </tr>
   </tbody>
 </table>
