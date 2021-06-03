@@ -18,5 +18,61 @@ Spec sheet as follows
 
 
 
+### Transceiver Support
+
+List of known and tested transcivers that work with the system. Other transciver types should be ok, please check with support@fmad.io for clarification
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align:left">Module</th>
+      <th style="text-align:left">Speed</th>
+      <th style="text-align:left">Connector</th>
+      <th style="text-align:left">Cable Type</th>
+      <th style="text-align:left">Brand</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align:left">100G SR4</td>
+      <td style="text-align:left">100Gbps</td>
+      <td style="text-align:left">MPO12</td>
+      <td style="text-align:left">OM4 MMF</td>
+      <td style="text-align:left">Generic</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">100G LR4</td>
+      <td style="text-align:left">100Gbps</td>
+      <td style="text-align:left">LC</td>
+      <td style="text-align:left">OS2 SMF</td>
+      <td style="text-align:left">Generic</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">100G CWDM4</td>
+      <td style="text-align:left">100Gbps</td>
+      <td style="text-align:left">LC</td>
+      <td style="text-align:left">OS2 SMF</td>
+      <td style="text-align:left">Generic</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">100G SWDM4</td>
+      <td style="text-align:left">100Gbps</td>
+      <td style="text-align:left">LC</td>
+      <td style="text-align:left">OM4 MMF</td>
+      <td style="text-align:left">
+        <p>Generic</p>
+        <p>Finisar FTLC9152RGPL</p>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left"></td>
+      <td style="text-align:left"></td>
+      <td style="text-align:left"></td>
+      <td style="text-align:left"></td>
+      <td style="text-align:left"></td>
+    </tr>
+  </tbody>
+</table>
+
 
 
