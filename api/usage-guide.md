@@ -8,7 +8,7 @@ description: >-
 
 ## FMADIO API
 
-The examples show how to use the different parameters for the single endpoint. 
+The examples show how to use the different parameters for the uri endpoint. 
 
 **Note**: Replace the IP 1.1.1.1 with the host IP of your FMADIO device.
 
@@ -96,7 +96,7 @@ curl -u fmadio:100g "http://1.1.1.1/pcap/splittime?StreamName=stream_test_001&St
 
 ## V1 API
 
-The examples show how to use the different parameters for the single endpoint. 
+The examples show how to use the different parameters for the uri endpoint. 
 
 **Note**: Replace the IP 1.1.1.1 with the host IP of your FMADIO device.
 
