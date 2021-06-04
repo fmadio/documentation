@@ -12,8 +12,6 @@ The examples show how to use the different parameters for the single endpoint.
 
 **Note**: Replace the IP 1.1.1.1 with the host IP of your FMADIO device.
 
-### PCAP Download
-
 ### Status
 
 ```text
@@ -24,6 +22,18 @@ curl -u fmadio:100g http://1.1.1.1/sysmaster/status
 
 ```text
 curl -u fmadio:100g http://1.1.1.1/stream/list
+```
+
+### Capture Split By Filesize
+
+```text
+curl -u fmadio:100g "http://1.1.1.1/stream/ssize?StreamName=stream_test_001&StreamView=split_1GB&"
+```
+
+### Capture Split By Time
+
+```text
+curl -u fmadio:100g "http://1.1.1.1/stream/stime?StreamName=stream_test_001&StreamView=split_1sec&"
 ```
 
 ### Single
@@ -80,7 +90,7 @@ curl -u fmadio:100g "http://1.1.1.1/pcap/splittime?StreamName=stream_test_001&St
 
 ## V1 API
 
-### PCAP Download
+### 
 
 
 
