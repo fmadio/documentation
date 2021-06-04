@@ -32,6 +32,12 @@ curl -u fmadio:100g "http://1.1.1.1/pcap/single?StreamName=stream_test_001&" -G 
 curl -u fmadio:100g "http://1.1.1.1/pcap/single?StreamName=stream_test_001&Compression=fast"
 ```
 
+**StreamName**, **Start,** **Stop** and **FilterRE**
+
+```text
+curl -u fmadio:100g "http://1.1.1.1/pcap/single?StreamName=stream_test_001&" -G --data-urlencode "FilterRE=/login/i" 
+```
+
 **StreamName**, **Compression** and **FilterBPF**
 
 ```text
@@ -40,7 +46,17 @@ curl -u fmadio:100g "http://1.1.1.1/pcap/single?StreamName=stream_test_001&Compr
 
 ### SplitTime
 
+**StreamName**, **Start** and **Stop**
 
+```text
+curl -u fmadio:100g "http://1.1.1.1/pcap/splittime?StreamName=stream_test_001&Start=1530498788000000000&Stop=1530498789000000000&"
+```
+
+**StreamName**, **Start,** **Stop** and **FilterBPF**
+
+```text
+curl -u fmadio:100g "http://1.1.1.1/pcap/splittime?StreamName=stream_test_001&Start=1530498788000000000&Stop=1530498789000000000&" -G --data-urlencode "FilterBPF=tcp" 
+```
 
 ## V1 API
 
