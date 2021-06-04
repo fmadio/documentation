@@ -22,7 +22,7 @@
 ## API
 
 * [Summary](api/summary.md)
-* [Usage Guide](api/usage-guide.md)
+* [Examples](api/usage-guide.md)
 
 ## Monitoring
 

@@ -4,15 +4,27 @@ description: >-
   are provided for all endpoints.
 ---
 
-# Usage Guide
+# Examples
 
 ## FMADIO API
+
+The examples show how to use the different parameters for the single endpoint. 
 
 **Note**: Replace the IP 1.1.1.1 with the host IP of your FMADIO device.
 
 ### PCAP Download
 
-The examples show how to use the different parameters for the single endpoint. 
+### Status
+
+```text
+curl -u fmadio:100g http://1.1.1.1/sysmaster/status
+```
+
+### CaptureList
+
+```text
+curl -u fmadio:100g http://1.1.1.1/stream/list
+```
 
 ### Single
 
@@ -58,6 +70,12 @@ curl -u fmadio:100g "http://1.1.1.1/pcap/splittime?StreamName=stream_test_001&St
 
 ```text
 curl -u fmadio:100g "http://1.1.1.1/pcap/splittime?StreamName=stream_test_001&Start=1530498788000000000&Stop=1530498789000000000&" -G --data-urlencode "FilterBPF=tcp" 
+```
+
+**StreamName**, **Start**, **Stop** and **FilterPort**
+
+```text
+curl -u fmadio:100g "http://1.1.1.1/pcap/splittime?StreamName=stream_test_001&Start=1530498788000000000&Stop=1530498789000000000&FilterPort=0"
 ```
 
 ## V1 API
