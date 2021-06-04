@@ -8,7 +8,7 @@ description: A summary for developers to access a FMADIO device using the API.
 
 The FMADIO API is simple and designed for easy scripting integration.
 
-Note: Replace the IP 1.1.1.1 with the host IP of your FMADIO device.
+**Note**: Replace the IP 1.1.1.1 with the host IP of your FMADIO device.
 
 ### Device Operation
 
@@ -259,7 +259,7 @@ Stream capture name.
 {% endapi-method-spec %}
 {% endapi-method %}
 
-{% api-method method="get" host="http://1.1.1.1/pcap/single?StreamName=<capture name>" path="" %}
+{% api-method method="get" host="http://1.1.1.1/pcap/single?StreamName=<capture name>&FilterRE=<string>" path="" %}
 {% api-method-summary %}
 Single PCAP Download
 {% endapi-method-summary %}
@@ -272,6 +272,10 @@ Piping to a file or any other analysis tools is possible.
 {% api-method-spec %}
 {% api-method-request %}
 {% api-method-query-parameters %}
+{% api-method-parameter name="FilterRE" type="string" required=false %}
+Download the capture with using a RegEx DPI filter.
+{% endapi-method-parameter %}
+
 {% api-method-parameter name="FilterBPF" type="string" required=false %}
 BPF Filter to be applied to the stream
 {% endapi-method-parameter %}
@@ -309,7 +313,7 @@ Compression example:
 FilterBPF example:  
 `curl -u fmadio:100g "http://192.168.2.75/pcap/single?StreamName=hitcon_20180702_1503_58&" -G --data-urlencode "FilterBPF=tcp"`
 
-{% api-method method="get" host="http://1.1.1.1/pcap/splittime?StreamName=<string>&Start=<int>&Stop=<int>&FilterBPF=<string>&FilterRE=<string>&FilterPort=<int>" path="" %}
+{% api-method method="get" host="http://1.1.1.1/pcap/splittime?StreamName=<string>&Start=<int>&Stop=<int>&FilterBPF=<string>&FilterPort=<int>" path="" %}
 {% api-method-summary %}
 Split PCAP Time Download
 {% endapi-method-summary %}
@@ -325,10 +329,6 @@ Removing the nanosecond part convert epoch to date/time.
 {% api-method-query-parameters %}
 {% api-method-parameter name="FilterPort" type="integer" required=false %}
 Download the capture specifying the port capture number.
-{% endapi-method-parameter %}
-
-{% api-method-parameter name="FilterRE" type="string" required=false %}
-Download the capture with using a RegEx DPI filter.
 {% endapi-method-parameter %}
 
 {% api-method-parameter name="FilterBPF" type="string" required=false %}

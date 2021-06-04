@@ -8,6 +8,8 @@ description: >-
 
 ## FMADIO API
 
+**Note**: Replace the IP 1.1.1.1 with the host IP of your FMADIO device.
+
 ### PCAP Download
 
 The examples show how to use the different parameters for the single endpoint. 
