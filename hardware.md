@@ -106,5 +106,11 @@ FMADIO Packet Capture systems are **Transceiver Vendor neutral,** 3rd party opti
   </tbody>
 </table>
 
+### Rails installation
+
+Installation of the rails is tool less please see the following instructions
+
+![](.gitbook/assets/image%20%2841%29.png)
+
 
 
