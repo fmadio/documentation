@@ -15,13 +15,19 @@ The examples show how to use the different parameters for the single endpoint.
 ### Status
 
 ```text
-curl -u fmadio:100g http://1.1.1.1/sysmaster/status
+curl -u fmadio:100g "http://1.1.1.1/sysmaster/status"
+```
+
+### Device Status
+
+```text
+curl -u fmadio:100g "http://1.1.1.1/sysmaster/stats_summary"
 ```
 
 ### CaptureList
 
 ```text
-curl -u fmadio:100g http://1.1.1.1/stream/list
+curl -u fmadio:100g "http://1.1.1.1/stream/list"
 ```
 
 ### Capture Split By Filesize
@@ -41,7 +47,7 @@ curl -u fmadio:100g "http://1.1.1.1/stream/stime?StreamName=stream_test_001&Stre
 **StreamName** only:
 
 ```text
-curl -u fmadio:100g http://1.1.1.1/pcap/single?StreamName=stream_test_001
+curl -u fmadio:100g "http://1.1.1.1/pcap/single?StreamName=stream_test_001"
 ```
 
 **StreamName** and **FilterBPF**
@@ -56,7 +62,7 @@ curl -u fmadio:100g "http://1.1.1.1/pcap/single?StreamName=stream_test_001&" -G 
 curl -u fmadio:100g "http://1.1.1.1/pcap/single?StreamName=stream_test_001&Compression=fast"
 ```
 
-**StreamName**, **Start,** **Stop** and **FilterRE**
+**StreamName** and **FilterRE**
 
 ```text
 curl -u fmadio:100g "http://1.1.1.1/pcap/single?StreamName=stream_test_001&" -G --data-urlencode "FilterRE=/login/i" 
