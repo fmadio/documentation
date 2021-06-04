@@ -57,7 +57,10 @@ FMADIO Packet Capture systems are **Transceiver Vendor neutral,** 3rd party opti
       <td style="text-align:left">100Gbps</td>
       <td style="text-align:left">LC</td>
       <td style="text-align:left">OS2 SMF</td>
-      <td style="text-align:left">Generic</td>
+      <td style="text-align:left">
+        <p>Generic</p>
+        <p>Finisar CTLC1157RGPL</p>
+      </td>
     </tr>
     <tr>
       <td style="text-align:left">100G SWDM4</td>
