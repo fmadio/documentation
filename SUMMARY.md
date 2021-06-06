@@ -8,6 +8,7 @@
 
 * [Network Configuration \(GUI\)](configuration/network-configuration-gui.md)
 * [Network Configuration \(CLI\)](configuration/network-configuration-cli.md)
+* [Scratch Disk \(BTRFS\)](configuration/scratch-disk-btrfs.md)
 
 ## Troubleshooting
 
