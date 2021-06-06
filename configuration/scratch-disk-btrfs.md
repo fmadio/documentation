@@ -171,5 +171,5 @@ In the above example we see /mnt/store1 has 3.0 GB worth of data \(using du\)
 
 In the above example we see /mnt/store1 has used 751.MiB of actual storage capacity \(using btrfs fi show\)
 
-Based on the above math, the **compression rate is ~ x4.04** 
+Based on the above math \(3112MB / 751MB\) , the **compression rate is ~ x4.04** 
 
