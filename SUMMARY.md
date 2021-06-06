@@ -1,4 +1,5 @@
 # Table of contents
 
-* [FMADIO40G Gen3](README.md)
+* [Hardware](README.md)
+* [Introduction](introduction.md)
 
