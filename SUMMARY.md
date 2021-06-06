@@ -1,7 +1,7 @@
 # Table of contents
 
 * [Introduction](README.md)
-* [General System Architecture](general-system-architecture.md)
+* [System SKU](general-system-architecture.md)
 * [Network Port Layout](network-port-layout.md)
 * [Hardware](hardware.md)
 

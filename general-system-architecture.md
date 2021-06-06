@@ -1,4 +1,4 @@
-# General System Architecture
+# System SKU
 
 FMADIO 100G Gen2 System,  
 
