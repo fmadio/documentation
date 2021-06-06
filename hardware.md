@@ -6,9 +6,7 @@ FMADIO 100G Hardware looks as follows
 
 ![FMADIO 100G Gen2 1U Packet System Side](.gitbook/assets/image%20%2823%29.png)
 
-Spec sheet as follows
-
-
+### Spec Sheet
 
 {% file src=".gitbook/assets/100g-gen2-datasheet-v5.pdf" caption="FMADIO100G Gen2 Spec Sheet" %}
 
