@@ -19,6 +19,11 @@
 
 * [Performance](data-download/performance.md)
 
+## CLI Reference
+
+* [stream\_cat](cli-reference/untitled.md)
+* [fnic\_test](cli-reference/fnic_test.md)
+
 ## API
 
 * [Summary](api/summary.md)
@@ -41,8 +46,4 @@
 ## Maintenance
 
 * [SSD Replacement](maintenance/ssd-replacement.md)
-
-## CLI Reference
-
-* [Untitled](cli-reference/untitled.md)
 
