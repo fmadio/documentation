@@ -110,5 +110,42 @@ Installation of the rails is tool less please see the following instructions
 
 ![](.gitbook/assets/image%20%2841%29.png)
 
+Power Supply
 
+System is installed with dual 1200W power supply. By default the system is configured as follows
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align:left">Total Power Consumption</th>
+      <th style="text-align:left">Behavior</th>
+      <th style="text-align:left">LED</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align:left">&lt; 400W</td>
+      <td style="text-align:left">
+        <p>HOT-STANDBY</p>
+        <p>Only Primary PSU is active, Secondary PSU in standby mode</p>
+      </td>
+      <td style="text-align:left">
+        <p>Primary, Solid Green</p>
+        <p>Secondary, Green Blink</p>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left">&gt; 400W</td>
+      <td style="text-align:left">
+        <p>HOT-HOT</p>
+        <p>Both Primary and Secondary PSU are in active mode</p>
+      </td>
+      <td style="text-align:left">Both Solid Green</td>
+    </tr>
+  </tbody>
+</table>
+
+![](.gitbook/assets/image%20%2856%29.png)
+
+The above behavior can be overridden to always be in HOT-HOT load balancing mode, with a configuration setting. Please contact support@fmad.io for more information
 
