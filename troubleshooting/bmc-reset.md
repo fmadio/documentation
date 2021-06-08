@@ -4,7 +4,7 @@ All FMADIO Packet Capture systems have an onboard BMC, this allows remote power 
 
 The chipset is an ASPEED2500 \( [http://www.aspeedtech.com/server\_ast2500/](http://www.aspeedtech.com/server_ast2500/) \) which runs its own linux kernel + management software. Logging into the BMC via web interface looks like the following
 
-![FMADIO BMC Interface](../.gitbook/assets/image%20%2860%29.png)
+![FMADIO BMC Interface](../.gitbook/assets/image%20%2861%29.png)
 
 There are times where the BMC after long uptime or other issues becomes unstable and requires a reboot
 

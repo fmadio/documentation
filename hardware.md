@@ -145,7 +145,7 @@ System is installed with dual 1200W power supply. By default the system is confi
   </tbody>
 </table>
 
-![FMADIO 100G PSU Configuration](.gitbook/assets/image%20%2856%29.png)
+![FMADIO 100G PSU Configuration](.gitbook/assets/image%20%2857%29.png)
 
 The above behavior can be overridden to always be in HOT-HOT load balancing mode, with a configuration setting. Please contact support@fmad.io for more information
 
