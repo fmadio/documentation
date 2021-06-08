@@ -38,3 +38,7 @@
 * [Serial Port Access over LAN](troubleshooting/serial-port-access-over-lan.md)
 * [BMC Reset](troubleshooting/bmc-reset.md)
 
+## Maintenance
+
+* [SSD Replacement](maintenance/ssd-replacement.md)
+

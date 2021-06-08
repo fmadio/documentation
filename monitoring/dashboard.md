@@ -4,7 +4,7 @@ The FMADIO 100G Packet capture dashboard provides a high level overview of the c
 
 NOTE: Different hardware platforms 20G, 40G, 100G have slightly different dashboard settings.
 
-![FMADIO 100G Gen2 Dashboard Status](../.gitbook/assets/image%20%2858%29.png)
+![FMADIO 100G Gen2 Dashboard Status](../.gitbook/assets/image%20%2861%29.png)
 
 Going over the above in more detail as follows
 
