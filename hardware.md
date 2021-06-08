@@ -110,7 +110,7 @@ Installation of the rails is tool less please see the following instructions
 
 ![](.gitbook/assets/image%20%2841%29.png)
 
-Power Supply
+### Power Supply
 
 System is installed with dual 1200W power supply. By default the system is configured as follows
 
