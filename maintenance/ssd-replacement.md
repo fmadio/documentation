@@ -1,6 +1,8 @@
 # SSD Replacement
 
-SSD Replacement is quite simple, below is a picture of the FMADIO100G 1U
+SSD Replacement is quite simple, the FMADIO device needs to be powered down, but does not need to be un-racked. Front access to the system is all thats required.
+
+Below is a picture of the FMADIO100G 1U
 
 ![FMADIO 100G SSD replacement](../.gitbook/assets/image%20%2861%29.png)
 
