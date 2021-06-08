@@ -42,3 +42,7 @@
 
 * [SSD Replacement](maintenance/ssd-replacement.md)
 
+## CLI Reference
+
+* [Untitled](cli-reference/untitled.md)
+
