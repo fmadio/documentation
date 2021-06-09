@@ -112,7 +112,13 @@ Alerts generated when packets are dropped on the capture device.
 
 **DiskFreeStore0**
 
-When space on /mnt/store0 partition is less than this amount \(scientific notition\) in bytes. Alerts are generated
+When space on /mnt/store0 partition is less than this amount \(scientific notition\) in bytes. Alerts are generated. In the above example
+
+```text
+    DiskFreeStore0  = 4e9,
+```
+
+In the above example, an alert is generated when less than 4e9 \(4GB\) of space is free on /mnt/store0 partition
 
 **DiskFreeStore1**
 
