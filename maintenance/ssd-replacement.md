@@ -4,7 +4,7 @@ SSD Replacement is quite simple, the FMADIO device needs to be powered down, but
 
 Below is a picture of the FMADIO100G 1U
 
-![FMADIO 100G SSD replacement](../.gitbook/assets/image%20%2863%29.png)
+![FMADIO 100G SSD replacement](../.gitbook/assets/image%20%2864%29.png)
 
 ![](../.gitbook/assets/image%20%2858%29.png)
 
@@ -22,7 +22,7 @@ Remove the SSD by pressing on the orange tab such as picture below
 
 Remove the SSD + Caddie entirely from the chassis 
 
-![](../.gitbook/assets/image%20%2865%29.png)
+![](../.gitbook/assets/image%20%2866%29.png)
 
 ### 4\) Remove SSD from Caddie
 
