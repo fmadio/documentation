@@ -96,21 +96,21 @@ password <sercrets>
 
 ```
 
-### Syntax
+## Syntax
 
-#### BytesOverflow
+### BytesOverflow
 
 Any time Bytes Over increases an alert is generated. This typically a symptom of capture rates being too high, or HDD writeback too slow \(or failing\)
 
-**PacketError**
+### **PacketError**
 
 Counts FCS errors received on the interface. Any time packet error counts changes an alert is generated. Typically occurs when there are Layer1 link stability issues
 
-**PacketDrop**
+### **PacketDrop**
 
 Alerts generated when packets are dropped on the capture device. 
 
-**DiskFreeStore0**
+### **DiskFreeStore0**
 
 When space on /mnt/store0 partition is less than this amount \(scientific notition\) in bytes. Alerts are generated. In the above example
 
@@ -120,15 +120,15 @@ When space on /mnt/store0 partition is less than this amount \(scientific notiti
 
 In the above example, an alert is generated when less than 4e9 \(4GB\) of space is free on /mnt/store0 partition
 
-**DiskFreeStore1**
+### **DiskFreeStore1**
 
 When space on /mnt/store1 \(scratch analytics workspace\) is less than this amount \(scientific notation\) in bytes an Alert is generated
 
-**DiskFreeRemote0**
+### **DiskFreeRemote0**
 
 When space on the /mnt/remote0 \(typically NFS mount partition\) is less than this threashold an Alert is generated
 
-**Sleep**
+### **Sleep**
 
 Minimum number of seconds between alert generation. This is to prevent spamming of alerts due to unexpected system conditions.
 
