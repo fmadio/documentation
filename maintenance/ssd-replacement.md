@@ -22,7 +22,7 @@ Remove the SSD by pressing on the orange tab such as picture below
 
 Remove the SSD + Caddie entirely from the chassis 
 
-![](../.gitbook/assets/image%20%2866%29.png)
+![](../.gitbook/assets/image%20%2867%29.png)
 
 ### 4\) Remove SSD from Caddie
 
