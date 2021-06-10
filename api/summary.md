@@ -8,11 +8,11 @@ description: A summary for developers to access a FMADIO device using the API.
 
 The FMADIO API is simple and designed for easy scripting integration.
 
-**Note**: Replace the IP 1.1.1.1 with the host IP of your FMADIO device.
+**Note**: Replace the IP 127.0.0.1 with the host IP of your FMADIO device.
 
 ### Device Operation
 
-{% api-method method="get" host=" http://1.1.1.1/sysmaster/capture\_start?StreamName=<capture name>" path="" %}
+{% api-method method="get" host=" http://127.0.0.1/sysmaster/capture\_start?StreamName=<capture name>" path="" %}
 {% api-method-summary %}
 Capture Start
 {% endapi-method-summary %}
@@ -48,7 +48,7 @@ Stream capture name
 {% endapi-method-spec %}
 {% endapi-method %}
 
-{% api-method method="get" host=" http://1.1.1.1/sysmaster/capture\_stop" path="" %}
+{% api-method method="get" host=" http://127.0.0.1/sysmaster/capture\_stop" path="" %}
 {% api-method-summary %}
 Capture Stop
 {% endapi-method-summary %}
@@ -78,7 +78,7 @@ NOTE: this does NOT stop scheduled captures.
 {% endapi-method-spec %}
 {% endapi-method %}
 
-{% api-method method="get" host="http://1.1.1.1/sysmaster/status" path="" %}
+{% api-method method="get" host="http://127.0.0.1/sysmaster/status" path="" %}
 {% api-method-summary %}
 Capture Status
 {% endapi-method-summary %}
@@ -128,7 +128,7 @@ capture_active,                                          true
 
 ### Downloading PCAP
 
-{% api-method method="get" host="http://1.1.1.1/stream/list" path="" %}
+{% api-method method="get" host="http://127.0.0.1/stream/list" path="" %}
 {% api-method-summary %}
 List All Captures
 {% endapi-method-summary %}
@@ -158,7 +158,7 @@ $ curl -u fmadio:100g http://192.168.2.75/stream/list
 {% endapi-method-spec %}
 {% endapi-method %}
 
-{% api-method method="get" host="http://1.1.1.1/stream/ssize?StreamName=<capture sname>&StreamView=<split mode>" path="" %}
+{% api-method method="get" host="http://127.0.0.1/stream/ssize?StreamName=<capture sname>&StreamView=<split mode>" path="" %}
 {% api-method-summary %}
 Split Capture by filesize
 {% endapi-method-summary %}
@@ -208,7 +208,7 @@ Stream capture name
 {% endapi-method-spec %}
 {% endapi-method %}
 
-{% api-method method="get" host="http://1.1.1.1/stream/stime?StreamName=<capture sname>&StreamView=<split mode>" path="" %}
+{% api-method method="get" host="http://127.0.0.1/stream/stime?StreamName=<capture sname>&StreamView=<split mode>" path="" %}
 {% api-method-summary %}
 Split Capture by time
 {% endapi-method-summary %}
@@ -259,7 +259,7 @@ Stream capture name.
 {% endapi-method-spec %}
 {% endapi-method %}
 
-{% api-method method="get" host="http://1.1.1.1/pcap/single?StreamName=<capture name>&FilterRE=<string>" path="" %}
+{% api-method method="get" host="http://127.0.0.1/pcap/single?StreamName=<capture name>&FilterRE=<string>" path="" %}
 {% api-method-summary %}
 Single PCAP Download
 {% endapi-method-summary %}
@@ -313,7 +313,7 @@ Compression example:
 FilterBPF example:  
 `curl -u fmadio:100g "http://192.168.2.75/pcap/single?StreamName=hitcon_20180702_1503_58&" -G --data-urlencode "FilterBPF=tcp"`
 
-{% api-method method="get" host="http://1.1.1.1/pcap/splittime?StreamName=<string>&Start=<int>&Stop=<int>&FilterBPF=<string>&FilterPort=<int>" path="" %}
+{% api-method method="get" host="http://127.0.0.1/pcap/splittime?StreamName=<string>&Start=<int>&Stop=<int>&FilterBPF=<string>&FilterPort=<int>" path="" %}
 {% api-method-summary %}
 Split PCAP Time Download
 {% endapi-method-summary %}
@@ -378,9 +378,54 @@ $ curl -u fmadio:100g "http://192.168.2.75/pcap/splittime?StreamName=TestCapture
 {% endapi-method-spec %}
 {% endapi-method %}
 
+{% api-method method="get" host="http://127.0.0.1/pcap/timerange?TSBegin=<epoch start>&TSEnd=<epoch stop>&TSMax=<size>&TSMode=<nanos or msecs>" path="" %}
+{% api-method-summary %}
+TimeRange PCAP Download
+{% endapi-method-summary %}
+
+{% api-method-description %}
+Download a timerange of pcap data that can cross over a maximum of two pcap files.  
+The timerange results may be a portion of a single pcap stream, or a portion of two streams that share a connected time series.
+{% endapi-method-description %}
+
+{% api-method-spec %}
+{% api-method-request %}
+{% api-method-query-parameters %}
+{% api-method-parameter name="TSMax" type="integer" required=false %}
+Maximum nanosecond of packets to download.
+{% endapi-method-parameter %}
+
+{% api-method-parameter name="TSMode" type="string" required=false %}
+Time Range mode to use for time: msecs or nanos..
+{% endapi-method-parameter %}
+
+{% api-method-parameter name="TSBegin" type="integer" required=true %}
+Start time in nanoseconds epoch.
+{% endapi-method-parameter %}
+
+{% api-method-parameter name="TSEnd" type="integer" required=true %}
+Stop time in nanoseconds epoch.
+{% endapi-method-parameter %}
+{% endapi-method-query-parameters %}
+{% endapi-method-request %}
+
+{% api-method-response %}
+{% api-method-response-example httpCode=200 %}
+{% api-method-response-example-description %}
+
+{% endapi-method-response-example-description %}
+
+```
+
+```
+{% endapi-method-response-example %}
+{% endapi-method-response %}
+{% endapi-method-spec %}
+{% endapi-method %}
+
 ### Device Management
 
-{% api-method method="get" host="http://1.1.1.1/sysmaster/stats\_summary" path="" %}
+{% api-method method="get" host="http://127.0.0.1/sysmaster/stats\_summary" path="" %}
 {% api-method-summary %}
 System Status
 {% endapi-method-summary %}
@@ -447,7 +492,7 @@ Note: All original API url's shall be available as well as the new V1 endpoints.
 
 ### Downloading PCAP
 
-{% api-method method="get" host="http://1.1.1.1/api/v1/pcap/single?StreamName=<capture name>" path="" %}
+{% api-method method="get" host="http://127.0.0.1/api/v1/pcap/single?StreamName=<capture name>" path="" %}
 {% api-method-summary %}
 Single PCAP Download
 {% endapi-method-summary %}
@@ -505,7 +550,7 @@ $ curl -u fmadio:100g "http://192.168.2.75/api/v1/pcap/single?StreamName=TestCap
 {% endapi-method-spec %}
 {% endapi-method %}
 
-{% api-method method="get" host="http://1.1.1.1/api/v1/pcap/splittime?StreamName=<capture name>&FilterBPF=<BPF filter>&Start=<epoch start>&Stop=<epoch stop>" path="" %}
+{% api-method method="get" host="http://127.0.0.1/api/v1/pcap/splittime?StreamName=<capture name>&FilterBPF=<BPF filter>&Start=<epoch start>&Stop=<epoch stop>" path="" %}
 {% api-method-summary %}
 Split PCAP Time Download
 {% endapi-method-summary %}
@@ -564,14 +609,14 @@ $ curl -u fmadio:100g "http://192.168.2.75/pcap/splittime?StreamName=TestCapture
 {% endapi-method-spec %}
 {% endapi-method %}
 
-{% api-method method="get" host="http://1.1.1.1/api/v1/pcap/timerange?TSBegin=<epoch start>&TSEnd=<epoch stop>&TSMax=<size>&TSMode=<nanos or msecs>" path="" %}
+{% api-method method="get" host="http://127.0.0.1/api/v1/pcap/timerange?TSBegin=<epoch start>&TSEnd=<epoch stop>&TSMax=<size>&TSMode=<nanos or msecs>" path="" %}
 {% api-method-summary %}
 TimeRange PCAP Download
 {% endapi-method-summary %}
 
 {% api-method-description %}
-Download a timerange of pcap data that can cross over a maximum of two packets.  
-The timerange results may be a portion of a single pcap stream, or a portion of two streams that share a connected time series.
+Download a timerange of pcap data that can cross over a multiple pcap files.  
+The timerange results may be a portion of a single pcap stream, or a portion of multiple streams that share a connected time series.
 {% endapi-method-description %}
 
 {% api-method-spec %}
