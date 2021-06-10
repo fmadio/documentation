@@ -287,21 +287,21 @@ The above is an example BPF filter "net 192.168.1.0/24 and tcp" its a slightly m
 
 ### DECAP
 
-**Default \(false\)**
+**Default \(true\)**
 
-In addition to FilterBPF full packet de-encapsulation can be performed before the BPF filter is applied. This for example can decode VLAN, ERSPAN, GRE tunnels and many more. This enables the BPF filter is applied on the inner payload instead of the encapsulated output,
+In addition to FilterBPF full packet de-encapsulation is performed by default before the BPF filter is applied. This for example can decode VLAN, ERSPAN, GRE tunnels and many more. It enables the BPF filter is applied on the inner payload instead of the encapsulated output,
 
-Example configuration is
+Example to disable automatic De-encapsulation
 
 ```lua
-Decap = true,
+Decap = false,
 ```
 
 Configuration is a simple boolean type only
 
 | Command                                         | Description |
 | :--- | :--- |
-| Decap | boolean value of "true" enables Packet De-encapsulation |
+| Decap | boolean value of "true" enables Packet De-encapsulation \(Default true\) |
 
 ### PipeCmd
 
