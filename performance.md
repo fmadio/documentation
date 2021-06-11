@@ -14,7 +14,7 @@ Other FMADIO capture devices have 2 or 3 I/O Storage performance levels, for tho
 
 ### Capture Sustained Speed \(24/7\)
 
-We indicate this as the sustained capture rate, e.g. the capture rate we can sustain 24/7 without any packet loss. As mixing capture with downloads effects the capture speed, this performance metric is **Capture Only** with no simultaneous/concurrent downloads.
+We indicate this as the sustained capture rate, e.g. the capture rate we can sustain 24/7 without any packet loss. As mixing capture with downloads effects the capture speed, this performance metric is _Capture Only_ with no simultaneous/concurrent downloads.
 
 ### Capture and Download Speed
 
