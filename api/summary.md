@@ -219,17 +219,17 @@ Usually this is a 2 step process of
 1\) get the split list   
 2\) download a specific split  
 Split options are:  
- `Split_1sec   
-Split_10sec   
-Split_1min   
-Split_10min   
-Split_15min   
-Split_1hour   
-Split_2hour   
-Split_4hour   
-Split_6hour   
-Split_8hour   
-Split_12hour`
+ `split_1sec   
+split_10sec   
+split_1min   
+split_10min   
+split_15min   
+split_1hour   
+split_2hour   
+split_4hour   
+split_6hour   
+split_8hour   
+split_12hour`
 {% endapi-method-description %}
 
 {% api-method-spec %}
