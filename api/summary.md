@@ -169,16 +169,16 @@ Usually this is a 2 step process of
 1\) get the split list   
 2\) download a specific split.  
 Split options are:  
- `Split_1MB   
-Split_10MB   
-Split_100MB   
-Split_250MB   
-Split_1GB   
-Split_2GB   
-Split_5GB   
-Split_10GB   
-Split_100GB   
-Split_1TB`
+ `split_1MB   
+split_10MB   
+split_100MB   
+split_250MB   
+split_1GB   
+split_2GB   
+split_5GB   
+split_10GB   
+split_100GB   
+split_1TB`
 {% endapi-method-description %}
 
 {% api-method-spec %}
