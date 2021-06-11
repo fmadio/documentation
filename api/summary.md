@@ -167,25 +167,24 @@ Split Capture by filesize
 Lists splits for a specific capture based on file size.   
 Usually this is a 2 step process of   
 1\) get the split list   
-2\) download a specific split.  
-Split options are:  
- `split_1MB   
-split_10MB   
-split_100MB   
-split_250MB   
-split_1GB   
-split_2GB   
-split_5GB   
-split_10GB   
-split_100GB   
-split_1TB`
+2\) download a specific split. 
 {% endapi-method-description %}
 
 {% api-method-spec %}
 {% api-method-request %}
 {% api-method-query-parameters %}
 {% api-method-parameter name="StreamView" type="string" required=true %}
-Stream time slice name \(see description\)
+Stream time slice name  
+  
+split\_10MB  
+split\_100MB  
+split\_250MB  
+split\_1GB  
+split\_2GB  
+split\_5GB  
+split\_10GB  
+split\_100GB  
+split\_1TB
 {% endapi-method-parameter %}
 
 {% api-method-parameter name="StreamName" type="string" required=true %}
