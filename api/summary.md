@@ -200,8 +200,39 @@ Stream capture name
 
 {% endapi-method-response-example-description %}
 
-```
-
+```javascript
+{
+  "Path": "/capture/test1234_20210611_1258/split_1GB",
+  "SplitFile": true,
+  "CloudShark": false,
+  "List": [
+    {
+      "id": "0",
+      "Path": "20210611_12:58:47.332.461.824",
+      "PCAP": "/pcap/splittime?StreamName=test1234_20210611_1258&Start=1623383927332461824ULL&Stop=1623383937678376671ULL&&",
+      "Filter": "/en.filter.html?StreamName=test1234_20210611_1258&StartTS=1623383927332461824&StopTS=1623383937678376671&",
+      "Date": 1623383927332500000,
+      "Size": 1000079360,
+      "PacketCnt": 12357055,
+      "ValidPct": 100,
+      "Type": "",
+      "Desc": "Fri . 12:58:47 . 11-06-2021"
+    },
+    {
+      "id": "1",
+      "Path": "20210611_12:58:57.678.376.671",
+      "PCAP": "/pcap/splittime?StreamName=test1234_20210611_1258&Start=1623383937678376671ULL&Stop=1623383938108305103ULL&&",
+      "Filter": "/en.filter.html?StreamName=test1234_20210611_1258&StartTS=1623383937678376671&StopTS=1623383938108305103&",
+      "Date": 1623383937678400000,
+      "Size": 1000079360,
+      "PacketCnt": 12497940,
+      "ValidPct": 100,
+      "Type": "",
+      "Desc": "Fri . 12:58:57 . 11-06-2021"
+    },
+    .
+    .
+  }
 ```
 {% endapi-method-response-example %}
 {% endapi-method-response %}
