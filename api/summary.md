@@ -165,6 +165,7 @@ Split Capture by filesize
 
 {% api-method-description %}
 Lists splits for a specific capture based on file size.   
+  
 Usually this is a 2 step process of   
 1\) get the split list   
 2\) download a specific split. 
@@ -214,28 +215,29 @@ Split Capture by time
 
 {% api-method-description %}
 Lists splits for a specific capture based on a time unit.  
+  
 Usually this is a 2 step process of   
 1\) get the split list   
 2\) download a specific split  
-Split options are:  
- `split_1sec   
-split_10sec   
-split_1min   
-split_10min   
-split_15min   
-split_1hour   
-split_2hour   
-split_4hour   
-split_6hour   
-split_8hour   
-split_12hour`
 {% endapi-method-description %}
 
 {% api-method-spec %}
 {% api-method-request %}
 {% api-method-query-parameters %}
 {% api-method-parameter name="StreamView" type="string" required=true %}
-Split options for the time split \(see description\)
+Split options for the time split  
+  
+split\_1sec  
+split\_10sec  
+split\_1min  
+split\_10min  
+split\_15min  
+split\_1hour  
+split\_2hour  
+split\_4hour  
+split\_6hour  
+split\_8hour  
+split\_12hour
 {% endapi-method-parameter %}
 
 {% api-method-parameter name="StreamName" type="string" required=true %}
