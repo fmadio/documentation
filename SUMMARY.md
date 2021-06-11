@@ -4,6 +4,7 @@
 * [System SKU](general-system-architecture.md)
 * [Network Port Layout](network-port-layout.md)
 * [Hardware](hardware.md)
+* [Performance](performance.md)
 
 ## Configuration
 
