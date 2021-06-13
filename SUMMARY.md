@@ -21,3 +21,7 @@
 * [SSD Hardware replacement](maintenance/ssd-hardware-replacement.md)
 * [HDD Hardware replacaement](maintenance/hdd-hardware-replacaement.md)
 
+## Settings
+
+* [Writeback](settings/writeback.md)
+
