@@ -9,7 +9,7 @@ NOTE: Typically logfile sizes are 200-500MB in size. It contains detailed system
 
 Select the Tools menu highlighted in green below.
 
-![](../.gitbook/assets/image%20%2847%29.png)
+![](../.gitbook/assets/image%20%2847%29%20%281%29%20%281%29.png)
 
 ### **2\) Start Log Generation**
 
