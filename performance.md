@@ -24,3 +24,13 @@ Performance metric is assuming no bottlenecks on the egress \(download client\) 
 
 The other metric is Download only speed. This metric is used to calculate the maximum rate data can be moved off the device over 10G or 40G ethernet.
 
+## FMADIO 20G 2U System
+
+FMADIO 20G 2U Packet Capture system has 4TB of SSD Cache and 48TB-216TB worth of HDD Magnetic storage
+
+### Performance No Compression, No CRC, No Download
+
+This number shows stock FMADIO20G-2U-120TB systems Capture and Writeback performance. As shown both Burst Capture and Sustained Capture rates @ 10Gbps are possible across the entire storage. However above 10Gbps Burst Capture is limited to SSD size \(4TB\) as there is not enough IO Bandwidth on the SSDs for total of 40Gbps \(20Gbs write and 20Gbps Read\) thus the HDD Writeback performance suffers.
+
+![](.gitbook/assets/image%20%2845%29.png)
+
