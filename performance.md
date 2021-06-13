@@ -28,7 +28,7 @@ The other metric is Download only speed. This metric is used to calculate the ma
 
 FMADIO 20G 2U Packet Capture system has 4TB of SSD Cache and 48TB-216TB worth of HDD Magnetic storage.
 
-### Compression Enabled, CRC Check, No Download \(Default\)
+### Compression Enabled, CRC Check, No Download
 
 The default setting has Compression and CRC checks enabled. Its designed to get maximum total storage capacity via the use of compression and CRC Checks for data integrity. This specific dataset is incompressible, thus the writeback performance is the raw hardware performance.
 
