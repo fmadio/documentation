@@ -36,6 +36,22 @@ The default setting has Compression and CRC checks enabled. Its designed to get 
 
 Testing: FMADIO20Gv3-2U-48TB System
 
+### Compression + CRC Check + Download \(SSD\)
+
+Compression and CRC checks enabled and downloads that hit the SSD cache. e.g Download data is on SSDs and does not require access to the HDD. Download is using localhost to remove network performance from the test.
+
+![FMADIO20 2U Default Performance Capture + Download\(SSD\)](.gitbook/assets/image%20%2854%29.png)
+
+Testing: FMADIO20Gv3-2U-48TB System
+
+### Compression + CRC Check + Download \(HDD\)
+
+There is a difference when downloading from SSD cache vs HDD storage, as seen below. When a download has to fetch data from HDD magnetic storage, it dramatically effects the throughput of the HDD writeback. This is physical limitation of magnetic storage, as its a physical spinning disk which has poor random IO access performance. This is clearly seen in the significantly lower writeback and download speed, as shown below.
+
+![FMADIO20 2U Default Performance Capture + Download\(HDD\)](.gitbook/assets/image%20%2850%29.png)
+
+Testing: FMADIO20Gv3-2U-48TB System
+
 ### No Compression, No CRC Check, No Download \(Writeback Performance Mode\)
 
 This setting shows Writeback performance optimized mode per 
@@ -45,24 +61,6 @@ This setting shows Writeback performance optimized mode per
 This setup both Burst Capture and Sustained Capture rates @ 10Gbps are possible across the entire storage. However above 10Gbps Burst Capture is limited to SSD size \(4TB\) as beyond that the  magnetic storage performance becomes a bottleneck.
 
 ![](.gitbook/assets/image%20%2845%29.png)
-
-Testing: FMADIO20Gv3-2U-48TB System
-
-### Compression + CRC Check + Download \(SSD\)
-
-Compression and CRC checks enabled and downloads that hit the SSD cache. e.g Download data is on SSDs and does not require access to the HDD. Download is using localhost to remove network performance from the test.
-
-![FMADIO20 2U Default Performance Capture + Download\(SSD\)](.gitbook/assets/image%20%2854%29.png)
-
-
-
-Testing: FMADIO20Gv3-2U-48TB System
-
-### Compression + CRC Check + Download \(HDD\)
-
-There is a difference when downloading from SSD cache vs HDD storage, as seen below. When a download has to fetch data from HDD magnetic storage, it dramatically effects the throughput of the HDD writeback. This is physical limitation of magnetic storage, as its a physical spinning disk which has poor random IO access performance. This is clearly seen in the significantly lower writeback and download speed, as shown below.
-
-![FMADIO20 2U Default Performance Capture + Download\(HDD\)](.gitbook/assets/image%20%2850%29.png)
 
 Testing: FMADIO20Gv3-2U-48TB System
 
