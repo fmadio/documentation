@@ -1,6 +1,8 @@
-# Writeback
+# HDD Writeback
 
-Configuration options in
+**FW: 7219+**
+
+Configuration options are in the specified config file. Please note all options requires capture to be stopped and started before settings are applied.
 
 ```text
 /opt/fmadio/etc/time.lua

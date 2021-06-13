@@ -12,6 +12,10 @@
 * [Network Configuration \(CLI\)](configuration/network-configuration-cli.md)
 * [Scratch Disk \(BTRFS\)](configuration/scratch-disk-btrfs.md)
 
+## Settings
+
+* [HDD Writeback](settings/writeback.md)
+
 ## Troubleshooting
 
 * [System Recovery](troubleshooting/system-recovery.md)
@@ -20,8 +24,4 @@
 
 * [SSD Hardware replacement](maintenance/ssd-hardware-replacement.md)
 * [HDD Hardware replacaement](maintenance/hdd-hardware-replacaement.md)
-
-## Settings
-
-* [Writeback](settings/writeback.md)
 
