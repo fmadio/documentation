@@ -26,11 +26,19 @@ The other metric is Download only speed. This metric is used to calculate the ma
 
 ## FMADIO 20G 2U System
 
-FMADIO 20G 2U Packet Capture system has 4TB of SSD Cache and 48TB-216TB worth of HDD Magnetic storage
+FMADIO 20G 2U Packet Capture system has 4TB of SSD Cache and 48TB-216TB worth of HDD Magnetic storage.
 
-### Performance No Compression, No CRC, No Download
+### Compression Enabled, CRC Check, No Download \(Default\)
+
+The default setting has Compression and CRC checks enabled. Its designed to get maximum total storage capacity via the use of compression and CRC Checks for data integrity. This specific dataset is incompressible, thus the writeback performance is the raw hardware performance.
+
+
+
+### No Compression, No CRC, No Download \(Writeback Performance Mode\)
 
 This number shows stock FMADIO20G-2U-120TB systems Capture and Writeback performance. As shown both Burst Capture and Sustained Capture rates @ 10Gbps are possible across the entire storage. However above 10Gbps Burst Capture is limited to SSD size \(4TB\) as there is not enough IO Bandwidth on the SSDs for total of 40Gbps \(20Gbs write and 20Gbps Read\) thus the HDD Writeback performance suffers.
+
+Tests using FMADIO20Gv3-2U-48TB System
 
 ![](.gitbook/assets/image%20%2845%29.png)
 
