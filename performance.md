@@ -32,7 +32,7 @@ FMADIO 20G 2U Packet Capture system has 4TB of SSD Cache and 48TB-216TB worth of
 
 The default setting has Compression and CRC checks enabled. Its designed to get maximum total storage capacity via the use of compression and CRC Checks for data integrity. This specific dataset is incompressible, thus the writeback performance is the raw hardware performance.
 
-
+![](.gitbook/assets/image%20%2869%29.png)
 
 ### No Compression, No CRC, No Download \(Writeback Performance Mode\)
 
@@ -41,4 +41,18 @@ This number shows stock FMADIO20G-2U-120TB systems Capture and Writeback perform
 Tests using FMADIO20Gv3-2U-48TB System
 
 ![](.gitbook/assets/image%20%2845%29.png)
+
+### Compression + CRC + Download \(SSD\)
+
+Compression and CRC checks enabled and downloads that hit the SSD cache. e.g Download data is on SSDs and does not require access to the HDD. Download is using localhost to remove network performance from the test.
+
+![](.gitbook/assets/image%20%2854%29.png)
+
+### Compression + CRC + Download \(HDD\)
+
+There is a difference when downloading from SSD cache vs HDD storage, as seen below. When a download has to fetch data from HDD magnetic storage, it dramatically effects the throughput of the HDD writeback. This is physical limitation of magnetic storage, as its a physical spinning disk which has poor random IO access performance. This is clearly seen in the significantly lower writeback and download speed, as shown below.
+
+![](.gitbook/assets/image%20%2850%29.png)
+
+
 
