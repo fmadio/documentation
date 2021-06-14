@@ -83,8 +83,6 @@ fmadio@fmadio20-049:~$ devblk_info.lua
 
 ```
 
-
-
 ### 2\) Reboot the system
 
 Reboot the system so the new HDD drive mappings gets updated. The files in /opt/fmadio/disk/hdd\* should have links for hdd0, hdd1, hdd2, hdd3. 
@@ -278,4 +276,8 @@ Typically it takes 8H-24H to completely rebuild an array depending on the total 
  Rebuild Status : 7% complete
 
 ```
+
+### 5\) Final reboot
+
+After RAID5 rebuild has completed, please do a final reboot.
 
