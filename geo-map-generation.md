@@ -1,17 +1,23 @@
 # Geo Map Generation
 
-Generating a MAP requires the following. e.g. from Maxmind GeoIP Lite databas + custom hosts file
+Generating a MAP requires the following. e.g. from Maxmind GeoIP Lite database + custom hosts file
 
 In this case we have the Maxmind City Geo database
 
 ```text
---maxmind-city /mnt/store1/cache/json/GeoLite2-City-CSV_20200324/ 
+--maxmind-city-block /mnt/store1/cache/json/GeoLite2-City-Blocks-IPv4.csv  --maxmind-city-location /mnt/store1/cache/json/GeoLite2-City-Locations-en.csv
 ```
 
 Then the MaxMind ASN database
 
 ```text
---maxmind-asn /mnt/store1/cache/json/GeoLite2-ASN-CSV_20200324/ 
+--maxmind-asn /mnt/store1/cache/json/GeoLite2-ASN-CSV_20200324/GeoLite2-ASN-Blocks-IPv4.csv 
+```
+
+Then the MaxMind ISP database
+
+```text
+--maxmind-isp /mnt/store1/cache/json/GeoIP-124_20200714/GeoIPISP.csv
 ```
 
 Then a custom Hosts file
@@ -20,10 +26,16 @@ Then a custom Hosts file
 --hosts /mnt/store0/git/json_wrangle/app/pcap2json_map/hosts.csv
 ```
 
+Then a scratch-file \(ensure that path to file is a [mounted scratch disk](https://docs.fmad.io/fmadio-documentation/v/fmadio20v3/configuration/scratch-disk-ext4)\)
+
+```text
+--scratch-file /mnt/store1/scratch.map
+```
+
 All resulting in a final command line as follows
 
 ```text
-$ ./pcap2json_map  --maxmind-city /mnt/store1/cache/json/GeoLite2-City-CSV_20200324/ --maxmind-asn /mnt/store1/cache/json/GeoLite2-ASN-CSV_20200324/ --hosts /mnt/store0/git/json_wrangle/app/pcap2json_map/hosts.csv
+$ ./pcap2json_map  --scratch-file /mnt/store1/scratch.map --maxmind-city-block /mnt/store1/cache/json/GeoLite2-City-Blocks-IPv4.csv --maxmind-city-location /mnt/store1/cache/json/GeoLite2-City-Locations-en.csv --maxmind-asn /mnt/store1/cache/json/GeoLite2-ASN-CSV_20200324/GeoLite2-ASN-Blocks-IPv4.csv --maxmind-isp /mnt/store1/cache/json/GeoIP-124_20200714/GeoIPISP.csv --hosts /mnt/store0/git/json_wrangle/app/pcap2json_map/hosts.csv --generate
 ```
 
 The output file is shown below
