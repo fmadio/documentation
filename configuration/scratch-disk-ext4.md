@@ -17,45 +17,43 @@ fmadio@fmadio20v3-287:~$
 
 NOTE: the /dev/\* mount point may change from time to time, please use the /opt/fmadio/disk/scr\* path name for all operations.
 
+## Specifcying Sratch Disks
 
-### Specifcying Sratch Disks 
-
-By default all SSD are specified are dedicated to capture. This is specified in the configuration file 
-
+By default all SSD are specified are dedicated to capture. This is specified in the configuration file
 
 ```text
 /opt/fmadio/etc/disk.lua
 ```
 
 Capture disks are specified here
-```text
+
+```lua
 CacheDisk =
 {
-	["S462NF0MA04379A"] = "ssd0",
-	["S462NF0MA05134B"] = "ssd1",
-	["S5JXNG0N108745Y"] = "ssd2",
-	["S5JXNG0N108746D"] = "ssd3",
+    ["S462NF0MA04379A"] = "ssd0",
+    ["S462NF0MA05134B"] = "ssd1",
+    ["S5JXNG0N108745Y"] = "ssd2",
+    ["S5JXNG0N108746D"] = "ssd3",
 }
 ```
 
 In the above example we have 4 x SSD for capture. To convert half to capture and half to scratch disk modify as follows
 
-```text
+```lua
 CacheDisk =
 {
-	["S462NF0MA04379A"] = "ssd0",
-	["S462NF0MA05134B"] = "ssd1",
+    ["S462NF0MA04379A"] = "ssd0",
+    ["S462NF0MA05134B"] = "ssd1",
 }
 ,
 ScratchDisk =
 {
-	["S5JXNG0N108745Y"] = "scr0",
-	["S5JXNG0N108746D"] = "scr1",
+    ["S5JXNG0N108745Y"] = "scr0",
+    ["S5JXNG0N108746D"] = "scr1",
 }
-
 ```
 
-This is assigning the SSD Serial numbers to mount point /opt/fmadio/disk/scr0 and /opt/fmadio/disk/scr1. The actual Serial numbers for each system will be different, the mount point (scr0/scr1) is the same.
+This is assigning the SSD Serial numbers to mount point /opt/fmadio/disk/scr0 and /opt/fmadio/disk/scr1. The actual Serial numbers for each system will be different, the mount point \(scr0/scr1\) is the same.
 
 After updating confirm there are no syntax errors in the config file by running fmadiolua /opt/fmadio/etc/disk.lua as follows
 
@@ -72,7 +70,7 @@ done 0.000038Sec 0.000001Min
 fmadio@fmadio20n40v3-363:~$
 ```
 
-Output as above shows correctly formated file. Output per below shows configuration file with a syntax error  (line 30 has some incorrect formatting)
+Output as above shows correctly formatted file. Output per below shows configuration file with a syntax error \(line 30 has some incorrect formatting\)
 
 ```text
 fmadio@fmadio20n40v3-363:~$ fmadiolua /opt/fmadio/etc/disk.lua
@@ -88,7 +86,7 @@ load status: 3 0
 fmadio@fmadio20n40v3-363:~$
 ```
 
-After confirming the configuriation file syntax is correct, reboot the system. The mount points scr0 and scr1 should be visibile
+After confirming the configuration file syntax is correct, reboot the system. The mount points scr0 and scr1 should be visible as shown below.
 
 ```text
 fmadio@fmadio20n40v3-363:~$ ls -al /opt/fmadio/disk/scr*
@@ -97,9 +95,9 @@ lrwxrwxrwx    1 root     root            12 Jun  6 17:02 /opt/fmadio/disk/scr1 -
 fmadio@fmadio20n40v3-363:~$
 ```
 
-### Creating RAID0 partition
+## Creating RAID0 partition
 
-Start by creating a /dev/md1 RAID0 partition as follows
+After /opt/fmadio/disk/scr\[0-1\] have been created. Next is creating a /dev/md1 RAID0 partition as follows
 
 ```text
 fmadio@fmadio20v3-287:~$ sudo mdadm --create /dev/md1 --force --level=raid0 --raid-devices=2 /opt/fmadio/disk/scr0 /opt/fmadio/disk/scr1
@@ -161,7 +159,7 @@ Working Devices : 2
 fmadio@fmadio20v3-287:~$
 ```
 
-### Create EXT4 Filesystem
+## Create EXT4 Filesystem
 
 The block device /dev/md1 is block level only, it contains no mountable file system. Next create btrfs filesystem on the device as follows
 
@@ -173,9 +171,9 @@ fmadio@fmadio20v3-287:~$ sudo mkfs.ext4 /dev/md1
 fmadio@fmadio20v3-287:~$
 ```
 
-### Mount the Scratch Filesystem
+## Mount the Scratch Filesystem
 
-By default FMADIO Packet Capture systems at boot time will start the RAID0 partition and mount /dev/md1 Scratch disk to /mnt/store1 
+By default FMADIO Packet Capture systems at boot time will start the RAID0 partition and mount /dev/md1 Scratch disk to /mnt/store1
 
 If it fails to mount, please issue the following command
 
@@ -183,3 +181,4 @@ If it fails to mount, please issue the following command
 fmadio@fmadio20v3-287:~$ sudo mount -t ext4 /dev/md1 /mnt/store1
 fmadio@fmadio20v3-287:~$
 ```
+

@@ -6,7 +6,7 @@ When using FMADIO Packet capture system for analytics processing SSD resources c
 
 The system should have scratch disks setup and visible on the GUI as follows, if this has not been configured contact support@fmad.io on how to configure
 
-![FMADIO Scratch Disk Network Analytics processing space](../.gitbook/assets/image%20%2849%29%20%281%29.png)
+![FMADIO Scratch Disk Network Analytics processing space](../.gitbook/assets/image%20%2849%29%20%282%29.png)
 
  ****In the above example there are 2 disks SCR0 and SCR1 enabled for scratch disk these are seen on the file system as
 
