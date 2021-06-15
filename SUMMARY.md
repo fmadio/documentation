@@ -48,3 +48,7 @@
 
 * [SSD Replacement](maintenance/ssd-replacement.md)
 
+## Linux Containers \(LXC\)
+
+* [Mounting Host Scratch Disk](linux-containers-lxc/mounting-host-scratch-disk.md)
+
