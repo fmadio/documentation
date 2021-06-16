@@ -8,7 +8,7 @@ Management interfaces are all bridged by default per the following block diagram
 
 Using the above configuration allows
 
-* LXC containers full IP address \(without NAT\)
+* LXC containers full pass-thru IP address \(no NAT\)
 * Bonded management mode for Redundancy \(Hot-Standby\)
 * Bonded management mode for Throughput \( LAG \)
 
