@@ -12,6 +12,7 @@
 * [Network Configuration \(CLI\)](configuration/network-configuration-cli.md)
 * [Scratch Disk \(EXT4\)](configuration/scratch-disk-ext4.md)
 * [Scratch Disk \(BTRFS\)](configuration/scratch-disk-btrfs.md)
+* [Management Interface](configuration/management-interface.md)
 
 ## Settings
 
