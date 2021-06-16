@@ -83,7 +83,7 @@ man10           8000.18c04d177a4e       no              phy10
 
 ```
 
-### Management MTU Setting
+## Management MTU Setting
 
 By default MTU size is set to 1500B for maximum compatibility. This can be configure for 9200 Jumbo frame support to maximize download throughput. This is done by setting 
 
@@ -120,7 +120,7 @@ This  has to be set on both the man10 and phy10 \(optionally phy11 if used\) int
 
 ```
 
-### LACP Link Bonding
+## LACP Link Bonding
 
 **Requires FW:6508+**
 
