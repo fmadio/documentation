@@ -108,8 +108,6 @@ This  has to be set on both the man10 and phy10 \(optionally phy11 if used\) int
     ["Gateway"] = "",
     ["DNS0"]    = "",
     ["DNS1"]    = "",
-    ["Speed"]   = "10g",
-    ["TSMode"]  = "nic",
     ["MTU"]     = 9200,
 }
 ,
@@ -141,8 +139,6 @@ Add a bonded interface "bond0" as follows
     ["Gateway"] = "192.168.1.1",
     ["DNS0"]    = "",
     ["DNS1"]    = "",
-    ["Speed"]   = "10g",
-    ["TSMode"]  = "nic",
     ["Slave"]  = { "phy0", "phy1" }
 },
 ```
@@ -158,8 +154,6 @@ In the above example the "Slave" field contains the list of physical interfaces 
     ["Gateway"] = "192.168.1.1",
     ["DNS0"]    = "",
     ["DNS1"]    = "",
-    ["Speed"]   = "10g",
-    ["TSMode"]  = "nic",
     ["Slave"]  = { "phy10", "phy11" }
 },
 ```
@@ -180,8 +174,6 @@ In the above example the "Slave" field contains the list of physical interfaces 
     ["Gateway"] = "192.168.1.1",
     ["DNS0"]    = "",
     ["DNS1"]    = "",
-    ["Speed"]   = "10g",
-    ["TSMode"]  = "nic",
     ["Slave"]  = { "phy10", "phy11" }
 },
 ```
