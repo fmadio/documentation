@@ -88,7 +88,7 @@ man10           8000.18c04d177a4e       no              phy10
 By default MTU size is set to 1500B for maximum compatibility. This can be configure for 9200 Jumbo frame support to maximize download throughput. This is done by setting 
 
 ```lua
-["MTU"] = 9
+["MTU"] = 9200,
 ```
 
 For both man10 and phy10 network interfaces in the network configuration script below.
@@ -186,7 +186,7 @@ In the above example the "Slave" field contains the list of physical interfaces 
 },
 ```
 
-Line Bonding mode options \(ripped from kernel.org\)
+Line Bonding mode options \(details ripped from kernel.org\)
 
  **Round-robin** \(balance-rr\)  
   
