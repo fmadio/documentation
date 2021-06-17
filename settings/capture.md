@@ -51,3 +51,12 @@ This setting a debug only as it \(potentially\) reduces Capture performance, spe
  ["DisableCPUPriority"]   = true, 
 ```
 
+Confirm the setting by checking log file /mnt/store0/log/stream\_capture f20.cur where the following log entries will be seen. 
+
+```text
+[20210617_175614] fNIC100_RxPollLoop  : 2319 | Disable RxPoll Loop SCHED_RR
+[20210617_175614] fNIC100_RxIndexLoop : 2575 | Disable RxIndex 0 Loop SCHED_RR
+[20210617_175614] fNIC100_RxIndexLoop : 2575 | Disable RxIndex 0 Loop SCHED_RR
+[20210617_175614] fNIC100_RxIndexLoop : 2575 | Disable RxIndex 1 Loop SCHED_RR
+```
+
