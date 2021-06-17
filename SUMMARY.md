@@ -17,6 +17,7 @@
 ## Settings
 
 * [HDD Writeback](settings/writeback.md)
+* [Capture](settings/capture.md)
 
 ## Troubleshooting
 
