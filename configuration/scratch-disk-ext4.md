@@ -15,7 +15,9 @@ lrwxrwxrwx    1 root     root            12 Jun  6 17:02 /opt/fmadio/disk/scr1 -
 fmadio@fmadio20v3-287:~$
 ```
 
-NOTE: the /dev/\* mount point may change from time to time, please use the /opt/fmadio/disk/scr\* path name for all operations.
+**NOTE**: the /dev/\* mount point may change from time to time, please use the /opt/fmadio/disk/scr\* path name for all operations.
+
+**NOTE**: Any change to the scratch disk configuration it is recommend to run a Quick Format to ensure SSD and Capture disks configuration are consistent
 
 ## Specifcying Sratch Disks
 
