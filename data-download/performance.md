@@ -106,6 +106,13 @@ NOTE: throughput is heavily dependent on the packet size mix of the capture. Lag
       <td style="text-align:left"></td>
     </tr>
     <tr>
+      <td style="text-align:left">HTTP remote</td>
+      <td style="text-align:left">10G</td>
+      <td style="text-align:left"></td>
+      <td style="text-align:left">4.0Gbps</td>
+      <td style="text-align:left"></td>
+    </tr>
+    <tr>
       <td style="text-align:left">HTTPS remote</td>
       <td style="text-align:left">10G</td>
       <td style="text-align:left"></td>
