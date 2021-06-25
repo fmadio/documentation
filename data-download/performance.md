@@ -113,6 +113,13 @@ NOTE: throughput is heavily dependent on the packet size mix of the capture. Lag
       <td style="text-align:left"></td>
     </tr>
     <tr>
+      <td style="text-align:left">HTTP remote (MTU 9182)</td>
+      <td style="text-align:left">10G</td>
+      <td style="text-align:left"></td>
+      <td style="text-align:left">4.4Gbps</td>
+      <td style="text-align:left"></td>
+    </tr>
+    <tr>
       <td style="text-align:left">HTTPS remote</td>
       <td style="text-align:left">10G</td>
       <td style="text-align:left"></td>
@@ -387,7 +394,7 @@ LocalPipe 2992111616 Bytes 925527034 Bps 00:00:25 | 2.992 GB 925.527 Mbps | Targ
 
 ```
 
-### HTTP on remote 10G
+### HTTP on remote 10G \(MTU 1500\)
 
 10G link HTTP download ~ 4.0 Gbps
 
@@ -423,6 +430,40 @@ fmadio@fmadio100v2-228U:~$
 
 ```
 
+### HTTP on remote 10G \(MTU 9182\)
+
+10G HTTP download ~ 4.4Gbps
+
+```text
+fmadio@fmadio100v2-228U:~$ curl -s -u user:pass "http://192.168.15.225/api/v1/pcap/single?StreamName=test9k_20210625_1209&" | pipe_mon --local-bytes > /dev/null
+LocalPipe 679870464 Bytes 3797577932 Bps 00:00:02 | 0.680 GB 3797.578 Mbps | Target 0.000 Mbps
+LocalPipe 1650196480 Bytes 5420372866 Bps 00:00:03 | 1.650 GB 5420.373 Mbps | Target 0.000 Mbps
+LocalPipe 2471231488 Bytes 4586265714 Bps 00:00:05 | 2.471 GB 4586.266 Mbps | Target 0.000 Mbps
+LocalPipe 3308650496 Bytes 4678462232 Bps 00:00:06 | 3.309 GB 4678.462 Mbps | Target 0.000 Mbps
+LocalPipe 4149346304 Bytes 4696431127 Bps 00:00:08 | 4.149 GB 4696.431 Mbps | Target 0.000 Mbps
+LocalPipe 4989255680 Bytes 4692021452 Bps 00:00:09 | 4.989 GB 4692.021 Mbps | Target 0.000 Mbps
+LocalPipe 5814091776 Bytes 4608138730 Bps 00:00:10 | 5.814 GB 4608.139 Mbps | Target 0.000 Mbps
+LocalPipe 6647316480 Bytes 4654626580 Bps 00:00:12 | 6.647 GB 4654.627 Mbps | Target 0.000 Mbps
+LocalPipe 7481720832 Bytes 4661095997 Bps 00:00:13 | 7.482 GB 4661.096 Mbps | Target 0.000 Mbps
+LocalPipe 8314814464 Bytes 4654060117 Bps 00:00:15 | 8.315 GB 4654.060 Mbps | Target 0.000 Mbps
+LocalPipe 9053667328 Bytes 4127496691 Bps 00:00:16 | 9.054 GB 4127.497 Mbps | Target 0.000 Mbps
+LocalPipe 9772859392 Bytes 4017858012 Bps 00:00:18 | 9.773 GB 4017.858 Mbps | Target 0.000 Mbps
+LocalPipe 10581442560 Bytes 4517126615 Bps 00:00:19 | 10.581 GB 4517.127 Mbps | Target 0.000 Mbps
+LocalPipe 11311775744 Bytes 4079828636 Bps 00:00:21 | 11.312 GB 4079.829 Mbps | Target 0.000 Mbps
+LocalPipe 12048269312 Bytes 4114598393 Bps 00:00:22 | 12.048 GB 4114.598 Mbps | Target 0.000 Mbps
+LocalPipe 12806914048 Bytes 4238419296 Bps 00:00:23 | 12.807 GB 4238.419 Mbps | Target 0.000 Mbps
+LocalPipe 13567393792 Bytes 4247994788 Bps 00:00:25 | 13.567 GB 4247.995 Mbps | Target 0.000 Mbps
+LocalPipe 14335213568 Bytes 4289693665 Bps 00:00:26 | 14.335 GB 4289.694 Mbps | Target 0.000 Mbps
+LocalPipe 15137505280 Bytes 4481923241 Bps 00:00:28 | 15.138 GB 4481.923 Mbps | Target 0.000 Mbps
+LocalPipe 15995109376 Bytes 4791161288 Bps 00:00:29 | 15.995 GB 4791.161 Mbps | Target 0.000 Mbps
+LocalPipe 16791633920 Bytes 4449621635 Bps 00:00:31 | 16.792 GB 4449.622 Mbps | Target 0.000 Mbps
+LocalPipe 17599430656 Bytes 4512679664 Bps 00:00:32 | 17.599 GB 4512.680 Mbps | Target 0.000 Mbps
+LocalPipe 18419023872 Bytes 4578803395 Bps 00:00:33 | 18.419 GB 4578.803 Mbps | Target 0.000 Mbps
+LocalPipe 18512000024 Bytes 578692144 Bps 00:00:35 | 18.512 GB 578.692 Mbps | Target 0.000 Mbps
+fmadio@fmadio100v2-228U:~$
+
+```
+
 ### HTTPS on remote 10G
 
 10G link HTTPS download ~ 1.7Gbps
@@ -451,5 +492,38 @@ LocalPipe 5550112768 Bytes 1810395082 Bps 00:00:25 | 5.550 GB 1810.395 Mbps | Ta
 
 ```
 
+### netcat remote 10G \(1500 MTU\)
 
+Remove NGINX web server from the setup, throughput only slightly faster 4.8Gbps
+
+```text
+fmadio@fmadio100v2-228U:~$ nc -l -p 5000 | pipe_mon --local-bytes > /dev/null
+outputing local byte counts
+calibrating...
+0 : 2095077578           2.0951 cycles/nsec offset:4.922 Mhz
+Cycles/Sec 2095077578.0000 Std:       0 cycle std(  0.00000000) Target:2.10 Ghz
+LocalPipe 131072 Bytes 0 Bps 00:00:02 | 0.000 GB 0.000 Mbps | Target 0.000 Mbps
+LocalPipe 903217152 Bytes 5045163062 Bps 00:00:03 | 0.903 GB 5045.163 Mbps | Target 0.000 Mbps
+LocalPipe 1769340928 Bytes 4838382982 Bps 00:00:05 | 1.769 GB 4838.383 Mbps | Target 0.000 Mbps
+LocalPipe 2632056832 Bytes 4819594803 Bps 00:00:06 | 2.632 GB 4819.595 Mbps | Target 0.000 Mbps
+LocalPipe 3475374080 Bytes 4711430757 Bps 00:00:07 | 3.475 GB 4711.431 Mbps | Target 0.000 Mbps
+LocalPipe 4344905728 Bytes 4857474473 Bps 00:00:09 | 4.345 GB 4857.474 Mbps | Target 0.000 Mbps
+LocalPipe 5217452032 Bytes 4874427604 Bps 00:00:10 | 5.217 GB 4874.428 Mbps | Target 0.000 Mbps
+LocalPipe 6088032256 Bytes 4863780460 Bps 00:00:12 | 6.088 GB 4863.780 Mbps | Target 0.000 Mbps
+LocalPipe 6961364992 Bytes 4878977682 Bps 00:00:13 | 6.961 GB 4878.978 Mbps | Target 0.000 Mbps
+LocalPipe 7815692288 Bytes 4772724863 Bps 00:00:15 | 7.816 GB 4772.725 Mbps | Target 0.000 Mbps
+LocalPipe 8680243200 Bytes 4829775317 Bps 00:00:16 | 8.680 GB 4829.775 Mbps | Target 0.000 Mbps
+LocalPipe 9554231296 Bytes 4882563917 Bps 00:00:17 | 9.554 GB 4882.564 Mbps | Target 0.000 Mbps
+LocalPipe 10392961024 Bytes 4685389001 Bps 00:00:19 | 10.393 GB 4685.389 Mbps | Target 0.000 Mbps
+LocalPipe 11296571392 Bytes 5047718396 Bps 00:00:20 | 11.297 GB 5047.718 Mbps | Target 0.000 Mbps
+LocalPipe 12204507136 Bytes 5072057752 Bps 00:00:22 | 12.205 GB 5072.058 Mbps | Target 0.000 Mbps
+LocalPipe 13068271616 Bytes 4825085443 Bps 00:00:23 | 13.068 GB 4825.085 Mbps | Target 0.000 Mbps
+LocalPipe 13931118592 Bytes 4820259720 Bps 00:00:25 | 13.931 GB 4820.260 Mbps | Target 0.000 Mbps
+LocalPipe 14800781312 Bytes 4858162581 Bps 00:00:26 | 14.801 GB 4858.163 Mbps | Target 0.000 Mbps
+LocalPipe 15670181888 Bytes 4856844009 Bps 00:00:27 | 15.670 GB 4856.844 Mbps | Target 0.000 Mbps
+LocalPipe 16515072000 Bytes 4720283935 Bps 00:00:29 | 16.515 GB 4720.284 Mbps | Target 0.000 Mbps
+LocalPipe 17386962944 Bytes 4871055601 Bps 00:00:30 | 17.387 GB 4871.056 Mbps | Target 0.000 Mbps
+LocalPipe 18260426752 Bytes 4879737193 Bps 00:00:32 | 18.260 GB 4879.737 Mbps | Target 0.000 Mbps
+
+```
 
