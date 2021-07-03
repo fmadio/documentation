@@ -16,7 +16,8 @@
 * [Syslog](configuration/syslog.md)
 * [Automatic Push PCAP](configuration/automatic-push-pcap.md)
 * [Management Port Layout](configuration/management-port-layout.md)
-* [Mount Remote NFS drive](configuration/mount-remote-nfs-drive.md)
+* [Mount Remote NFS \(Linux\) Drive](configuration/mount-remote-nfs-drive.md)
+* [Mount Remote CIFS \(Windows\) Drive](configuration/mount-remote-cifs-windows-drive.md)
 
 ## Data Download
 
