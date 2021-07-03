@@ -4,7 +4,7 @@
 
 Mounting a remote CIFS/Windows file system on the FMADIO capture device can be extremely useful in many cases. It allows end users to use familiar Windows file browser to access and interface with PCAPs and FMADIO systems.
 
-The main usage for remote CIFS mounts is to provide a simple and robust way to push PCAP data automatically from the capture device to a Windows Share drive. Once on a Windows Share drive it is easily accessible from multiple devices.
+The main usage for remote CIFS mounts is to provide a simple and robust way to push PCAP data automatically from the capture device to a Windows Share drive. Once on a Windows Share drive it is easily accessible from multiple devices.rr
 
 ### CIFS Remote Mount Config
 
