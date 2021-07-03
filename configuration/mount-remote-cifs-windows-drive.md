@@ -37,3 +37,16 @@ fmadio@fmadio20v3-287:/mnt/store0/etc$
 
 Above is the correct operation. Once complete please reboot the system to confirm the new mount points.
 
+To confirm the mount point please run ls -al /mnt/remote\* and check the file/directory contents
+
+```text
+fmadio@fmadio20v3-287:/mnt/store0/etc$ ls -al /mnt/remote0
+total 1024
+drwxr-xr-x    3 nobody   nogroup          0 Jul  4 01:52 ./
+drwxr-xr-x   11 root     root           240 Jul  4 02:43 ../
+drwxr-xr-x    2 nobody   nogroup          0 Jul  4 01:52 test1/
+-rw-r--r--    1 root     root            27 Jul  4 01:52 example
+fmadio@fmadio20v3-287:/mnt/store0/etc$
+
+```
+
