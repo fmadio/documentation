@@ -126,6 +126,13 @@ NOTE: throughput is heavily dependent on the packet size mix of the capture. Lag
       <td style="text-align:left">1.7Gbpbs</td>
       <td style="text-align:left"></td>
     </tr>
+    <tr>
+      <td style="text-align:left">S3 HTTP (MINIO Server)</td>
+      <td style="text-align:left">10G</td>
+      <td style="text-align:left"></td>
+      <td style="text-align:left">2.4Gbps</td>
+      <td style="text-align:left"></td>
+    </tr>
   </tbody>
 </table>
 
@@ -524,6 +531,52 @@ LocalPipe 15670181888 Bytes 4856844009 Bps 00:00:27 | 15.670 GB 4856.844 Mbps | 
 LocalPipe 16515072000 Bytes 4720283935 Bps 00:00:29 | 16.515 GB 4720.284 Mbps | Target 0.000 Mbps
 LocalPipe 17386962944 Bytes 4871055601 Bps 00:00:30 | 17.387 GB 4871.056 Mbps | Target 0.000 Mbps
 LocalPipe 18260426752 Bytes 4879737193 Bps 00:00:32 | 18.260 GB 4879.737 Mbps | Target 0.000 Mbps
+
+```
+
+### S3 HTTP Push rclone \(Minio S3 Server 10G\)
+
+Push over HTTP \(S3 EP is HTTP \) using a 10G interface
+
+```text
+fmadio@fmadio20n40v3-363:/mnt/store0/tmp2$ sudo stream_cat -v test8k_20210704_0821 | rclone rcat  s3test://test/blah.pcap11 --ignore-checksum
+0M Offset:    0GB Pkt:1625354491_474798026 Length:8192 Capture:8192 ChunkID:3241656 7.669Gbps CPUIdle:0.000
+2021/07/04 08:59:01 NOTICE: Time may be set wrong - time from "192.168.15.132:9000" is 6m35.881954756s different from this computer
+2021/07/04 08:59:01 NOTICE: S3 bucket test: Streaming uploads using chunk size 5M will have maximum file size of 48.828G
+0M Offset:    0GB Pkt:1625354491_537006262 Length:8192 Capture:8192 ChunkID:3242876 2.452Gbps CPUIdle:0.000
+0M Offset:    0GB Pkt:1625354518_184996807 Length:8192 Capture:8192 ChunkID:3244132 2.544Gbps CPUIdle:0.000
+0M Offset:    0GB Pkt:1625354518_245005849 Length:8192 Capture:8192 ChunkID:3245309 2.396Gbps CPUIdle:0.000
+0M Offset:    1GB Pkt:1625354518_308970777 Length:8192 Capture:8192 ChunkID:3246564 2.526Gbps CPUIdle:0.000
+0M Offset:    1GB Pkt:1625354518_372007938 Length:8192 Capture:8192 ChunkID:3247800 2.461Gbps CPUIdle:0.000
+0M Offset:    1GB Pkt:1625354518_435007189 Length:8192 Capture:8192 ChunkID:3249036 2.515Gbps CPUIdle:0.000
+0M Offset:    2GB Pkt:1625354518_495064051 Length:8192 Capture:8192 ChunkID:3250214 2.398Gbps CPUIdle:0.000
+0M Offset:    2GB Pkt:1625354518_554816611 Length:8192 Capture:8192 ChunkID:3251385 2.374Gbps CPUIdle:0.000
+0M Offset:    2GB Pkt:1625354518_617361954 Length:8192 Capture:8192 ChunkID:3252612 2.497Gbps CPUIdle:0.000
+0M Offset:    2GB Pkt:1625354518_676690089 Length:8192 Capture:8192 ChunkID:3253776 2.362Gbps CPUIdle:0.000
+0M Offset:    3GB Pkt:1625354518_739200955 Length:8192 Capture:8192 ChunkID:3255002 2.496Gbps CPUIdle:0.000
+0M Offset:    3GB Pkt:1625354720_421690032 Length:8192 Capture:8192 ChunkID:3256310 2.658Gbps CPUIdle:0.000
+0M Offset:    3GB Pkt:1625354720_484727221 Length:8192 Capture:8192 ChunkID:3257546 2.499Gbps CPUIdle:0.000
+0M Offset:    4GB Pkt:1625354720_544612914 Length:8192 Capture:8192 ChunkID:3258721 2.369Gbps CPUIdle:0.000
+0M Offset:    4GB Pkt:1625354720_608701112 Length:8192 Capture:8192 ChunkID:3259978 2.533Gbps CPUIdle:0.000
+0M Offset:    4GB Pkt:1625354720_672789301 Length:8192 Capture:8192 ChunkID:3261235 2.522Gbps CPUIdle:0.000
+0M Offset:    4GB Pkt:1625354720_731623958 Length:8192 Capture:8192 ChunkID:3262388 2.320Gbps CPUIdle:0.000
+0M Offset:    5GB Pkt:1625354720_794661149 Length:8192 Capture:8192 ChunkID:3263625 2.511Gbps CPUIdle:0.000
+0M Offset:    5GB Pkt:1625354720_856647344 Length:8192 Capture:8192 ChunkID:3264840 2.462Gbps CPUIdle:0.000
+0M Offset:    5GB Pkt:1625354720_918635074 Length:8192 Capture:8192 ChunkID:3266056 2.465Gbps CPUIdle:0.000
+0M Offset:    6GB Pkt:1625354720_983937126 Length:8192 Capture:8192 ChunkID:3267337 2.602Gbps CPUIdle:0.000
+0M Offset:    6GB Pkt:1625354721_040506940 Length:8192 Capture:8192 ChunkID:3268446 2.258Gbps CPUIdle:0.000
+0M Offset:    6GB Pkt:1625354736_575673633 Length:8192 Capture:8192 ChunkID:3269641 2.368Gbps CPUIdle:0.000
+0M Offset:    6GB Pkt:1625354736_635559460 Length:8192 Capture:8192 ChunkID:3270816 2.340Gbps CPUIdle:0.000
+0M Offset:    7GB Pkt:1625354736_696494591 Length:8192 Capture:8192 ChunkID:3272011 2.388Gbps CPUIdle:0.000
+0M Offset:    7GB Pkt:1625354736_755330823 Length:8192 Capture:8192 ChunkID:3273165 2.345Gbps CPUIdle:0.000
+1M Offset:    7GB Pkt:1625354736_817316894 Length:8192 Capture:15888 ChunkID:3274380 2.417Gbps CPUIdle:0.000
+1M Offset:    8GB Pkt:1625354736_879302992 Length:8192 Capture:8192 ChunkID:3275596 2.421Gbps CPUIdle:0.000
+1M Offset:    8GB Pkt:1625354736_941083437 Length:8192 Capture:8192 ChunkID:3276808 2.466Gbps CPUIdle:0.000
+1M Offset:    8GB Pkt:1625354737_001176332 Length:8192 Capture:8192 ChunkID:3277986 2.380Gbps CPUIdle:0.000
+1M Offset:    8GB Pkt:1625354737_063162399 Length:8192 Capture:8192 ChunkID:3279202 2.472Gbps CPUIdle:0.000
+1M Offset:    9GB Pkt:1625354737_127961151 Length:8192 Capture:8192 ChunkID:3280473 2.587Gbps CPUIdle:0.000
+packet stream end
+20210704_085936 : SUCCESS
 
 ```
 
