@@ -15,7 +15,7 @@ Configuration file is located in
 
 ### SYSLOG Alerts
 
-An example configuration file with alert via syslog
+An example configuration file with alert via syslog, please see the Triggers section below for description of each alert type.
 
 ```text
 local L =
@@ -96,39 +96,157 @@ password <sercrets>
 
 ```
 
-## Syntax
+## Triggers
 
-### BytesOverflow
+System has can trigger an a small but well defined list of critical Events. The following is a description and example for each item
+
+## BytesOverflow
 
 Any time Bytes Over increases an alert is generated. This typically a symptom of capture rates being too high, or HDD writeback too slow \(or failing\)
 
-### **PacketError**
+**Config**:
+
+```text
+   BytesOverflow   = true,
+```
+
+**Example:**
+
+```text
+2021.07.05-08:08:01.038273 (+09:00) | fmadio20n40v3-363 | local7.alert    | fmadio    | Alert     Bytes Overflow detected 3000000000 (prev:0)
+```
+
+## **PacketError**
 
 Counts FCS errors received on the interface. Any time packet error counts changes an alert is generated. Typically occurs when there are Layer1 link stability issues
 
-### **PacketDrop**
+**Config**Example:
+
+```text
+  PacketError     = true,  
+```
+
+**Example:**
+
+```text
+2021.07.05-08:09:51.481888 (+09:00) | fmadio20n40v3-363 | local7.alert    | fmadio    | Alert     Packet FCS Erors detected 0 (prev:1)
+```
+
+## **PacketDrop**
 
 Alerts generated when packets are dropped on the capture device. 
 
-### **DiskFreeStore0**
-
-When space on /mnt/store0 partition is less than this amount \(scientific notition\) in bytes. Alerts are generated. In the above example
+**Config**:
 
 ```text
+PacketDrop      = true,
+```
+
+**Example:**
+
+```text
+2021.07.05-08:09:51.483071 (+09:00) | fmadio20n40v3-363 | local7.alert    | fmadio    | Alert     Packet Capture Drop detected 2 (prev:0)
+```
+
+## **DiskFreeStore0**
+
+When space on /mnt/store0 partition is less than this amount \(scientific notation\) in bytes. Alerts are generated. 
+
+In the below example, an alert is generated when less than 4e9 \(4GB\) of space is free on /mnt/store0 partition
+
+**Config:**
+
+```
     DiskFreeStore0  = 4e9,
 ```
 
-In the above example, an alert is generated when less than 4e9 \(4GB\) of space is free on /mnt/store0 partition
+**Example:**:
 
-### **DiskFreeStore1**
+```text
+2021.07.05-08:32:10.876238 (+09:00) | fmadio20n40v3-363 | local7.alert    | fmadio    | Alert     /mnt/store0 disk space low. Free 7160.188GB (7160188243968B) [Threshold 10000.000GB]
+```
+
+## **DiskFreeStore1**
 
 When space on /mnt/store1 \(scratch analytics workspace\) is less than this amount \(scientific notation\) in bytes an Alert is generated
 
-### **DiskFreeRemote0**
+**Config::**
 
-When space on the /mnt/remote0 \(typically NFS mount partition\) is less than this threashold an Alert is generated
+```text
+ DiskFreeStore1    = 10e9,  
+```
 
-### **Sleep**
+**Example:**
+
+```text
+2021.07.05-08:32:10.876238 (+09:00) | fmadio20n40v3-363 | local7.alert    | fmadio    | Alert     /mnt/store1 disk space low. Free 7160.188GB (7160188243968B) [Threshold 10000.000GB]
+```
+
+## **DiskFreeRemote0**
+
+When space on the /mnt/remote0 \(typically NFS mount partition\) is less than this threshold an Alert is generated
+
+**Config:**
+
+```text
+ DiskFreeRemote0    = 10e9,  
+```
+
+**Example:**
+
+```text
+2021.07.05-08:32:10.876238 (+09:00) | fmadio20n40v3-363 | local7.alert    | fmadio    | Alert     /mnt/remote0 disk space low. Free 7160.188GB (7160188243968B) [Threshold 10000.000GB]
+```
+
+## **Disk / RAID Errors**
+
+Alerts when there is a disk error or RAID error on the device. For example a disk has been lost or HDD RAID redundancy has been reduced.
+
+**Config**:
+
+```text
+ DiskError       = true,   
+```
+
+**Example:**
+
+```text
+2021.07.05-08:05:34.224665 (+09:00) | fmadio20n40v3-363 | local7.alert    | fmadio    | Alert     Disk/Cache/RAID Error State 3 (prev:0)
+```
+
+## **Bytes Cached Threshold**
+
+Bytes Cached indicates how much capture data has been written to SSD, but not written back into long term storage yet. e.g. Its the delta between the capture SSD rate, and the HDD magnetic storage writeback. Trigger on for example 3TB here provides a good indication the HDD writeback process is running too slow for the sustained incoming capture rate.
+
+**Config::** \(trigger once Cache goes overt 1TB\)
+
+```text
+ ByteCache       = 1e9,  
+```
+
+**Example:**
+
+```text
+2021.07.05-07:39:40.545686 (+09:00) | fmadio20n40v3-363 | local7.alert    | fmadio    | Alert     Bytes Cache Threadhold detected 4.000 GB (limit 1.000 G
+```
+
+## Capture Link State
+
+Monitoring the capture link status is critical to ensure no data is lost. Enabling this option will alert when a capture link goes up or down.
+
+**Config**:
+
+```text
+ LinkState       = true, 
+```
+
+**Example:**
+
+```text
+2021.07.05-07:53:49.790767 (+09:00) | fmadio20n40v3-363 | local7.alert    | fmadio    | Alert     Capture Link Cap2 State Change 1 -> 0
+```
+
+## **Sleep**
 
 Minimum number of seconds between alert generation. This is to prevent spamming of alerts due to unexpected system conditions.
 
