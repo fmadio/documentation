@@ -127,7 +127,7 @@ NOTE: throughput is heavily dependent on the packet size mix of the capture. Lag
       <td style="text-align:left"></td>
     </tr>
     <tr>
-      <td style="text-align:left">S3 HTTP (MINIO Server)</td>
+      <td style="text-align:left">S3 (MINIO Server)</td>
       <td style="text-align:left">10G</td>
       <td style="text-align:left"></td>
       <td style="text-align:left">2.4Gbps</td>
