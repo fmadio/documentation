@@ -49,11 +49,11 @@ Default value is: 0 - this disables the periodic flushing
 
 Lowest recommended setting is 1 minute, otherwise excessive flushing will consume disk space.
 
-**FLUSHIDLE**
+### **FLUSHIDLE**
 
 Flushing based on an in-activity idle timeout. This will flush the pipeline if no new packets are received within X amount of time. For example the default setting is 1 second, if no new packets are received after 1 second a SINGLE pipeline flush is issued. The next pipeline flush will only occur if new packets are received.
 
-Default value is: 1e9 - flush after 1 second of inactivity, value in nano seconds To disable set to 0
+Default value is: 1e9 - flush after 1 second of inactivity, value in nanoseconds To disable set to 0
 
 This mode is the default configuration
 
