@@ -33,6 +33,8 @@ NOTE: After changing the settings capture must be stopped, and restarted for the
 
 ## Settings
 
+Description of what each field setting does.
+
 ### **FLUSHPKTCNT**
 
 Flushing works by injecting specially marked NOP packets into the system right at the capture port. Its as if the packets arrived on the ingress port, but are never visible or downloadable. This parameter sets the number of packets for each flush per port to be injected. The packets are 256B in length.
