@@ -28,17 +28,17 @@ FMADIO20G Gen2 1U System
 
 FW: 7256 \(2021/7/10\)
 
-![FMADIO20G Gen3 1U Power Consumption Idle](.gitbook/assets/image%20%2874%29.png)
+![FMADIO20G Gen3 1U Power Consumption Idle](.gitbook/assets/image%20%2875%29.png)
 
 ### 1U Capture Full Capture Power consumption
 
 FW: 7256 \(2021/7/10\)
 
-![FMADIO20G Gen3 1U Power Consumption Full Capture](.gitbook/assets/image%20%2877%29.png)
+![FMADIO20G Gen3 1U Power Consumption Full Capture](.gitbook/assets/image%20%2878%29.png)
 
 ### 1U Maximum Power Consumption
 
 FW: 7256 \(2021/710\)
 
-![](.gitbook/assets/image%20%2878%29.png)
+![](.gitbook/assets/image%20%2879%29.png)
 
