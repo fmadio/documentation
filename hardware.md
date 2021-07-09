@@ -6,7 +6,7 @@ FMADIO 100G Hardware looks as follows
 
 ![FMADIO 100G Gen2 1U Packet System Side](.gitbook/assets/image%20%2823%29.png)
 
-### Spec Sheet
+## Spec Sheet
 
 {% file src=".gitbook/assets/100g-gen2-datasheet-v5.pdf" caption="FMADIO100G Gen2 Spec Sheet" %}
 
@@ -16,7 +16,7 @@ FMADIO 100G Hardware looks as follows
 
 
 
-### Transceiver Support
+## Transceiver Support
 
 List of known and tested transcivers that work with the system. Other transciver types should be ok, please check with support@fmad.io for clarification.
 
@@ -104,13 +104,13 @@ FMADIO Packet Capture systems are **Transceiver Vendor neutral,** 3rd party opti
   </tbody>
 </table>
 
-### Rails installation
+## Rails installation
 
 Installation of the rails is tool less please see the following instructions
 
 ![](.gitbook/assets/image%20%2841%29.png)
 
-### Power Supply
+## Power Supply
 
 System is installed with dual 1200W power supply. By default the system is configured as follows
 
@@ -148,4 +148,12 @@ System is installed with dual 1200W power supply. By default the system is confi
 ![FMADIO 100G PSU Configuration](.gitbook/assets/image%20%2857%29.png)
 
 The above behavior can be overridden to always be in HOT-HOT load balancing mode, with a configuration setting. Please contact support@fmad.io for more information
+
+## Power Consumption
+
+### FMADIO 100G 1U Analytics
+
+![](.gitbook/assets/image%20%2877%29.png)
+
+![](.gitbook/assets/image%20%2874%29.png)
 
