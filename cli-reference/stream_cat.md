@@ -58,7 +58,7 @@ stream_cat -v --epoch-start 1622000000000000000 --epoch-stop 1622000000000001000
 
 ### Packet Filters
 
-Stream\_cat can be executed with packet filtering commands. These are similar to the filter methods used by [wireshark filtering](https://www.wireshark.org/docs/man-pages/wireshark-filter.html). Example filters are also available in then [fmadio user guide](https://fmad.io/en.fmadio10-manual.html#software-capture-prefilter).
+Stream\_cat can be executed with packet filtering commands. These are similar to the filter methods used by [wireshark filtering](https://www.wireshark.org/docs/man-pages/wireshark-filter.html). Example filters are also available in the [fmadio user guide](https://fmad.io/en.fmadio10-manual.html#software-capture-prefilter).
 
 The examples here show some simple filter examples.
 
