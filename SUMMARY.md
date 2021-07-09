@@ -26,7 +26,7 @@
 
 ## CLI Reference
 
-* [stream\_cat](cli-reference/untitled.md)
+* [stream\_cat](cli-reference/stream_cat.md)
 * [fnic\_test](cli-reference/fnic_test.md)
 
 ## API
