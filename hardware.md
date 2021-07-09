@@ -153,7 +153,7 @@ The above behavior can be overridden to always be in HOT-HOT load balancing mode
 
 ### FMADIO 100G 1U Analytics
 
-![](.gitbook/assets/image%20%2877%29.png)
+![](.gitbook/assets/image%20%2880%29.png)
 
-![](.gitbook/assets/image%20%2874%29.png)
+![](.gitbook/assets/image%20%2875%29.png)
 
