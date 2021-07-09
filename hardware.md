@@ -18,8 +18,8 @@ FMADIO20G Gen2 1U System
 
 | SKU | Description | Average | Max |
 | :--- | :--- | :--- | :--- |
-| Capture  | System Idle | 150W | 300W |
-| Capture  | Full 20Gbps Sustained Capture | 200W | 300W |
+| Capture  | System Idle | 80W | 150W |
+| Capture  | Full 20Gbps Sustained Capture | 90W | 150W |
 | Analytics | Full 20GBps Sustained Capture |  |  |
 | Analytics | 36 CPUs maximum processing |  |  |
 
@@ -29,5 +29,5 @@ FW: 7256 \(2021/7/10\)
 
 ![](.gitbook/assets/image%20%2884%29.png)
 
-
+![](.gitbook/assets/image%20%2886%29.png)
 
