@@ -34,11 +34,11 @@ FW: 7256 \(2021/7/10\)
 
 FW: 7256 \(2021/7/10\)
 
-![FMADIO20G Gen3 1U Power Consumption Full Capture](.gitbook/assets/image%20%2874%29.png)
+![FMADIO20G Gen3 1U Power Consumption Full Capture](.gitbook/assets/image%20%2875%29.png)
 
 ### 1U Maximum Power Consumption
 
 FW: 7256 \(2021/710\)
 
-![](.gitbook/assets/image%20%2875%29.png)
+![](.gitbook/assets/image%20%2876%29.png)
 
