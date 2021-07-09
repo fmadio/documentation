@@ -14,7 +14,7 @@
 
 ## Power Consumption
 
-FMADIO20G Gen2 1U System
+FMADIO20G Gen3 Portable System
 
 | SKU | Description | Average | Max |
 | :--- | :--- | :--- | :--- |
