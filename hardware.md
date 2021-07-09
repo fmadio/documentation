@@ -14,10 +14,10 @@ FMADIO 20G Gen3 2U System
 
 FMADIO20G Gen2 1U System
 
-| SKU | Description | Power | Max |
+| SKU | Description | Average | Max |
 | :--- | :--- | :--- | :--- |
-| Capture 1U | System Idle | 150W | 200W |
-| Capture 1U | Full 20Gbps Sustained Capture | 200W | 250W |
+| Capture 1U | System Idle | 150W | 300W |
+| Capture 1U | Full 20Gbps Sustained Capture | 200W | 300W |
 | Capture 2U | System Idle |  |  |
 | Capture 2U | Full 20Gbps Sustained Capture |  |  |
 | Analytics 1U | System Idle |  |  |
@@ -26,13 +26,19 @@ FMADIO20G Gen2 1U System
 
 ### 1U Capture Idle Power Consumption
 
-FW: 7256
+FW: 7256 \(2021/7/10\)
 
 ![FMADIO20G Gen3 1U Power Consumption Idle](.gitbook/assets/image%20%2873%29.png)
 
 ### 1U Capture Full Capture Power consumption
 
-FW: 7256
+FW: 7256 \(2021/7/10\)
 
 ![FMADIO20G Gen3 1U Power Consumption Full Capture](.gitbook/assets/image%20%2874%29.png)
+
+### 1U Maximum Power Consumption
+
+FW: 7256 \(2021/710\)
+
+![](.gitbook/assets/image%20%2875%29.png)
 
