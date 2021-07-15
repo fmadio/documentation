@@ -1,4 +1,4 @@
-# Sustained IO Performance
+# Capture Analyze
 
 In many scenarios there is a requirement for simultaneous capture and analysis of data in pseudo-realtime. The primary performance target is bursting \(up to 156TB worth\) 100Gbps line rate, with a sustained data rate of ~ 50Gbps. We target 50Gbps as per the graphs below is hardware limitation of sustained 100Gbps write + sustained 50Gbps read.
 
