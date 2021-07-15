@@ -20,5 +20,5 @@ Due to hardware IO limitations \(~ 150Gbps max aggregate bandwidth\) at a sustai
 
 ![Sustained 100Gbps Capture + 26Gbps sustained Analyze raw IO Throughput](../.gitbook/assets/image%20%2890%29.png)
 
-Please note the above numbers, are the maximum limits. Typically the Analyze software performance is impacted more by the packet rate than the data rate, As such the Analysis software performance is usually the bottleneck, not the raw IO hardware limits.
+Please note all the above numbers, are the maximum limits. Typically the Analyze software performance is impacted more by the packet rate than the data rate, As such the Analysis software performance is usually the bottleneck, not the raw IO hardware limits.
 
