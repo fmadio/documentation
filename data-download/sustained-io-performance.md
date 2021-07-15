@@ -8,7 +8,7 @@ In the below image shows Capture/Write only, or Analyze/Read only FMADIO 100G Ge
 
 ![Capture Only and Analyze Only Raw IO throughput](../.gitbook/assets/image%20%2887%29.png)
 
-### Sustained IO 100Gbps Burst Capture + Sustained 50Gpbs Capture/Analyze
+### Burst 100Gbps Capture + Sustained 50Gpbs Capture/Analyze
 
 The ideal IO profile is an simultaneous sustained 50Gbps Capture/Write and 50Gbps Analyze/Read profile as shown below. This allows the capture to burst to 100Gbps without significantly effecting the Analyze/Read performance of the system.
 
