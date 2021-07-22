@@ -114,3 +114,7 @@ sudo killall stream\_http
 
 sudo killall stream\_command
 
+
+
+TODO, deal with the hardcoded cloudshark ip. Not sure where to put that, probably in time.lua "CloudSharkIP"
+
