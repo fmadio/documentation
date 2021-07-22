@@ -2,6 +2,8 @@
 
 ## \*\***Work in progress\*\*, contact support**
 
+### LXC Configuration
+
 Start by untaring the LXC container into the directory
 
 ```text
