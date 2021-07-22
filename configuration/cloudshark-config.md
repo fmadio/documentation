@@ -64,7 +64,9 @@ root@fmadio20v3-287:/mnt/store0/lxc/lib/lxc#
 
 ```
 
-FMADIO Configuration, edit config file
+### FMADIO Configuration
+
+edit config file
 
 ```text
 /mnt/store0/etc/time.lua
