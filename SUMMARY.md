@@ -13,6 +13,7 @@
 * [Scratch Disk \(EXT4\)](configuration/scratch-disk-ext4.md)
 * [Scratch Disk \(BTRFS\)](configuration/scratch-disk-btrfs.md)
 * [Management Interface](configuration/management-interface.md)
+* [Cloudshark Config](configuration/cloudshark-config.md)
 
 ## Settings
 
