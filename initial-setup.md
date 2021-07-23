@@ -83,7 +83,6 @@ local Config =
 
         "--output-buffercnt 1024",
         "--output-stdout",
-        "--output-stdout",
 --       "--output-espush",
 
         "--es-bulk-action create",
