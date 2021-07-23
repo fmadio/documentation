@@ -215,7 +215,7 @@ This is the JSON records PCAP2JSON generated, but written to a file.  Example sh
 fmadio@fmadio100v2-228U:/mnt/store0/tmp2$ cat stdout | head |jq
 {
   "create": {
-    "_index": "pcap2json_test7",
+    "_index": "pcap2json_index",
     "pipeline": null
   }
 }
@@ -285,7 +285,7 @@ fmadio@fmadio100v2-228U:/mnt/store0/tmp2$ cat stdout | head |jq
 }
 {
   "create": {
-    "_index": "pcap2json_test7",
+    "_index": "pcap2json_index",
     "pipeline": null
   }
 }
@@ -308,4 +308,164 @@ fmadio@fmadio100v2-228U:/mnt/store0/tmp2$ cat stdout | head |jq
 ```
 
 If your stdout file looks similar, ready to connect the system to Elastic Stack. If not please check the above steps again until stdout file looks correct.
+
+## Elastic Stack Push
+
+After the Test Run writing to file "stdout" is functioning correctly, next step is to connect and push that JSON data to Elastic Stack.
+
+First is checking the ES version, via CLI as below. We are using Elastic Stack 7.10+ \(7.10.1\)
+
+```javascript
+fmadio@fmadio100v2-228U:/mnt/store0/tmp2$ curl http://192.168.1.100:9200/
+{
+  "name" : "fmadio-lts.0",
+  "cluster_name" : "fmadio-lts",
+  "cluster_uuid" : "yfx5yWaUTUiXhQjZ0I67Ug",
+  "version" : {
+    "number" : "7.10.1",
+    "build_flavor" : "default",
+    "build_type" : "deb",
+    "build_hash" : "1c34507e66d7db1211f66f3513706fdf548736aa",
+    "build_date" : "2020-12-05T01:00:33.671820Z",
+    "build_snapshot" : false,
+    "lucene_version" : "8.7.0",
+    "minimum_wire_compatibility_version" : "6.8.0",
+    "minimum_index_compatibility_version" : "6.0.0-beta1"
+  },
+  "tagline" : "You Know, for Search"
+}
+fmadio@fmadio100v2-228U:/mnt/store0/tmp2$
+
+```
+
+### Elastic Search Mapping 
+
+Next create a default ES mapping per the following command. Please replace 192.168.1.100/9200 with your ES node address
+
+```javascript
+/usr/local/bin/curl -H "Content-Type: application/json"  -XPUT "192.168.1.100:9200/pcap2json_index?pretty" --data-binary "@mapping.json" | jq
+```
+
+The default mapping file is located below
+
+{% file src=".gitbook/assets/mapping.json" %}
+
+Example output below
+
+```javascript
+fmadio@fmadio100v2-228U:/mnt/store0/tmp2$ /usr/local/bin/curl -H "Content-Type: application/json"  -XPUT "192.168.2.147:9200/pcap2json_index?pretty" --data-binary "@mapping.json" | jq
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  4798  100    91  100  4707     31   1628  0:00:02  0:00:02 --:--:--  1659
+{
+  "acknowledged": true,
+  "shards_acknowledged": true,
+  "index": "pcap2json_index"
+}
+fmadio@fmadio100v2-228U:/mnt/store0/tmp2$
+
+```
+
+Next push a small part of stdout file manually to ES as follows. This writes the first 10 lines in the JSON file to the ES cluster
+
+```javascript
+ head -n 10 stdout  | /usr/local/bin/curl -H "Content-Type: application/json" -XPOST "192.168.1.100:9200/_bulk/?pretty" --data-binary "@-" | jq
+```
+
+The correct output showing indexing has been successful as below
+
+```javascript
+fmadio@fmadio100v2-228U:/mnt/store0/tmp2$ head -n 10 stdout  | /usr/local/bin/curl -H "Content-Type: application/json" -XPOST "192.168.1.100:9200/_bulk/?pretty" --data-binary "@-" | jq
+
+{
+  "took": 71,
+  "errors": false,
+  "items": [
+    {
+      "create": {
+        "_index": "pcap2json_index",
+        "_type": "_doc",
+        "_id": "_k1_03oBeu-Jzkwd7A06",
+        "_version": 1,
+        "result": "created",
+        "_shards": {
+          "total": 2,
+          "successful": 1,
+          "failed": 0
+        },
+        "_seq_no": 5000,
+        "_primary_term": 1,
+        "status": 201
+      }
+    },
+    {
+      "create": {
+        "_index": "pcap2json_index",
+        "_type": "_doc",
+        "_id": "_01_03oBeu-Jzkwd7A06",
+        "_version": 1,
+        "result": "created",
+        "_shards": {
+          "total": 2,
+          "successful": 1,
+          "failed": 0
+        },
+        "_seq_no": 5001,
+        "_primary_term": 1,
+        "status": 201
+      }
+    },
+
+```
+
+If the above is functioning correctly, can next push the output to ES
+
+### Elastic Search Offline Mode
+
+Pushing captures to ES in offline mode is good for lab/debug/troubleshooting a system. As its easier to control than the 24/7 running mode
+
+Start by updating the config file /opt/fmadio/etc/pcap2json.lua as follows. The only real difference is "--output-espush" is set instead of "--output-stdout".
+
+Ensure the "--es-host &lt;es node hostname&gt;:&lt;port&gt;:1e6" is set correctly
+
+```javascript
+local Config =
+{
+["General"] =
+{
+        IsMultiFE       = false,
+}
+,
+["pcap2json"] =
+{
+        "--flow-samplerate 1e9 ",
+        "--flow-index-depth 8",
+        "--flow-max 4e6",
+}
+,
+["backend"] =
+{
+        "--index-name pcap2json_index",
+
+        "--output-buffercnt 1024",
+        "--output-espush",
+
+        "--es-bulk-action create",
+        "--es-host 192.168.1.100:9200:1e6",
+}
+,
+["stream_cat"] =
+{
+}
+}
+return Config
+```
+
+Next run the same offline command as the STDOUT version above 
+
+```javascript
+sudo /opt/fmadio/analytics/pcap2json_realtime.lua  --offline interop17_20210716_0716
+```
+
+The output will look the same, except it will push data to the ES Host now instead of writing to a local file.
 
