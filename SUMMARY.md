@@ -12,3 +12,7 @@
 
 ## Troubleshooting
 
+---
+
+* [Logfiles](logfiles.md)
+
