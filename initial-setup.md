@@ -1,3 +1,7 @@
+---
+description: configuring pcap2json
+---
+
 # Initial Setup
 
 pcap2json is a high speed utility that converts PCAP data into JSON flow snapshots. This allows highspeed 10Gbps-100Gbps of capture data size be reduced by x10 into JSON records which can be ingested by an Elastic Stack cluster.
