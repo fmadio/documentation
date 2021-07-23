@@ -1,0 +1,220 @@
+{
+  "mappings": {
+    "dynamic": false,
+    "date_detection": false,
+    "properties": {
+      "timestamp": {
+        "type": "date",
+        "format": "epoch_millis"
+      },
+      "device": {
+        "type": "constant_keyword"
+      },
+      "hash": {
+        "type": "keyword",
+        "norms": false
+      },
+      "macAddr": {
+        "type": "keyword",
+        "norms": false
+      },
+      "macSrc": {
+        "type": "keyword",
+        "copy_to": "macAddr",
+        "norms": false
+      },
+      "macDst": {
+        "type": "keyword",
+        "copy_to": "macAddr",
+        "norms": false
+      },
+      "macProto": {
+        "type": "keyword",
+        "norms": false
+      },
+      "vlan0": {
+        "type": "keyword",
+        "null_value": "none",
+        "norms": false
+      },
+      "mpls0TC": {
+        "type": "keyword",
+        "null_value": "none",
+        "norms": false
+      },
+      "ipv4Src": {
+        "type": "ip"
+      },
+      "hostSrc": {
+        "type": "keyword",
+        "norms": false
+      },
+      "ipv4Dst": {
+        "type": "ip"
+      },
+      "hostDst": {
+        "type": "keyword",
+        "norms": false
+      },
+      "ipv4Proto": {
+        "type": "keyword",
+        "norms": false
+      },
+      "ipv4DSCP": {
+        "type": "keyword",
+        "norms": false
+      },
+      "ipv4Frag": {
+        "type": "integer",
+        "index": false
+      },
+      "portSrc": {
+        "type": "keyword",
+        "norms": false
+      },
+      "portDst": {
+        "type": "keyword",
+        "norms": false
+      },
+      "application": {
+        "type": "keyword",
+        "null_value": "undefined",
+        "norms": false
+      },
+      "tag0": {
+        "type": "keyword",
+        "null_value": "unknown",
+        "norms": false
+      },
+      "tag1": {
+        "type": "keyword",
+        "null_value": "unknown",
+        "norms": false
+      },
+      "tag2": {
+        "type": "keyword",
+        "null_value": "unknown",
+        "norms": false
+      },
+      "tcpFin": {
+        "type": "integer",
+        "index": false
+      },
+      "tcpSyn": {
+        "type": "integer",
+        "index": false
+      },
+      "tcpSynAck": {
+        "type": "integer",
+        "index": false
+      },
+      "tcpSackPerm": {
+        "type": "integer",
+        "index": false
+      },
+      "tcpRst": {
+        "type": "integer",
+        "index": false
+      },
+      "tcpSack": {
+        "type": "integer",
+        "index": false
+      },
+      "tcpZeroWindow": {
+        "type": "integer",
+        "index": false
+      },
+      "totalPackets": {
+        "type": "long",
+        "index": false
+      },
+      "totalBytes": {
+        "type": "long",
+        "index": false
+      },
+      "totalBits": {
+        "type": "long",
+        "index": false
+      },
+      "totalFCS": {
+        "type": "long",
+        "index": false
+      },
+      "geoipSrc": {
+        "properties": {
+          "location": {
+            "type": "geo_point"
+          },
+          "country_name": {
+            "type": "keyword",
+            "null_value": "unknown",
+            "norms": false
+          },
+          "country_iso_code": {
+            "type": "keyword",
+            "null_value": "unknown",
+            "norms": false
+          },
+          "city_name": {
+            "type": "keyword",
+            "null_value": "unknown",
+            "norms": false
+          },
+          "asn": {
+            "type": "keyword",
+            "null_value": "unknown",
+            "norms": false
+          },
+          "org": {
+            "type": "keyword",
+            "null_value": "unknown",
+            "norms": false
+          },
+          "isp": {
+            "type": "keyword",
+            "null_value": "unknown",
+            "norms": false
+          }
+        }
+      },
+      "geoipDst": {
+        "properties": {
+          "location": {
+            "type": "geo_point"
+          },
+          "country_name": {
+            "type": "keyword",
+            "null_value": "unknown",
+            "norms": false
+          },
+          "country_iso_code": {
+            "type": "keyword",
+            "null_value": "unknown",
+            "norms": false
+          },
+          "city_name": {
+            "type": "keyword",
+            "null_value": "unknown",
+            "norms": false
+          },
+          "asn": {
+            "type": "keyword",
+            "null_value": "unknown",
+            "norms": false
+          },
+          "org": {
+            "type": "keyword",
+            "null_value": "unknown",
+            "norms": false
+          },
+          "isp": {
+            "type": "keyword",
+            "null_value": "unknown",
+            "norms": false
+          }
+        }
+      }
+    }
+  }
+}
+
