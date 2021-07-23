@@ -6,7 +6,7 @@ pcap2json pushes data directly to the Elastics Stack cluster, typically over HTT
 
 ![High Level Overview of PCAP2JSON](.gitbook/assets/image%20%2892%29.png)
 
-### PCAP2JON Plugin
+### PCAP2JSON Plugin
 
 pcap2json is created using FMADIO Packet Capture plugin architecture. It requires the plugin file to load the plugin as follows using the command
 
