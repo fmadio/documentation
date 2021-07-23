@@ -467,5 +467,7 @@ Next run the same offline command as the STDOUT version above
 sudo /opt/fmadio/analytics/pcap2json_realtime.lua  --offline interop17_20210716_0716
 ```
 
-The output will look the same, except it will push data to the ES Host now instead of writing to a local file.
+The output will look the same, except it will push data to the ES Host now instead of writing to a local file. 
+
+Trouble shooting and debug please see the logfiles [https://docs.fmad.io/fmadio-documentation/v/pcap2json/logfiles](https://docs.fmad.io/fmadio-documentation/v/pcap2json/logfiles)
 
