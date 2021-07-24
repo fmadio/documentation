@@ -8,7 +8,7 @@ By default pcap2json uses its builtin JSON field definition. This can however be
 
 option in  /opt/fmadio/etc/pcap2json.lua  Section "backend"
 
-Default JSON format \(2021/7/24
+Default JSON format \(2021/7/24\)
 
 ```javascript
 {
