@@ -10,12 +10,157 @@ option in  /opt/fmadio/etc/pcap2json.lua  Section "backend"
 
 Default JSON format \(2021/7/24
 
-```text
-{\"timestamp\":@TIMESTAMP@,\"TS\":@TS@,\"device\":@DEVICE@,\"hashHalf\":@HASH_HALF@,\"hashFull\":@HASH_FULL@,\"flowCount\":@FLOWCNT@,\"macSrc\":@MACSRC@,\"macDst\":@MACDST@,\"macProto\":@MACPROTO@,\"vlan0\":@VLAN0@,\"mpls0TC\":@MPLS0TC@,\"ipv4Src\":@IPV4SRC@,\"hostSrc\":@SRCIP_HOSTNAME@,\"ipv4Dst\":@IPV4DST@,\"hostDst\":@DSTIP_HOSTNAME@,\"ipv4Proto\":@IPV4PROTO@,\"ipv4DSCP\":@IPV4DSCP@,\"ipv4Frag\":@IPV4FRAG@,\"portSrc\":@PORTSRC@,\"portDs
-t\":@PORTDST@,\"application\":@APPLICATION@,\"tag0\":@TAG0@,\"tag1\":@TAG1@,\"tag2\":@TAG2@,\"tcpFin\":@TCPFIN@,\"tcpSyn\":@TCPSYN@,\"tcpSynAck\":@TCPSYNACK@,\"tcpSackPerm\":@TCPSYNSACK@,\"tcpRst\":@TCPRST@,\"tcpSack\":@TCPSACK@,\"tcpZeroWindow\":@TCPWINZERO@,\"totalPackets\":@TOTALPKT@,\"totalBytes\":@TOTALBYTE@,\"totalBits\":@TOTALBIT@,\"totalFCS\":@TOTALFCS@,\"geoipSrc\":{\"location\":@SRCIP_LOCATION@,\"country_name\":@SRCIP_COUNTRY@,\"country_iso_code\":@SRCIP_COUNTRY_CODE@,\"city_name\":@SRCIP_CITY@,\"asn\":@SRCIP_ASN@,\"org\":@SRCIP_ORG@,\"isp\":@SRCIP_ISP@},\"geoipDst\":{\"location\":@DSTIP_LOCATION@,\"country_name\":@DSTIP_COUNTRY@,\"country_iso_code\":@DSTIP_COUNTRY_CODE@,\"city_name\":@DSTIP_CITY@,\"asn\":@DSTIP_ASN@,\"org\":@DSTIP_ORG@,\"isp\":@DSTIP_ISP@},\"tcpRTTNet\":@TCP_RTT_NET@,\"tcpRTTApp\":@TCP_RTT_APP@,\"tcpWindowMin\":@TCP_WINDOW_MIN@,\"tcpWindowMax\":@TCP_WINDOW_MAX@,\"tcpWindowMean\":@TCP_WINDOW_MEAN@,\"decapType\":@DECAP_TYPE@,\"decapIPv4Src\":@DECAP_IPV4_SRC@,\"decapIPv4Dst\":@DECAP_IPV4_DST@,\"decapIpv4Proto\":@DECAP_IPV4_PROTO@,\"decapPortSrc\":@DECAP_PORT_SRC@,\"decapPortDst\":@DECAP_PORT_DST@}"
+```javascript
+{
+\"timestamp\":@TIMESTAMP@,
+\"TS\":@TS@,
+\"device\":@DEVICE@,
+\"hashHalf\":@HASH_HALF@,
+\"hashFull\":@HASH_FULL@,
+\"flowCount\":@FLOWCNT@,
+\"macSrc\":@MACSRC@,
+\"macDst\":@MACDST@,
+\"macProto\":@MACPROTO@,
+\"vlan0\":@VLAN0@,
+\"mpls0TC\":@MPLS0TC@,
+\"ipv4Src\":@IPV4SRC@,
+\"hostSrc\":@SRCIP_HOSTNAME@,
+\"ipv4Dst\":@IPV4DST@,
+\"hostDst\":@DSTIP_HOSTNAME@,
+\"ipv4Proto\":@IPV4PROTO@,
+\"ipv4DSCP\":@IPV4DSCP@,
+\"ipv4Frag\":@IPV4FRAG@,
+\"portSrc\":@PORTSRC@,
+\"portDst\":@PORTDST@,
+\"application\":@APPLICATION@,
+\"tag0\":@TAG0@,
+\"tag1\":@TAG1@,
+\"tag2\":@TAG2@,
+\"tcpFin\":@TCPFIN@,
+\"tcpSyn\":@TCPSYN@,
+\"tcpSynAck\":@TCPSYNACK@,
+\"tcpSackPerm\":@TCPSYNSACK@,
+\"tcpRst\":@TCPRST@,
+\"tcpSack\":@TCPSACK@,
+\"tcpZeroWindow\":@TCPWINZERO@,
+\"totalPackets\":@TOTALPKT@,
+\"totalBytes\":@TOTALBYTE@,
+\"totalBits\":@TOTALBIT@,
+\"totalFCS\":@TOTALFCS@,
+\"geoipSrc\":
+{
+    \"location\":@SRCIP_LOCATION@,
+    \"country_name\":@SRCIP_COUNTRY@,
+    \"country_iso_code\":@SRCIP_COUNTRY_CODE@,
+    \"city_name\":@SRCIP_CITY@,
+    \"asn\":@SRCIP_ASN@,
+    \"org\":@SRCIP_ORG@,
+    \"isp\":@SRCIP_ISP@
+},
+\"geoipDst\":
+{
+    \"location\":@DSTIP_LOCATION@,
+    \"country_name\":@DSTIP_COUNTRY@,
+    \"country_iso_code\":@DSTIP_COUNTRY_CODE@,
+    \"city_name\":@DSTIP_CITY@,
+    \"asn\":@DSTIP_ASN@,
+    \"org\":@DSTIP_ORG@,
+    \"isp\":@DSTIP_ISP@
+},
+\"tcpRTTNet\":@TCP_RTT_NET@,
+\"tcpRTTApp\":@TCP_RTT_APP@,
+\"tcpWindowMin\":@TCP_WINDOW_MIN@,
+\"tcpWindowMax\":@TCP_WINDOW_MAX@,
+\"tcpWindowMean\":@TCP_WINDOW_MEAN@,
+\"decapType\":@DECAP_TYPE@,
+\"decapIPv4Src\":@DECAP_IPV4_SRC@,
+\"decapIPv4Dst\":@DECAP_IPV4_DST@,
+\"decapIpv4Proto\":@DECAP_IPV4_PROTO@,
+\"decapPortSrc\":@DECAP_PORT_SRC@,
+\"decapPortDst\":@DECAP_PORT_DST@
+}"
 ```
 
-Below is a reference for all the fields
+### Example JSON Flow
+
+```javascript
+{
+  "timestamp": 1497015593700,
+  "TS": "13:39:53.700.000.000",
+  "device": "fmadio100v2-228U",
+  "hashHalf": "810a2feb5dcdb1f602f913c7de2e90b789e635e9",
+  "hashFull": "a7cbb9296d6c642b34ef295a902a9fda8484a178",
+  "flowCount": 36365,
+  "macSrc": "7c:e2:ca:bd:97:d9",
+  "macDst": "00:0e:52:80:00:16",
+  "macProto": "IPv4",
+  "vlan0": null,
+  "mpls0TC": null,
+  "ipv4Src": "202.17.220.140",
+  "hostSrc": "202.17.220.140",
+  "ipv4Dst": "208.67.222.222",
+  "hostDst": "208.67.222.222",
+  "ipv4Proto": "ICMP",
+  "ipv4DSCP": null,
+  "ipv4Frag": null,
+  "portSrc": null,
+  "portDst": null,
+  "application": "(ICMP     0)",
+  "tag0": null,
+  "tag1": null,
+  "tag2": null,
+  "tcpFin": null,
+  "tcpSyn": null,
+  "tcpSynAck": null,
+  "tcpSackPerm": null,
+  "tcpRst": null,
+  "tcpSack": null,
+  "tcpZeroWindow": null,
+  "totalPackets": 1,
+  "totalBytes": 74,
+  "totalBits": 592,
+  "totalFCS": 0,
+  "geoipSrc": {
+    "location": [
+      139.69,
+      35.68999
+    ],
+    "country_name": "Japan",
+    "country_iso_code": "JP",
+    "city_name": null,
+    "asn": null,
+    "org": null,
+    "isp": "Research Organization of Information and Systems"
+  },
+  "geoipDst": {
+    "location": [
+      -74.4774,
+      41.45349
+    ],
+    "country_name": "United States",
+    "country_iso_code": "US",
+    "city_name": "Middletown",
+    "asn": 36692,
+    "org": "OPENDNS",
+    "isp": "Cisco OpenDNS"
+  },
+  "tcpRTTNet": null,
+  "tcpRTTApp": null,
+  "tcpWindowMin": null,
+  "tcpWindowMax": null,
+  "tcpWindowMean": null,
+  "decapType": "ICMP Destination Unreachable",
+  "decapIPv4Src": "208.67.222.222",
+  "decapIPv4Dst": "202.17.220.140",
+  "decapIpv4Proto": "UDP",
+  "decapPortSrc": 53,
+  "decapPortDst": 64632
+
+```
+
+## Reference
+
+The following is a reference for all the fields
 
 ### @TIMESTAMP@
 
