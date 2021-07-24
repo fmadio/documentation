@@ -1,4 +1,4 @@
-# JSON Field definition
+# JSON Fields
 
 By default pcap2json uses its builtin JSON field definition. This can however be overridden with a custom JSON format and file using 
 
