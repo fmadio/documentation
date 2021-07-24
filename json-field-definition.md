@@ -21,6 +21,16 @@ Below is a reference for all the fields
 
 Outputs timestamp in MSec epoch time
 
+```javascript
+{
+  .
+  .
+  "timestamp": 1497015593700,
+  .
+  .
+}
+```
+
 ### @TCP\_RTT\_NET@
 
 Outputs the network TCP RTT in milliseconds
@@ -102,6 +112,126 @@ NOTE: This does take into account full Window Scaling from the SYN/SYNACK connec
   "tcpWindowMean": 89,
 .
 .
+}
+```
+
+### @DECAP\_TYPE@
+
+If packet de-encapsulation was performance, indicates what kind of encapsulation
+
+| Value | Description                                                                    |
+| :--- | :--- |
+| ICMP Destination Unreachable | ICMP Code 3 |
+| ICMP Time Exceeded | ICMP Code 11 |
+| GRE | GRE Tunnel |
+
+```javascript
+{
+  .
+  .
+  "decapType": "ICMP Destination Unreachable",
+  "decapIPv4Src": "208.67.222.222",
+  "decapIPv4Dst": "202.17.220.140",
+  "decapIpv4Proto": "UDP",
+  "decapPortSrc": 53,
+  "decapPortDst": 64632
+  .
+  .
+}
+```
+
+### @DECAP\_IPV4\_SRC@
+
+For de-encapsulated packets, the IPv4 Source address of the INNER packet
+
+```javascript
+{
+  .
+  .
+  "decapType": "ICMP Destination Unreachable",
+  "decapIPv4Src": "208.67.222.222",
+  "decapIPv4Dst": "202.17.220.140",
+  "decapIpv4Proto": "UDP",
+  "decapPortSrc": 53,
+  "decapPortDst": 64632
+  .
+  .
+}
+```
+
+### @DECAP\_IPV4\_DST@
+
+For de-encapsulated packets, the IPv4 Destination address of the INNER packer
+
+```javascript
+{
+  .
+  .
+  "decapType": "ICMP Destination Unreachable",
+  "decapIPv4Src": "208.67.222.222",
+  "decapIPv4Dst": "202.17.220.140",
+  "decapIpv4Proto": "UDP",
+  "decapPortSrc": 53,
+  "decapPortDst": 64632
+  .
+  .
+}
+```
+
+### @DECAP\_IPV4\_PROTO@
+
+For de-encapsulated packets the IPv4 Protocol of the INNER packet
+
+```javascript
+{
+  .
+  .
+  "decapType": "ICMP Destination Unreachable",
+  "decapIPv4Src": "208.67.222.222",
+  "decapIPv4Dst": "202.17.220.140",
+  "decapIpv4Proto": "UDP",
+  "decapPortSrc": 53,
+  "decapPortDst": 64632
+  .
+  .
+}
+```
+
+### @DECAP\_PORT\_SRC@
+
+For de-encapsulated packets the Source Port of the INNER TCP or UDP packet
+
+```javascript
+{
+  .
+  .
+  "decapType": "ICMP Destination Unreachable",
+  "decapIPv4Src": "208.67.222.222",
+  "decapIPv4Dst": "202.17.220.140",
+  "decapIpv4Proto": "UDP",
+  "decapPortSrc": 53,
+  "decapPortDst": 64632
+  .
+  .
+}
+```
+
+### @DECAP\_PORT\_DST@
+
+For de-encapsulated packets the Destination Port of the INNER TCP or UDP packet
+
+```javascript
+{
+  .
+  .
+  "decapType": "ICMP Destination Unreachable",
+  "decapIPv4Src": "208.67.222.222",
+  "decapIPv4Dst": "202.17.220.140",
+  "decapIpv4Proto": "UDP",
+  "decapPortSrc": 53,
+  "decapPortDst": 64632
+  .
+  .
 }
 ```
 
