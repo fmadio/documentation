@@ -416,8 +416,9 @@ TimeRange PCAP Download
 {% endapi-method-summary %}
 
 {% api-method-description %}
-Download a timerange of pcap data that can cross over a maximum of two pcap files.  
-The timerange results may be a portion of a single pcap stream, or a portion of two streams that share a connected time series.
+Download a timerange of pcap data without any capture file referenced. The system will search all captures for the specified timerange.  
+  
+At most it can cross two pcap files
 {% endapi-method-description %}
 
 {% api-method-spec %}
@@ -428,15 +429,20 @@ Maximum nanosecond of packets to download.
 {% endapi-method-parameter %}
 
 {% api-method-parameter name="TSMode" type="string" required=false %}
-Time Range mode to use for time: msecs or nanos..
+Time Range mode to use for time:   
+  
+nsec    \| epoch in  nano seconds \(default\)  
+usec    \| epoch in micro seconds  
+msec   \| epoch in milli seconds  
+sec:     \| epoch in seconds
 {% endapi-method-parameter %}
 
 {% api-method-parameter name="TSBegin" type="integer" required=true %}
-Start time in nanoseconds epoch.
+Start time in epoch \(default nano seconds\)
 {% endapi-method-parameter %}
 
 {% api-method-parameter name="TSEnd" type="integer" required=true %}
-Stop time in nanoseconds epoch.
+Stop time in epoch \(default nano seconds\).
 {% endapi-method-parameter %}
 {% endapi-method-query-parameters %}
 {% endapi-method-request %}
