@@ -434,7 +434,7 @@ Time Range mode to use for time:
 nsec    \| epoch in  nano seconds \(default\)  
 usec    \| epoch in micro seconds  
 msec   \| epoch in milli seconds  
-sec:     \| epoch in seconds
+sec:      \| epoch in seconds
 {% endapi-method-parameter %}
 
 {% api-method-parameter name="TSBegin" type="integer" required=true %}
