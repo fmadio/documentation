@@ -84,11 +84,13 @@ This is the idle packet activity timeout. If no _**new**_ packets are received w
     ["FlushIdle"]   = 1e9,
 ```
 
-### MidnightRollDisable
+### ManualOffset
 
-Disables captures midnight roll. Typically used when capture roll Time is different to the local system clocks Midnight
+Disables captures midnight roll and instead applies a manual offset to the capture roll time
+
+Value in nanoseconds, example is shoft of 9H backwards from the local timezone
 
 ```text
-    ["MidnightRollDisable"]   = true,
+    ["MidnightRollDisable"]   = -9*60*1e9,
 ```
 
