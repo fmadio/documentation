@@ -84,3 +84,11 @@ This is the idle packet activity timeout. If no _**new**_ packets are received w
     ["FlushIdle"]   = 1e9,
 ```
 
+### MidnightRollDisable
+
+Disables captures midnight roll. Typically used when capture roll Time is different to the local system clocks Midnight
+
+```text
+    ["MidnightRollDisable"]   = true,
+```
+
