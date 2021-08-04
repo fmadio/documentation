@@ -2,6 +2,8 @@
 
 FMADIO Packet captures systems have the ability to get &lt; 100nsec global world time synchronization using PTPv2 + PPS signal.
 
+![Example SMA PPS Connector \(FMAD100G\)](../.gitbook/assets/image%20%2895%29.png)
+
 ## Pulse Per Second \(PPS\) Clock 
 
 PPS time synchronization is a one pule per second signal, typically from a PTP Grand Master, or GPS based global time master. Its connected over a SMA connector directly to the FMADIO Capture FPGA.
@@ -26,7 +28,7 @@ To confirm PPS signal is active please check the log file
 
 The following screenshot shows an example PPS signal incrementing every 1 second
 
-![PPS Signal Incrementing](../.gitbook/assets/image%20%2895%29.png)
+![PPS Signal Incrementing](../.gitbook/assets/image%20%2896%29.png)
 
 If the PPS Cnt is not incrementing, there may be a problem with the SMA connection or PPS voltage/pulse specification. Please contact support for further assistance.
 
