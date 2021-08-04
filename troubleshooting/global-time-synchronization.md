@@ -11,9 +11,9 @@ The PPS signal disciplines the start of the global time second, it does not set 
 ```text
 Pulese 0 | YYYYY-MM-DD HH:MM:DD:(SS + 0) 000.000.000  nanos
 Pulese 1 | YYYYY-MM-DD HH:MM:DD:(SS + 1) 000.000.000  nanos
-Pulese 2 | YYYYY-MM-DD HH:MM:DD:(SS + 1) 000.000.000  nanos
-Pulese 3 | YYYYY-MM-DD HH:MM:DD:(SS + 1) 000.000.000  nanos
-Pulese 4 | YYYYY-MM-DD HH:MM:DD:(SS + 1) 000.000.000  nanos
+Pulese 2 | YYYYY-MM-DD HH:MM:DD:(SS + 2) 000.000.000  nanos
+Pulese 3 | YYYYY-MM-DD HH:MM:DD:(SS + 3) 000.000.000  nanos
+Pulese 4 | YYYYY-MM-DD HH:MM:DD:(SS + 4) 000.000.000  nanos
 ```
 
 FMADIO system uses PTPv2 to set the YYYY-MM-DD HH:MM:SS part of the time.
