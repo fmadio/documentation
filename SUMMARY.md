@@ -23,6 +23,7 @@
 ## Troubleshooting
 
 * [System Recovery](troubleshooting/system-recovery.md)
+* [Global Time Synchronization](troubleshooting/global-time-synchronization.md)
 
 ## Maintenance
 
