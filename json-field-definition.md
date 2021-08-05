@@ -178,7 +178,17 @@ Outputs timestamp in MSec epoch time
 
 ### @TCP\_RTT\_NET@
 
-Outputs the network TCP RTT in milliseconds
+Outputs the network TCP RTT in milliseconds.
+
+Calculation is Half Duplex
+
+Unit is Milliseconds
+
+| Use Case | Calculation | Description |
+| :--- | :--- | :--- |
+| SYN/SYN-ACK | SYN-ACK.TS - SYN.TS | Initial Handshake RTT calculation, when Flow direction is connect\(\) |
+| SYN-ACK/ACK | ACK.TS - SYN-ACK.TS | Initial TCP Handshake RTT when the Flow direction is accept\(\). \(not released yet\) |
+| TCP Segment | ACK.TS - Push.TS | When the expected Ack Sequence number matches, the corresponding TCP Segment Push. Indicates TCP Peer has acknowledge receiving of the payload. This requires TCP ACK packet to be a 0 byte acknowledge only. Please note DACK  and related TCP options may skew this result.  [https://en.wikipedia.org/wiki/TCP\_delayed\_acknowledgment](https://en.wikipedia.org/wiki/TCP_delayed_acknowledgment) |
 
 ```javascript
 {
@@ -195,6 +205,20 @@ Outputs the network TCP RTT in milliseconds
 
 Outputs the Application Request -&gt; Response network round trip in milliseconds
 
+Calculation is Half Duplex
+
+Unit is Milliseconds
+
+|  |
+| :--- |
+
+
+![](.gitbook/assets/image%20%2897%29.png)
+
+Time different between between application Push to Push. e.g. HTTP Get -&gt; 200 OK Response
+
+tcpRTTApp = TS1 - TS0
+
 ```javascript
 {
   .
@@ -210,7 +234,9 @@ Outputs the Application Request -&gt; Response network round trip in millisecond
 
 Outputs the minimum TCP window size in Bytes
 
-NOTE: This does take into account full Window Scaling from the SYN/SYNACK connection. If no SYN/SYNCACK has been processed this filed outputs NULL{
+Calculation is Half Duplex
+
+NOTE: This does take into account full Window Scaling from the SYN/SYNACK connection. If no SYN/SYNCACK has been processed this filed outputs NULL
 
 ```javascript
 {
@@ -227,6 +253,8 @@ NOTE: This does take into account full Window Scaling from the SYN/SYNACK connec
 ### @TCP\_WINDOW\_MAX@
 
 Outputs the maximum TCP window size in Bytes
+
+Calculation is Half Duplex
 
 NOTE: This does take into account full Window Scaling from the SYN/SYNACK connection. If no SYN/SYNCACK has been processed this filed outputs NULL
 
@@ -245,6 +273,8 @@ NOTE: This does take into account full Window Scaling from the SYN/SYNACK connec
 ### @TCP\_WINDOW\_MEAN@
 
 Outputs the arithmetic mean TCP window size in Bytes
+
+Calculation is Half Duplex
 
 NOTE: This does take into account full Window Scaling from the SYN/SYNACK connection. If no SYN/SYNCACK has been processed this filed outputs NULL
 
