@@ -190,15 +190,15 @@ Unit is Milliseconds
 | SYN-ACK/ACK | ACK.TS - SYN-ACK.TS | Initial TCP Handshake RTT when the Flow direction is accept\(\). \(not released yet\) |
 | TCP Segment | ACK.TS - Push.TS | When the expected Ack Sequence number matches, the corresponding TCP Segment Push. Indicates TCP Peer has acknowledge receiving of the payload. This requires TCP ACK packet to be a 0 byte acknowledge only. Please note DACK  and related TCP options may skew this result.  [https://en.wikipedia.org/wiki/TCP\_delayed\_acknowledgment](https://en.wikipedia.org/wiki/TCP_delayed_acknowledgment) |
 
-Case SYN/SYN-ACK, tcpRTTNet = TS1 - TS0 with respect to the Half Duplex Flow
+**Case SYN/SYN-ACK**, tcpRTTNet = TS1 - TS0 with respect to the Half Duplex Flow
 
 ![TCP RTT SYN/SYN-ACK](.gitbook/assets/image%20%28103%29.png)
 
-Case SYN-ACK/ACK, tcpRTTNet = TS2 - T1 with respect to the Half Duplex Flow
+**Case SYN-ACK/ACK**, tcpRTTNet = TS2 - T1 with respect to the Half Duplex Flow
 
 ![TCP RTT SYN-ACK/ACK](.gitbook/assets/image%20%28102%29.png)
 
-TCP Segment ACK - Push  = TS101 - 100
+**Cast TCP Segment Push/ACK**   tcpRTTNet = TS101 - 100
 
 ![TCP Push RTT Half Duplex](.gitbook/assets/image%20%28100%29.png)
 
