@@ -198,7 +198,11 @@ Unit is Milliseconds
 
 ![TCP RTT SYN-ACK/ACK](.gitbook/assets/image%20%28102%29.png)
 
-**Cast TCP Segment Push/ACK**   tcpRTTNet = TS101 - 100
+**Cast TCP Segment Push/ACK**   
+
+tcpRTTNet = TS101 - TS100
+
+tcpRTTNet = TS201 - TS200
 
 ![TCP Push RTT Half Duplex](.gitbook/assets/image%20%28100%29.png)
 
