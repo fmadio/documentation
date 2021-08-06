@@ -1,24 +1,6 @@
-# ICMP Overwrite
+# De-Encapsulation
 
-ICMP Overwrite is a feature enabling ICMP Unreachable \(Type 3\) and TimeExceed \(Type 11\) Packets to overwrite the network flow.
-
-This enables exact tracking of network flows that are rejected by a Router/Firewall 
-
-Enabling the feature set the configuration file in /opt/fmadio/etc/pcap2json.lua as follows
-
-```lua
-
-local Config =
-{
-["General"] =
-{
-    IsMultiFE       = true,
-    IsICMPOverwrite = true,
-}
-,
-```
-
-Setting IsICMPOverwrite = true enables the feature, by default the feature is disabled.
+PCAP2JSON can do basic packet de-encapsulation. Specifically ICMP and IPv4 GRE, these fields are populated in the decap\* JSON fields. Please note the de-encapsulation is include in the unique half duplex flow calculation.
 
 Example output 
 
@@ -89,20 +71,6 @@ Example output
 }
 
 ```
-
-The specific fields are icmpUnreach, icmpTimeout and icmpOverwrite
-
-**icmpUnreach**
-
-* this is the total number of packets counted for this half duplex flow with ICMP Unreachable set
-
-**icmpTimeout**
-
-* total number of packets for this half duplex flow with the ICMP Timeout set
-
-**icmpOverwrite**
-
-* boolean flag indicating this flow is generated from ICMP sourced packets. e.g the IPv4 header which is appened to the ICMP message for rejected packets
 
 
 
