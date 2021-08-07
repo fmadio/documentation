@@ -392,6 +392,34 @@ For de-encapsulated packets the IPv4 Protocol of the INNER packet
 }
 ```
 
+### @DECAP\_IPV4\_DSCP@
+
+This is the inner IPv4 DSCP field following table shows the current enumeration. If an unknown value is found the text output is a hexadecimal string literal.
+
+| Value \(In Hex\) | JSON String |
+| :--- | :--- |
+| 0x2e | EF |
+| 0x0a | AF11 |
+| 0x0c | AF12 |
+| 0x0e | AF13 |
+| 0x12 | AF21 |
+| 0x14 | AF22 |
+| 0x16 | AF23 |
+| 0x1a | AF31 |
+| 0x1c | AF32 |
+| 0x1e | AF33 |
+| 0x22 | AF41 |
+| 0x24 | AF42 |
+| 0x26 | AF43 |
+| 0x08 | CS1 |
+| 0x10 | CS2 |
+| 0x18 | CS3 |
+| 0x20 | CS4 |
+| 0x28 | CS5 |
+| 0x30 | CS6 |
+| 0x38 | CS7 |
+| default | 0xXX  \(hexadecimal print\) |
+
 ### @DECAP\_PORT\_SRC@
 
 For de-encapsulated packets the Source Port of the INNER TCP or UDP packet
