@@ -394,9 +394,15 @@ For de-encapsulated packets the IPv4 Protocol of the INNER packet
 
 ### @DECAP\_IPV4\_DSCP@
 
-This is the inner IPv4 DSCP field following table shows the current enumeration. If an unknown value is found the text output is a hexadecimal string literal.
+Version:608+
 
-| Value \(In Hex\) | JSON String |
+| This is the INNER IPv4 DSCP field following table shows the current enumeration. If an unknown value is found the text output is a hexadecimal string literal. |
+| :--- |
+
+
+Value \(In Hex\)
+
+| JSON String |  |
 | :--- | :--- |
 | 0x2e | EF |
 | 0x0a | AF11 |
