@@ -420,6 +420,27 @@ This is the inner IPv4 DSCP field following table shows the current enumeration.
 | 0x38 | CS7 |
 | default | 0xXX  \(hexadecimal print\) |
 
+Example JSON
+
+```javascript
+{
+    .
+    .
+    .
+     "decapType": "ICMP Time Exceeded",
+     "decapIPv4Src": "130.128.197.9",
+     "decapIPv4Dst": "111.87.220.242",
+     "decapIpv4Proto": "ICMP",
+     "decapIpv4DSCP": "AF13",
+     "decapPortSrc": 0,
+     "decapPortDst": 0
+     .
+     .
+     .
+}
+
+```
+
 ### @DECAP\_PORT\_SRC@
 
 For de-encapsulated packets the Source Port of the INNER TCP or UDP packet
