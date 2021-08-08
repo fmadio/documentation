@@ -502,10 +502,6 @@ Uses the GEO IP Mapping to search a a textual description of the De-Encapsulated
 }
 ```
 
-### @DECAP\_DSTIP\_HOSTNAME@
-
-See @DECAP\_SRCIP\_HOSTNAME@  for description
-
 ### @DECAP\_SRCIP\_LOCATION@
 
 De-encapsulated Source IP GeoIP Location. This includes the Longitude / Latitude value
@@ -648,5 +644,7 @@ De-Encapsulated Source IP ISP Name
 
 ### @DECAP\_DSTIP\_HOSTNAME@
 
+See @DECAP\_SRCIP\_HOSTNAME@  for description
 
+### 
 
