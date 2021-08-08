@@ -485,3 +485,39 @@ For de-encapsulated packets the Destination Port of the INNER TCP or UDP packet
 }
 ```
 
+### @DECAP\_SRCIP\_HOSTNAME@
+
+Uses the GEO IP Mapping to search a a textual description of the De-Encapsulated source IPv4 address. If a mapping is not found, the standard IPV4 numeric address is used.
+
+```javascript
+{
+  .
+  .
+  "decapIPv4Src": "45.0.192.14",
+  "decapIPv4Dst": "10.1.119.196",
+  "decapHostSrc": "45.0.192.14",
+  "decapHostDst": "Reserved Private",
+  .
+  .
+}
+```
+
+### @DECAP\_DSTIP\_HOSTNAME@
+
+Uses the GEO IP Mapping to search a a textual description of the De-Encapsulated destination IPv4 address. If a mapping is not found, the standard IPV4 numeric address is used.
+
+```javascript
+{
+  .
+  .
+  "decapIPv4Src": "45.0.192.14",
+  "decapIPv4Dst": "10.1.119.196",
+  "decapHostSrc": "45.0.192.14",
+  "decapHostDst": "Reserved Private",
+  .
+  .
+}
+```
+
+
+
