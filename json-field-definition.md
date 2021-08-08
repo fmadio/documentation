@@ -646,7 +646,31 @@ De-Encapsulated Source IP ISP Name
 
 See @DECAP\_SRCIP\_HOSTNAME@  for description 
 
-[https://docs.fmad.io/fmadio-documentation/v/pcap2json/json-field-definition\#decap\_srcip\_hostname](https://docs.fmad.io/fmadio-documentation/v/pcap2json/json-field-definition#decap_srcip_hostname)
+### @DECAP\_DSTIP\_LOCATION@
 
-### 
+See @DECAP\_SRCIP\_LOCATION@  for description 
+
+### @DECAP\_DSTIP\_COUNTRY@
+
+See @DECAP\_SRCIP\_COUNTRY@  for description 
+
+### @DECAP\_DSTIP\_COUNTRY\_CODE@
+
+See @@DECAP\_DSTIP\_COUNTRY\_CODE@
+
+### @DECAP\_DSTIP\_CITY@
+
+See @DECAP\_SRCIP\_CITY@  for description 
+
+### @DECAP\_DSTIP\_ASN@
+
+See @DECAP\_SRCIP\_ASN@  for description 
+
+### @DECAP\_DSTIP\_ORG@
+
+See @DECAP\_SRCIP\_ORG@  for description 
+
+### @DECAP\_DSTIP\_ISP@
+
+See @DECAP\_SRCIP\_ISP@  for description 
 
