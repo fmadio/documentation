@@ -176,6 +176,10 @@ Outputs timestamp in MSec epoch time
 }
 ```
 
+## TCP Connection 
+
+PCAP2JSON can calculate RTT and Byte accurate TCP Window information following is a description of each field. TCP Window sizes are real sizes in bytes that are scaled correctly using the SYN/SYNACK negotiated window scaling factor
+
 ### @TCP\_RTT\_NET@
 
 Outputs the network TCP RTT in milliseconds.
@@ -309,6 +313,10 @@ NOTE: This does take into account full Window Scaling from the SYN/SYNACK connec
 .
 }
 ```
+
+## De-Encapsulation
+
+PCAP2JSON will de-encapsulation some packets and payloads. Following is a description of each field
 
 ### @DECAP\_TYPE@
 
