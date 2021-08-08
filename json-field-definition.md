@@ -504,20 +504,149 @@ Uses the GEO IP Mapping to search a a textual description of the De-Encapsulated
 
 ### @DECAP\_DSTIP\_HOSTNAME@
 
-Uses the GEO IP Mapping to search a a textual description of the De-Encapsulated destination IPv4 address. If a mapping is not found, the standard IPV4 numeric address is used.
+See @DECAP\_SRCIP\_HOSTNAME@  for description
+
+### @DECAP\_SRCIP\_LOCATION@
+
+De-encapsulated Source IP GeoIP Location. This includes the Longitude / Latitude value
 
 ```javascript
-{
-  .
-  .
-  "decapIPv4Src": "45.0.192.14",
-  "decapIPv4Dst": "10.1.119.196",
-  "decapHostSrc": "45.0.192.14",
-  "decapHostDst": "Reserved Private",
-  .
-  .
-}
+"decapGeoipSrc": {
+    "location": [
+      -51.6571,
+      -27.4297
+    ],
+    "country_name": "Brazil",
+    "country_iso_code": "BR",
+    "city_name": "Capinzal",
+    "asn": 53062,
+    "org": "GGNET TELECOMUNICACOES LTDA",
+    "isp": "Ggnet Telecomunicacoes Ltda"
+  },
+
 ```
+
+### @DECAP\_SRCIP\_COUNTRY@
+
+De-Encapsulated Source IP GeoIP Country
+
+```javascript
+"decapGeoipSrc": {
+    "location": [
+      -51.6571,
+      -27.4297
+    ],
+    "country_name": "Brazil",
+    "country_iso_code": "BR",
+    "city_name": "Capinzal",
+    "asn": 53062,
+    "org": "GGNET TELECOMUNICACOES LTDA",
+    "isp": "Ggnet Telecomunicacoes Ltda"
+  },
+
+```
+
+### @DECAP\_SRCIP\_COUNTRY\_CODE@
+
+De-Encapsulated Source IP GeoIP 2 letter country code
+
+```javascript
+"decapGeoipSrc": {
+    "location": [
+      -51.6571,
+      -27.4297
+    ],
+    "country_name": "Brazil",
+    "country_iso_code": "BR",
+    "city_name": "Capinzal",
+    "asn": 53062,
+    "org": "GGNET TELECOMUNICACOES LTDA",
+    "isp": "Ggnet Telecomunicacoes Ltda"
+  },
+
+```
+
+### @DECAP\_SRCIP\_CITY@
+
+De-Encapsulated Source IP GeoIP City
+
+```javascript
+"decapGeoipSrc": {
+    "location": [
+      -51.6571,
+      -27.4297
+    ],
+    "country_name": "Brazil",
+    "country_iso_code": "BR",
+    "city_name": "Capinzal",
+    "asn": 53062,
+    "org": "GGNET TELECOMUNICACOES LTDA",
+    "isp": "Ggnet Telecomunicacoes Ltda"
+  },
+
+```
+
+### @DECAP\_SRCIP\_ASN@
+
+De-Encapsulated Source IP ASN
+
+```javascript
+"decapGeoipSrc": {
+    "location": [
+      -51.6571,
+      -27.4297
+    ],
+    "country_name": "Brazil",
+    "country_iso_code": "BR",
+    "city_name": "Capinzal",
+    "asn": 53062,
+    "org": "GGNET TELECOMUNICACOES LTDA",
+    "isp": "Ggnet Telecomunicacoes Ltda"
+  },
+
+```
+
+### @DECAP\_SRCIP\_ORG@
+
+De-Encapsulated Source IP Organization
+
+```javascript
+"decapGeoipSrc": {
+    "location": [
+      -51.6571,
+      -27.4297
+    ],
+    "country_name": "Brazil",
+    "country_iso_code": "BR",
+    "city_name": "Capinzal",
+    "asn": 53062,
+    "org": "GGNET TELECOMUNICACOES LTDA",
+    "isp": "Ggnet Telecomunicacoes Ltda"
+  },
+
+```
+
+### @DECAP\_SRCIP\_ISP@
+
+De-Encapsulated Source IP ISP Name
+
+```javascript
+"decapGeoipSrc": {
+    "location": [
+      -51.6571,
+      -27.4297
+    ],
+    "country_name": "Brazil",
+    "country_iso_code": "BR",
+    "city_name": "Capinzal",
+    "asn": 53062,
+    "org": "GGNET TELECOMUNICACOES LTDA",
+    "isp": "Ggnet Telecomunicacoes Ltda"
+  },
+
+```
+
+### @DECAP\_DSTIP\_HOSTNAME@
 
 
 
