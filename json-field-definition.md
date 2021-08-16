@@ -286,7 +286,7 @@ Both half duplex hash have the exact same tcpRTTNetFull value.
   "application": "(TCP  3389)",
   "tcpMode": "server",
   "tcpRTTNetFull": 856.3,
-  "tcpRTTNetHalf": 856.1,
+  "tcpRTTNetPartial": 856.1,
   "totalPackets": 5,
   "totalBytes": 1838,
   "totalBits": 14704,
@@ -311,29 +311,29 @@ Both half duplex hash have the exact same tcpRTTNetFull value.
 
 ```
 
-### @TCP\_RTT\_NET\_HALF@
+### @TCP\_RTT\_NET\_PARTIAL@
 
-This calculates the half duplex RTT value. Note depending on where the capture device is located indicates which half of the RTT it shows. This value is used in conjunction with @TCP\_MODE@ to monitor Server response time or Client speed of light latency.
+This calculates the partial RTT value. Note depending on where the capture device is located indicates which side of the RTT it shows. This value is used in conjunction with @TCP\_MODE@ to monitor Server response time or Client speed of light latency.
 
 #### tcpMode = server
 
-In this mode tcpRTTNetHalf is the round trip between request to connect to the server, and the services accept\(\) of the connection. Shown below in aqua
+In this mode tcpRTTNetPartial is the round trip between request to connect to the server, and the services accept\(\) of the connection. Shown below in aqua
 
-tcpRTTNetHalf = P1 - P0
+tcpRTTNetPartial = P1 - P0
 
-![tcpRTTNetHalf \(server mode\)](.gitbook/assets/image%20%28112%29.png)
+![tcpRTTNetPartial \(server mode\)](.gitbook/assets/image%20%28112%29.png)
 
 ### tcpMode = client
 
-In the  client mode, tcpRTTNetHalf is  \(usually\) the speed of light network latency between the Server \(e.g. HTTP web server\) and the Client a desktop / mobile  end user. Its not strictly the case, this is the typical use case as FMADIO Capture device is usually co-located with the Web Server.
+In the  client mode, tcpRTTNetPartial is  \(usually\) the speed of light network latency between the Server \(e.g. HTTP web server\) and the Client a desktop / mobile  end user. Its not strictly the case, this is the typical use case as FMADIO Capture device is usually co-located with the Web Server.
 
-tcpRTTNetHalf = P2 - P1
+tcpRTTNetPartial = P2 - P1
 
 
 
-![tcpRTTNetHalf \(client mode\)](.gitbook/assets/image%20%28111%29.png)
+![tcpRTTNetPartial \(client mode\)](.gitbook/assets/image%20%28111%29.png)
 
-Example JSON below. tcpRTTHalf is different for each half duplex flow.
+Example JSON below. tcpRTTPartial is different for each half duplex flow.
 
 ```javascript
 {
@@ -358,7 +358,7 @@ Example JSON below. tcpRTTHalf is different for each half duplex flow.
   "tcpRst": 1,
   "tcpMode": "client",
   "tcpRTTNetFull": 856.3,
-  "tcpRTTNetHalf": 000.2,
+  "tcpRTTNetPartial": 000.2,
   "totalPackets": 5,
   "totalBytes": 1365,
   "totalBits": 10920,
@@ -402,7 +402,7 @@ Example JSON below. tcpRTTHalf is different for each half duplex flow.
   "application": "(TCP  3389)",
   "tcpMode": "server",
   "tcpRTTNetFull": 856.3,
-  "tcpRTTNetHalf": 856.1,
+  "tcpRTTNetPartial": 856.1,
   "totalPackets": 5,
   "totalBytes": 1838,
   "totalBits": 14704,
