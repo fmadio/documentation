@@ -180,49 +180,251 @@ Outputs timestamp in MSec epoch time
 
 PCAP2JSON can calculate RTT and Byte accurate TCP Window information following is a description of each field. TCP Window sizes are real sizes in bytes that are scaled correctly using the SYN/SYNACK negotiated window scaling factor
 
-### @TCP\_RTT\_NET@
+### @TCP\_MODE@
 
-Outputs the network TCP RTT in milliseconds.
+This field indicates which side of the tcp connection the Half Duplex flow is on. Its particularly useful when used in combination with tcpRTTNetHalf to monitor the response time of the server or the WAN latency of a client.
 
-Calculation is Half Duplex
+| Value                   | Description |
+| :--- | :--- |
+| server | The server side of a half duplex flow. Calculated by the half duplex flow that recevies the TCP SYN |
+| client | TheClient side of a half duplex flow. Calculated by the flow which recevies the TCP SYN |
+
+#### tcpMode = server
+
+Server highlighted in Aqua
+
+![tcpMode = server](.gitbook/assets/image%20%28114%29.png)
+
+#### tcpMode = client
+
+Client highlighted in Aqua
+
+![tcpMode = client](.gitbook/assets/image%20%28110%29.png)
+
+### @TCP\_RTT\_NET\_FULL@
+
+Outputs the full TCP round trip time in milliseconds. . This is a full duplex value, both sides of the TCP connection have the same value
+
+Calculation is Full Duplex
 
 Unit is Milliseconds
 
-| Use Case | Calculation | Description |
-| :--- | :--- | :--- |
-| SYN/SYN-ACK | SYN-ACK.TS - SYN.TS | Initial Handshake RTT calculation, when Flow direction is connect\(\) |
-| SYN-ACK/ACK | ACK.TS - SYN-ACK.TS | Initial TCP Handshake RTT when the Flow direction is accept\(\). \(not released yet\) |
-| TCP Segment | ACK.TS - Push.TS | When the expected Ack Sequence number matches, the corresponding TCP Segment Push. Indicates TCP Peer has acknowledge receiving of the payload. This requires TCP ACK packet to be a 0 byte acknowledge only. Please note DACK  and related TCP options may skew this result.  [https://en.wikipedia.org/wiki/TCP\_delayed\_acknowledgment](https://en.wikipedia.org/wiki/TCP_delayed_acknowledgment) |
+Show below, the aqua colored paths are used in the calculation. Total caluclation is
 
-**Case SYN/SYN-ACK**, tcpRTTNet = TS1 - TS0 with respect to the Half Duplex Flow
+tcpNetRTTFull = P2 - P0
 
-![TCP RTT SYN/SYN-ACK](.gitbook/assets/image%20%28103%29.png)
+![tcpRTTNetFull latency calculation](.gitbook/assets/image%20%28113%29.png)
 
-**Case SYN-ACK/ACK**, tcpRTTNet = TS2 - T1 with respect to the Half Duplex Flow
+Example JSON output, note field  tcpRTTNetFull, in this example the Full RTT round trip is 856msec.
 
-![TCP RTT SYN-ACK/ACK](.gitbook/assets/image%20%28102%29.png)
-
-**Cast TCP Segment Push/ACK**   
-
-tcpRTTNet = TS101 - TS100
-
-tcpRTTNet = TS201 - TS200
-
-![TCP Push RTT Half Duplex](.gitbook/assets/image%20%28100%29.png)
-
-![TCP Push RTT Half Duplex](.gitbook/assets/image%20%28101%29.png)
-
-Example JSON output
+Both half duplex hash have the exact same tcpRTTNetFull value.
 
 ```javascript
 {
-  .
-  .
-  "tcpRTTNet": 51.583,
-  "tcpRTTApp": 118.732,
-  .
-  .
+  "timestamp": 1497015595700,
+  "TS": "13:39:55.700.000.000",
+  "device": "fmadio100v2-228U",
+  "hashHalf": "4811607328d46ec497c1add34da011649a73b611",
+  "hashFull": "d9cd496276ea9c4a4f2f072e4201560239023bd9",
+  "flowCount": 44437,
+  "macSrc": "84:78:ac:3b:53:a5",
+  "macDst": "68:05:ca:0a:b9:15",
+  "macProto": "IPv4",
+  "vlan0": 2048,
+  "ipv4Src": "212.92.115.17",
+  "hostSrc": "212.92.115.17",
+  "ipv4Dst": "130.128.48.12",
+  "hostDst": "130.128.48.12",
+  "ipv4Proto": "TCP",
+  "portSrc": 61025,
+  "portDst": 3389,
+  "application": "(TCP  3389)",
+  "tcpRst": 1,
+  "tcpMode": "client",
+  "tcpRTTNetFull": 856.3,
+  "tcpRTTNetHalf": 000.2,
+  "totalPackets": 5,
+  "totalBytes": 1365,
+  "totalBits": 10920,
+  "totalFCS": 0,
+  "geoipSrcLocation": [
+    4.89949,
+    52.3824
+  ],
+  "geoipSrcCountry_name": "Netherlands",
+  "geoipSrcCountry_iso_code": "NL",
+  "geoipSrcAsn": 43350,
+  "geoipSrcOrg": "NForce Entertainment B.V.",
+  "geoipSrcIsp": "NFOrce Entertainment B.V.",
+  "geoipDstLocation": [
+    -115.14099,
+    36.12139
+  ],
+  "geoipDstCountry_name": "United States",
+  "geoipDstCountry_iso_code": "US",
+  "geoipDstCity_name": "Las Vegas"
 }
+
+{
+  "timestamp": 1497015595700,
+  "TS": "13:39:55.700.000.000",
+  "device": "fmadio100v2-228U",
+  "hashHalf": "adf86ea334da1be65391e97c4a635c2c50bfcc01",
+  "hashFull": "d9cd496276ea9c4a4f2f072e4201560239023bd9",
+  "flowCount": 44437,
+  "macSrc": "68:05:ca:0a:b9:15",
+  "macDst": "00:00:5e:00:01:31",
+  "macProto": "IPv4",
+  "vlan0": 2048,
+  "ipv4Src": "130.128.48.12",
+  "hostSrc": "130.128.48.12",
+  "ipv4Dst": "212.92.115.17",
+  "hostDst": "212.92.115.17",
+  "ipv4Proto": "TCP",
+  "portSrc": 3389,
+  "portDst": 61025,
+  "application": "(TCP  3389)",
+  "tcpMode": "server",
+  "tcpRTTNetFull": 856.3,
+  "tcpRTTNetHalf": 856.1,
+  "totalPackets": 5,
+  "totalBytes": 1838,
+  "totalBits": 14704,
+  "totalFCS": 0,
+  "geoipSrcLocation": [
+    -115.14099,
+    36.12139
+  ],
+  "geoipSrcCountry_name": "United States",
+  "geoipSrcCountry_iso_code": "US",
+  "geoipSrcCity_name": "Las Vegas",
+  "geoipDstLocation": [
+    4.89949,
+    52.3824
+  ],
+  "geoipDstCountry_name": "Netherlands",
+  "geoipDstCountry_iso_code": "NL",
+  "geoipDstAsn": 43350,
+  "geoipDstOrg": "NForce Entertainment B.V.",
+  "geoipDstIsp": "NFOrce Entertainment B.V."
+}
+
+```
+
+### @TCP\_RTT\_NET\_HALF@
+
+This calculates the half duplex RTT value. Note depending on where the capture device is located indicates which half of the RTT it shows. This value is used in conjunction with @TCP\_MODE@ to monitor Server response time or Client speed of light latency.
+
+#### tcpMode = server
+
+In this mode tcpRTTNetHalf is the round trip between request to connect to the server, and the services accept\(\) of the connection. Shown below in aqua
+
+tcpRTTNetHalf = P1 - P0
+
+![tcpRTTNetHalf \(server mode\)](.gitbook/assets/image%20%28112%29.png)
+
+### tcpMode = client
+
+In the  client mode, tcpRTTNetHalf is  \(usually\) the speed of light network latency between the Server \(e.g. HTTP web server\) and the Client a desktop / mobile  end user. Its not strictly the case, this is the typical use case as FMADIO Capture device is usually co-located with the Web Server.
+
+tcpRTTNetHalf = P2 - P1
+
+
+
+![tcpRTTNetHalf \(client mode\)](.gitbook/assets/image%20%28111%29.png)
+
+Example JSON below. tcpRTTHalf is different for each half duplex flow.
+
+```javascript
+{
+  "timestamp": 1497015595700,
+  "TS": "13:39:55.700.000.000",
+  "device": "fmadio100v2-228U",
+  "hashHalf": "4811607328d46ec497c1add34da011649a73b611",
+  "hashFull": "d9cd496276ea9c4a4f2f072e4201560239023bd9",
+  "flowCount": 44437,
+  "macSrc": "84:78:ac:3b:53:a5",
+  "macDst": "68:05:ca:0a:b9:15",
+  "macProto": "IPv4",
+  "vlan0": 2048,
+  "ipv4Src": "212.92.115.17",
+  "hostSrc": "212.92.115.17",
+  "ipv4Dst": "130.128.48.12",
+  "hostDst": "130.128.48.12",
+  "ipv4Proto": "TCP",
+  "portSrc": 61025,
+  "portDst": 3389,
+  "application": "(TCP  3389)",
+  "tcpRst": 1,
+  "tcpMode": "client",
+  "tcpRTTNetFull": 856.3,
+  "tcpRTTNetHalf": 000.2,
+  "totalPackets": 5,
+  "totalBytes": 1365,
+  "totalBits": 10920,
+  "totalFCS": 0,
+  "geoipSrcLocation": [
+    4.89949,
+    52.3824
+  ],
+  "geoipSrcCountry_name": "Netherlands",
+  "geoipSrcCountry_iso_code": "NL",
+  "geoipSrcAsn": 43350,
+  "geoipSrcOrg": "NForce Entertainment B.V.",
+  "geoipSrcIsp": "NFOrce Entertainment B.V.",
+  "geoipDstLocation": [
+    -115.14099,
+    36.12139
+  ],
+  "geoipDstCountry_name": "United States",
+  "geoipDstCountry_iso_code": "US",
+  "geoipDstCity_name": "Las Vegas"
+}
+
+{
+  "timestamp": 1497015595700,
+  "TS": "13:39:55.700.000.000",
+  "device": "fmadio100v2-228U",
+  "hashHalf": "adf86ea334da1be65391e97c4a635c2c50bfcc01",
+  "hashFull": "d9cd496276ea9c4a4f2f072e4201560239023bd9",
+  "flowCount": 44437,
+  "macSrc": "68:05:ca:0a:b9:15",
+  "macDst": "00:00:5e:00:01:31",
+  "macProto": "IPv4",
+  "vlan0": 2048,
+  "ipv4Src": "130.128.48.12",
+  "hostSrc": "130.128.48.12",
+  "ipv4Dst": "212.92.115.17",
+  "hostDst": "212.92.115.17",
+  "ipv4Proto": "TCP",
+  "portSrc": 3389,
+  "portDst": 61025,
+  "application": "(TCP  3389)",
+  "tcpMode": "server",
+  "tcpRTTNetFull": 856.3,
+  "tcpRTTNetHalf": 856.1,
+  "totalPackets": 5,
+  "totalBytes": 1838,
+  "totalBits": 14704,
+  "totalFCS": 0,
+  "geoipSrcLocation": [
+    -115.14099,
+    36.12139
+  ],
+  "geoipSrcCountry_name": "United States",
+  "geoipSrcCountry_iso_code": "US",
+  "geoipSrcCity_name": "Las Vegas",
+  "geoipDstLocation": [
+    4.89949,
+    52.3824
+  ],
+  "geoipDstCountry_name": "Netherlands",
+  "geoipDstCountry_iso_code": "NL",
+  "geoipDstAsn": 43350,
+  "geoipDstOrg": "NForce Entertainment B.V.",
+  "geoipDstIsp": "NFOrce Entertainment B.V."
+}
+
 ```
 
 ### @TCP\_RTT\_APP@
@@ -232,10 +434,6 @@ Outputs the Application Request -&gt; Response network round trip in millisecond
 Calculation is Half Duplex
 
 Unit is Milliseconds
-
-|  |
-| :--- |
-
 
 ![](.gitbook/assets/image%20%2897%29.png)
 
