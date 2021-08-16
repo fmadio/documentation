@@ -186,8 +186,8 @@ This field indicates which side of the tcp connection the Half Duplex flow is on
 
 | Value                   | Description |
 | :--- | :--- |
-| server | The server side of a half duplex flow. Calculated by the half duplex flow that recevies the TCP SYN |
-| client | TheClient side of a half duplex flow. Calculated by the flow which recevies the TCP SYN |
+| server | The server side of a half duplex flow. Calculated by the half duplex flow that receives the TCP SYN |
+| client | TheClient side of a half duplex flow. Calculated by the flow which receives the TCP SYNACK |
 
 #### tcpMode = server
 
