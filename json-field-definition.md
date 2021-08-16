@@ -203,7 +203,7 @@ Client highlighted in Aqua
 
 ### @TCP\_RTT\_NET\_FULL@
 
-Outputs the full TCP round trip time in milliseconds. . This is a full duplex value, both sides of the TCP connection have the same value
+Outputs the full TCP round trip time in milliseconds. . This is a full duplex value, both sides of the TCP connection have the same value. This value approximates an ICMP ping between the two hosts.
 
 Calculation is Full Duplex
 
