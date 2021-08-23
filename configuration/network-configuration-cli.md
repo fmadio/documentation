@@ -71,6 +71,48 @@ fmadio@fmadio20n40v3-363:/opt/fmadio/bin$
 
 Reboot the system and confirm the IP settings are correct
 
+### Management VLAN
+
+There may be a requirement for management VLAN interfaces on the FMADIO packet capture system. These are simple to add using the standard linux infrastructure
+
+Example is to create a VLAN 123 on the 10G man10 interface. Add the following configuration to 
+
+```text
+/opt/fmadio/etc/network.lua
+```
+
+Create a new entry names "man10.123" as follows
+
+```lua
+["man10.123"] =
+{
+    ["Mode"]    = "static",
+    ["vlan"]    = "123",
+    ["Address"] = "192.168.123.2",
+    ["Netmask"] = "255.255.255.0",
+    ["Gateway"] = "",
+    ["DNS0"]    = "",
+    ["DNS1"]    = "",
+    ["Speed"]   = "10g",
+    ["TSMode"]  = "nic",
+},
+
+```
+
+The only difference is the addition of  the "vlan" setting and an entry named "man10.123" all other fields are configured as a normal static interface.
+
+After configuring be sure to run the following to confirm the configuration file is formatted correctly. The following is the correct output
+
+```text
+fmadio@fmadio20n40v3-364:~$ fmadiolua /opt/fmadio/etc/network.lua
+fmad fmadlua Aug 23 2021
+failed to open self? [fmadiolua]
+loading filename [/opt/fmadio/etc/network.lua]
+done 0.000047Sec 0.000001Min
+fmadio@fmadio20n40v3-364:~$
+
+```
+
 ### Changing BMC/IPMI Network Settings
 
 In addition to the above, if the BMC information has been changed, please run the following command to configure BMC IP address on the system.
