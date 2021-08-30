@@ -2,7 +2,7 @@
 
 ### FMADIO 20G Gen3 Portable Port layout
 
-![FMADIO20p3 Port Laayout](.gitbook/assets/20210830_fmadio20p3-port-layout.png)
+.
 
-NOTE: man0 and man1 ports are swapped.
+![FMADIO20G V3 Portable Port Layout](.gitbook/assets/image%20%28116%29.png)
 
