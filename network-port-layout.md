@@ -2,7 +2,5 @@
 
 ### FMADIO 20G Gen3 Portable Port layout
 
-![](.gitbook/assets/image%20%2880%29.png)
-
-
+![FMADIO20p3 Port Laayout](.gitbook/assets/20210830_fmadio20p3-port-layout.png)
 
