@@ -54,6 +54,7 @@
 ## Maintenance
 
 * [SSD Replacement](maintenance/ssd-replacement.md)
+* [Firmware Update \(CLI\)](maintenance/firmware-update-cli.md)
 
 ## Linux Containers \(LXC\)
 
