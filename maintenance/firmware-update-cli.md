@@ -1,9 +1,13 @@
+---
+description: System Firmware Update
+---
+
 # Firmware Update \(CLI\)
 
 Upload Firmware into the system is the following process
 
 1. scp or cul the \*.bin firmware file to the system
-2. upload the firmware into thes ystem
+2. upload the firmware into the system
 3. install the firmware on the system
 4. reboot the system
 
@@ -15,13 +19,13 @@ This is either scp or curl -O the firmware to the home directory, example below 
 
 ### 2\) Upload the firmware into the system
 
-While the .bin file may be on the system, it needs to be uploaded and processed by the system to make it accessible. Using the following command line on the FW file from 1\)
+While the .bin file may be on the system, It needs to be uploaded and processed by the system to make it accessible. Using the following command line on the FW file from 1\)
 
 ```text
 fmadio@fmadio20v3-287:~$ sudo firmware_install.lua --upload <full firware filename>
 ```
 
-NOTE: the firmware filename must be exactly as downloaded, e.g. no \(1\) or other suffix. 
+NOTE: the firmware filename must be exactly as downloaded, e.g. no \(1\) or other suffix appended.
 
 Below example filename is "fmadio20v3\_20210831\_1136.bin"
 
@@ -94,10 +98,9 @@ Next the firmware needs to be installed using the command
 
 ```text
 $ sudo firmware_install.lua --install <firmware filename.bin>
-
 ```
 
-Example output is shown below. Note if the capture is active as shown, it will eventually timeout and complete the update
+Example output is shown below. Note if the capture is running as shown, it will eventually timeout and complete the update.
 
 ```text
 fmadio@fmadio20v2-149:$ sudo firmware_install.lua --install fmadio20v2_20210906_1606.bin
