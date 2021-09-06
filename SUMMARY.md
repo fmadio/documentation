@@ -20,6 +20,7 @@
 * [Mount Remote CIFS \(Windows\) Drive](configuration/mount-remote-cifs-windows-drive.md)
 * [Capture Pipeline Flush](configuration/capture-pipeline-flush.md)
 * [Global Time PTPv2](configuration/global-time-ptpv2.md)
+* [Password Change](configuration/password-change.md)
 
 ## Data Download
 
