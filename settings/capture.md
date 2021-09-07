@@ -86,9 +86,16 @@ This is the idle packet activity timeout. If no _**new**_ packets are received w
 
 ### ManualOffset
 
-Disables captures midnight roll and instead applies a manual offset to the capture roll time
+Disables captures midnight roll and instead applies a manual offset to the capture roll time.
 
-Value in nanoseconds, example is shoft of 9H backwards from the local timezone
+| Value | Description |
+| :--- | :--- |
+| 0 | Midnight roll enabled |
+| nil | Midnight roll enabled |
+| 1 | Midnight roll disabled |
+| &lt;nanosecond amount&gt; | Manual time offset \(e.g. GMT offset -9\*60\*1e9\) |
+
+Value in nanoseconds, example is offset of -9 hours backwards \(GMT - 9\) from the local timezone. This may helpful when the local timeones midnight does not align with an appropriate time to roll the capture file \(e.g. a Pool of FMADIO global probes should roll the capture at midnight GMT irrespective of the local timezone\)
 
 ```text
     ["MidnightRollDisable"]   = -9*60*1e9,
