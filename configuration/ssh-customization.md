@@ -44,3 +44,14 @@ A customized sshd configuration file can be used by placing the customized confi
 This is helpful for example to force exclusive RSA based login / disable password login. Which is a good practice if the device is on a public network.  
 
 
+## Custom SSH RSA ID
+
+In many cases using the default fmadio SSH RSA ID is not a good security practice. As such custom SSH RSA keys both public and private can be copied into
+
+```text
+/opt/fmadio/etc/fmadio_id_rsa
+/opt/fmadio/etc/fmadio_id_rsa.pub
+```
+
+These will copied into ~/.ssh/idrsa and idrsa\_pub on boot
+
