@@ -125,7 +125,7 @@ curl -u fmadio:100g "http://127.0.0.1/api/v1/pcap/single?StreamName=stream_test"
 **StreamName** and **FilterBPF**
 
 ```text
-curl -u fmadio:100g "http://127.0.0.1/api/v1/pcap/single?StreamName=stream_test_001&" -G --data-urlencode "FilterBPF=tcp"
+curl -u fmadio:100g "http://127.0.0.1/api/v1/pcap/single?StreamName=stream_test_001" -G --data-urlencode "FilterBPF=tcp"
 ```
 
 **StreamName** and **Compression**
@@ -137,7 +137,7 @@ curl -u fmadio:100g "http://127.0.0.1/api/v1/pcap/single?StreamName=stream_test_
 **StreamName**, **Compression** and **FilterBPF**
 
 ```text
-curl -u fmadio:100g "http://127.0.0.1/api/v1/pcap/single?StreamName=stream_test_001&Compression=fast&" -G --data-urlencode "FilterBPF=tcp"
+curl -u fmadio:100g "http://127.0.0.1/api/v1/pcap/single?StreamName=stream_test_001&Compression=fast" -G --data-urlencode "FilterBPF=tcp"
 ```
 
 ### SplitTime
@@ -145,25 +145,25 @@ curl -u fmadio:100g "http://127.0.0.1/api/v1/pcap/single?StreamName=stream_test_
 **StreamName**, **Start** and **Stop**
 
 ```text
-curl -u fmadio:100g "http://127.0.0.1/api/v1/pcap/splittime?StreamName=stream_test_001&Start=1530498788000000000&Stop=1530498789000000000&"
+curl -u fmadio:100g "http://127.0.0.1/api/v1/pcap/splittime?StreamName=stream_test_001&Start=1530498788000000000&Stop=1530498789000000000"
 ```
 
 **StreamName**, **Start,** **Stop** and **FilterBPF**
 
 ```text
-curl -u fmadio:100g "http://127.0.0.1/api/v1/pcap/splittime?StreamName=stream_test_001&Start=1530498788000000000&Stop=1530498789000000000&" -G --data-urlencode "FilterBPF=tcp" 
+curl -u fmadio:100g "http://127.0.0.1/api/v1/pcap/splittime?StreamName=stream_test_001&Start=1530498788000000000&Stop=1530498789000000000" -G --data-urlencode "FilterBPF=tcp" 
 ```
 
 **StreamName**, **Start,** **Stop, FilterBPF** and **Compression**
 
 ```text
-curl -u fmadio:100g "http://127.0.0.1/api/v1/pcap/splittime?StreamName=stream_test_001&Start=1530498788000000000&Stop=1530498789000000000&Compression=fast&" -G --data-urlencode "FilterBPF=tcp" 
+curl -u fmadio:100g "http://127.0.0.1/api/v1/pcap/splittime?StreamName=stream_test_001&Start=1530498788000000000&Stop=1530498789000000000&Compression=fast" -G --data-urlencode "FilterBPF=tcp" 
 ```
 
 **StreamName**, **Start,** **Stop** and **Compression**
 
 ```text
-curl -u fmadio:100g "http://127.0.0.1/api/v1/pcap/splittime?StreamName=stream_test_001&Start=1530498788000000000&Stop=1530498789000000000&Compression=fast&" 
+curl -u fmadio:100g "http://127.0.0.1/api/v1/pcap/splittime?StreamName=stream_test_001&Start=1530498788000000000&Stop=1530498789000000000&Compression=fast" 
 ```
 
 ### TimeRange
@@ -183,7 +183,7 @@ curl -u fmadio:100g "http://127.0.0.1/api/v1/pcap/timerange?TSBegin=162177257213
 **TSBegin**, **TSEnd** and **FilterBPF**
 
 ```text
-curl -u fmadio:100g "http://127.0.0.1/api/v1/pcap/timerange?TSBegin=1621772572136996000&TSEnd=1621774913584264000&" -G --data-urlencode "FilterBPF=tcp"  
+curl -u fmadio:100g "http://127.0.0.1/api/v1/pcap/timerange?TSBegin=1621772572136996000&TSEnd=1621774913584264000" -G --data-urlencode "FilterBPF=tcp"  
 ```
 
 **TSBegin**, **TSEnd** and **Compression**
@@ -195,6 +195,6 @@ curl -u fmadio:100g "http://127.0.0.1/api/v1/pcap/timerange?TSBegin=162177257213
 **TSBegin**, **TSEnd**, **FilterBPF** and **Compression**
 
 ```text
-curl -u fmadio:100g "http://127.0.0.1/api/v1/pcap/timerange?TSBegin=1621772572136996000&TSEnd=1621774913584264000&Compression=fast&" -G --data-urlencode "FilterBPF=tcp"
+curl -u fmadio:100g "http://127.0.0.1/api/v1/pcap/timerange?TSBegin=1621772572136996000&TSEnd=1621774913584264000&Compression=fast" -G --data-urlencode "FilterBPF=tcp"
 ```
 
