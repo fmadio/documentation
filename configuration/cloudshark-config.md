@@ -1,4 +1,4 @@
-# Cloudshark Config
+# FMAD Shark Config
 
 ## \*\***Work in progress\*\*, contact support**
 
