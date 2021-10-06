@@ -524,7 +524,7 @@ Deletes capture off the system
 {% api-method-spec %}
 {% api-method-request %}
 {% api-method-path-parameters %}
-{% api-method-parameter name="StreamName" type="string" required=false %}
+{% api-method-parameter name="StreamName" type="string" required=true %}
 full name of the capture file to be deleted
 {% endapi-method-parameter %}
 {% endapi-method-path-parameters %}
