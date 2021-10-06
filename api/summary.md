@@ -512,7 +512,37 @@ Get system status information
 {% endapi-method-spec %}
 {% endapi-method %}
 
+{% api-method method="get" host="http://127.0.0.1" path="/pcap/del?StreamName=<full capture name>" %}
+{% api-method-summary %}
+Delete Capture
+{% endapi-method-summary %}
 
+{% api-method-description %}
+Deletes capture off the system
+{% endapi-method-description %}
+
+{% api-method-spec %}
+{% api-method-request %}
+{% api-method-path-parameters %}
+{% api-method-parameter name="StreamName" type="string" required=false %}
+full name of the capture file to be deleted
+{% endapi-method-parameter %}
+{% endapi-method-path-parameters %}
+{% endapi-method-request %}
+
+{% api-method-response %}
+{% api-method-response-example httpCode=200 %}
+{% api-method-response-example-description %}
+
+{% endapi-method-response-example-description %}
+
+```
+
+```
+{% endapi-method-response-example %}
+{% endapi-method-response %}
+{% endapi-method-spec %}
+{% endapi-method %}
 
 ## V1 API
 

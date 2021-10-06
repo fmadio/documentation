@@ -18,7 +18,7 @@ The ideal IO profile is an simultaneous sustained 50Gbps Capture/Write and 50Gbp
 
 Due to hardware IO limitations \(~ 150Gbps max aggregate bandwidth\) at a sustained 100Gbps Capture/Write only a 26Gbps sustained Analyze/Read performance is achievable.
 
-![Sustained 100Gbps Capture + 26Gbps sustained Analyze raw IO Throughput](../.gitbook/assets/image%20%2890%29.png)
+![Sustained 100Gbps Capture + 26Gbps sustained Analyze raw IO Throughput](../.gitbook/assets/image%20%2888%29%20%281%29.png)
 
 Please note all the above numbers, are the maximum limits. Typically the Analyze software performance is impacted more by the packet rate than the data rate, As such the Analysis software performance is usually the bottleneck, not the raw IO hardware limits.
 
