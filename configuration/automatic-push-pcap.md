@@ -6,7 +6,7 @@ FMADIO Packet Capture systems provide a built in Push mode to transfer capture P
 
 Configuration is via configuration scripts located:
 
-```text
+```
 /opt/fmadio/etc/push_realtime.lua
 ```
 
@@ -47,7 +47,7 @@ Multiple push targets can be specified, there is no real limit however throughpu
 
 In the above example thre are 2 push rules
 
-#### A\) Push all packet data \(no filter\)
+#### A) Push all packet data (no filter)
 
 This push target sends all PCAP data the remote NFS share mounted on 
 
@@ -57,27 +57,27 @@ See NFS mount configuration section for details on setting up /mnt/remote0 mount
 
 The sepcified is "FilterBPF=nil" meaning there is no filter, thus all traffic is pushed
 
-#### B\) Push all TCP data from network 192.168.1.0/24
+#### B) Push all TCP data from network 192.168.1.0/24
 
-The second example shows pushing all TCP data on the network 192.168.1.0/24 to the specified /mnt/remote0/push/ directory with a PCAP file prefix of "tcp\_\*"
+The second example shows pushing all TCP data on the network 192.168.1.0/24 to the specified /mnt/remote0/push/ directory with a PCAP file prefix of "tcp_\*"
 
-Note `FilterBP=net 192.168.1.0/24 and tcp`  This applies a full BPF \(Berkley Packet Filter [https://en.wikipedia.org/wiki/Berkeley\_Packet\_Filter](https://en.wikipedia.org/wiki/Berkeley_Packet_Filter) \) with the filter "tcp" on the packets before writing it to the location. This results in only TCP data written to the /mnt/remote0/push/tcp\_\*.pcap output files
+Note `FilterBP=net 192.168.1.0/24 and tcp`  This applies a full BPF (Berkley Packet Filter [https://en.wikipedia.org/wiki/Berkeley_Packet_Filter](https://en.wikipedia.org/wiki/Berkeley_Packet_Filter) ) with the filter "tcp" on the packets before writing it to the location. This results in only TCP data written to the /mnt/remote0/push/tcp_\*.pcap output files
 
 ### Supported Endpoints
 
-| Mode                                       | Description |
-| :--- | :--- |
-| linux file | linux file on FMADIO capture system |
-| NFS | remote NFS mountpoint on FMADIO capture system |
-| SFTP | remote SSH file system via rclone \( [https://rclone.org/sftp/](https://rclone.org/sftp/) \) |
-| FTP | FTP push via rclone \( [https://rclone.org/ftp/](https://rclone.org/ftp/) \) |
-| S3 | S3 protocol via rclone \( [https://rclone.org/s3/](https://rclone.org/s3/) \) |
-| Google Drive | Google drive via rclone \( [https://rclone.org/drive/](https://rclone.org/drive/) \) |
-| Digital Ocean | Digital Ocan Spaces via rclone \( [https://rclone.org/s3/\#digitalocean-spaces](https://rclone.org/s3/#digitalocean-spaces) \) |
-| Azure Blob | Microsoft Azure Blob via rclone \( [https://rclone.org/azureblob/](https://rclone.org/azureblob/) \) |
-| Dropbox | Dropbox via rclone \( [https://rclone.org/dropbox/](https://rclone.org/dropbox/) \) |
-| Hadoop HDFS | Hadoop file system via rclone \( [https://rclone.org/hdfs/](https://rclone.org/hdfs/) \) |
-| Ceph | Ceph S3 interface via rclone \(   [https://rclone.org/s3/](https://rclone.org/s3/) \) |
+| Mode                                       | Description                                                                                                                 |
+| ------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------- |
+| linux file                                 | linux file on FMADIO capture system                                                                                         |
+| NFS                                        | remote NFS mountpoint on FMADIO capture system                                                                              |
+| SFTP                                       | remote SSH file system via rclone ( [https://rclone.org/sftp/](https://rclone.org/sftp/) )                                  |
+| FTP                                        | FTP push via rclone ( [https://rclone.org/ftp/](https://rclone.org/ftp/) )                                                  |
+| S3                                         | S3 protocol via rclone ( [https://rclone.org/s3/](https://rclone.org/s3/) )                                                 |
+| Google Drive                               | Google drive via rclone ( [https://rclone.org/drive/](https://rclone.org/drive/) )                                          |
+| Digital Ocean                              | Digital Ocan Spaces via rclone ( [https://rclone.org/s3/#digitalocean-spaces](https://rclone.org/s3/#digitalocean-spaces) ) |
+| Azure Blob                                 | Microsoft Azure Blob via rclone ( [https://rclone.org/azureblob/](https://rclone.org/azureblob/) )                          |
+| Dropbox                                    | Dropbox via rclone ( [https://rclone.org/dropbox/](https://rclone.org/dropbox/) )                                           |
+| Hadoop HDFS                                | Hadoop file system via rclone ( [https://rclone.org/hdfs/](https://rclone.org/hdfs/) )                                      |
+| Ceph                                       | Ceph S3 interface via rclone (   [https://rclone.org/s3/](https://rclone.org/s3/) )                                         |
 
 and many more, see the rclone documentation for full list of endpoints supported
 
@@ -97,11 +97,11 @@ Provides a text human readable description for each push target. It is also used
     Desc     = "pcap-all",
 ```
 
-For example the above push logfiles will go to /mnt/store0/log/push\_pcap-all\_\* this can be helpful for troubleshooting any problems
+For example the above push logfiles will go to /mnt/store0/log/push_pcap-all_\* this can be helpful for troubleshooting any problems
 
 ### **MODE**
 
-**Default \(FILE\)**
+**Default (FILE)**
 
 Specifies how the output files are written. Currently there are 2 modes, standard linux file "File" and rclone which provides multiple end points such as FTP, S3, Google Drive, Azure Cloud and many more.
 
@@ -111,39 +111,10 @@ Specifies how the output files are written. Currently there are 2 modes, standar
 
 #### Options
 
-<table>
-  <thead>
-    <tr>
-      <th style="text-align:left">Command</th>
-      <th style="text-align:left">Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align:left">FILE</td>
-      <td style="text-align:left">output a regular linux file. this can be ln the local file system or over
-        a remote NFS mount</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">RCLONE</td>
-      <td style="text-align:left">
-        <p>use rclone as the end point file. Note rclone needs to be setup and configured
-          before remote push is started</p>
-        <p></p>
-        <p>For RCLONE Config please see their documentation</p>
-        <p><a href="https://rclone.org/commands/rclone_config/">https://rclone.org/commands/rclone_config/</a>
-        </p>
-        <p></p>
-        <p>FMADIO by default stores config file into</p>
-        <p><code>/opt/fmadio/etc/rclone.conf</code>
-        </p>
-        <p></p>
-        <p><b>Requires FW:7157+ </b>
-        </p>
-      </td>
-    </tr>
-  </tbody>
-</table>
+| Command                                               | Description                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| ----------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| FILE                                                  | output a regular linux file. this can be ln the local file system or over a remote NFS mount                                                                                                                                                                                                                                                                                                                                                       |
+| RCLONE                                                | <p>use rclone as the end point file. Note rclone needs to be setup and configured before remote push is started</p><p></p><p>For RCLONE Config please see their documentation</p><p><a href="https://rclone.org/commands/rclone_config/">https://rclone.org/commands/rclone_config/</a></p><p></p><p>FMADIO by default stores config file into</p><p><code>/opt/fmadio/etc/rclone.conf</code></p><p></p><p><strong>Requires FW:7157+ </strong></p> |
 
  
 
@@ -159,10 +130,10 @@ Full remote path of the target PCAPs + the leading prefix of the remote output.
 
 The above example uses the "FILE" mode, which specifies a full linux system file path. 
 
-| Command                                               | Description |
-| :--- | :--- |
-| /mnt/remote0/push/all | FILE mode output PCAP files will be written for example as `/mnt/remote0/push/all_`_`20210101_010101.cap`_ |
-| gdrive://pcap/all | RCLONE mode output PCAP files written be written to the rclone configured google drive endpoint into the google drive directory `/pcap/`  |
+| Command                                               | Description                                                                                                                                 |
+| ----------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| /mnt/remote0/push/all                                 | FILE mode output PCAP files will be written for example as `/mnt/remote0/push/all_`_`20210101_010101.cap`_                                  |
+| gdrive://pcap/all                                     | RCLONE mode output PCAP files written be written to the rclone configured google drive endpoint into the google drive directory`  /pcap/  ` |
 
 ### **SPLIT**
 
@@ -174,10 +145,10 @@ This specifies how to split the incoming PCAP data, either by Bytes or by Time. 
     Split     = "--split-time 60e9",
 ```
 
-| Command                                               | Description |
-| :--- | :--- |
-| --split-time &lt;nano seconds&gt; | Splits PCAP data by time, argument is in nanoseconds Scientific notation can be used |
-| --split-byte &lt;bytes&gt; | Splits PCAP data by Size. argument is in bytes, Scientific notation can be used |
+| Command                                               | Description                                                                          |
+| ----------------------------------------------------- | ------------------------------------------------------------------------------------ |
+| --split-time \<nano seconds>                          | Splits PCAP data by time, argument is in nanoseconds Scientific notation can be used |
+| --split-byte \<bytes>                                 | Splits PCAP data by Size. argument is in bytes, Scientific notation can be used      |
 
 ### **FILENAME**
 
@@ -189,72 +160,20 @@ Specifies how to split filename is encoded. Different downstream applications re
     FileName  = "--filename-epoch-sec-startend", 
 ```
 
-<table>
-  <thead>
-    <tr>
-      <th style="text-align:left">Command</th>
-      <th style="text-align:left">Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align:left">--filename-epoch-sec-startend</td>
-      <td style="text-align:left">
-        <p>writes the sec epoch start/end time as the file name</p>
-        <p></p>
-        <p>e.g March 21, 2021 1:50:55</p>
-        <p><code>1616334655-1616334755.pcap</code>
-        </p>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">--filename-epoch-sec</td>
-      <td style="text-align:left">
-        <p>writes the sec epoch start time as the file name.</p>
-        <p></p>
-        <p>e.g March 21, 2021 1:50:55</p>
-        <p><code>1616334655.pcap</code>
-        </p>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">--filename-tstr-HHMM</td>
-      <td style="text-align:left">
-        <p>writes the YYYYMMDD_HHMM style file name.</p>
-        <p></p>
-        <p>e.g. 2021 Dec 1st 23:50</p>
-        <p><code>20211201_2350.pcap</code>
-        </p>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">--filename-tstr-HHMMSS</td>
-      <td style="text-align:left">
-        <p>writes the YYYYMMDD_HHMMSS style file name.</p>
-        <p></p>
-        <p>e.g. 2021 Dec 1st 23:50:59</p>
-        <p><code>20211201_235059.pcap</code>
-        </p>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">--filename-tstr-HHMMSS_NS</td>
-      <td style="text-align:left">
-        <p>writes the YYYYMMDD_HHMMSS.MSEC.USEC.NSEC style file name.</p>
-        <p></p>
-        <p>e.g. 2021 Dec 1st 23:50:59 123456789nsec<code>20211201_235059.123.456.789.pcap</code>
-        </p>
-      </td>
-    </tr>
-  </tbody>
-</table>
+| Command                                                | Description                                                                                                                                                           |
+| ------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| --filename-epoch-sec-startend                          | <p>writes the sec epoch start/end time as the file name  </p><p></p><p>e.g March 21, 2021 1:50:55</p><p><code>1616334655-1616334755.pcap</code></p>                   |
+| --filename-epoch-sec                                   | <p>writes the sec epoch start time as the file name. </p><p></p><p>e.g March 21, 2021 1:50:55</p><p><code>1616334655.pcap</code></p>                                  |
+| --filename-tstr-HHMM                                   | <p>writes the YYYYMMDD_HHMM style file name.</p><p></p><p>e.g. 2021 Dec 1st 23:50 </p><p><code>20211201_2350.pcap</code></p>                                          |
+| --filename-tstr-HHMMSS                                 | <p>writes the YYYYMMDD_HHMMSS style file name. </p><p></p><p>e.g. 2021 Dec 1st 23:50:59 </p><p><code>20211201_235059.pcap</code></p>                                  |
+| --filename-tstr-HHMMSS_NS                              | <p>writes the YYYYMMDD_HHMMSS.MSEC.USEC.NSEC style file name.</p><p> </p><p>e.g. 2021 Dec 1st 23:50:59 123456789nsec<code>20211201_235059.123.456.789.pcap</code></p> |
 
-  
+\
 
 
 ### **FILTERBPF**
 
-**Default \(nil\)**
+**Default (nil)**
 
 Full libpcap BPF filter can be applied to reduce the total PCAP size or segment specific list of PCAPs . The system uses the native libpcap library, everything that tcpdump supports FilterBPF also supports.
 
@@ -264,30 +183,13 @@ Full libpcap BPF filter can be applied to reduce the total PCAP size or segment 
 
 The above is an example BPF filter "net 192.168.1.0/24 and tcp" its a slightly more complicated BPF and shows the flexibility and wide range of options available. Technically there is no limit on the complexity of the BPF filter, we recommend to keep it as simple as possible to reduce the CPU load
 
-<table>
-  <thead>
-    <tr>
-      <th style="text-align:left">Command</th>
-      <th style="text-align:left">Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align:left">FilterBPF</td>
-      <td style="text-align:left">
-        <p>Enter a full tcpdump equivlent BPF filter expression</p>
-        <p></p>
-        <p>example host filter</p>
-        <p><code>FilterBPF=&quot;host 192.168.1.1&quot;</code>
-        </p>
-      </td>
-    </tr>
-  </tbody>
-</table>
+| Command                                    | Description                                                                                                                                   |
+| ------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| FilterBPF                                  | <p>Enter a full tcpdump equivlent BPF filter expression </p><p></p><p>example host filter</p><p><code>FilterBPF="host 192.168.1.1"</code></p> |
 
 ### DECAP
 
-**Default \(true\)**
+**Default (true)**
 
 In addition to FilterBPF full packet de-encapsulation is performed by default before the BPF filter is applied. This for example can decode VLAN, ERSPAN, GRE tunnels and many more. It enables the BPF filter is applied on the inner payload instead of the encapsulated output,
 
@@ -299,15 +201,15 @@ Decap = false,
 
 Configuration is a simple boolean type only
 
-| Command                                         | Description |
-| :--- | :--- |
-| Decap | boolean value of "true" enables Packet De-encapsulation \(Default true\) |
+| Command                                         | Description                                                            |
+| ----------------------------------------------- | ---------------------------------------------------------------------- |
+| Decap                                           | boolean value of "true" enables Packet De-encapsulation (Default true) |
 
 ### PipeCmd
 
 **Requires FW:7157+**
 
-**Default \(nil\)**
+**Default (nil)**
 
 Pipe commands are processed on a per PCAP split basis before the end transport is applied. Examples to use this are to GZIP or compress files before sending to the endpoint.
 
@@ -319,19 +221,19 @@ PipeCmd="gzip -1 -c"
 
 The above runs gzip with compression level 1 on the split PCAP before sending to the output location. Some examples are shown below
 
-| Command                                      | Description |
-| :--- | :--- |
-| gzip -c -1 | Run GZIP on split PCAPs with fastest compression mode |
-| gzip -c -9 | Run GZIP on split PCAPs in maximum compression mode |
-| lz4 -c | Run LZ4 compression on split PCAPs for fast compression |
+| Command                                      | Description                                             |
+| -------------------------------------------- | ------------------------------------------------------- |
+| gzip -c -1                                   | Run GZIP on split PCAPs with fastest compression mode   |
+| gzip -c -9                                   | Run GZIP on split PCAPs in maximum compression mode     |
+| lz4 -c                                       | Run LZ4 compression on split PCAPs for fast compression |
 
 ### FileSuffix
 
 **Requires FW:7157+**
 
-**Default \(nil\)**
+**Default (nil)**
 
-By default the split PCAP filename suff is `.pcap`  For most operations that is sufficient, however for more complicated operations such as GZIP compressing with PipeCmd a .pcap.gz file suffix is more appropriate. The Following is an example config target that compresses and outputs splits in .pcap.gz file format
+By default the split PCAP filename suff is `.pcap  `For most operations that is sufficient, however for more complicated operations such as GZIP compressing with PipeCmd a .pcap.gz file suffix is more appropriate. The Following is an example config target that compresses and outputs splits in .pcap.gz file format
 
 ```lua
 table.insert(Config.Target, 
@@ -349,11 +251,11 @@ table.insert(Config.Target,
 
 The above example pushes gzip 1minute PCAP splits to an S3 protocol storage device
 
-| Command  | Description |
-| :--- | :--- |
-| .pcap | Default suffix. |
-| .pcap.gz | GZIP Compressed PCAP |
-| .pcap.lz4 | LZ4 compressed PCAP |
+| Command   | Description          |
+| --------- | -------------------- |
+| .pcap     | Default suffix.      |
+| .pcap.gz  | GZIP Compressed PCAP |
+| .pcap.lz4 | LZ4 compressed PCAP  |
 
 ## Analytics Scheduler
 
@@ -371,7 +273,7 @@ push_realtime
 
 Screenshot of 24/7 schedule is shown below
 
-![Analytics Schedule to Push PCAP 24/7](../.gitbook/assets/image%20%2842%29%20%281%29.png)
+![Analytics Schedule to Push PCAP 24/7](<../.gitbook/assets/image (42) (1).png>)
 
 ## Troubleshooting
 
@@ -399,7 +301,7 @@ fmadio@fmadio20v3-287:/mnt/store0/log$ tail -F analytics_push_realtime.cur
 
 In addition each Push entry has a log file with the following format. The Desc value is described 
 
-[https://docs.fmad.io/fmadio-documentation/configuration/automatic-push-pcap\#desc](https://docs.fmad.io/fmadio-documentation/configuration/automatic-push-pcap#desc)
+[https://docs.fmad.io/fmadio-documentation/configuration/automatic-push-pcap#desc](https://docs.fmad.io/fmadio-documentation/configuration/automatic-push-pcap#desc)
 
 ```bash
 /mnt/store0/log/push_<Desc value>_YYYYMMDD_HHMM
@@ -473,9 +375,9 @@ Note the following repeated status line indicates the push is operating successf
 stream_cat:true split:true
 ```
 
-For problems per push target, the logfile shown in the above command line here `/mnt/store0/log/push_pcap-all.cur` 
+For problems per push target, the logfile shown in the above command line here `/mnt/store0/log/push_pcap-all.cur `
 
-A good way to debug that is running tail -F /mnt/store0/log/push\_pcap-all.cur to monitor it such as the following
+A good way to debug that is running tail -F /mnt/store0/log/push_pcap-all.cur to monitor it such as the following
 
 ```bash
 $ tail -F /mnt/store0/log/push_pcap-all.cur
@@ -522,5 +424,24 @@ PCAP Nano
 
 ```
 
+## Performance testing
 
+Push performance is critical and subject to multiple factors. The following provides a baseline test of different variables.
 
+### Remote Write Performace
+
+A first initial setp is to confirm the writing to the remote file system has sufficent bandwidth. This is simply achieved running the commands
+
+```
+fmadio@fmadio20v3-287:~$ time sudo dd if=/dev/zero bs=1G count=20 > /mnt/remote0/push/test1.bin
+20+0 records in
+20+0 records out
+21474836480 bytes (20.0GB) copied, 30.170007 seconds, 678.8MB/s
+real    0m 30.17s
+user    0m 0.00s
+sys     0m 22.03s
+fmadio@fmadio20v3-287:~$
+
+```
+
+The above command writes a 20GB file to the remote file location. In this case its writing @ 678MB/sec ( 5.4Gbps throughput)
