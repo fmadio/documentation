@@ -82,7 +82,7 @@ Total of extra 153MB per hour for the continuous flushing. or 1.2GB for 8 Hours 
 Default system behavior is flushing when capture is idle for second (1e9 nanoseconds).
 
 ```
-["FlushPktCnt"] = 5000,
+["FlushPktCnt"] = 2000,
 ["FlushPeriod"] = 0,
 ["FlushIdle"]   = 1e9,
 ```
