@@ -10,13 +10,13 @@ FMADIO Gen2 systems buffer between 2MB-4MB of data internally. To support multip
 
 Please edit the configuration file in
 
-```text
+```
 /opt/fmadio/etc/time.lua 
 ```
 
-The relevant sections are \(there may be more or less entries in the \["Capture"\] config block\)
+The relevant sections are (there may be more or less entries in the \["Capture"] config block)
 
-```text
+```
 ["Capture"] =
 {
 
@@ -59,11 +59,11 @@ Default value is: 1e9 - flush after 1 second of inactivity, value in nanoseconds
 
 This mode is the default configuration
 
-## Recommended \(Aggressive Flushing\)
+## Recommended (Aggressive Flushing)
 
 For Financial and other customers who require a constant flush to disk, the following setting is recommended
 
-```text
+```
         ["FlushPktCnt"] = 5000,
         ["FlushPeriod"] = 60e9,
         ["FlushIdle"]   = 0,
@@ -76,4 +76,14 @@ This will flush both ports every 1 minute continuously.
 1 Flush 2 x 5000 packets \* 256 Bytes = 2,560,000 Bytes per flush
 
 Total of extra 153MB per hour for the continuous flushing. or 1.2GB for 8 Hours is fairly reasonable.
+
+## Default (Idle Flushing)
+
+Default system behavior is flushing when capture is idle for second (1e9 nanoseconds).
+
+```
+["FlushPktCnt"] = 5000,
+["FlushPeriod"] = 0,
+["FlushIdle"]   = 1e9,
+```
 
