@@ -433,6 +433,13 @@ Push performance is critical and subject to multiple factors. The following prov
 A first initial setp is to confirm the writing to the remote file system has sufficent bandwidth. This is simply achieved running the commands
 
 ```
+time sudo dd if=/dev/zero bs=1G count=20 > /mnt/remote0/test1.bin
+
+```
+
+Example run
+
+```
 fmadio@fmadio20v3-287:~$ time sudo dd if=/dev/zero bs=1G count=20 > /mnt/remote0/push/test1.bin
 20+0 records in
 20+0 records out
