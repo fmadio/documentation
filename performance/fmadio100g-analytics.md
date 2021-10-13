@@ -6,6 +6,11 @@ Performance baselines
 
 ### Flows 500K @ 50Gbps Slice:128B
 
+Result:
+
+* Data rate 59.97Gbps
+* Packet rate 21.164Mpps 
+
 Flow generation
 
 ```
