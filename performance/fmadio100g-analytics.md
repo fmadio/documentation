@@ -42,6 +42,9 @@ Backend performance
 
 Result
 
+* 59.982 Gbps
+* 21.160 Mpps
+
 Flow Generation
 
 ```
