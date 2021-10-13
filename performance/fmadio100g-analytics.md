@@ -37,3 +37,34 @@ Backend performance
 [20211013_115649] ltrace              :  144 | [Wed Oct 13 11:56:49 2021]:   1.67 usec/msg  599788 Msg/sec Ingress[Inflight:   14 Read:0.000 Fwd:0.000] Flow[Snapshot:      41   500000/Snap    0.600M/sec   59.978 Gbps   21.159 Mpps | Read:0.013 Process:0.077 Merge:0.025 Output:0.345 JSONDump:0.161 MACTop:0.000 GeoIP:0.051 Send:0.045 ] Push[ESSock:   0 ESCnt:20671 ESErr:0 ESTimeout:    0 ESPending:     0.0 MB    583.141 Kdps    0.572 Gbps] signal:false
 
 ```
+
+### Flows 500K @ 60Gbps Slice 128B Profile:IMIX
+
+Result
+
+Flow Generation
+
+```
+ ./pcap_genflow --pktcnt 1e9 --flowcnt 500e3 --imix --pktslice 128 --bps 60e9 | sudo stream_upload --name pcap2json500K_50G
+```
+
+Capture Size
+
+```
+ [1101] pcap2json500K_50G_20211013_1210     99GB Chunk(Cnt:  407008 Start: 2498216 End: 2905223 Comp:0.00) Inv:-nan Cap:-nan CacheI:-nan Cache:-nan Disk:-nan Drop:-nan Pkt:0
+
+```
+
+pcap2json
+
+```
+[20211013_121509] ltrace              :  144 | [Wed Oct 13 12:15:09 2021]:   0.00 usec/msg       0 Msg/sec Ingress[Inflight: 4327 Read:0.000 Fwd:0.000] Flow[Snapshot:       0        0/Snap    0.000M/sec      nan Gbps      nan Mpps | Read:0.090 Process:0.298 Merge:0.096 Output:0.000 JSONDump:0.000 MACTop:0.000 GeoIP:0.000 Send:0.000 ] Push[ESSock:   0 ESCnt:  597 ESErr:0 ESTimeout:    0 ESPending:     0.0 MB      0.000 Kdps    0.000 Gbps] signal:false
+[20211013_121514] ltrace              :  144 | [Wed Oct 13 12:15:14 2021]:   1.43 usec/msg  699864 Msg/sec Ingress[Inflight:   14 Read:0.000 Fwd:0.000] Flow[Snapshot:       7   500000/Snap    0.700M/sec   83.876 Gbps   29.589 Mpps | Read:0.032 Process:0.113 Merge:0.033 Output:0.190 JSONDump:0.090 MACTop:0.000 GeoIP:0.027 Send:0.027 ] Push[ESSock:   0 ESCnt: 3387 ESErr:0 ESTimeout:    0 ESPending:     0.0 MB    587.174 Kdps    0.576 Gbps] signal:false
+[20211013_121519] ltrace              :  144 | [Wed Oct 13 12:15:19 2021]:   2.50 usec/msg  399899 Msg/sec Ingress[Inflight: 1733 Read:0.000 Fwd:0.000] Flow[Snapshot:      11   500000/Snap    0.400M/sec   47.988 Gbps   16.929 Mpps | Read:0.027 Process:0.097 Merge:0.029 Output:0.438 JSONDump:0.206 MACTop:0.000 GeoIP:0.062 Send:0.059 ] Push[ESSock:   0 ESCnt: 6208 ESErr:0 ESTimeout:    0 ESPending:     0.0 MB    593.931 Kdps    0.582 Gbps] signal:false
+[20211013_121524] ltrace              :  144 | [Wed Oct 13 12:15:24 2021]:   2.00 usec/msg  499911 Msg/sec Ingress[Inflight:   15 Read:0.000 Fwd:0.000] Flow[Snapshot:      16   500000/Snap    0.500M/sec   59.989 Gbps   21.163 Mpps | Read:0.024 Process:0.091 Merge:0.025 Output:0.116 JSONDump:0.054 MACTop:0.000 GeoIP:0.016 Send:0.016 ] Push[ESSock:   0 ESCnt: 8569 ESErr:0 ESTimeout:    0 ESPending:     0.0 MB    496.954 Kdps    0.487 Gbps] signal:false
+[20211013_121529] ltrace              :  144 | [Wed Oct 13 12:15:29 2021]:   2.00 usec/msg  499911 Msg/sec Ingress[Inflight:   17 Read:0.000 Fwd:0.000] Flow[Snapshot:      21   500000/Snap    0.500M/sec   59.989 Gbps   21.163 Mpps | Read:0.023 Process:0.083 Merge:0.023 Output:0.000 JSONDump:0.000 MACTop:0.000 GeoIP:0.000 Send:0.000 ] Push[ESSock:   0 ESCnt:10928 ESErr:0 ESTimeout:    0 ESPending:     0.0 MB    496.527 Kdps    0.487 Gbps] signal:false
+[20211013_121534] ltrace              :  144 | [Wed Oct 13 12:15:34 2021]:   2.00 usec/msg  499903 Msg/sec Ingress[Inflight:   11 Read:0.000 Fwd:0.000] Flow[Snapshot:      26   500000/Snap    0.500M/sec   59.989 Gbps   21.162 Mpps | Read:0.023 Process:0.079 Merge:0.023 Output:0.331 JSONDump:0.156 MACTop:0.000 GeoIP:0.047 Send:0.043 ] Push[ESSock:   0 ESCnt:13269 ESErr:0 ESTimeout:    0 ESPending:     0.0 MB    492.763 Kdps    0.483 Gbps] signal:false
+[20211013_121539] ltrace              :  144 | [Wed Oct 13 12:15:39 2021]:   2.00 usec/msg  499897 Msg/sec Ingress[Inflight:   16 Read:0.000 Fwd:0.000] Flow[Snapshot:      31   500000/Snap    0.500M/sec   59.986 Gbps   21.162 Mpps | Read:0.023 Process:0.077 Merge:0.023 Output:0.209 JSONDump:0.098 MACTop:0.000 GeoIP:0.030 Send:0.027 ] Push[ESSock:   0 ESCnt:15572 ESErr:0 ESTimeout:    0 ESPending:     0.0 MB    484.718 Kdps    0.475 Gbps] signal:false
+[20211013_121544] ltrace              :  144 | [Wed Oct 13 12:15:44 2021]:   2.00 usec/msg  499848 Msg/sec Ingress[Inflight:   13 Read:0.000 Fwd:0.000] Flow[Snapshot:      36   500000/Snap    0.500M/sec   59.982 Gbps   21.160 Mpps | Read:0.023 Process:0.074 Merge:0.023 Output:0.219 JSONDump:0.103 MACTop:0.000 GeoIP:0.032 Send:0.029 ] Push[ESSock:   0 ESCnt:17957 ESErr:0 ESTimeout:    0 ESPending:     0.0 MB    501.966 Kdps    0.492 Gbps] signal:false
+
+```
