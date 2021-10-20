@@ -276,8 +276,6 @@ Chunked = true,
 |      | Description        |
 | ---- | ------------------ |
 | true | Enables chunk mode |
-|      |                    |
-|      |                    |
 
 ## Analytics Scheduler
 
