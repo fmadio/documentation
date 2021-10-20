@@ -87,7 +87,7 @@ and many more, see the rclone documentation for full list of endpoints supported
 
 Following is a description of each option for per push target.
 
-### **DESC**
+### **Desc**
 
 **Required**
 
@@ -99,7 +99,7 @@ Provides a text human readable description for each push target. It is also used
 
 For example the above push logfiles will go to /mnt/store0/log/push\_pcap-all\_\* this can be helpful for troubleshooting any problems
 
-### **MODE**
+### **Mode**
 
 **Default (FILE)**
 
@@ -118,7 +118,7 @@ Specifies how the output files are written. Currently there are 2 modes, standar
 
 &#x20;
 
-### **PATH**
+### **Path**
 
 **Required**
 
@@ -135,7 +135,7 @@ The above example uses the "FILE" mode, which specifies a full linux system file
 | /mnt/remote0/push/all                                 | FILE mode output PCAP files will be written for example as `/mnt/remote0/push/all_`_`20210101_010101.cap`_                                  |
 | gdrive://pcap/all                                     | RCLONE mode output PCAP files written be written to the rclone configured google drive endpoint into the google drive directory`  /pcap/  ` |
 
-### **SPLIT**
+### **Split**
 
 **Required**
 
@@ -150,7 +150,7 @@ This specifies how to split the incoming PCAP data, either by Bytes or by Time. 
 | --split-time \<nano seconds>                          | Splits PCAP data by time, argument is in nanoseconds Scientific notation can be used |
 | --split-byte \<bytes>                                 | Splits PCAP data by Size. argument is in bytes, Scientific notation can be used      |
 
-### **FILENAME**
+### **FileName**
 
 **Required**
 
@@ -171,7 +171,7 @@ Specifies how to split filename is encoded. Different downstream applications re
 \
 
 
-### **FILTERBPF**
+### **FilterBPF**
 
 **Default (nil)**
 
@@ -187,7 +187,7 @@ The above is an example BPF filter "net 192.168.1.0/24 and tcp" its a slightly m
 | ------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------- |
 | FilterBPF                                  | <p>Enter a full tcpdump equivlent BPF filter expression </p><p></p><p>example host filter</p><p><code>FilterBPF="host 192.168.1.1"</code></p> |
 
-### DECAP
+### Decap
 
 **Default (true)**
 
@@ -259,7 +259,9 @@ The above example pushes gzip 1minute PCAP splits to an S3 protocol storage devi
 
 ### Chunked
 
-**FW: 7355+**
+**Requires FW: 7355+**
+
+**Default: (nil)**
 
 Chunked mode is a more optimized processing mode. It increases the aggregate thoughput of the Push operation specifically for network traffic profiles skewed towards small packets.
 
@@ -270,6 +272,12 @@ Example as follows
 ```
 Chunked = true,
 ```
+
+|      | Description        |
+| ---- | ------------------ |
+| true | Enables chunk mode |
+|      |                    |
+|      |                    |
 
 ## Analytics Scheduler
 
