@@ -49,7 +49,7 @@ In the above example thre are 2 push rules
 
 #### A) Push all packet data (no filter)
 
-This push target sends all PCAP data the remote NFS share mounted on 
+This push target sends all PCAP data the remote NFS share mounted on&#x20;
 
 /mnt/remote0
 
@@ -59,9 +59,9 @@ The sepcified is "FilterBPF=nil" meaning there is no filter, thus all traffic is
 
 #### B) Push all TCP data from network 192.168.1.0/24
 
-The second example shows pushing all TCP data on the network 192.168.1.0/24 to the specified /mnt/remote0/push/ directory with a PCAP file prefix of "tcp_\*"
+The second example shows pushing all TCP data on the network 192.168.1.0/24 to the specified /mnt/remote0/push/ directory with a PCAP file prefix of "tcp\_\*"
 
-Note `FilterBP=net 192.168.1.0/24 and tcp`  This applies a full BPF (Berkley Packet Filter [https://en.wikipedia.org/wiki/Berkeley_Packet_Filter](https://en.wikipedia.org/wiki/Berkeley_Packet_Filter) ) with the filter "tcp" on the packets before writing it to the location. This results in only TCP data written to the /mnt/remote0/push/tcp_\*.pcap output files
+Note `FilterBP=net 192.168.1.0/24 and tcp`  This applies a full BPF (Berkley Packet Filter [https://en.wikipedia.org/wiki/Berkeley\_Packet\_Filter](https://en.wikipedia.org/wiki/Berkeley\_Packet\_Filter) ) with the filter "tcp" on the packets before writing it to the location. This results in only TCP data written to the /mnt/remote0/push/tcp\_\*.pcap output files
 
 ### Supported Endpoints
 
@@ -97,7 +97,7 @@ Provides a text human readable description for each push target. It is also used
     Desc     = "pcap-all",
 ```
 
-For example the above push logfiles will go to /mnt/store0/log/push_pcap-all_\* this can be helpful for troubleshooting any problems
+For example the above push logfiles will go to /mnt/store0/log/push\_pcap-all\_\* this can be helpful for troubleshooting any problems
 
 ### **MODE**
 
@@ -116,19 +116,19 @@ Specifies how the output files are written. Currently there are 2 modes, standar
 | FILE                                                  | output a regular linux file. this can be ln the local file system or over a remote NFS mount                                                                                                                                                                                                                                                                                                                                                       |
 | RCLONE                                                | <p>use rclone as the end point file. Note rclone needs to be setup and configured before remote push is started</p><p></p><p>For RCLONE Config please see their documentation</p><p><a href="https://rclone.org/commands/rclone_config/">https://rclone.org/commands/rclone_config/</a></p><p></p><p>FMADIO by default stores config file into</p><p><code>/opt/fmadio/etc/rclone.conf</code></p><p></p><p><strong>Requires FW:7157+ </strong></p> |
 
- 
+&#x20;
 
 ### **PATH**
 
 **Required**
 
-Full remote path of the target PCAPs + the leading prefix of the remote output. 
+Full remote path of the target PCAPs + the leading prefix of the remote output.&#x20;
 
 ```lua
     Path      = "/mnt/remote0/push/all",
 ```
 
-The above example uses the "FILE" mode, which specifies a full linux system file path. 
+The above example uses the "FILE" mode, which specifies a full linux system file path.&#x20;
 
 | Command                                               | Description                                                                                                                                 |
 | ----------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -166,7 +166,7 @@ Specifies how to split filename is encoded. Different downstream applications re
 | --filename-epoch-sec                                   | <p>writes the sec epoch start time as the file name. </p><p></p><p>e.g March 21, 2021 1:50:55</p><p><code>1616334655.pcap</code></p>                                  |
 | --filename-tstr-HHMM                                   | <p>writes the YYYYMMDD_HHMM style file name.</p><p></p><p>e.g. 2021 Dec 1st 23:50 </p><p><code>20211201_2350.pcap</code></p>                                          |
 | --filename-tstr-HHMMSS                                 | <p>writes the YYYYMMDD_HHMMSS style file name. </p><p></p><p>e.g. 2021 Dec 1st 23:50:59 </p><p><code>20211201_235059.pcap</code></p>                                  |
-| --filename-tstr-HHMMSS_NS                              | <p>writes the YYYYMMDD_HHMMSS.MSEC.USEC.NSEC style file name.</p><p> </p><p>e.g. 2021 Dec 1st 23:50:59 123456789nsec<code>20211201_235059.123.456.789.pcap</code></p> |
+| --filename-tstr-HHMMSS\_NS                             | <p>writes the YYYYMMDD_HHMMSS.MSEC.USEC.NSEC style file name.</p><p> </p><p>e.g. 2021 Dec 1st 23:50:59 123456789nsec<code>20211201_235059.123.456.789.pcap</code></p> |
 
 \
 
@@ -257,15 +257,29 @@ The above example pushes gzip 1minute PCAP splits to an S3 protocol storage devi
 | .pcap.gz  | GZIP Compressed PCAP |
 | .pcap.lz4 | LZ4 compressed PCAP  |
 
+### Chunked
+
+**FW: 7355+**
+
+Chunked mode is a more optimized processing mode. It increases the aggregate thoughput of the Push operation specifically for network traffic profiles skewed towards small packets.
+
+By default its disabled.
+
+Example as follows
+
+```
+Chunked = true,
+```
+
 ## Analytics Scheduler
 
 In addition to configuration of
 
 `/opt/fmadio/etc/push_realtime.lua`
 
-To specify when the Push operation occurs the Analytics scheduler must be configured. This is on the "CONFIG" tab of the FMADIO GUI. An Example configuration to push files 24/7, 
+To specify when the Push operation occurs the Analytics scheduler must be configured. This is on the "CONFIG" tab of the FMADIO GUI. An Example configuration to push files 24/7,&#x20;
 
-The "Analytics Engine" field must be exactly the following text. 
+The "Analytics Engine" field must be exactly the following text.&#x20;
 
 ```bash
 push_realtime
@@ -299,7 +313,7 @@ fmadio@fmadio20v3-287:/mnt/store0/log$ tail -F analytics_push_realtime.cur
 
 ```
 
-In addition each Push entry has a log file with the following format. The Desc value is described 
+In addition each Push entry has a log file with the following format. The Desc value is described&#x20;
 
 [https://docs.fmad.io/fmadio-documentation/configuration/automatic-push-pcap#desc](https://docs.fmad.io/fmadio-documentation/configuration/automatic-push-pcap#desc)
 
@@ -377,7 +391,7 @@ stream_cat:true split:true
 
 For problems per push target, the logfile shown in the above command line here `/mnt/store0/log/push_pcap-all.cur `
 
-A good way to debug that is running tail -F /mnt/store0/log/push_pcap-all.cur to monitor it such as the following
+A good way to debug that is running tail -F /mnt/store0/log/push\_pcap-all.cur to monitor it such as the following
 
 ```bash
 $ tail -F /mnt/store0/log/push_pcap-all.cur
@@ -434,7 +448,6 @@ A first initial setp is to confirm the writing to the remote file system has suf
 
 ```
 time sudo dd if=/dev/zero bs=1G count=20 > /mnt/remote0/test1.bin
-
 ```
 
 Example run
