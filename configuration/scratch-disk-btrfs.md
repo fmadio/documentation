@@ -1,4 +1,4 @@
-# Scratch Disk \(BTRFS\)
+# Scratch Disk (BTRFS)
 
 **FW: 7167+**
 
@@ -6,11 +6,11 @@ When using FMADIO Packet capture system for analytics processing SSD resources c
 
 The system should have scratch disks setup and visible on the GUI as follows, if this has not been configured contact support@fmad.io on how to configure
 
-![FMADIO Scratch Disk Network Analytics processing space](../.gitbook/assets/image%20%2849%29%20%282%29.png)
+![FMADIO Scratch Disk Network Analytics processing space](<../.gitbook/assets/image (49) (2) (3).png>)
 
- ****In the above example there are 2 disks SCR0 and SCR1 enabled for scratch disk these are seen on the file system as
+** **In the above example there are 2 disks SCR0 and SCR1 enabled for scratch disk these are seen on the file system as
 
-```text
+```
 fmadio@fmadio20v3-287:~$ ls -al /opt/fmadio/disk/scr*
 lrwxrwxrwx    1 root     root            12 Jun  6 17:02 /opt/fmadio/disk/scr0 -> /dev/nvme2n1
 lrwxrwxrwx    1 root     root            12 Jun  6 17:02 /opt/fmadio/disk/scr1 -> /dev/nvme0n1
@@ -23,7 +23,7 @@ NOTE: the /dev/\* mount point may change from time to time, please use the /opt/
 
 Start by creating a /dev/md1 RAID0 partition as follows
 
-```text
+```
 fmadio@fmadio20v3-287:~$ sudo mdadm --create /dev/md1 --force --level=raid0 --raid-devices=2 /opt/fmadio/disk/scr0 /opt/fmadio/disk/scr1
 mdadm: Defaulting to version 1.2 metadata
 mdadm: array /dev/md1 started.
@@ -32,7 +32,7 @@ fmadio@fmadio20v3-287:~$
 
 This creates a /dev/md1 partition as shown with lsblk command. Can see the /dev/md1 device
 
-```text
+```
 fmadio@fmadio20v3-287:~$ lsblk
 NAME    MAJ:MIN RM   SIZE RO TYPE  MOUNTPOINT
 sdd       8:48   0   3.7T  0 disk
@@ -53,7 +53,7 @@ fmadio@fmadio20v3-287:~$
 
 More detail via the mdadm --detail command
 
-```text
+```
 fmadio@fmadio20v3-287:~$ sudo mdadm --detail /dev/md1
 /dev/md1:
         Version : 1.2
@@ -87,7 +87,7 @@ fmadio@fmadio20v3-287:~$
 
 The block device /dev/md1 is block level only, it contains no mountable file system. Next create btrfs filesystem on the device as follows
 
-```text
+```
 fmadio@fmadio20v3-287:~$ sudo mkfs.btrfs /dev/md1
 btrfs-progs v5.12.1
 See http://btrfs.wiki.kernel.org for more information.
@@ -120,14 +120,14 @@ fmadio@fmadio20v3-287:~$
 
 By default FMADIO Packet Capture systems at boot time mount BTRFS with lzo disk compression. Compression can be enabled or disabled with BTRFS on-the-fly. In this case we will mount it the same as capture system does at boot time.
 
-```text
+```
 fmadio@fmadio20v3-287:~$ sudo mount -t btrfs -o compress=lzo /dev/md1 /mnt/store1
 fmadio@fmadio20v3-287:~$
 ```
 
-Then check the mount point with lsblk. Below we can see /dev/md1 is mounted on /mnt/store1 
+Then check the mount point with lsblk. Below we can see /dev/md1 is mounted on /mnt/store1&#x20;
 
-```text
+```
 fmadio@fmadio20v3-287:~$ lsblk
 NAME    MAJ:MIN RM   SIZE RO TYPE  MOUNTPOINT
 sdd       8:48   0   3.7T  0 disk
@@ -151,7 +151,7 @@ fmadio@fmadio20v3-287:~$
 
 Checking the compression level with BTRFS requires calculating the raw storage and the compressed storage.
 
-```text
+```
 fmadio@fmadio20v3-287:/mnt/store1$ du -h -d 1
 3.0G    ./cache
 3.0G    .
@@ -167,9 +167,8 @@ fmadio@fmadio20v3-287:/mnt/store1$
 
 ```
 
-In the above example we see /mnt/store1 has 3.0 GB worth of data \(using du\)
+In the above example we see /mnt/store1 has 3.0 GB worth of data (using du)
 
-In the above example we see /mnt/store1 has used 751.MiB of actual storage capacity \(using btrfs fi show\)
+In the above example we see /mnt/store1 has used 751.MiB of actual storage capacity (using btrfs fi show)
 
-Based on the above math \(3112MB / 751MB\) , the **compression rate is ~ x4.04** 
-
+Based on the above math (3112MB / 751MB) , the **compression rate is \~ x4.04 **

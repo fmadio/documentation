@@ -1,14 +1,14 @@
-# Scratch Disk \(EXT4\)
+# Scratch Disk (EXT4)
 
 When using FMADIO Packet capture system for analytics processing SSD resources can be split into Capture devices and Scratch disk space. In scratch disk space 1-16TB of SSD can be mounted as a general purpose file system used to store temporarily/intermediate network packet processing results.
 
 The system should have scratch disks setup and visible on the GUI as follows, if this has not been configured contact support@fmad.io on how to configure
 
-![FMADIO Scratch Disk Network Analytics processing space](../.gitbook/assets/image%20%2849%29%20%281%29.png)
+![FMADIO Scratch Disk Network Analytics processing space](<../.gitbook/assets/image (49) (2).png>)
 
 In the above example there are 2 disks SCR0 and SCR1 enabled for scratch disk these are seen on the file system as
 
-```text
+```
 fmadio@fmadio20v3-287:~$ ls -al /opt/fmadio/disk/scr*
 lrwxrwxrwx    1 root     root            12 Jun  6 17:02 /opt/fmadio/disk/scr0 -> /dev/nvme2n1
 lrwxrwxrwx    1 root     root            12 Jun  6 17:02 /opt/fmadio/disk/scr1 -> /dev/nvme0n1
@@ -23,7 +23,7 @@ fmadio@fmadio20v3-287:~$
 
 By default all SSD are specified are dedicated to capture. This is specified in the configuration file
 
-```text
+```
 /opt/fmadio/etc/disk.lua
 ```
 
@@ -55,11 +55,11 @@ ScratchDisk =
 }
 ```
 
-This is assigning the SSD Serial numbers to mount point /opt/fmadio/disk/scr0 and /opt/fmadio/disk/scr1. The actual Serial numbers for each system will be different, the mount point \(scr0/scr1\) is the same.
+This is assigning the SSD Serial numbers to mount point /opt/fmadio/disk/scr0 and /opt/fmadio/disk/scr1. The actual Serial numbers for each system will be different, the mount point (scr0/scr1) is the same.
 
 After updating confirm there are no syntax errors in the config file by running fmadiolua /opt/fmadio/etc/disk.lua as follows
 
-```text
+```
 fmadio@fmadio20n40v3-363:~$ fmadiolua /opt/fmadio/etc/disk.lua
 fmad fmadlua Jun 13 2021
 calibrating...
@@ -72,9 +72,9 @@ done 0.000038Sec 0.000001Min
 fmadio@fmadio20n40v3-363:~$
 ```
 
-Output as above shows correctly formatted file. Output per below shows configuration file with a syntax error \(line 30 has some incorrect formatting\)
+Output as above shows correctly formatted file. Output per below shows configuration file with a syntax error (line 30 has some incorrect formatting)
 
-```text
+```
 fmadio@fmadio20n40v3-363:~$ fmadiolua /opt/fmadio/etc/disk.lua
 fmad fmadlua Jun 13 2021
 calibrating...
@@ -90,7 +90,7 @@ fmadio@fmadio20n40v3-363:~$
 
 After confirming the configuration file syntax is correct, reboot the system. The mount points scr0 and scr1 should be visible as shown below.
 
-```text
+```
 fmadio@fmadio20n40v3-363:~$ ls -al /opt/fmadio/disk/scr*
 lrwxrwxrwx    1 root     root            12 Jun  6 17:02 /opt/fmadio/disk/scr0 -> /dev/nvme2n1
 lrwxrwxrwx    1 root     root            12 Jun  6 17:02 /opt/fmadio/disk/scr1 -> /dev/nvme0n1
@@ -99,9 +99,9 @@ fmadio@fmadio20n40v3-363:~$
 
 ## Creating RAID0 partition
 
-After /opt/fmadio/disk/scr\[0-1\] have been created. Next is creating a /dev/md1 RAID0 partition as follows
+After /opt/fmadio/disk/scr\[0-1] have been created. Next is creating a /dev/md1 RAID0 partition as follows
 
-```text
+```
 fmadio@fmadio20v3-287:~$ sudo mdadm --create /dev/md1 --force --level=raid0 --raid-devices=2 /opt/fmadio/disk/scr0 /opt/fmadio/disk/scr1
 mdadm: Defaulting to version 1.2 metadata
 mdadm: array /dev/md1 started.
@@ -110,7 +110,7 @@ fmadio@fmadio20v3-287:~$
 
 This creates a /dev/md1 partition as shown with lsblk command. Can see the /dev/md1 device
 
-```text
+```
 fmadio@fmadio20v3-287:~$ lsblk
 NAME    MAJ:MIN RM   SIZE RO TYPE  MOUNTPOINT
 sdd       8:48   0   3.7T  0 disk
@@ -131,7 +131,7 @@ fmadio@fmadio20v3-287:~$
 
 More detail via the mdadm --detail command
 
-```text
+```
 fmadio@fmadio20v3-287:~$ sudo mdadm --detail /dev/md1
 /dev/md1:
         Version : 1.2
@@ -165,7 +165,7 @@ fmadio@fmadio20v3-287:~$
 
 The block device /dev/md1 is block level only, it contains no mountable file system. Next create btrfs filesystem on the device as follows
 
-```text
+```
 fmadio@fmadio20v3-287:~$ sudo mkfs.ext4 /dev/md1
 
 < update me >
@@ -179,8 +179,7 @@ By default FMADIO Packet Capture systems at boot time will start the RAID0 parti
 
 If it fails to mount, please issue the following command
 
-```text
+```
 fmadio@fmadio20v3-287:~$ sudo mount -t ext4 /dev/md1 /mnt/store1
 fmadio@fmadio20v3-287:~$
 ```
-

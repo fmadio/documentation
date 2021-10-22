@@ -8,10 +8,10 @@
 
 ## Configuration
 
-* [Network Configuration \(GUI\)](configuration/network-configuration-gui.md)
-* [Network Configuration \(CLI\)](configuration/network-configuration-cli.md)
-* [Scratch Disk \(EXT4\)](configuration/scratch-disk-ext4.md)
-* [Scratch Disk \(BTRFS\)](configuration/scratch-disk-btrfs.md)
+* [Network Configuration (GUI)](configuration/network-configuration-gui.md)
+* [Network Configuration (CLI)](configuration/network-configuration-cli.md)
+* [Scratch Disk (EXT4)](configuration/scratch-disk-ext4.md)
+* [Scratch Disk (BTRFS)](configuration/scratch-disk-btrfs.md)
 * [Management Interface](configuration/management-interface.md)
 * [FMAD Shark Config](configuration/cloudshark-config.md)
 
@@ -27,6 +27,6 @@
 
 ## Maintenance
 
+* [Rack mount install](maintenance/rack-mount-install.md)
 * [SSD Hardware replacement](maintenance/ssd-hardware-replacement.md)
 * [HDD Hardware replacaement](maintenance/hdd-hardware-replacaement.md)
-
