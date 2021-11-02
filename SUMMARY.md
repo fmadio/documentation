@@ -8,18 +8,19 @@
 
 ## Configuration
 
-* [Network Configuration \(GUI\)](configuration/network-configuration-gui.md)
-* [Network Configuration \(CLI\)](configuration/network-configuration-cli.md)
+* [Network Configuration (GUI)](configuration/network-configuration-gui.md)
+* [Network Configuration (CLI)](configuration/network-configuration-cli.md)
 * [Capture Port IP/MAC](configuration/capture-port-ip-mac.md)
 * [Multicast IGMP Subscribe](configuration/multicast-igmp-subscribe.md)
-* [Forward Error Correction Support \(FEC\)](configuration/forward-error-correction-support-fec.md)
+* [Forward Error Correction Support (FEC)](configuration/forward-error-correction-support-fec.md)
 * [Syslog](configuration/syslog.md)
 * [Automatic Push PCAP](configuration/automatic-push-pcap.md)
 * [Management Port Layout](configuration/management-port-layout.md)
-* [Mount Remote NFS \(Linux\) Drive](configuration/mount-remote-nfs-drive.md)
-* [Mount Remote CIFS \(Windows\) Drive](configuration/mount-remote-cifs-windows-drive.md)
+* [Mount Remote NFS (Linux) Drive](configuration/mount-remote-nfs-drive.md)
+* [Mount Remote CIFS (Windows) Drive](configuration/mount-remote-cifs-windows-drive.md)
 * [Capture Pipeline Flush](configuration/capture-pipeline-flush.md)
 * [Global Time PTPv2](configuration/global-time-ptpv2.md)
+* [Timestamp Accuracy](configuration/timestamp-accuracy.md)
 * [Password Change](configuration/password-change.md)
 * [SSH Customization](configuration/ssh-customization.md)
 
@@ -30,8 +31,8 @@
 
 ## CLI Reference
 
-* [stream\_cat](cli-reference/stream_cat.md)
-* [fnic\_test](cli-reference/fnic_test.md)
+* [stream\_cat](cli-reference/stream\_cat.md)
+* [fnic\_test](cli-reference/fnic\_test.md)
 
 ## API
 
@@ -46,8 +47,8 @@
 
 ## Troubleshooting
 
-* [Logfile Report \(GUI\)](troubleshooting/logfile-report-gui.md)
-* [Logfile Report \(CLI\)](troubleshooting/logfile-report-cli.md)
+* [Logfile Report (GUI)](troubleshooting/logfile-report-gui.md)
+* [Logfile Report (CLI)](troubleshooting/logfile-report-cli.md)
 * [System Recovery](troubleshooting/system-recovery.md)
 * [Serial Port Access over LAN](troubleshooting/serial-port-access-over-lan.md)
 * [BMC Reset](troubleshooting/bmc-reset.md)
@@ -55,9 +56,8 @@
 ## Maintenance
 
 * [SSD Replacement](maintenance/ssd-replacement.md)
-* [Firmware Update \(CLI\)](maintenance/firmware-update-cli.md)
+* [Firmware Update (CLI)](maintenance/firmware-update-cli.md)
 
-## Linux Containers \(LXC\)
+## Linux Containers (LXC)
 
 * [Mounting Host Scratch Disk](linux-containers-lxc/mounting-host-scratch-disk.md)
-

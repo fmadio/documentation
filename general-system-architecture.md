@@ -1,16 +1,16 @@
 # System SKU
 
-FMADIO 100G Gen2 System,  
+FMADIO 100G Gen2 System,\
 
 
-**SKU  Capture \(64G RAM + 32 CPUs\)**
+**SKU  Capture (64G RAM + 32 CPUs)**
 
 * FMADIO100GV2-1U-16T
 * FMADIO100GV2-1U-38T
 * FMADIO100GV2-1U-76T
 * FMADIO100Gv2-1U-156T
 
-**SKU Analytics \( 576GB RAM + 96CPU\)**
+**SKU Analytics ( 576GB RAM + 96CPU)**
 
 * FMADIO100GV2-1U-16T-ANALYTICS
 * FMADIO100GV2-1U-38-ANALYTICS
@@ -19,5 +19,4 @@ FMADIO 100G Gen2 System,
 
 **High Level Architecture**
 
-![](.gitbook/assets/image%20%281%29.png)
-
+![](<.gitbook/assets/image (1).png>)

@@ -12,30 +12,16 @@ The FMADIO API is simple and designed for easy scripting integration.
 
 ### Device Operation
 
-{% api-method method="get" host=" http://127.0.0.1/sysmaster/capture\_start?StreamName=<capture name>" path="" %}
-{% api-method-summary %}
-Capture Start
-{% endapi-method-summary %}
-
-{% api-method-description %}
+{% swagger baseUrl=" http://127.0.0.1/sysmaster/capture_start?StreamName=<capture name>" path="" method="get" summary="Capture Start" %}
+{% swagger-description %}
 This Command starts a capture running on the device.
-{% endapi-method-description %}
+{% endswagger-description %}
 
-{% api-method-spec %}
-{% api-method-request %}
-{% api-method-query-parameters %}
-{% api-method-parameter name="StreamName" type="string" required=true %}
+{% swagger-parameter in="query" name="StreamName" type="string" %}
 Stream capture name
-{% endapi-method-parameter %}
-{% endapi-method-query-parameters %}
-{% endapi-method-request %}
+{% endswagger-parameter %}
 
-{% api-method-response %}
-{% api-method-response-example httpCode=200 %}
-{% api-method-response-example-description %}
-
-{% endapi-method-response-example-description %}
-
+{% swagger-response status="200" description="" %}
 ```javascript
 {
   "Status": true,
@@ -43,59 +29,35 @@ Stream capture name
 }
 
 ```
-{% endapi-method-response-example %}
-{% endapi-method-response %}
-{% endapi-method-spec %}
-{% endapi-method %}
+{% endswagger-response %}
+{% endswagger %}
 
-{% api-method method="get" host=" http://127.0.0.1/sysmaster/capture\_stop" path="" %}
-{% api-method-summary %}
-Capture Stop
-{% endapi-method-summary %}
+{% swagger baseUrl=" http://127.0.0.1/sysmaster/capture_stop" path="" method="get" summary="Capture Stop" %}
+{% swagger-description %}
+Stops any currently capturing process. 
 
-{% api-method-description %}
-Stops any currently capturing process.   
+\
+
+
 NOTE: this does NOT stop scheduled captures.
-{% endapi-method-description %}
+{% endswagger-description %}
 
-{% api-method-spec %}
-{% api-method-request %}
-
-{% api-method-response %}
-{% api-method-response-example httpCode=200 %}
-{% api-method-response-example-description %}
-
-{% endapi-method-response-example-description %}
-
+{% swagger-response status="200" description="" %}
 ```
 {
     "Status":true,
     "Str":"[Mon Jul  2 11:26:13 2018] successfully stopped capture [TestCapture]"
 }
 ```
-{% endapi-method-response-example %}
-{% endapi-method-response %}
-{% endapi-method-spec %}
-{% endapi-method %}
+{% endswagger-response %}
+{% endswagger %}
 
-{% api-method method="get" host="http://127.0.0.1/sysmaster/status" path="" %}
-{% api-method-summary %}
-Capture Status
-{% endapi-method-summary %}
-
-{% api-method-description %}
+{% swagger baseUrl="http://127.0.0.1/sysmaster/status" path="" method="get" summary="Capture Status" %}
+{% swagger-description %}
 Returns Capture status of currently active capture.
-{% endapi-method-description %}
+{% endswagger-description %}
 
-{% api-method-spec %}
-{% api-method-request %}
-
-{% api-method-response %}
-{% api-method-response-example httpCode=200 %}
-{% api-method-response-example-description %}
-
-{% endapi-method-response-example-description %}
-
+{% swagger-response status="200" description="" %}
 ```
 $ curl -u fmadio:100g http://192.168.2.75/sysmaster/status
 uptime,                                             0D 1H 57M
@@ -121,31 +83,17 @@ capture_pps,                                                0
 capture_name,                                     TestCapture
 capture_active,                                          true
 ```
-{% endapi-method-response-example %}
-{% endapi-method-response %}
-{% endapi-method-spec %}
-{% endapi-method %}
+{% endswagger-response %}
+{% endswagger %}
 
 ### Downloading PCAP
 
-{% api-method method="get" host="http://127.0.0.1/stream/list" path="" %}
-{% api-method-summary %}
-List All Captures
-{% endapi-method-summary %}
-
-{% api-method-description %}
+{% swagger baseUrl="http://127.0.0.1/stream/list" path="" method="get" summary="List All Captures" %}
+{% swagger-description %}
 Lists all captures on the device.
-{% endapi-method-description %}
+{% endswagger-description %}
 
-{% api-method-spec %}
-{% api-method-request %}
-
-{% api-method-response %}
-{% api-method-response-example httpCode=200 %}
-{% api-method-response-example-description %}
-
-{% endapi-method-response-example-description %}
-
+{% swagger-response status="200" description="" %}
 ```
 $ curl -u fmadio:100g http://192.168.2.75/stream/list
 {"Path":"/capture/","StreamList":true,"List":[
@@ -153,53 +101,93 @@ $ curl -u fmadio:100g http://192.168.2.75/stream/list
     {"id":"2","Path":"TestCapture_20180702_1118","PCAP":"/pcap/single?StreamName=TestCapture_20180702_1118&","Filter":"/en.filter.html?StreamName=TestCapture_20180702_1118&","Analytics":"/en.analytics.html?StreamName=TestCapture_20180702_1118&","TCPScope":"/en.tcpscope.html?StreamName=TestCapture_20180702_1118&","Link":"/en.files.html?Fn=view&StreamName=TestCapture_20180702_1118&","Date":1.5304978842841e+18,"Size":0,"Del":"/pcap/del?StreamName=TestCapture_20180702_1118&rand=1530498848939096064&","IsActive":false,"Type":"","Desc":"Mon . 11:18:04 . 02-07-2018"}
 ]}
 ```
-{% endapi-method-response-example %}
-{% endapi-method-response %}
-{% endapi-method-spec %}
-{% endapi-method %}
+{% endswagger-response %}
+{% endswagger %}
 
-{% api-method method="get" host="http://127.0.0.1/stream/ssize?StreamName=<capture sname>&StreamView=<split mode>" path="" %}
-{% api-method-summary %}
-Split Capture by filesize
-{% endapi-method-summary %}
+{% swagger baseUrl="http://127.0.0.1/stream/ssize?StreamName=<capture sname>&StreamView=<split mode>" path="" method="get" summary="Split Capture by filesize" %}
+{% swagger-description %}
+Lists splits for a specific capture based on file size. 
 
-{% api-method-description %}
-Lists splits for a specific capture based on file size.   
-  
-Usually this is a 2 step process of   
-1\) get the split list   
+\
+
+
+
+
+\
+
+
+Usually this is a 2 step process of 
+
+\
+
+
+1\) get the split list 
+
+\
+
+
 2\) download a specific split. 
-{% endapi-method-description %}
+{% endswagger-description %}
 
-{% api-method-spec %}
-{% api-method-request %}
-{% api-method-query-parameters %}
-{% api-method-parameter name="StreamView" type="string" required=true %}
-Stream time slice name  
-  
-split\_10MB  
-split\_100MB  
-split\_250MB  
-split\_1GB  
-split\_2GB  
-split\_5GB  
-split\_10GB  
-split\_100GB  
-split\_1TB
-{% endapi-method-parameter %}
+{% swagger-parameter in="query" name="StreamView" type="string" %}
+Stream time slice name
 
-{% api-method-parameter name="StreamName" type="string" required=true %}
+\
+
+
+
+
+\
+
+
+split_10MB
+
+\
+
+
+split_100MB
+
+\
+
+
+split_250MB
+
+\
+
+
+split_1GB
+
+\
+
+
+split_2GB
+
+\
+
+
+split_5GB
+
+\
+
+
+split_10GB
+
+\
+
+
+split_100GB
+
+\
+
+
+split_1TB
+{% endswagger-parameter %}
+
+{% swagger-parameter in="query" name="StreamName" type="string" %}
 Stream capture name
-{% endapi-method-parameter %}
-{% endapi-method-query-parameters %}
-{% endapi-method-request %}
+{% endswagger-parameter %}
 
-{% api-method-response %}
-{% api-method-response-example httpCode=200 %}
-{% api-method-response-example-description %}
-
-{% endapi-method-response-example-description %}
-
+{% swagger-response status="200" description="" %}
 ```javascript
 {
   "Path": "/capture/test1234_20210611_1258/split_1GB",
@@ -234,159 +222,202 @@ Stream capture name
     .
   }
 ```
-{% endapi-method-response-example %}
-{% endapi-method-response %}
-{% endapi-method-spec %}
-{% endapi-method %}
+{% endswagger-response %}
+{% endswagger %}
 
-{% api-method method="get" host="http://127.0.0.1/stream/stime?StreamName=<capture sname>&StreamView=<split mode>" path="" %}
-{% api-method-summary %}
-Split Capture by time
-{% endapi-method-summary %}
+{% swagger baseUrl="http://127.0.0.1/stream/stime?StreamName=<capture sname>&StreamView=<split mode>" path="" method="get" summary="Split Capture by time" %}
+{% swagger-description %}
+Lists splits for a specific capture based on a time unit.
 
-{% api-method-description %}
-Lists splits for a specific capture based on a time unit.  
-  
-Usually this is a 2 step process of   
-1\) get the split list   
-2\) download a specific split  
-{% endapi-method-description %}
+\
 
-{% api-method-spec %}
-{% api-method-request %}
-{% api-method-query-parameters %}
-{% api-method-parameter name="StreamView" type="string" required=true %}
-Split options for the time split  
-  
-split\_1sec  
-split\_10sec  
-split\_1min  
-split\_10min  
-split\_15min  
-split\_1hour  
-split\_2hour  
-split\_4hour  
-split\_6hour  
-split\_8hour  
-split\_12hour
-{% endapi-method-parameter %}
 
-{% api-method-parameter name="StreamName" type="string" required=true %}
+
+
+\
+
+
+Usually this is a 2 step process of 
+
+\
+
+
+1\) get the split list 
+
+\
+
+
+2\) download a specific split
+
+\
+
+
+
+{% endswagger-description %}
+
+{% swagger-parameter in="query" name="StreamView" type="string" %}
+Split options for the time split
+
+\
+
+
+
+
+\
+
+
+split_1sec
+
+\
+
+
+split_10sec
+
+\
+
+
+split_1min
+
+\
+
+
+split_10min
+
+\
+
+
+split_15min
+
+\
+
+
+split_1hour
+
+\
+
+
+split_2hour
+
+\
+
+
+split_4hour
+
+\
+
+
+split_6hour
+
+\
+
+
+split_8hour
+
+\
+
+
+split_12hour
+{% endswagger-parameter %}
+
+{% swagger-parameter in="query" name="StreamName" type="string" %}
 Stream capture name.
-{% endapi-method-parameter %}
-{% endapi-method-query-parameters %}
-{% endapi-method-request %}
+{% endswagger-parameter %}
 
-{% api-method-response %}
-{% api-method-response-example httpCode=200 %}
-{% api-method-response-example-description %}
-
-{% endapi-method-response-example-description %}
-
+{% swagger-response status="200" description="" %}
 ```
-
 ```
-{% endapi-method-response-example %}
-{% endapi-method-response %}
-{% endapi-method-spec %}
-{% endapi-method %}
+{% endswagger-response %}
+{% endswagger %}
 
-{% api-method method="get" host="http://127.0.0.1/pcap/single?StreamName=<capture name>&FilterRE=<string>" path="" %}
-{% api-method-summary %}
-Single PCAP Download
-{% endapi-method-summary %}
+{% swagger baseUrl="http://127.0.0.1/pcap/single?StreamName=<capture name>&FilterRE=<string>" path="" method="get" summary="Single PCAP Download" %}
+{% swagger-description %}
+Download entire capture as a single file. 
 
-{% api-method-description %}
-Download entire capture as a single file.   
+\
+
+
 Piping to a file or any other analysis tools is possible.
-{% endapi-method-description %}
+{% endswagger-description %}
 
-{% api-method-spec %}
-{% api-method-request %}
-{% api-method-query-parameters %}
-{% api-method-parameter name="FilterRE" type="string" required=false %}
+{% swagger-parameter in="query" name="FilterRE" type="string" %}
 Download the capture with using a RegEx DPI filter.
-{% endapi-method-parameter %}
+{% endswagger-parameter %}
 
-{% api-method-parameter name="FilterBPF" type="string" required=false %}
+{% swagger-parameter in="query" name="FilterBPF" type="string" %}
 BPF Filter to be applied to the stream
-{% endapi-method-parameter %}
+{% endswagger-parameter %}
 
-{% api-method-parameter name="Compression" type="string" required=false %}
-Compress the returned stream with gzip.   
-'fast'      Fastest compression but not smallest  
-'best'    Slowest compression smallest size  
+{% swagger-parameter in="query" name="Compression" type="string" %}
+Compress the returned stream with gzip. 
+
+\
+
+
+'fast'      Fastest compression but not smallest
+
+\
+
+
+'best'    Slowest compression smallest size
+
+\
+
+
 1-9        The range from 'fast' to 'best' 
-{% endapi-method-parameter %}
+{% endswagger-parameter %}
 
-{% api-method-parameter name="StreamName" type="string" required=true %}
+{% swagger-parameter in="query" name="StreamName" type="string" %}
 Stream capture name.
-{% endapi-method-parameter %}
-{% endapi-method-query-parameters %}
-{% endapi-method-request %}
+{% endswagger-parameter %}
 
-{% api-method-response %}
-{% api-method-response-example httpCode=200 %}
-{% api-method-response-example-description %}
-
-{% endapi-method-response-example-description %}
-
+{% swagger-response status="200" description="" %}
 ```
-
 ```
-{% endapi-method-response-example %}
-{% endapi-method-response %}
-{% endapi-method-spec %}
-{% endapi-method %}
+{% endswagger-response %}
+{% endswagger %}
 
-Compression example:  
+Compression example:\
 `curl -u fmadio:100g "http://192.168.2.75/pcap/single?StreamName=TestCapture_20180702_1127&Compression=fast"`
 
-FilterBPF example:  
+FilterBPF example:\
 `curl -u fmadio:100g "http://192.168.2.75/pcap/single?StreamName=hitcon_20180702_1503_58&" -G --data-urlencode "FilterBPF=tcp"`
 
-{% api-method method="get" host="http://127.0.0.1/pcap/splittime?StreamName=<string>&Start=<int>&Stop=<int>&FilterBPF=<string>&FilterPort=<int>" path="" %}
-{% api-method-summary %}
-Split PCAP Time Download
-{% endapi-method-summary %}
+{% swagger baseUrl="http://127.0.0.1/pcap/splittime?StreamName=<string>&Start=<int>&Stop=<int>&FilterBPF=<string>&FilterPort=<int>" path="" method="get" summary="Split PCAP Time Download" %}
+{% swagger-description %}
+Download the capture with a time filter. 
 
-{% api-method-description %}
-Download the capture with a time filter.   
-Note: the nanosecond Epoch Start is 1530498788000000000.   
+\
+
+
+Note: the nanosecond Epoch Start is 1530498788000000000. 
+
+\
+
+
 Removing the nanosecond part convert epoch to date/time.
-{% endapi-method-description %}
+{% endswagger-description %}
 
-{% api-method-spec %}
-{% api-method-request %}
-{% api-method-query-parameters %}
-{% api-method-parameter name="FilterPort" type="integer" required=false %}
+{% swagger-parameter in="query" name="FilterPort" type="integer" %}
 Download the capture specifying the port capture number.
-{% endapi-method-parameter %}
+{% endswagger-parameter %}
 
-{% api-method-parameter name="FilterBPF" type="string" required=false %}
+{% swagger-parameter in="query" name="FilterBPF" type="string" %}
 BPF Filter to be applied to the stream.
-{% endapi-method-parameter %}
+{% endswagger-parameter %}
 
-{% api-method-parameter name="StreamName" type="string" required=true %}
+{% swagger-parameter in="query" name="StreamName" type="string" %}
 Stream capture name.
-{% endapi-method-parameter %}
+{% endswagger-parameter %}
 
-{% api-method-parameter name="Stop" type="integer" required=true %}
+{% swagger-parameter in="query" name="Stop" type="integer" %}
 Stop time in nanoseconds epoch.
-{% endapi-method-parameter %}
+{% endswagger-parameter %}
 
-{% api-method-parameter name="Start" type="integer" required=true %}
+{% swagger-parameter in="query" name="Start" type="integer" %}
 Start time in nanoseconds epoch.
-{% endapi-method-parameter %}
-{% endapi-method-query-parameters %}
-{% endapi-method-request %}
+{% endswagger-parameter %}
 
-{% api-method-response %}
-{% api-method-response-example httpCode=200 %}
-{% api-method-response-example-description %}
-PCAP Data stream. Usually used with tools like curl.
-{% endapi-method-response-example-description %}
-
+{% swagger-response status="200" description="PCAP Data stream. Usually used with tools like curl." %}
 ```
 $ curl -u fmadio:100g "http://192.168.2.75/pcap/splittime?StreamName=TestCapture_20180702_1127&&Start=1530498788000000000&Stop=1530498789000000000&" | tcpdump  -r - -nn | head
 11:33:08.000000 66:77:88:99:aa:bb > 00:44:44:44:44:44 Null Information, send seq 22, rcv seq 1, Flags [Poll], length 54
@@ -405,82 +436,79 @@ $ curl -u fmadio:100g "http://192.168.2.75/pcap/splittime?StreamName=TestCapture
 .
 .
 ```
-{% endapi-method-response-example %}
-{% endapi-method-response %}
-{% endapi-method-spec %}
-{% endapi-method %}
+{% endswagger-response %}
+{% endswagger %}
 
-{% api-method method="get" host="http://127.0.0.1/pcap/timerange?TSBegin=<epoch start>&TSEnd=<epoch stop>&TSMax=<size>&TSMode=<nanos or msecs>" path="" %}
-{% api-method-summary %}
-TimeRange PCAP Download
-{% endapi-method-summary %}
+{% swagger baseUrl="http://127.0.0.1/pcap/timerange?TSBegin=<epoch start>&TSEnd=<epoch stop>&TSMax=<size>&TSMode=<nanos or msecs>" path="" method="get" summary="TimeRange PCAP Download" %}
+{% swagger-description %}
+Download a timerange of pcap data without any capture file referenced. The system will search all captures for the specified timerange.
 
-{% api-method-description %}
-Download a timerange of pcap data without any capture file referenced. The system will search all captures for the specified timerange.  
-  
+\
+
+
+
+
+\
+
+
 At most it can cross two pcap files
-{% endapi-method-description %}
+{% endswagger-description %}
 
-{% api-method-spec %}
-{% api-method-request %}
-{% api-method-query-parameters %}
-{% api-method-parameter name="TSMax" type="integer" required=false %}
+{% swagger-parameter in="query" name="TSMax" type="integer" %}
 Maximum nanosecond of packets to download.
-{% endapi-method-parameter %}
+{% endswagger-parameter %}
 
-{% api-method-parameter name="TSMode" type="string" required=false %}
-Time Range mode to use for time:   
-  
-nsec    \| epoch in  nano seconds \(default\)  
-usec    \| epoch in micro seconds  
-msec   \| epoch in milli seconds  
-sec:      \| epoch in seconds
-{% endapi-method-parameter %}
+{% swagger-parameter in="query" name="TSMode" type="string" %}
+Time Range mode to use for time: 
 
-{% api-method-parameter name="TSBegin" type="integer" required=true %}
-Start time in epoch \(default nano seconds\)
-{% endapi-method-parameter %}
+\
 
-{% api-method-parameter name="TSEnd" type="integer" required=true %}
-Stop time in epoch \(default nano seconds\).
-{% endapi-method-parameter %}
-{% endapi-method-query-parameters %}
-{% endapi-method-request %}
 
-{% api-method-response %}
-{% api-method-response-example httpCode=200 %}
-{% api-method-response-example-description %}
 
-{% endapi-method-response-example-description %}
 
+\
+
+
+nsec    | epoch in  nano seconds (default)
+
+\
+
+
+usec    | epoch in micro seconds
+
+\
+
+
+msec   | epoch in milli seconds
+
+\
+
+
+sec:      | epoch in seconds
+{% endswagger-parameter %}
+
+{% swagger-parameter in="query" name="TSBegin" type="integer" %}
+Start time in epoch (default nano seconds)
+{% endswagger-parameter %}
+
+{% swagger-parameter in="query" name="TSEnd" type="integer" %}
+Stop time in epoch (default nano seconds).
+{% endswagger-parameter %}
+
+{% swagger-response status="200" description="" %}
 ```
-
 ```
-{% endapi-method-response-example %}
-{% endapi-method-response %}
-{% endapi-method-spec %}
-{% endapi-method %}
+{% endswagger-response %}
+{% endswagger %}
 
 ### Device Management
 
-{% api-method method="get" host="http://127.0.0.1/sysmaster/stats\_summary" path="" %}
-{% api-method-summary %}
-System Status
-{% endapi-method-summary %}
-
-{% api-method-description %}
+{% swagger baseUrl="http://127.0.0.1/sysmaster/stats_summary" path="" method="get" summary="System Status" %}
+{% swagger-description %}
 Get system status information
-{% endapi-method-description %}
+{% endswagger-description %}
 
-{% api-method-spec %}
-{% api-method-request %}
-
-{% api-method-response %}
-{% api-method-response-example httpCode=200 %}
-{% api-method-response-example-description %}
-
-{% endapi-method-response-example-description %}
-
+{% swagger-response status="200" description="" %}
 ```
 {
 	"uptime":"0D 7H 16M",
@@ -507,42 +535,23 @@ Get system status information
 .
 }
 ```
-{% endapi-method-response-example %}
-{% endapi-method-response %}
-{% endapi-method-spec %}
-{% endapi-method %}
+{% endswagger-response %}
+{% endswagger %}
 
-{% api-method method="get" host="http://127.0.0.1" path="/pcap/del?StreamName=<full capture name>" %}
-{% api-method-summary %}
-Delete Capture
-{% endapi-method-summary %}
-
-{% api-method-description %}
+{% swagger baseUrl="http://127.0.0.1" path="/pcap/del?StreamName=<full capture name>" method="get" summary="Delete Capture" %}
+{% swagger-description %}
 Deletes capture off the system
-{% endapi-method-description %}
+{% endswagger-description %}
 
-{% api-method-spec %}
-{% api-method-request %}
-{% api-method-path-parameters %}
-{% api-method-parameter name="StreamName" type="string" required=true %}
+{% swagger-parameter in="path" name="StreamName" type="string" %}
 full name of the capture file to be deleted
-{% endapi-method-parameter %}
-{% endapi-method-path-parameters %}
-{% endapi-method-request %}
+{% endswagger-parameter %}
 
-{% api-method-response %}
-{% api-method-response-example httpCode=200 %}
-{% api-method-response-example-description %}
-
-{% endapi-method-response-example-description %}
-
+{% swagger-response status="200" description="" %}
 ```
-
 ```
-{% endapi-method-response-example %}
-{% endapi-method-response %}
-{% endapi-method-spec %}
-{% endapi-method %}
+{% endswagger-response %}
+{% endswagger %}
 
 ## V1 API
 
@@ -552,7 +561,7 @@ The FMADIO V1 API uses endpoints with parameters. All V1 versions of the API end
 
 The V1 API has advantages of the previous API. These are:
 
-* Multiple downloads can occur at the same time on the same device \(up to 4 concurrently\).
+* Multiple downloads can occur at the same time on the same device (up to 4 concurrently).
 * Improved download performance
 * Ability to use compressed and bpf filter  parameters on most downloads.
 
@@ -560,41 +569,39 @@ Note: All original API url's shall be available as well as the new V1 endpoints.
 
 ### Downloading PCAP
 
-{% api-method method="get" host="http://127.0.0.1/api/v1/pcap/single?StreamName=<capture name>" path="" %}
-{% api-method-summary %}
-Single PCAP Download
-{% endapi-method-summary %}
-
-{% api-method-description %}
+{% swagger baseUrl="http://127.0.0.1/api/v1/pcap/single?StreamName=<capture name>" path="" method="get" summary="Single PCAP Download" %}
+{% swagger-description %}
 Download entire capture as a single file. Piping to a file or any other analysis tools is possible.
-{% endapi-method-description %}
+{% endswagger-description %}
 
-{% api-method-spec %}
-{% api-method-request %}
-{% api-method-query-parameters %}
-{% api-method-parameter name="FilterBPF" type="string" required=false %}
+{% swagger-parameter in="query" name="FilterBPF" type="string" %}
 BPF Filter to be applied to the stream.
-{% endapi-method-parameter %}
+{% endswagger-parameter %}
 
-{% api-method-parameter name="Compression" type="string" required=false %}
-Compress the returned stream with gzip.   
-'fast'   Fastest compression but not smallest.  
-'best'  Slowest compression smallest size.  
+{% swagger-parameter in="query" name="Compression" type="string" %}
+Compress the returned stream with gzip. 
+
+\
+
+
+'fast'   Fastest compression but not smallest.
+
+\
+
+
+'best'  Slowest compression smallest size.
+
+\
+
+
 1-9      The range from 'fast' to 'best'
-{% endapi-method-parameter %}
+{% endswagger-parameter %}
 
-{% api-method-parameter name="StreamName" type="string" required=true %}
+{% swagger-parameter in="query" name="StreamName" type="string" %}
 Stream capture name.
-{% endapi-method-parameter %}
-{% endapi-method-query-parameters %}
-{% endapi-method-request %}
+{% endswagger-parameter %}
 
-{% api-method-response %}
-{% api-method-response-example httpCode=200 %}
-{% api-method-response-example-description %}
-
-{% endapi-method-response-example-description %}
-
+{% swagger-response status="200" description="" %}
 ```
 $ curl -u fmadio:100g "http://192.168.2.75/api/v1/pcap/single?StreamName=TestCapture_20180702_1127&&FilterBPF=tcp" | tcpdump  -r - -nn | head
 11:33:08.000000 66:77:88:99:aa:bb > 00:44:44:44:44:44 Null Information, send seq 22, rcv seq 1, Flags [Poll], length 54
@@ -613,47 +620,31 @@ $ curl -u fmadio:100g "http://192.168.2.75/api/v1/pcap/single?StreamName=TestCap
 .
 .   
 ```
-{% endapi-method-response-example %}
-{% endapi-method-response %}
-{% endapi-method-spec %}
-{% endapi-method %}
+{% endswagger-response %}
+{% endswagger %}
 
-{% api-method method="get" host="http://127.0.0.1/api/v1/pcap/splittime?StreamName=<capture name>&FilterBPF=<BPF filter>&Start=<epoch start>&Stop=<epoch stop>" path="" %}
-{% api-method-summary %}
-Split PCAP Time Download
-{% endapi-method-summary %}
+{% swagger baseUrl="http://127.0.0.1/api/v1/pcap/splittime?StreamName=<capture name>&FilterBPF=<BPF filter>&Start=<epoch start>&Stop=<epoch stop>" path="" method="get" summary="Split PCAP Time Download" %}
+{% swagger-description %}
 
-{% api-method-description %}
+{% endswagger-description %}
 
-{% endapi-method-description %}
-
-{% api-method-spec %}
-{% api-method-request %}
-{% api-method-query-parameters %}
-{% api-method-parameter name="FilterBPF" type="string" required=false %}
+{% swagger-parameter in="query" name="FilterBPF" type="string" %}
 BPF Filter to be applied to the stream.
-{% endapi-method-parameter %}
+{% endswagger-parameter %}
 
-{% api-method-parameter name="StreamName" type="string" required=true %}
+{% swagger-parameter in="query" name="StreamName" type="string" %}
 Stream capture name.
-{% endapi-method-parameter %}
+{% endswagger-parameter %}
 
-{% api-method-parameter name="Stop" type="integer" required=true %}
+{% swagger-parameter in="query" name="Stop" type="integer" %}
 Stop time in nanoseconds epoch.
-{% endapi-method-parameter %}
+{% endswagger-parameter %}
 
-{% api-method-parameter name="Start" type="integer" required=true %}
+{% swagger-parameter in="query" name="Start" type="integer" %}
 Start time in nanoseconds epoch.
-{% endapi-method-parameter %}
-{% endapi-method-query-parameters %}
-{% endapi-method-request %}
+{% endswagger-parameter %}
 
-{% api-method-response %}
-{% api-method-response-example httpCode=200 %}
-{% api-method-response-example-description %}
-PCAP Data stream. Usually used with tools like curl.
-{% endapi-method-response-example-description %}
-
+{% swagger-response status="200" description="PCAP Data stream. Usually used with tools like curl." %}
 ```
 $ curl -u fmadio:100g "http://192.168.2.75/pcap/splittime?StreamName=TestCapture_20180702_1127&&Start=1530498788000000000&Stop=1530498789000000000&" | tcpdump  -r - -nn | head
 11:33:08.000000 66:77:88:99:aa:bb > 00:44:44:44:44:44 Null Information, send seq 22, rcv seq 1, Flags [Poll], length 54
@@ -672,59 +663,59 @@ $ curl -u fmadio:100g "http://192.168.2.75/pcap/splittime?StreamName=TestCapture
 .
 .
 ```
-{% endapi-method-response-example %}
-{% endapi-method-response %}
-{% endapi-method-spec %}
-{% endapi-method %}
+{% endswagger-response %}
+{% endswagger %}
 
-{% api-method method="get" host="http://127.0.0.1/api/v1/pcap/timerange?TSBegin=<epoch start>&TSEnd=<epoch stop>&TSMax=<size>&TSMode=<nanos or msecs>" path="" %}
-{% api-method-summary %}
-TimeRange PCAP Download
-{% endapi-method-summary %}
+{% swagger baseUrl="http://127.0.0.1/api/v1/pcap/timerange?TSBegin=<epoch start>&TSEnd=<epoch stop>&TSMax=<size>&TSMode=<nanos or msecs>" path="" method="get" summary="TimeRange PCAP Download" %}
+{% swagger-description %}
+Download a timerange of pcap data that can cross over a multiple pcap files.
 
-{% api-method-description %}
-Download a timerange of pcap data that can cross over a multiple pcap files.  
+\
+
+
 The timerange results may be a portion of a single pcap stream, or a portion of multiple streams that share a connected time series.
-{% endapi-method-description %}
+{% endswagger-description %}
 
-{% api-method-spec %}
-{% api-method-request %}
-{% api-method-query-parameters %}
-{% api-method-parameter name="FilterBPF" type="string" required=false %}
+{% swagger-parameter in="query" name="FilterBPF" type="string" %}
 
-{% endapi-method-parameter %}
+{% endswagger-parameter %}
 
-{% api-method-parameter name="Compression" type="string" required=false %}
-Compress the returned stream with gzip.   
-'fast'    Fastest compression but not smallest.   
-'best'   Slowest compression smallest size.   
+{% swagger-parameter in="query" name="Compression" type="string" %}
+Compress the returned stream with gzip. 
+
+\
+
+
+'fast'    Fastest compression but not smallest. 
+
+\
+
+
+'best'   Slowest compression smallest size. 
+
+\
+
+
 1-9       The range from 'fast' to 'best'
-{% endapi-method-parameter %}
+{% endswagger-parameter %}
 
-{% api-method-parameter name="TSMax" type="integer" required=false %}
+{% swagger-parameter in="query" name="TSMax" type="integer" %}
 Maximum nanosecond of packets to download.
-{% endapi-method-parameter %}
+{% endswagger-parameter %}
 
-{% api-method-parameter name="TSMode" type="string" required=false %}
+{% swagger-parameter in="query" name="TSMode" type="string" %}
 Time Range mode to use for time: msecs or nanos..
-{% endapi-method-parameter %}
+{% endswagger-parameter %}
 
-{% api-method-parameter name="TSBegin" type="integer" required=true %}
+{% swagger-parameter in="query" name="TSBegin" type="integer" %}
 Start time in nanoseconds epoch.
-{% endapi-method-parameter %}
+{% endswagger-parameter %}
 
-{% api-method-parameter name="TSEnd" type="integer" required=true %}
+{% swagger-parameter in="query" name="TSEnd" type="integer" %}
 Stop time in nanoseconds epoch.
-{% endapi-method-parameter %}
-{% endapi-method-query-parameters %}
-{% endapi-method-request %}
+{% endswagger-parameter %}
 
-{% api-method-response %}
-{% api-method-response-example httpCode=200 %}
-{% api-method-response-example-description %}
-
-{% endapi-method-response-example-description %}
-
+{% swagger-response status="200" description="" %}
 ```
 $ curl -u fmadio:100g "http://192.168.2.75/pcap/timerange?TSBegin=1530498788000000000&TSEnd=1530498789000000000&" | tcpdump  -r - -nn | head
 11:33:08.000000 66:77:88:99:aa:bb > 00:44:44:44:44:44 Null Information, send seq 22, rcv seq 1, Flags [Poll], length 54
@@ -744,8 +735,5 @@ $ curl -u fmadio:100g "http://192.168.2.75/pcap/timerange?TSBegin=15304987880000
 .
 
 ```
-{% endapi-method-response-example %}
-{% endapi-method-response %}
-{% endapi-method-spec %}
-{% endapi-method %}
-
+{% endswagger-response %}
+{% endswagger %}
