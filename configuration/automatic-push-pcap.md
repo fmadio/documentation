@@ -471,3 +471,23 @@ fmadio@fmadio20v3-287:~$
 ```
 
 The above command writes a 20GB file to the remote file location. In this case its writing @ 678MB/sec ( 5.4Gbps throughput)
+
+## Maintenance
+
+### Force PCAP Link Layer Setting
+
+To force the PCAP link layer type to Ethernet use the following CLI command on the PCAP
+
+```
+printf "\x1" | dd of=<path to pcap>.pcap bs=1 seek=20 count=1 conv=notrunc
+```
+
+The symptoms of this is unusual TCPDUMP output such as the following
+
+![](<../.gitbook/assets/image (70).png>)
+
+After setting the PCAP Link Layer setting using the above command the output is as follows
+
+![](<../.gitbook/assets/image (90).png>)
+
+Which contains the correctly decoded packets.
