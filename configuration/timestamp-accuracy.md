@@ -40,7 +40,7 @@ For the ultimate global time accuracy, Pulse Per Second timing gives the most ac
 
 Below is a time histogram of our FMADIO Gen1 (Solarflare NIC as the master clock) compared against FMADIO 40G Gen3 (8x10G) system as the slave clock. The clock are synchronized using PTPv2 and PPS coax cable. The result is impressive
 
-![FMADIO PPS Global Time Accuracy](<../.gitbook/assets/image (90).png>)
+![PPS Global Time Accuracy (Nanoseconds)](<../.gitbook/assets/image (90).png>)
 
 In the above histogram the time bins are 1 nanosecond. As you can see the support width of the histogram is +/- 10ns. This means the global time accuracy is within 10 nanoseconds.&#x20;
 
