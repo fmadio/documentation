@@ -25,6 +25,7 @@
 * [Password Change](configuration/password-change.md)
 * [SSH Customization](configuration/ssh-customization.md)
 * [WWW Customization](configuration/www-customization.md)
+* [Authentication](configuration/authentication.md)
 
 ## Data Download
 
