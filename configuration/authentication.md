@@ -10,7 +10,7 @@ In many environments different Authentication is required. By default FMADIO cap
 * RADIUS
 * LDAP
 
-### HTTPS Only
+## HTTPS Only
 
 By default HTTP and HTTPS are enabled on the GUI. In any security setting HTTP needs to be disabled, as its an unsecure protocol. To disable HTTP edit the config file
 
@@ -47,11 +47,11 @@ sudo killall nginx
 
 NGINX will restart automatically within 60 seconds with the updated configuration. Only HTTPS access is possible.
 
-### Single Sign On
+## Single Sign On
 
 SSO configuration is more complicated, please contact support@fmad.io and we can walk you thru the setup personally
 
-### RADIUS
+## RADIUS
 
 **FW: 7563+**
 
@@ -139,3 +139,7 @@ Received Access-Reject Id 95 from 192.168.2.132:1812 to 192.168.2.175:56527 leng
 fmadio@fmadio100v2-228U:$
 
 ```
+
+## LDAP
+
+Please contact support@fmad.io we can walk you thru the configuration and setup personally
