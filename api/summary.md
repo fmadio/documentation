@@ -623,7 +623,7 @@ $ curl -u fmadio:100g "http://192.168.2.75/api/v1/pcap/single?StreamName=TestCap
 {% endswagger-response %}
 {% endswagger %}
 
-{% swagger baseUrl="http://127.0.0.1/api/v1/pcap/splittime?StreamName=<capture name>&FilterBPF=<BPF filter>&Start=<epoch start>&Stop=<epoch stop>" path="" method="get" summary="Split PCAP Time Download" %}
+{% swagger baseUrl="/api/v1/pcap/splittime" path="" method="get" summary="Split PCAP Time Download" %}
 {% swagger-description %}
 
 {% endswagger-description %}
@@ -642,6 +642,10 @@ Stop time in nanoseconds epoch.
 
 {% swagger-parameter in="query" name="Start" type="integer" %}
 Start time in nanoseconds epoch.
+{% endswagger-parameter %}
+
+{% swagger-parameter in="body" %}
+
 {% endswagger-parameter %}
 
 {% swagger-response status="200" description="PCAP Data stream. Usually used with tools like curl." %}
