@@ -666,6 +666,30 @@ $ curl -u fmadio:100g "http://192.168.2.75/pcap/splittime?StreamName=TestCapture
 {% endswagger-response %}
 {% endswagger %}
 
+{% swagger method="get" path="" baseUrl="/api/v1/pcap/splittime" summary="Get PCAP timerange (optional BPF filter)" %}
+{% swagger-description %}
+Gets PCAP from the specified StreamName with Start/Stop EPOCH time with an optional BPF filter
+{% endswagger-description %}
+
+{% swagger-parameter in="query" name="StreamName" required="true" %}
+Capture name to fetch from
+{% endswagger-parameter %}
+
+{% swagger-parameter in="query" name="Start" required="true" %}
+EPOCH Nanosecond start time
+{% endswagger-parameter %}
+
+{% swagger-parameter in="query" name="Stop" required="true" %}
+EPOCH Nanosecond stop time
+{% endswagger-parameter %}
+
+{% swagger-parameter in="query" name="BPF" %}
+Escape Encoded BPF filter
+{% endswagger-parameter %}
+{% endswagger %}
+
+
+
 {% swagger baseUrl="http://127.0.0.1/api/v1/pcap/timerange?TSBegin=<epoch start>&TSEnd=<epoch stop>&TSMax=<size>&TSMode=<nanos or msecs>" path="" method="get" summary="TimeRange PCAP Download" %}
 {% swagger-description %}
 Download a timerange of pcap data that can cross over a multiple pcap files.
