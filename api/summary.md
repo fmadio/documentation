@@ -694,7 +694,7 @@ Escape Encoded BPF filter
 
 
 
-{% swagger baseUrl="http://127.0.0.1/api/v1/pcap/timerange?TSBegin=<epoch start>&TSEnd=<epoch stop>&TSMax=<size>&TSMode=<nanos or msecs>" path="" method="get" summary="TimeRange PCAP Download" %}
+{% swagger baseUrl="/api/v1/pcap/timerange" path="" method="get" summary="TimeRange PCAP Download" %}
 {% swagger-description %}
 Download a timerange of pcap data that can cross over a multiple pcap files.
 
