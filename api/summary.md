@@ -623,54 +623,7 @@ $ curl -u fmadio:100g "http://192.168.2.75/api/v1/pcap/single?StreamName=TestCap
 {% endswagger-response %}
 {% endswagger %}
 
-{% swagger baseUrl="/api/v1/pcap/splittime" path="" method="get" summary="Split PCAP Time Download" %}
-{% swagger-description %}
-
-{% endswagger-description %}
-
-{% swagger-parameter in="query" name="FilterBPF" type="string" %}
-BPF Filter to be applied to the stream.
-{% endswagger-parameter %}
-
-{% swagger-parameter in="query" name="StreamName" type="string" %}
-Stream capture name.
-{% endswagger-parameter %}
-
-{% swagger-parameter in="query" name="Stop" type="integer" %}
-Stop time in nanoseconds epoch.
-{% endswagger-parameter %}
-
-{% swagger-parameter in="query" name="Start" type="integer" %}
-Start time in nanoseconds epoch.
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" %}
-
-{% endswagger-parameter %}
-
-{% swagger-response status="200" description="PCAP Data stream. Usually used with tools like curl." %}
-```
-$ curl -u fmadio:100g "http://192.168.2.75/pcap/splittime?StreamName=TestCapture_20180702_1127&&Start=1530498788000000000&Stop=1530498789000000000&" | tcpdump  -r - -nn | head
-11:33:08.000000 66:77:88:99:aa:bb > 00:44:44:44:44:44 Null Information, send seq 22, rcv seq 1, Flags [Poll], length 54
-        0x0000:  0000 2c03 153a 2d03 153a 2e03 153a 2f03  ..,..:-..:...:/.
-        0x0010:  153a 3003 153a 3103 153a 3203 153a 3303  .:0..:1..:2..:3.
-        0x0020:  153a 3403 153a 3503 153a 3603 153a 3703  .:4..:5..:6..:7.
-        0x0030:  153a a878 4e26                           .:.xN&
-11:33:08.000000 66:77:88:99:aa:bb > 00:33:33:33:33:33 Null Information, send seq 22, rcv seq 1, Flags [Poll], length 54
-        0x0000:  0000 2c03 152a 2d03 152a 2e03 152a 2f03  ..,..*-..*...*/.
-        0x0010:  152a 3003 152a 3103 152a 3203 152a 3303  .*0..*1..*2..*3.
-        0x0020:  152a 3403 152a 3503 152a 3603 152a 3703  .*4..*5..*6..*7.
-        0x0030:  152a 7b57 491d                           .*{WI.
-.
-.
-.
-.
-.
-```
-{% endswagger-response %}
-{% endswagger %}
-
-{% swagger method="get" path="" baseUrl="/api/v1/pcap/splittime" summary="Get PCAP timerange (optional BPF filter)" %}
+{% swagger method="get" path="" baseUrl="/api/v1/pcap/splittime" summary="Get Specific PCAP timerange (optional BPF filter)" %}
 {% swagger-description %}
 Gets PCAP from the specified StreamName with Start/Stop EPOCH time with an optional BPF filter
 {% endswagger-description %}
@@ -687,9 +640,17 @@ EPOCH Nanosecond start time
 EPOCH Nanosecond stop time
 {% endswagger-parameter %}
 
-{% swagger-parameter in="query" name="BPF" %}
+{% swagger-parameter in="query" name="FilterBPF" %}
 Escape Encoded BPF filter
 {% endswagger-parameter %}
+
+{% swagger-response status="200: OK" description="" %}
+```javascript
+{
+    // Response
+}
+```
+{% endswagger-response %}
 {% endswagger %}
 
 
