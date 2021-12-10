@@ -569,7 +569,7 @@ Note: All original API url's shall be available as well as the new V1 endpoints.
 
 ### Downloading PCAP
 
-{% swagger baseUrl="http://127.0.0.1/api/v1/pcap/single?StreamName=<capture name>" path="" method="get" summary="Single PCAP Download" %}
+{% swagger baseUrl="/api/v1/pcap/single" path="" method="get" summary="Single PCAP Download" %}
 {% swagger-description %}
 Download entire capture as a single file. Piping to a file or any other analysis tools is possible.
 {% endswagger-description %}
