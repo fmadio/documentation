@@ -666,16 +666,6 @@ $ curl -u fmadio:100g "http://192.168.2.75/pcap/splittime?StreamName=TestCapture
 {% endswagger-response %}
 {% endswagger %}
 
-{% swagger method="get" path="" baseUrl="/api/v1/pcap/splittime" summary="Fetch PCAP from a specific capture at a specific time range" %}
-{% swagger-description %}
-
-{% endswagger-description %}
-
-{% swagger-parameter in="query" name="StreamName" required="true" %}
-Name of the capture to fetch
-{% endswagger-parameter %}
-{% endswagger %}
-
 {% swagger method="get" path="" baseUrl="/api/v1/pcap/splittime" summary="Get PCAP timerange (optional BPF filter)" %}
 {% swagger-description %}
 Gets PCAP from the specified StreamName with Start/Stop EPOCH time with an optional BPF filter
