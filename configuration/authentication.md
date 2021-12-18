@@ -139,6 +139,8 @@ fmadio@fmadio100v2-228U:$
 
 ## Active Directory (SSO via OAUTH 2.0)
 
+**FW:7608+**
+
 FMADIO Capture devices can authenticate the users using Active Directory via the OAUTH 2.0 protocol. This enable Single Sign On with ADFS.
 
 In the follow example we have used a reverse SSH tunnel to temporarily put FMADIO system on a public IP, as Azure Active Directory services require internet accessible devices for the redirect\_uri. For an On Premise Active Directory server this is not required.
