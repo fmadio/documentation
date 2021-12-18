@@ -42,7 +42,7 @@ fmadio@fmadio20v3-287:/mnt/store0/etc$
 
 Above is the correct operation. Once complete please reboot the system to confirm the new mount points.
 
-**NOTE:  **if the NFS mount fails it may take 5 min to boot the system. This is the time it takes for the NFS client timeout and give up on mounting the remote partition. If long boot delays are seen please check the log messages in /mnt/store0/log/messages for reasons the NFS mount failed**.**
+**NOTE:**  if the NFS mount fails it may take 5 min to boot the system. This is the time it takes for the NFS client timeout and give up on mounting the remote partition. If long boot delays are seen please check the log messages in /mnt/store0/log/messages for reasons the NFS mount failed**.**
 
 ### NFS Remote Mount Example
 

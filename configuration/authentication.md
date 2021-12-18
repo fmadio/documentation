@@ -165,9 +165,51 @@ Save the file and ensure there are no parse errors by running fmadiolua /opt/fma
 Next create a file name
 
 ```
-// Some code
-/opt/fmadio/etc/
+/opt/fmadio/etc/oauth_opts.lua
 ```
 
+This file contains the ADFS OAUTH End points as follows
 
+```
+local config =
+{
+    redirect_uri                = "https://fmadio100v2-ip-address:8888/secure",
+    discovery                   = "https://login.microsoftonline.com/571b0fe2-75cb-48de-9144-0cb928e90751/v2.0/.well-known/openid-configuration",
+    client_id                   = ""d41c59e7-6906-4569-9cc0-c6762541d2cd"",
+    client_secret               = "fSY7Q~dkbG~mHlJYipKiC0XCMhnXQbOkOP5iE",
+    ssl_verify                  = "no",
+    scope                       = "openid email profile",
+    redirect_uri_scheme         = "https",
+}
+
+return config
+```
+
+These fields are from the ADFS Endpoint URI information, for example as follows. We created a fmadio sign in entry, this has the following client\_id entered above.
+
+The "discovery" config in the above needs to be the OpenID Connect Metadata document, as seen below.
+
+![](<../.gitbook/assets/image (118).png>)
+
+the "client\_id" is the shown below
+
+![](<../.gitbook/assets/image (120).png>)
+
+The "client\__secret" in the above config needs to be the Value shown below, not the secretID_
+
+![](<../.gitbook/assets/image (121).png>)
+
+Finally the "redirect\_uri" needs to be registered as follows.
+
+![](<../.gitbook/assets/image (119).png>)
+
+Once config is complete, please confirm no syntax errors by running&#x20;
+
+```
+fmadiolua /opt/fmadio/etc/oauth_opts.lua
+```
+
+Correct output is as follows, if there are any syntax errors please correct.
+
+![](<../.gitbook/assets/image (115).png>)
 

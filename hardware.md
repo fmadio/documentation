@@ -22,7 +22,7 @@ FMADIO100G Gen2 Spec Sheet
 
 List of known and tested transcivers that work with the system. Other transciver types should be ok, please check with support@fmad.io for clarification.
 
-FMADIO Packet Capture systems are **Transceiver Vendor neutral, **3rd party optics are fully supported.
+FMADIO Packet Capture systems are **Transceiver Vendor neutral,** 3rd party optics are fully supported.
 
 | Module     | Speed   | Connector | Cable Type     | Brand                                      |
 | ---------- | ------- | --------- | -------------- | ------------------------------------------ |

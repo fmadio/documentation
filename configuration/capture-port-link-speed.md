@@ -16,12 +16,12 @@ Configuring the different port speeds requires updating the FPGA NIC, which requ
 **Step 1)**\
 Select the port configuration "Config Page - > Port Config" as shown below. In this example 2x10G mode is selected.
 
-![](<../.gitbook/assets/image (117).png>)
+![](<../.gitbook/assets/image (117) (1).png>)
 
 **Step 2)**\
 After the port configuration has been chosen, click the "CHANGE" button to change the port speed. This will reboot the system twice as its reconfiguring the FPGA device. It will take 3-5 minutes to complete the operation
 
-![](<../.gitbook/assets/image (115) (1).png>)
+![](<../.gitbook/assets/image (115) (1) (1).png>)
 
 **Step 3)**\
 Once the update has completed, please verify the capture port configuration on the GUI dashboard, as shown below in blue.
