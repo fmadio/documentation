@@ -6,9 +6,8 @@ In many environments different Authentication is required. By default FMADIO cap
 
 * BAISC (insecure)
 * HTTS Only + BASIC
-* Single Sign On (SSO)
 * RADIUS
-* LDAP
+* Active Directory (SSO via OAUTH2.0)
 
 ## HTTPS Only
 
@@ -46,8 +45,6 @@ sudo killall nginx
 ```
 
 NGINX will restart automatically within 60 seconds with the updated configuration. Only HTTPS access is possible.
-
-## Single Sign On
 
 SSO configuration is more complicated, please contact support@fmad.io and we can walk you thru the setup personally
 
@@ -140,6 +137,37 @@ fmadio@fmadio100v2-228U:$
 
 ```
 
-## LDAP
+## Active Directory (SSO via OAUTH 2.0)
 
-Please contact support@fmad.io we can walk you thru the configuration and setup personally
+FMADIO Capture devices can authenticate the users using Active Directory via the OAUTH 2.0 protocol. This enable Single Sign On with ADFS.
+
+In the follow example we have used a reverse SSH tunnel to temporarily put FMADIO system on a public IP, as Azure Active Directory services require internet accessible devices for the redirect\_uri. For an On Premise Active Directory server this is not required.
+
+Start by editing the general FMADIO configuration file
+
+```
+/opt/fmadio/etc/time.lua
+```
+
+Then setting HTTP (un-encrypted) access to "disable", and Auth method to "OAUTH", example shown below. The other security fields can be left as is.
+
+```
+["Security"] =
+{
+    ["HTTPAccess"]      = "disable",
+    ["Auth"]            = "OAUTH",
+.
+.
+```
+
+Save the file and ensure there are no parse errors by running fmadiolua /opt/fmadio/etc/time.lua
+
+Next create a file name
+
+```
+// Some code
+/opt/fmadio/etc/
+```
+
+
+
