@@ -143,6 +143,8 @@ FMADIO Capture devices can authenticate the users using Active Directory via the
 
 In the follow example we have used a reverse SSH tunnel to temporarily put FMADIO system on a public IP, as Azure Active Directory services require internet accessible devices for the redirect\_uri. For an On Premise Active Directory server this is not required.
 
+#### General Config
+
 Start by editing the general FMADIO configuration file
 
 ```
@@ -161,6 +163,8 @@ Then setting HTTP (un-encrypted) access to "disable", and Auth method to "OAUTH"
 ```
 
 Save the file and ensure there are no parse errors by running fmadiolua /opt/fmadio/etc/time.lua
+
+#### OAUTH Config
 
 Next create a file name
 
@@ -193,11 +197,11 @@ The "discovery" config in the above needs to be the OpenID Connect Metadata docu
 
 the "client\_id" is the shown below
 
-![](<../.gitbook/assets/image (120).png>)
+![](<../.gitbook/assets/image (124).png>)
 
 The "client\__secret" in the above config needs to be the Value shown below, not the secretID_
 
-![](<../.gitbook/assets/image (121).png>)
+![](<../.gitbook/assets/image (126).png>)
 
 Finally the "redirect\_uri" needs to be registered as follows.
 
@@ -212,4 +216,32 @@ fmadiolua /opt/fmadio/etc/oauth_opts.lua
 Correct output is as follows, if there are any syntax errors please correct.
 
 ![](<../.gitbook/assets/image (115).png>)
+
+#### Restart nginx
+
+Restart nginx to load in the new configuration file, by killing the process as below. It will reswpan on a 1min cron job automatically
+
+```
+sudo killall nginx
+```
+
+#### Logging in
+
+Next point a browser to the FMADIO device, it should redirect you to the Active Directory login page as follows.
+
+![](<../.gitbook/assets/image (121).png>)
+
+Login to the system using your Azure / Microsoft credentials. Then the FMADIO device dashboard will be shown as below
+
+![](<../.gitbook/assets/image (127).png>)
+
+#### Logout
+
+Logout is the same, using the logout button shown below
+
+![](<../.gitbook/assets/image (90).png>)
+
+Then choose an account to sign out of
+
+![](<../.gitbook/assets/image (120).png>)
 

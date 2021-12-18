@@ -114,7 +114,7 @@ Specifies how the output files are written. Currently there are 2 modes, standar
 | Command                                               | Description                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 | ----------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | FILE                                                  | output a regular linux file. this can be ln the local file system or over a remote NFS mount                                                                                                                                                                                                                                                                                                                                                       |
-| RCLONE                                                | <p>use rclone as the end point file. Note rclone needs to be setup and configured before remote push is started</p><p></p><p>For RCLONE Config please see their documentation</p><p><a href="https://rclone.org/commands/rclone_config/">https://rclone.org/commands/rclone_config/</a></p><p></p><p>FMADIO by default stores config file into</p><p><code>/opt/fmadio/etc/rclone.conf</code></p><p></p><p><strong>Requires FW:7157+ </strong></p> |
+| RCLONE                                                | <p>use rclone as the end point file. Note rclone needs to be setup and configured before remote push is started</p><p></p><p>For RCLONE Config please see their documentation</p><p><a href="https://rclone.org/commands/rclone_config/">https://rclone.org/commands/rclone_config/</a></p><p></p><p>FMADIO by default stores config file into</p><p><code>/opt/fmadio/etc/rclone.conf</code></p><p></p><p><strong>Requires FW:7157+</strong> </p> |
 
 &#x20;
 
@@ -130,10 +130,10 @@ Full remote path of the target PCAPs + the leading prefix of the remote output.&
 
 The above example uses the "FILE" mode, which specifies a full linux system file path.&#x20;
 
-| Command                                               | Description                                                                                                                                 |
-| ----------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
-| /mnt/remote0/push/all                                 | FILE mode output PCAP files will be written for example as `/mnt/remote0/push/all_`_`20210101_010101.cap`_                                  |
-| gdrive://pcap/all                                     | RCLONE mode output PCAP files written be written to the rclone configured google drive endpoint into the google drive directory`  /pcap/  ` |
+| Command                                               | Description                                                                                                                               |
+| ----------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+| /mnt/remote0/push/all                                 | FILE mode output PCAP files will be written for example as `/mnt/remote0/push/all_`_`20210101_010101.cap`_                                |
+| gdrive://pcap/all                                     | RCLONE mode output PCAP files written be written to the rclone configured google drive endpoint into the google drive directory `/pcap/`  |
 
 ### **Split**
 
@@ -233,7 +233,7 @@ The above runs gzip with compression level 1 on the split PCAP before sending to
 
 **Default (nil)**
 
-By default the split PCAP filename suff is `.pcap  `For most operations that is sufficient, however for more complicated operations such as GZIP compressing with PipeCmd a .pcap.gz file suffix is more appropriate. The Following is an example config target that compresses and outputs splits in .pcap.gz file format
+By default the split PCAP filename suff is `.pcap`  For most operations that is sufficient, however for more complicated operations such as GZIP compressing with PipeCmd a .pcap.gz file suffix is more appropriate. The Following is an example config target that compresses and outputs splits in .pcap.gz file format
 
 ```lua
 table.insert(Config.Target, 
@@ -395,7 +395,7 @@ Note the following repeated status line indicates the push is operating successf
 stream_cat:true split:true
 ```
 
-For problems per push target, the logfile shown in the above command line here `/mnt/store0/log/push_pcap-all.cur `
+For problems per push target, the logfile shown in the above command line here `/mnt/store0/log/push_pcap-all.cur`&#x20;
 
 A good way to debug that is running tail -F /mnt/store0/log/push\_pcap-all.cur to monitor it such as the following
 
@@ -484,10 +484,10 @@ printf "\x1" | dd of=<path to pcap>.pcap bs=1 seek=20 count=1 conv=notrunc
 
 The symptoms of this is unusual TCPDUMP output such as the following
 
-![](<../.gitbook/assets/image (70).png>)
+![](<../.gitbook/assets/image (70) (1).png>)
 
 After setting the PCAP Link Layer setting using the above command the output is as follows
 
-![](<../.gitbook/assets/image (90) (1).png>)
+![](<../.gitbook/assets/image (90) (1) (1).png>)
 
 Which contains the correctly decoded packets.
