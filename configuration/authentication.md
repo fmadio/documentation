@@ -2,7 +2,7 @@
 
 In many environments different Authentication is required. By default FMADIO capture systems using built in BASIC authentication over HTTP. As this makes configuration and setup simple but is very weak security setting.
 
-### Supported Authentication
+## Supported Authentication
 
 * BAISC (insecure)
 * HTTS Only + BASIC
