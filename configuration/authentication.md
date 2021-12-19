@@ -210,7 +210,7 @@ The "client\__secret" in the above config needs to be the Value shown below, not
 
 Finally the "redirect\_uri" needs to be registered as follows.
 
-![](<../.gitbook/assets/image (119).png>)
+![](<../.gitbook/assets/image (119) (1).png>)
 
 Once config is complete, please confirm no syntax errors by running&#x20;
 
@@ -251,6 +251,8 @@ Then choose an account to sign out of
 ![](<../.gitbook/assets/image (120) (1).png>)
 
 ## Google Cloud (SSO via OAUTH 2.0)
+
+**FW:7608+**
 
 While less practical as its typically for publicly accessible sites, it can be used with a Google Cloud VPC to tunnel authentication requests from a private network to Google Cloud infrastructure.
 
@@ -339,3 +341,83 @@ Login using your Google account information, and it will re-direct you to the FM
 ![](<../.gitbook/assets/image (124).png>)
 
 Any further questions please contact support@fmad.io for assistance.
+
+## Ping Identity (SSO via OUAUTH 2.0)
+
+Ping Identity is a popular onprem authentication system, typically used in large organizations. We support Single Sign On with their product suite, below is an example configuration example setup using the Cloud Services. This example uses a reverse SSH tunnel to put the FMADIO device on a publicly accessible IP (we strongly discourage) for demonstration purposes only, to replicate setting up an On Premise install.
+
+### General Config
+
+Start by editing the general FMADIO configuration file
+
+```
+/opt/fmadio/etc/time.lua
+```
+
+Then setting HTTP (un-encrypted) access to "disable", and Auth method to "OAUTH", example shown below. The other security fields can be left as is.
+
+```
+["Security"] =
+{
+    ["HTTPAccess"]      = "disable",
+    ["Auth"]            = "OAUTH",
+.
+.
+```
+
+Save the file and ensure there are no parse errors by running fmadiolua /opt/fmadio/etc/time.lua
+
+#### OAUTH Config
+
+Next create a file name
+
+```
+/opt/fmadio/etc/oauth_opts.lua
+```
+
+This file contains the Ping Identity OAUTH End points as follows.&#x20;
+
+```
+local config =
+{
+    redirect_uri                = "https://fmadio100v2-ip-address.com:8888/secure/",
+    discovery                   = "https://auth.pingone.asia/9ad4c7dc-4e8c-43e4-9064-3c15b7e34fa5/as/.well-known/openid-configuration",
+    client_id                   = "1feb3806-3351-45d2-b385-ea012a4ad1af",
+    client_secret               = "3.j0O-pU6TZ.g.MAReW53A2Dv11n~cdTbFINIiyMdkv_dUxH",
+    ssl_verify                  = "no",
+    scope                       = "openid email profile",
+    redirect_uri_scheme         = "https",
+}
+
+return config
+```
+
+The "clientid" and "client\_secret" need to be replaced with the generated authentication information from Ping Identity interface per below. The above is a throw away example only
+
+### Ping Identity Credentials
+
+We setup a web application using Ping Identity interface as follows. The key fields are shown in red.
+
+![](<../.gitbook/assets/image (117).png>)
+
+These fields are mapped directly into the oauth\_opts.lua configuration file above.
+
+### Restart nginx
+
+Restart nginx to load in the new configuration file, by killing the process as below. It will reswpan on a 1min cron job automatically.
+
+```
+sudo killall nginx
+```
+
+### Logging In
+
+Next point the browser to the FMADIO device and it will redirect to Ping Idneitty SSO account as follows
+
+![](<../.gitbook/assets/image (119).png>)
+
+After a successful authentication the FMADIO dashboard is seen
+
+![](<../.gitbook/assets/image (129).png>)
+
+&#x20;Any further questions or problems, please contact us support@fmad.io
