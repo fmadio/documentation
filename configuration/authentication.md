@@ -5,10 +5,11 @@ In many environments different Authentication is required. By default FMADIO cap
 ## Supported Authentication
 
 * BAISC (insecure)
-* HTTS Only + BASIC
+* HTTPS Only + BASIC&#x20;
 * RADIUS
 * Active Directory (SSO via OAUTH 2.0)
 * Google Cloud (SSO via OAUTH 2.0)
+* Ping Identity Cloud (SSO via OAUTH 2.0)
 
 ## HTTPS Only
 
