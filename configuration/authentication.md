@@ -182,7 +182,7 @@ This file contains the ADFS OAUTH End points as follows
 ```
 local config =
 {
-    redirect_uri                = "https://fmadio100v2-ip-address:8888/secure",
+    redirect_uri                = "https://fmadio100v2-ip-address:8888/secure/",
     discovery                   = "https://login.microsoftonline.com/571b0fe2-75cb-48de-9144-0cb928e90751/v2.0/.well-known/openid-configuration",
     client_id                   = "d41c59e7-6906-4569-9cc0-c6762541d2cd",
     client_secret               = "fSY7Q~dkbG~mHlJYipKiC0XCMhnXQbOkOP5iE",
@@ -343,6 +343,8 @@ Login using your Google account information, and it will re-direct you to the FM
 Any further questions please contact support@fmad.io for assistance.
 
 ## Ping Identity (SSO via OUAUTH 2.0)
+
+**FW:7608+**
 
 Ping Identity is a popular onprem authentication system, typically used in large organizations. We support Single Sign On with their product suite, below is an example configuration example setup using the Cloud Services. This example uses a reverse SSH tunnel to put the FMADIO device on a publicly accessible IP (we strongly discourage) for demonstration purposes only, to replicate setting up an On Premise install.
 
