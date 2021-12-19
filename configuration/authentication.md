@@ -7,11 +7,14 @@ In many environments different Authentication is required. By default FMADIO cap
 * BAISC (insecure)
 * HTTS Only + BASIC
 * RADIUS
-* Active Directory (SSO via OAUTH2.0)
+* Active Directory (SSO via OAUTH 2.0)
+* Google Cloud (SSO via OAUTH 2.0)
 
 ## HTTPS Only
 
 By default HTTP and HTTPS are enabled on the GUI. In any security setting HTTP needs to be disabled, as its an unsecure protocol. To disable HTTP edit the config file
+
+### General Config
 
 ```
 /opt/fmadio/etc/time.lua
@@ -38,6 +41,8 @@ Change the "HTTPAccess" section from "enable" to false  as follows
 
 Save the file&#x20;
 
+### Restart Nginx
+
 Then restart nginx as follows
 
 ```
@@ -54,15 +59,13 @@ SSO configuration is more complicated, please contact support@fmad.io and we can
 
 We support RADIUS authentication using the freeradius client. Configuration is as follow
 
-**STEP 1)**
+### **General Config**
 
 Edit the configuration file&#x20;
 
 ```
 /opt/fmadio/etc/time.lua
 ```
-
-**STEP 2)**
 
 Find the "Security" section, example shown below
 
@@ -81,7 +84,7 @@ Find the "Security" section, example shown below
 
 ```
 
-**STEP 3)**
+### **Disable HTTP Access**
 
 Change the following, this disabled the HTTP protocol&#x20;
 
@@ -110,7 +113,7 @@ Finally the Timeout, this is how long the system waits until it will automatical
 
 ```
 
-**STEP 4)**
+### **Restart Nginx**
 
 Restart nginx as follows, it will re-spawn within 60sec automatically
 
@@ -118,13 +121,13 @@ Restart nginx as follows, it will re-spawn within 60sec automatically
 sudo killall nginx
 ```
 
-**STEP 5)**
+### **Login**
 
 You should see a login page when accessing FMADIO as follows
 
-![](<../.gitbook/assets/image (80).png>)
+![](<../.gitbook/assets/image (80) (1).png>)
 
-**TROUBLESHOOTING**
+### **TROUBLESHOOTING**
 
 If there is some problems, please confirm on CLI using radclient, example as follows.
 
@@ -145,7 +148,115 @@ FMADIO Capture devices can authenticate the users using Active Directory via the
 
 In the follow example we have used a reverse SSH tunnel to temporarily put FMADIO system on a public IP, as Azure Active Directory services require internet accessible devices for the redirect\_uri. For an On Premise Active Directory server this is not required.
 
-#### General Config
+### General Config
+
+Start by editing the general FMADIO configuration file
+
+```
+/opt/fmadio/etc/time.lua
+```
+
+Then setting HTTP (un-encrypted) access to "disable", and Auth method to "OAUTH", example shown below. The other security fields can be left as is.
+
+```
+["Security"] =
+{
+    ["HTTPAccess"]      = "disable",
+    ["Auth"]            = "OAUTH",
+.
+.
+```
+
+Save the file and ensure there are no parse errors by running fmadiolua /opt/fmadio/etc/time.lua
+
+### OAUTH Config
+
+Next create a file name
+
+```
+/opt/fmadio/etc/oauth_opts.lua
+```
+
+This file contains the ADFS OAUTH End points as follows
+
+```
+local config =
+{
+    redirect_uri                = "https://fmadio100v2-ip-address:8888/secure",
+    discovery                   = "https://login.microsoftonline.com/571b0fe2-75cb-48de-9144-0cb928e90751/v2.0/.well-known/openid-configuration",
+    client_id                   = "d41c59e7-6906-4569-9cc0-c6762541d2cd",
+    client_secret               = "fSY7Q~dkbG~mHlJYipKiC0XCMhnXQbOkOP5iE",
+    ssl_verify                  = "no",
+    scope                       = "openid email profile",
+    redirect_uri_scheme         = "https",
+}
+
+return config
+```
+
+These fields are from the ADFS Endpoint URI information, for example as follows. We created a fmadio sign in entry, this has the following client\_id entered above.
+
+The "discovery" config in the above needs to be the OpenID Connect Metadata document, as seen below.
+
+![](<../.gitbook/assets/image (118) (1).png>)
+
+the "client\_id" is the shown below
+
+![](<../.gitbook/assets/image (124) (1).png>)
+
+The "client\__secret" in the above config needs to be the Value shown below, not the secretID_
+
+![](<../.gitbook/assets/image (126).png>)
+
+Finally the "redirect\_uri" needs to be registered as follows.
+
+![](<../.gitbook/assets/image (119).png>)
+
+Once config is complete, please confirm no syntax errors by running&#x20;
+
+```
+fmadiolua /opt/fmadio/etc/oauth_opts.lua
+```
+
+Correct output is as follows, if there are any syntax errors please correct.
+
+![](<../.gitbook/assets/image (115) (1).png>)
+
+### Restart nginx
+
+Restart nginx to load in the new configuration file, by killing the process as below. It will reswpan on a 1min cron job automatically
+
+```
+sudo killall nginx
+```
+
+### Logging in
+
+Next point a browser to the FMADIO device, it should redirect you to the Active Directory login page as follows.
+
+![](<../.gitbook/assets/image (121).png>)
+
+Login to the system using your Azure / Microsoft credentials. Then the FMADIO device dashboard will be shown as below
+
+![](<../.gitbook/assets/image (127).png>)
+
+### Logout
+
+Logout is the same, using the logout button shown below
+
+![](<../.gitbook/assets/image (90) (1).png>)
+
+Then choose an account to sign out of
+
+![](<../.gitbook/assets/image (120) (1).png>)
+
+## Google Cloud (SSO via OAUTH 2.0)
+
+While less practical as its typically for publicly accessible sites, it can be used with a Google Cloud VPC to tunnel authentication requests from a private network to Google Cloud infrastructure.
+
+In this example we just reverse ssh tunnel an FMADIO system onto the public internet (strongly discouraged) for demonstration purposes only.&#x20;
+
+### General Config
 
 Start by editing the general FMADIO configuration file
 
@@ -174,15 +285,15 @@ Next create a file name
 /opt/fmadio/etc/oauth_opts.lua
 ```
 
-This file contains the ADFS OAUTH End points as follows
+This file contains the Google Cloud OAUTH End points as follows.&#x20;
 
 ```
 local config =
 {
-    redirect_uri                = "https://fmadio100v2-ip-address:8888/secure",
-    discovery                   = "https://login.microsoftonline.com/571b0fe2-75cb-48de-9144-0cb928e90751/v2.0/.well-known/openid-configuration",
-    client_id                   = ""d41c59e7-6906-4569-9cc0-c6762541d2cd"",
-    client_secret               = "fSY7Q~dkbG~mHlJYipKiC0XCMhnXQbOkOP5iE",
+    redirect_uri                = "https://fmadio100v2-ip-address.com:8888/secure",
+    discovery                   = "https://accounts.google.com/.well-known/openid-configuration",
+    client_id                   = "431009152914-0jpm7fa0crh619gr48kv4c06h5ibl9ou.apps.googleusercontent.com",
+    client_secret               = "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",
     ssl_verify                  = "no",
     scope                       = "openid email profile",
     redirect_uri_scheme         = "https",
@@ -191,35 +302,25 @@ local config =
 return config
 ```
 
-These fields are from the ADFS Endpoint URI information, for example as follows. We created a fmadio sign in entry, this has the following client\_id entered above.
+The "clientid" and "client\_secret" need to be replaced with the generated authentication information from google per below. The above is a throw away example only
 
-The "discovery" config in the above needs to be the OpenID Connect Metadata document, as seen below.
+### Google Credentials
 
-![](<../.gitbook/assets/image (118).png>)
+Next generate Google OAUTH credentials as follows.
 
-the "client\_id" is the shown below
+![](<../.gitbook/assets/image (90).png>)
 
-![](<../.gitbook/assets/image (124).png>)
+Then fill in the information, as follows. Google is a bit more strict and requires TLD endpoints not raw IPs
 
-The "client\__secret" in the above config needs to be the Value shown below, not the secretID_
+![](<../.gitbook/assets/image (80).png>)
 
-![](<../.gitbook/assets/image (126).png>)
-
-Finally the "redirect\_uri" needs to be registered as follows.
-
-![](<../.gitbook/assets/image (119).png>)
-
-Once config is complete, please confirm no syntax errors by running&#x20;
-
-```
-fmadiolua /opt/fmadio/etc/oauth_opts.lua
-```
-
-Correct output is as follows, if there are any syntax errors please correct.
+Which results in the following secret information
 
 ![](<../.gitbook/assets/image (115).png>)
 
-#### Restart nginx
+Update the oauth\_opts.lua file above with the information
+
+### Restart nginx
 
 Restart nginx to load in the new configuration file, by killing the process as below. It will reswpan on a 1min cron job automatically
 
@@ -227,23 +328,14 @@ Restart nginx to load in the new configuration file, by killing the process as b
 sudo killall nginx
 ```
 
-#### Logging in
+### Logging In
 
-Next point a browser to the FMADIO device, it should redirect you to the Active Directory login page as follows.
+Next point the browser to the FMADIO device and it will redirect to Google Sign in account&#x20;
 
-![](<../.gitbook/assets/image (121).png>)
+![](<../.gitbook/assets/image (118).png>)
 
-Login to the system using your Azure / Microsoft credentials. Then the FMADIO device dashboard will be shown as below
+Login using your Google account information, and it will re-direct you to the FMADIO dashboard.
 
-![](<../.gitbook/assets/image (127).png>)
+![](<../.gitbook/assets/image (124).png>)
 
-#### Logout
-
-Logout is the same, using the logout button shown below
-
-![](<../.gitbook/assets/image (90).png>)
-
-Then choose an account to sign out of
-
-![](<../.gitbook/assets/image (120).png>)
-
+Any further questions please contact support@fmad.io for assistance.
