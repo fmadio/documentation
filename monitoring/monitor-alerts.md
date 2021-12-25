@@ -299,27 +299,15 @@ Minimum number of seconds between alert generation. This is to prevent spamming 
 
 ## SYSLOG Alerts
 
-An example configuration file with alert via syslog, please see the Triggers section below for description of each alert type.
+Alert events are always output to SYSLOG regardless of the other transport modes (email/snmp etc)
+
+SYSLOG logfile is found in
 
 ```
-local L =
-{
-["AlertList"] =
-{
-    BytesOverflow   = true,
-    PacketError     = true,
-    PacketDrop      = true,
-    DiskFreeStore0  = 4e9,
-    DiskFreeStore1    = 1000e9,
-    DiskFreeRemote0   = 10e9,
-    Sleep           = 60,                           -- how long to sleep when an alert is triggered. prevents flodding
-}
-}
-return L
-
+/mnt/store0/messages
 ```
 
-The above example will generate syslog alerts as follows. Syslog alerts are always enabled
+An example syslog alerts as follows.
 
 ```
 2021.05.24-17:44:20.001457 (+09:00) | fmadio20v3-287 | local7.alert    | fmadio    | Alert     /mnt/store0 disk space low. Free 60.127GB (60127121408B) [Threshold 100.000GB]
@@ -331,7 +319,13 @@ The above example will generate syslog alerts as follows. Syslog alerts are alwa
 
 ## EMAIL Alerts
 
-Email alerts can be setup as the following, please add the "Email" section in the configuration file
+Email alerts can be setup as the following, please add the \["Email"] section in the alet configuration file&#x20;
+
+```
+/opt/fmadio/etc/alert.lua
+```
+
+An example that sends alerts to the address "alerts@fmad.io" is shown below.
 
 ```
 local L =
@@ -362,7 +356,7 @@ In addition fmadio packet capture system uses msrtp as the email client, it requ
 /opt/fmadio/etc/msmtp.rc
 ```
 
-Example configuration as follows. Please edit to match the email smtp provier
+Example configuration as follows. Please edit to match the email smtp provider
 
 ```
 defaults
@@ -380,5 +374,47 @@ password <sercrets>
 
 ```
 
-##
+## SNMP Broadcast
 
+**FW: 7611+**
+
+FMADIO devices can operate in SNMP Broadcast mode. In this mode the system will periodically broadcast all SNMP counter values at a fixed time interval to an SNMP target.&#x20;
+
+The general configuration file is used for config
+
+```
+/opt/fmadio/etc/time.lua
+```
+
+Please edit the section titles \["SNMP"]  as follows
+
+```
+["SNMP"] =
+{
+    ["Enable"]       = false,
+    ["Trap"]         = false,
+    ["Broadcast"]    = true,
+    ["BroadcastPeriod"]    = 60e9,
+    ["Verbose"]      = false,
+    ["ComName"]      = "public",
+},
+
+```
+
+&#x20;The above config enables SNMP Broadcast mode only, while SNMP Trap(Alert) mode is disabled. Broadcast frequency is 60e9 nanoseconds, e.g. every 1 minute.&#x20;
+
+Broadcast and Trap mode can be use simultaneously if required.
+
+Example output in broadcast mode is as follows, from the /mnt/store0/log/monitor\_alert.cur logfile
+
+![](<../.gitbook/assets/image (120).png>)
+
+This translates to
+
+![](<../.gitbook/assets/image (124).png>)
+
+#### Troubleshooting
+
+Logfiles are found /mnt/store0/log/monitor\_alert.cur
+
+Verbose mode above can be set to "true" to allow additional logging.
