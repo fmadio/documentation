@@ -380,6 +380,14 @@ password <sercrets>
 
 FMADIO devices can operate in SNMP Broadcast mode. In this mode the system will periodically broadcast all SNMP counter values at a fixed time interval to an SNMP target.&#x20;
 
+#### SNMP MIB&#x20;
+
+Latest MIB file is found&#x20;
+
+{% embed url="https://fmad.io/download/FMADIOv3-MIB.txt" %}
+
+#### Config
+
 The general configuration file is used for config
 
 ```
