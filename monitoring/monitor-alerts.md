@@ -382,7 +382,7 @@ FMADIO devices can operate in SNMP Broadcast mode. In this mode the system will 
 
 #### SNMP MIB&#x20;
 
-Latest MIB file is found&#x20;
+Latest MIB file is found (last updated 2021/12/25)
 
 {% embed url="https://fmad.io/download/FMADIOv3-MIB.txt" %}
 
@@ -399,12 +399,13 @@ Please edit the section titles \["SNMP"]  as follows
 ```
 ["SNMP"] =
 {
-    ["Enable"]       = false,
-    ["Trap"]         = false,
-    ["Broadcast"]    = true,
-    ["BroadcastPeriod"]    = 60e9,
-    ["Verbose"]      = false,
-    ["ComName"]      = "public",
+    ["Enable"]           = false,
+    ["Trap"]             = false,
+    ["Broadcast"]        = true,
+    ["BroadcastPeriod"]  = 60e9,
+    ["Verbose"]          = false,
+    ["Target"]           = "127.0.0.1",
+    ["ComName"]          = "public",
 },
 
 ```
@@ -412,6 +413,8 @@ Please edit the section titles \["SNMP"]  as follows
 &#x20;The above config enables SNMP Broadcast mode only, while SNMP Trap(Alert) mode is disabled. Broadcast frequency is 60e9 nanoseconds, e.g. every 1 minute.&#x20;
 
 Broadcast and Trap mode can be use simultaneously if required.
+
+Please update \["Target"] = setting to the correct SNMP collector address.
 
 Example output in broadcast mode is as follows, from the /mnt/store0/log/monitor\_alert.cur logfile
 
@@ -426,3 +429,49 @@ This translates to
 Logfiles are found /mnt/store0/log/monitor\_alert.cur
 
 Verbose mode above can be set to "true" to allow additional logging.
+
+## SNMP Trap
+
+**FW: 7611+**
+
+FMADIO Devices can send SNMP Traps based on the alert triggers described above. This may be preferable to email alerts for infrastructure management.
+
+#### SNMP MIB&#x20;
+
+Latest MIB file is found (last updated 2021/12/25)
+
+{% embed url="https://fmad.io/download/FMADIOv3-MIB.txt" %}
+
+#### Config
+
+The general configuration file is used for config
+
+```
+/opt/fmadio/etc/time.lua
+```
+
+Please edit the section titles \["SNMP"]  as follows
+
+```
+["SNMP"] =
+{
+    ["Enable"]           = false,
+    ["Trap"]             = true,
+    ["Broadcast"]        = false,
+    ["BroadcastPeriod"]  = 60e9,
+    ["Verbose"]          = false,
+    ["Target"]           = "127.0.0.1",
+    ["ComName"]          = "public",
+},
+
+```
+
+&#x20;The above config enables SNMP TRAP mode only, SNMP Broadcast mode is disabled. This configuration will only send SNMP TRAP events when a Trigger is alerted.
+
+Please update \["Target"] = setting to the correct SNMP collector address.
+
+#### Troubleshooting
+
+An easy way to trouble shoot traps is to se the DiskFreeStore0 threshold to a very large number. In this setup the SNMP TRAP event will be constantly generated (every 1 minute).
+
+Logfiles are found in /mnt/store0/log/monitor\_alert.cur
