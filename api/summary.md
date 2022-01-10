@@ -574,10 +574,6 @@ Note: All original API url's shall be available as well as the new V1 endpoints.
 Download entire capture as a single file. Piping to a file or any other analysis tools is possible.
 {% endswagger-description %}
 
-{% swagger-parameter in="query" name="FilterBPF" type="string" %}
-BPF Filter to be applied to the stream.
-{% endswagger-parameter %}
-
 {% swagger-parameter in="query" name="Compression" type="string" %}
 Compress the returned stream with gzip. 
 
@@ -599,6 +595,22 @@ Compress the returned stream with gzip.
 
 {% swagger-parameter in="query" name="StreamName" type="string" %}
 Stream capture name.
+{% endswagger-parameter %}
+
+{% swagger-parameter in="query" name="FilterBPF" type="string" %}
+BPF Filter to be applied to the stream.
+{% endswagger-parameter %}
+
+{% swagger-parameter in="query" name="FilterPort" %}
+Port filter string. e.g  0001 &#x20;
+
+Port 0 - Enable
+
+Port 1 - Disable
+
+Port 2 - Disable
+
+Port 3 - Disable
 {% endswagger-parameter %}
 
 {% swagger-response status="200" description="" %}
@@ -644,6 +656,18 @@ EPOCH Nanosecond stop time
 Escape Encoded BPF filter
 {% endswagger-parameter %}
 
+{% swagger-parameter in="query" name="FilterPort" %}
+Port filter string. e.g  0001 &#x20;
+
+Port 0 - Enable
+
+Port 1 - Disable
+
+Port 2 - Disable
+
+Port 3 - Disable
+{% endswagger-parameter %}
+
 {% swagger-response status="200: OK" description="" %}
 ```javascript
 {
@@ -664,10 +688,6 @@ Download a timerange of pcap data that can cross over a multiple pcap files.
 
 The timerange results may be a portion of a single pcap stream, or a portion of multiple streams that share a connected time series.
 {% endswagger-description %}
-
-{% swagger-parameter in="query" name="FilterBPF" type="string" %}
-
-{% endswagger-parameter %}
 
 {% swagger-parameter in="query" name="Compression" type="string" %}
 Compress the returned stream with gzip. 
@@ -702,6 +722,22 @@ Start time in nanoseconds epoch.
 
 {% swagger-parameter in="query" name="TSEnd" type="integer" %}
 Stop time in nanoseconds epoch.
+{% endswagger-parameter %}
+
+{% swagger-parameter in="query" name="FilterBPF" type="string" %}
+
+{% endswagger-parameter %}
+
+{% swagger-parameter in="query" name="FilterPort" %}
+Port filter string. e.g  0001 &#x20;
+
+Port 0 - Enable
+
+Port 1 - Disable
+
+Port 2 - Disable
+
+Port 3 - Disable
 {% endswagger-parameter %}
 
 {% swagger-response status="200" description="" %}
