@@ -52,7 +52,7 @@ NOTE: this does NOT stop scheduled captures.
 {% endswagger-response %}
 {% endswagger %}
 
-{% swagger baseUrl="http://127.0.0.1/sysmaster/status" path="" method="get" summary="Capture Status" %}
+{% swagger baseUrl="http://127.0.0.1/sysmaster/status" path="" method="get" summary="General System Status (CSV)" %}
 {% swagger-description %}
 Returns Capture status of currently active capture.
 {% endswagger-description %}
@@ -82,6 +82,30 @@ capture_bps,                                                0
 capture_pps,                                                0
 capture_name,                                     TestCapture
 capture_active,                                          true
+```
+{% endswagger-response %}
+{% endswagger %}
+
+{% swagger method="get" path="/sysmaster/capture_status" baseUrl="" summary="Capture Status JSON format" %}
+{% swagger-description %}
+
+{% endswagger-description %}
+
+{% swagger-response status="200: OK" description="" %}
+```javascript
+{
+  "Status": true,
+  "GUIMode": "full",
+  "StreamName": "capturetest",
+  "CaptureEnable": "false",
+  "CaptureTime": 1642057937.6518,
+  "CaptureByte": 9960256568,
+  "CapturePacket": 36312769,
+  "CaptureBps": 687557440,
+  "CapturePps": 266806.4375,
+  "CurrentTime": "2022/01/13   07:12"
+}
+
 ```
 {% endswagger-response %}
 {% endswagger %}
