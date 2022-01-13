@@ -52,7 +52,7 @@ NOTE: this does NOT stop scheduled captures.
 {% endswagger-response %}
 {% endswagger %}
 
-{% swagger method="get" path="/sysmaster/capture_status" baseUrl="/sysmaster/capture_status" summary="Capture Status JSON format" %}
+{% swagger method="get" path="" baseUrl="/sysmaster/capture_status" summary="Capture Status JSON format" %}
 {% swagger-description %}
 Returns status of the capture in JSON format
 {% endswagger-description %}
