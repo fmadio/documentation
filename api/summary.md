@@ -52,6 +52,30 @@ NOTE: this does NOT stop scheduled captures.
 {% endswagger-response %}
 {% endswagger %}
 
+{% swagger method="get" path="/sysmaster/capture_status" baseUrl="/sysmaster/capture_status" summary="Capture Status JSON format" %}
+{% swagger-description %}
+Returns status of the capture in JSON format
+{% endswagger-description %}
+
+{% swagger-response status="200: OK" description="" %}
+```javascript
+{
+  "Status": true,
+  "GUIMode": "full",
+  "StreamName": "capturetest",
+  "CaptureEnable": "false",
+  "CaptureTime": 1642057937.6518,
+  "CaptureByte": 9960256568,
+  "CapturePacket": 36312769,
+  "CaptureBps": 687557440,
+  "CapturePps": 266806.4375,
+  "CurrentTime": "2022/01/13   07:12"
+}
+
+```
+{% endswagger-response %}
+{% endswagger %}
+
 {% swagger baseUrl="/sysmaster/status" path="" method="get" summary="General System Status (CSV)" %}
 {% swagger-description %}
 Returns Capture status of currently active capture.
@@ -86,33 +110,9 @@ capture_active,                                          true
 {% endswagger-response %}
 {% endswagger %}
 
-{% swagger method="get" path="/sysmaster/capture_status" baseUrl="/sysmaster/capture_status" summary="Capture Status JSON format" %}
-{% swagger-description %}
-Returns status of the capture in JSON format
-{% endswagger-description %}
-
-{% swagger-response status="200: OK" description="" %}
-```javascript
-{
-  "Status": true,
-  "GUIMode": "full",
-  "StreamName": "capturetest",
-  "CaptureEnable": "false",
-  "CaptureTime": 1642057937.6518,
-  "CaptureByte": 9960256568,
-  "CapturePacket": 36312769,
-  "CaptureBps": 687557440,
-  "CapturePps": 266806.4375,
-  "CurrentTime": "2022/01/13   07:12"
-}
-
-```
-{% endswagger-response %}
-{% endswagger %}
-
 ### Downloading PCAP
 
-{% swagger baseUrl="http://127.0.0.1/stream/list" path="" method="get" summary="List All Captures" %}
+{% swagger baseUrl="/stream/list" path="" method="get" summary="List All Captures" %}
 {% swagger-description %}
 Lists all captures on the device.
 {% endswagger-description %}
@@ -128,7 +128,7 @@ $ curl -u fmadio:100g http://192.168.2.75/stream/list
 {% endswagger-response %}
 {% endswagger %}
 
-{% swagger baseUrl="http://127.0.0.1/stream/ssize?StreamName=<capture sname>&StreamView=<split mode>" path="" method="get" summary="Split Capture by filesize" %}
+{% swagger baseUrl="/stream/ssize?StreamName=<capture sname>&StreamView=<split mode>" path="" method="get" summary="Split Capture by filesize" %}
 {% swagger-description %}
 Lists splits for a specific capture based on file size. 
 
@@ -249,7 +249,7 @@ Stream capture name
 {% endswagger-response %}
 {% endswagger %}
 
-{% swagger baseUrl="http://127.0.0.1/stream/stime?StreamName=<capture sname>&StreamView=<split mode>" path="" method="get" summary="Split Capture by time" %}
+{% swagger baseUrl="/stream/stime?StreamName=<capture sname>&StreamView=<split mode>" path="" method="get" summary="Split Capture by time" %}
 {% swagger-description %}
 Lists splits for a specific capture based on a time unit.
 
@@ -353,7 +353,7 @@ Stream capture name.
 {% endswagger-response %}
 {% endswagger %}
 
-{% swagger baseUrl="http://127.0.0.1/pcap/single?StreamName=<capture name>&FilterRE=<string>" path="" method="get" summary="Single PCAP Download" %}
+{% swagger baseUrl="/pcap/single?StreamName=<capture name>&FilterRE=<string>" path="" method="get" summary="Single PCAP Download" %}
 {% swagger-description %}
 Download entire capture as a single file. 
 
@@ -406,7 +406,7 @@ Compression example:\
 FilterBPF example:\
 `curl -u fmadio:100g "http://192.168.2.75/pcap/single?StreamName=hitcon_20180702_1503_58&" -G --data-urlencode "FilterBPF=tcp"`
 
-{% swagger baseUrl="http://127.0.0.1/pcap/splittime?StreamName=<string>&Start=<int>&Stop=<int>&FilterBPF=<string>&FilterPort=<int>" path="" method="get" summary="Split PCAP Time Download" %}
+{% swagger baseUrl="/pcap/splittime?StreamName=<string>&Start=<int>&Stop=<int>&FilterBPF=<string>&FilterPort=<int>" path="" method="get" summary="Split PCAP Time Download" %}
 {% swagger-description %}
 Download the capture with a time filter. 
 
@@ -463,7 +463,7 @@ $ curl -u fmadio:100g "http://192.168.2.75/pcap/splittime?StreamName=TestCapture
 {% endswagger-response %}
 {% endswagger %}
 
-{% swagger baseUrl="http://127.0.0.1/pcap/timerange?TSBegin=<epoch start>&TSEnd=<epoch stop>&TSMax=<size>&TSMode=<nanos or msecs>" path="" method="get" summary="TimeRange PCAP Download" %}
+{% swagger baseUrl="/pcap/timerange?TSBegin=<epoch start>&TSEnd=<epoch stop>&TSMax=<size>&TSMode=<nanos or msecs>" path="" method="get" summary="TimeRange PCAP Download" %}
 {% swagger-description %}
 Download a timerange of pcap data without any capture file referenced. The system will search all captures for the specified timerange.
 
@@ -527,7 +527,7 @@ Stop time in epoch (default nano seconds).
 
 ### Device Management
 
-{% swagger baseUrl="http://127.0.0.1/sysmaster/stats_summary" path="" method="get" summary="System Status" %}
+{% swagger baseUrl="/sysmaster/stats_summary" path="" method="get" summary="System Status" %}
 {% swagger-description %}
 Get system status information
 {% endswagger-description %}
@@ -562,7 +562,7 @@ Get system status information
 {% endswagger-response %}
 {% endswagger %}
 
-{% swagger baseUrl="http://127.0.0.1" path="/pcap/del?StreamName=<full capture name>" method="get" summary="Delete Capture" %}
+{% swagger baseUrl="/pcap/del?StreamName=<full capture name>" path="" method="get" summary="Delete Capture" %}
 {% swagger-description %}
 Deletes capture off the system
 {% endswagger-description %}
