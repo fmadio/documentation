@@ -12,7 +12,7 @@ The FMADIO API is simple and designed for easy scripting integration.
 
 ### Device Operation
 
-{% swagger baseUrl=" http://127.0.0.1/sysmaster/capture_start?StreamName=<capture name>" path="" method="get" summary="Capture Start" %}
+{% swagger baseUrl="/sysmaster/capture_start?StreamName=<capture name>" path="" method="get" summary="Capture Start" %}
 {% swagger-description %}
 This Command starts a capture running on the device.
 {% endswagger-description %}
@@ -32,7 +32,7 @@ Stream capture name
 {% endswagger-response %}
 {% endswagger %}
 
-{% swagger baseUrl=" http://127.0.0.1/sysmaster/capture_stop" path="" method="get" summary="Capture Stop" %}
+{% swagger baseUrl="/sysmaster/capture_stop" path="" method="get" summary="Capture Stop" %}
 {% swagger-description %}
 Stops any currently capturing process. 
 
@@ -52,7 +52,7 @@ NOTE: this does NOT stop scheduled captures.
 {% endswagger-response %}
 {% endswagger %}
 
-{% swagger baseUrl="http://127.0.0.1/sysmaster/status" path="" method="get" summary="General System Status (CSV)" %}
+{% swagger baseUrl="/sysmaster/status" path="" method="get" summary="General System Status (CSV)" %}
 {% swagger-description %}
 Returns Capture status of currently active capture.
 {% endswagger-description %}
@@ -86,9 +86,9 @@ capture_active,                                          true
 {% endswagger-response %}
 {% endswagger %}
 
-{% swagger method="get" path="/sysmaster/capture_status" baseUrl="" summary="Capture Status JSON format" %}
+{% swagger method="get" path="/sysmaster/capture_status" baseUrl="/sysmaster/capture_status" summary="Capture Status JSON format" %}
 {% swagger-description %}
-
+Returns status of the capture in JSON format
 {% endswagger-description %}
 
 {% swagger-response status="200: OK" description="" %}
