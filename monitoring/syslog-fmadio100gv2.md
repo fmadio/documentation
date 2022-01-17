@@ -21,31 +21,31 @@ Example line below
 Temp (CPU0:34.00 CPU1:34.00 PCH:34.00 SYS:32.00 PER:24.00 NIC:44.00 AirIn:24.00 AirOut:0.00 Transciver:0.00 0.00)
 ```
 
-#### CPU 0/1
+### CPU 0/1
 
 CPU Temperature
 
-#### PCH
+### PCH
 
 Chipset Temperature
 
-#### SYS
+### SYS
 
 System Temperature
 
-#### PER
+### PER
 
 Peripheral Temperature
 
-#### NIC
+### NIC
 
 FPGA Capture Temperature
 
-#### AirIn
+### AirIn
 
 Ambient Air in Temperature. Sensor located AFTER the U.2 SSDs
 
-#### Transceiver
+### Transceiver
 
 Temperature of each QSFP transceiver
 
@@ -59,19 +59,19 @@ Example line&#x20;
 Disk (32 34 34 34 35 36 35 36 36 36 S: 16777216 16777216 16777216 16777216 16777216 16777216 16777216 16777216 16777216 16777216 R: 0 ) 
 ```
 
-#### Temperature
+### Temperature
 
 First items as above are the disk temperatures shown in degrees Celsius&#x20;
 
 (32 34 34 34 35 36 35 36 36 36)
 
-#### SMART Errors
+### SMART Errors
 
 Total smart error counts are shown in the next section starting with "S:"
 
 (S: 0 0 0 0 0 0 0 0 0 0)
 
-#### RAID Controller Temperature
+### RAID Controller Temperature
 
 Finally the RAID hardware card temperature (if present)
 
@@ -85,17 +85,17 @@ Example line as follows
 Mem (0.00GB ECC 0) Writeback (0.00GB) Dropped (0.00GB) 
 ```
 
-#### Mem
+### Mem
 
 Free memory (0.00GB)
 
 Total ECC Memory errors (ECC 0)
 
-#### Writeback
+### Writeback
 
 For systems with HDD writeback total GB written to HDD
 
-#### Dropped
+### Dropped
 
 Total amount of packets dropped due to bytes overflow (lack of bandwidth to HDD)
 
