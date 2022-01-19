@@ -26,6 +26,7 @@
 * [SSH Customization](configuration/ssh-customization.md)
 * [WWW Customization](configuration/www-customization.md)
 * [Authentication](configuration/authentication.md)
+* [IPTables](configuration/iptables.md)
 
 ## Data Download
 
