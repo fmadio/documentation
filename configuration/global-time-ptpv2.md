@@ -2,7 +2,7 @@
 
 FMADIO capture systems support PTPv2 using the linux PTP open source project. ( [http://linuxptp.sourceforge.net/](http://linuxptp.sourceforge.net) )  running only on the 10G management interface. 1G links are supported using 1G RJ45 SFP transceiver.
 
-Enabling PTPv2 via GUI is simple as follows
+Enabling PTPv2 via GUI is as follows
 
 ![PTPv2 Time Selection](<../.gitbook/assets/image (109).png>)
 
@@ -90,6 +90,42 @@ fmadio@fmadio20n40v3-364:~$ ps aux |grep phc2sys
 64729 root     /opt/fmadio/bin/phc2sys -s man10.123 -c CLOCK_REALTIME -w -m -P 0.7 -I 0.3
 fmadio@fmadio20n40v3-364:~$
 
+```
+
+### Custom LinuxPTP Config
+
+FMADIO system use the standard LinuxPTP project for time synchronization
+
+{% embed url="http://linuxptp.sourceforge.net" %}
+Linux PTP Configuration
+{% endembed %}
+
+As such the PTP configuration is highly customizable. For example Broadcast environments use a non standard domain and update rate. FMADIO support this by using a custom LinuxPTP configuration file.
+
+Custom config file can be located below
+
+```
+/opt/fmadio/etc/ptp4l.conf
+```
+
+If this file is present the system will use it when starting the application ptp4l.&#x20;
+
+After creating or editing the file, need to stop ptp4l as follows
+
+```
+// Some code
+sudo killall ptp4l
+sudo killall phc2sys
+```
+
+The system will then automatically start it on a 60sec timer.&#x20;
+
+Logfiles for debugging can be found in&#x20;
+
+```
+// Some code
+/mnt/store0/log/ptp_ptp4l.log
+/mnt/store0/log/ptp_phc2sys.log
 ```
 
 ## PPS Time Synchronization
