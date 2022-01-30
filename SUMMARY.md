@@ -64,4 +64,5 @@
 
 ## Linux Containers (LXC)
 
+* [Container Packet Processing](linux-containers-lxc/container-packet-processing.md)
 * [Mounting Host Scratch Disk](linux-containers-lxc/mounting-host-scratch-disk.md)
