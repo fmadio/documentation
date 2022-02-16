@@ -27,6 +27,7 @@
 * [WWW Customization](configuration/www-customization.md)
 * [Authentication](configuration/authentication.md)
 * [Firewall IPTables](configuration/firewall-iptables.md)
+* [Disk Encryption](configuration/disk-encryption.md)
 
 ## Data Download
 
