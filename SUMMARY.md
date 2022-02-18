@@ -29,6 +29,10 @@
 * [Firewall IPTables](configuration/firewall-iptables.md)
 * [Disk Encryption](configuration/disk-encryption.md)
 
+## Settings
+
+* [Capture](settings/capture.md)
+
 ## Data Download
 
 * [Performance](data-download/performance.md)
