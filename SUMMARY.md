@@ -37,6 +37,7 @@
 
 * [Performance](data-download/performance.md)
 * [Capture Analyze](data-download/sustained-io-performance.md)
+* [PCAP Upload](data-download/pcap-upload.md)
 
 ## CLI Reference
 
