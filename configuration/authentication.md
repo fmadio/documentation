@@ -199,7 +199,7 @@ These fields are from the ADFS Endpoint URI information, for example as follows.
 
 The "discovery" config in the above needs to be the OpenID Connect Metadata document, as seen below.
 
-![](<../.gitbook/assets/image (118) (1).png>)
+![](<../.gitbook/assets/image (118) (1) (1).png>)
 
 the "client\_id" is the shown below
 
@@ -235,7 +235,7 @@ sudo killall nginx
 
 Next point a browser to the FMADIO device, it should redirect you to the Active Directory login page as follows.
 
-![](<../.gitbook/assets/image (121).png>)
+![](<../.gitbook/assets/image (121) (1).png>)
 
 Login to the system using your Azure / Microsoft credentials. Then the FMADIO device dashboard will be shown as below
 
@@ -335,7 +335,7 @@ sudo killall nginx
 
 Next point the browser to the FMADIO device and it will redirect to Google Sign in account&#x20;
 
-![](<../.gitbook/assets/image (118).png>)
+![](<../.gitbook/assets/image (118) (1).png>)
 
 Login using your Google account information, and it will re-direct you to the FMADIO dashboard.
 

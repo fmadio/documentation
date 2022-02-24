@@ -60,6 +60,7 @@
 * [Logfile Report (GUI)](troubleshooting/logfile-report-gui.md)
 * [Logfile Report (CLI)](troubleshooting/logfile-report-cli.md)
 * [System Recovery](troubleshooting/system-recovery.md)
+* [KVM Access via IPMI](troubleshooting/kvm-access-via-ipmi.md)
 * [Serial Port Access over LAN](troubleshooting/serial-port-access-over-lan.md)
 * [BMC Reset](troubleshooting/bmc-reset.md)
 

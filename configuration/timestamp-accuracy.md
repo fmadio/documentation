@@ -30,7 +30,7 @@ The picture above shows we are verifying the time accuracy of the system by comp
 
 PTPv2 time accuracy of PTPv2 only is is about +/- 100 nanoseconds. This is the measured results of the above testing setup, the resulting histogram below shows the time delta in nanoseconds between the FMADIO Gen1 (Solarflare master clock timestamp) and the FMADIO Gen3 (8x10G) timestamp as the slave clock.
 
-![FMADIO PTPv2 Only Global Time Accuracy](<../.gitbook/assets/image (118) (1) (1) (1).png>)
+![FMADIO PTPv2 Only Global Time Accuracy](<../.gitbook/assets/image (118) (1) (1) (1) (1).png>)
 
 Per the above time histogram, the support width is about +/- 100nsec this is the expectation of PTPv2 synchronized clocks. Its pretty good considering it requires no dedicated clock hardware, just time synchronization over 10G ethernet
 
