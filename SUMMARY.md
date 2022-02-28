@@ -33,11 +33,14 @@
 
 * [Capture](settings/capture.md)
 
-## Data Download
+## Operation <a href="#data-download" id="data-download"></a>
 
 * [Performance](data-download/performance.md)
 * [Capture Analyze](data-download/sustained-io-performance.md)
 * [PCAP Upload](data-download/pcap-upload.md)
+* [Packet Blaster](data-download/packet-blaster.md)
+* [Replay & Capture (Slow)](data-download/replay-and-capture-slow.md)
+* [PCAP Flow Generation](data-download/pcap-flow-generation.md)
 
 ## CLI Reference
 

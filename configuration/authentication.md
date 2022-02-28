@@ -239,7 +239,7 @@ Next point a browser to the FMADIO device, it should redirect you to the Active 
 
 Login to the system using your Azure / Microsoft credentials. Then the FMADIO device dashboard will be shown as below
 
-![](<../.gitbook/assets/image (127).png>)
+![](<../.gitbook/assets/image (127) (1).png>)
 
 ### Logout
 
