@@ -207,11 +207,11 @@ the "client\_id" is the shown below
 
 The "client\__secret" in the above config needs to be the Value shown below, not the secretID_
 
-![](<../.gitbook/assets/image (126).png>)
+![](<../.gitbook/assets/image (126) (1).png>)
 
 Finally the "redirect\_uri" needs to be registered as follows.
 
-![](<../.gitbook/assets/image (119) (1).png>)
+![](<../.gitbook/assets/image (119) (1) (1).png>)
 
 Once config is complete, please confirm no syntax errors by running&#x20;
 
@@ -239,7 +239,7 @@ Next point a browser to the FMADIO device, it should redirect you to the Active 
 
 Login to the system using your Azure / Microsoft credentials. Then the FMADIO device dashboard will be shown as below
 
-![](<../.gitbook/assets/image (127) (1).png>)
+![](<../.gitbook/assets/image (127) (1) (1).png>)
 
 ### Logout
 
@@ -417,7 +417,7 @@ sudo killall nginx
 
 Next point the browser to the FMADIO device and it will redirect to Ping Idneitty SSO account as follows
 
-![](<../.gitbook/assets/image (119).png>)
+![](<../.gitbook/assets/image (119) (1).png>)
 
 After a successful authentication the FMADIO dashboard is seen
 

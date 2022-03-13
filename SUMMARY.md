@@ -28,6 +28,7 @@
 * [Authentication](configuration/authentication.md)
 * [Firewall IPTables](configuration/firewall-iptables.md)
 * [Disk Encryption](configuration/disk-encryption.md)
+* [External PCAP HTTP POST](configuration/external-pcap-http-post.md)
 
 ## Settings
 
@@ -58,6 +59,12 @@
 * [Alerts](monitoring/monitor-alerts.md)
 * [Syslog FMADIO100Gv2](monitoring/syslog-fmadio100gv2.md)
 
+## Linux Containers (LXC)
+
+* [Applications](linux-containers-lxc/applications.md)
+* [Container Packet Processing](linux-containers-lxc/container-packet-processing.md)
+* [Mounting Host Scratch Disk](linux-containers-lxc/mounting-host-scratch-disk.md)
+
 ## Troubleshooting
 
 * [Logfile Report (GUI)](troubleshooting/logfile-report-gui.md)
@@ -71,8 +78,3 @@
 
 * [SSD Replacement](maintenance/ssd-replacement.md)
 * [Firmware Update (CLI)](maintenance/firmware-update-cli.md)
-
-## Linux Containers (LXC)
-
-* [Container Packet Processing](linux-containers-lxc/container-packet-processing.md)
-* [Mounting Host Scratch Disk](linux-containers-lxc/mounting-host-scratch-disk.md)
