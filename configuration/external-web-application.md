@@ -1,4 +1,4 @@
-# External PCAP HTTP POST
+# External Web Application
 
 **FW: 7738+**
 
@@ -6,13 +6,21 @@ FMADIO Packet capture systems have the ability to push specific PCAPs to a exter
 
 ![FMADIO External HTTP POST Packet Capture PCAP](../.gitbook/assets/2022-03-12\_23-37.png)
 
-This workflow enables a simple way using a URI to push a PCAP over HTTP using a POST request to a remote end application.
+This workflow enables a simple approach, using a URI to push a PCAP over HTTP using a POST request to a remote end application, then following a JSON redirect.
 
-In this example, we are using our internally developed FMADIO Shark (FShark) as a reference example. This 3rd party application runs NGINX to receive and process the HTTP POST PCAP data.
+In this example, we are using our internally developed FMADIO Packet Scope and FMADIO Shark (FShark) as a reference example. This is for demonstration purposes only, any 3rd party web application will work.
 
 ## Request URI
 
-The workflow process is as follows, we are using FMADIO Developed software for this, however there is no limitation, any 3rd party application will work. For example using Grafana Pushing (Application A) and FMADIO Shark (Application B).&#x20;
+The workflow process is as follows,
+
+1. Web Application A generates a en.loader.html URI. For example Epoch Start/End and an BPF Filter
+2. Web Application A directs the Client to this URI
+3. FMADIO Packet Capture System  presents the Client with the FMADIO Loader web page. This shows the progress of filtering and upload to Application B and any potential errors.
+4. Application B completes upload, and returns a redirect URI
+5. FMADIO Loader web page follows the redirect, allowing the client to load seamlessly into Web Application B with the new PCAP data.
+
+The example is using FMADIO developed software for this, however there is no limitation, any 3rd party application will work.
 
 ![Web application Workflow](../.gitbook/assets/2022-03-12\_22-29.png)
 
