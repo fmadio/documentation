@@ -62,6 +62,7 @@
 ## Linux Containers (LXC)
 
 * [Applications](linux-containers-lxc/applications.md)
+* [Configuration](linux-containers-lxc/configuration.md)
 * [Container Packet Processing](linux-containers-lxc/container-packet-processing.md)
 * [Mounting Host Scratch Disk](linux-containers-lxc/mounting-host-scratch-disk.md)
 
