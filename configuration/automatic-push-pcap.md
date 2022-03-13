@@ -115,8 +115,9 @@ Specifies how the output files are written. Currently there are 2 modes, standar
 | ----------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | FILE                                                  | output a regular linux file. this can be ln the local file system or over a remote NFS mount                                                                                                                                                                                                                                                                                                                                                       |
 | RCLONE                                                | <p>use rclone as the end point file. Note rclone needs to be setup and configured before remote push is started</p><p></p><p>For RCLONE Config please see their documentation</p><p><a href="https://rclone.org/commands/rclone_config/">https://rclone.org/commands/rclone_config/</a></p><p></p><p>FMADIO by default stores config file into</p><p><code>/opt/fmadio/etc/rclone.conf</code></p><p></p><p><strong>Requires FW:7157+</strong> </p> |
-
-&#x20;
+| LXC                                                   | Writes output to the LXC ring buffer. Location of the ring buffer is the Path variable e.g                                                                                                                                                                                                                                                                                                                                                         |
+|                                                       | /opt/fmadio/queue/lxc\_ring0                                                                                                                                                                                                                                                                                                                                                                                                                       |
+|                                                       | **Requires FW:7738+**                                                                                                                                                                                                                                                                                                                                                                                                                              |
 
 ### **Path**
 
@@ -491,3 +492,71 @@ After setting the PCAP Link Layer setting using the above command the output is 
 ![](<../.gitbook/assets/image (90) (1) (1) (1).png>)
 
 Which contains the correctly decoded packets.
+
+## Examples
+
+Example Configuration files for refence
+
+### Push to NFS Share with BPF Filter and 1 minute PCAPs
+
+```
+local Config = {}
+
+Config.Target = {}
+
+-- push all tcp data to /mnt/remote0/push/tcp_*.pcap
+table.insert(Config.Target, 
+{
+    Desc      = "pcap-tcp", 
+    Mode      = "File", 
+    Path      = "/mnt/remote0/push/tcp",   
+    Split     = "--split-time 60e9", 
+    FileName  = "--filename-epoch-sec-startend", 
+    FilterBPF = "net 192.168.1.0/24 and tcp" 
+})
+
+return Config
+```
+
+### Push to MAGPACK over FTP
+
+```
+local Config = {}
+
+Config.Target = {}
+
+table.insert(Config.Target,
+{
+        Desc            = "pcap-all",
+        Mode            = "CURL",
+        Path            = "ftp://192.168.1.100/device-prefix",
+        Split           = "--split-byte 1e9",
+        FileName        = "--filename-tstr-HHMMSS_SUB",
+        FilterBPF       = "not (host 192.168.1.105 or host 192.168.1.102)",
+        Chunked         = true,
+        FollowStart     = true,
+        ScriptNew       = "/opt/fmadio/analytics/push_realtime_checkremote.lua 10"
+})
+
+return Config
+
+```
+
+### Push to an LXC 24/7
+
+```
+local Config = {}
+
+Config.Target = {}
+
+-- push all pcap data to lxc ring buffer 0
+table.insert(Config.Target,
+{
+    Desc      = "pcap-all",
+    Mode      = "LXC",
+    Path      = "/opt/fmadio/queue/lxc_ring0",
+    FilterBPF = nil
+})
+
+return Config
+```
