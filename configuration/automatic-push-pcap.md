@@ -507,7 +507,7 @@ Config.Target = {}
 -- push all tcp data to /mnt/remote0/push/tcp_*.pcap
 table.insert(Config.Target, 
 {
-    Desc      = "pcap-tcp", 
+    Desc      = "nfs-tcp", 
     Mode      = "File", 
     Path      = "/mnt/remote0/push/tcp",   
     Split     = "--split-time 60e9", 
@@ -527,7 +527,7 @@ Config.Target = {}
 
 table.insert(Config.Target,
 {
-        Desc            = "pcap-all",
+        Desc            = "magpack-all",
         Mode            = "CURL",
         Path            = "ftp://192.168.1.100/device-prefix",
         Split           = "--split-byte 1e9",
@@ -552,7 +552,7 @@ Config.Target = {}
 -- push all pcap data to lxc ring buffer 0
 table.insert(Config.Target,
 {
-    Desc      = "pcap-all",
+    Desc      = "lxc-all",
     Mode      = "LXC",
     Path      = "/opt/fmadio/queue/lxc_ring0",
     FilterBPF = nil
