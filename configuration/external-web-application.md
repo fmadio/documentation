@@ -104,7 +104,7 @@ In addition we added the following URI to prevent automatic reload, this can be 
 NoRedirect=true&
 ```
 
-Internally the FMADIO Device is issuing the following HTTP Post command thru CUR
+Internally the FMADIO Device is issuing the following HTTP POST command thru CURL on the filtered PCAP. This URL generator is configuration on the FMADIO Device, almost anything is possible. This example the "fshark" Target is built into the system firmware.
 
 ```
 cat fmadio.pcap |  /usr/local/bin/curl -s  -X POST -F  "data=@-" "http://192.168.1.101/api/v1/fshark/upload?filename=fmadio20p3_1647148506884765952.pcap&meta=eyJGaWx0ZXJ="
