@@ -28,9 +28,9 @@ The example is using FMADIO developed software for this, however there is no lim
 
 In the following example we are using FMADIO Packet Scope as as (Application A) and FMADIO Shark as (Application B).
 
-### Application A
+### Web Application A
 
-Application A in this case is FMADIO Packet Scope with an FMADIO Shark web link request as follows
+In this example, Web Application A is "FMADIO Packet Scope" with Web Application B "FMADIO Shark". PacketScope generates the loader link request as follows
 
 ![FMADIO Shark URL](../.gitbook/assets/2022-03-12\_22-40.png)
 
@@ -54,37 +54,37 @@ Expanding on the details
 Path=/api/v1/pcap/splittime&
 ```
 
-Path indicates how the PCAP should be generated, in this case its a specific capture name with filters.
+**Path** indicates how the PCAP should be generated, in this case its a specific capture name with filters.
 
 ```
 Target=fshark&
 ```
 
-Target, informs what the End Point target is. "fshark" is an internally defined EP. Due to security reasons End Point definitions can only be configured on the FMADIO System. Only the enumerated name of the End Point is used in the URI.
+**Target**, informs what the End Point target is. "fshark" is an internally defined EP. Due to security reasons End Point definitions can only be configured on the FMADIO System. Only the enumerated name of the End Point is used in the URI.
 
 ```
 StreamName=coffee_20220313_1227&
 ```
 
-StreamName specifies the name of the Capture to process.
+**StreamName** specifies the name of the Capture to process.
 
 ```
 TSBegin=1647149672563087104ULL&
 ```
 
-TSBegin is the Epoch in Nanoseconds for the start of the Filter
+**TSBegin** is the Epoch in Nanoseconds for the start of the Filter
 
 ```
 TSEnd=1647150048271070976ULL&
 ```
 
-TSEnd is the Epoch in Nanoseconds for the end of the Filter
+**TSEnd** is the Epoch in Nanoseconds for the end of the Filter
 
 ```
 FilterBPF=udp%20and%20port%20%2053&&
 ```
 
-FilterBPF is the Escape Encoded BPF filter, in this case "udp and port 53" e.g. extract DNS traffic.
+**FilterBPF** is the Escape Encoded BPF filter, in this case "udp and port 53" e.g. extract DNS traffic.
 
 For full details please check the API v1 Documentation page
 
