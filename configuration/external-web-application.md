@@ -104,7 +104,21 @@ In addition we added the following URI to prevent automatic reload, this can be 
 NoRedirect=true&
 ```
 
-Once completed the redirect URL is shown as follows
+Internally the FMADIO Device is issuing the following HTTP Post command thru CUR
+
+```
+cat fmadio.pcap |  /usr/local/bin/curl -s  -X POST -F  "data=@-" "http://192.168.1.101/api/v1/fshark/upload?filename=fmadio20p3_1647148506884765952.pcap&meta=eyJGaWx0ZXJ="
+
+```
+
+Once completed the above HTTP POST request into Web Application B is completed, it returns a redirect as follows to FMADIO Packet Capture System
+
+```
+{"redirect":"\/fshark\/en.pcapview.html?filename=fmadio20p3_1647154945535058944.pcap","status":true}
+
+```
+
+This redirect URL is forwarded to the Web Client is shown below
 
 ![Completed Redirect](<../.gitbook/assets/image (127).png>)
 
