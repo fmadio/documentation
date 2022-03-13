@@ -4,7 +4,7 @@
 
 FMADIO Packet capture systems have the ability to push specific PCAPs to a external 3rd Party application as follows
 
-![FMADIO 3rd Part HTTP POST Integration](../.gitbook/assets/2022-03-12\_23-23.png)
+![FMADIO External HTTP POST Packet Capture PCAP](../.gitbook/assets/2022-03-12\_23-37.png)
 
 This workflow enables a simple way using a URI to push a PCAP over HTTP using a POST request to a remote end application.
 
@@ -16,7 +16,7 @@ The workflow process is as follows, we are using FMADIO Developed software for t
 
 ![Web application Workflow](../.gitbook/assets/2022-03-12\_22-29.png)
 
-## Example&#x20;
+## Example (FMADIO Shark)
 
 In the following example we are using FMADIO Packet Scope as as (Application A) and FMADIO Shark as (Application B).
 
@@ -116,13 +116,13 @@ In this example it loads FMADIO Shark with the URI
 
 The following page is what the 3rd Party Application displays.&#x20;
 
-NOTE: Due to FMADIO Shark being internally developed the Web page does look like FMADIO products. This page could show anything, theres no iframes etc.
+NOTE: Due to FMADIO Shark being internally developed the Web page does look like FMADIO products. This page could show anything, there's no iframes etc.
 
 ![3rd Party Application B](<../.gitbook/assets/image (126).png>)
 
-## Example
+## Recommended
 
-The recomended URI is to use the /api/v1/pcap/timerange URI endpoint. As this does not require any stream names, just Epoch start/end times and a BPF filter.
+The recommended URI is to use the /api/v1/pcap/timerange URI endpoint. As this does not require any stream names, just Epoch start/end times and a BPF filter.
 
 Example as follows, please remember to Escape Encode the FilterBPF string.
 
