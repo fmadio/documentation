@@ -617,7 +617,7 @@ Compress the returned stream with gzip.
 1-9      The range from 'fast' to 'best'
 {% endswagger-parameter %}
 
-{% swagger-parameter in="query" name="StreamName" type="string" %}
+{% swagger-parameter in="query" name="StreamName" type="string" required="true" %}
 Stream capture name.
 {% endswagger-parameter %}
 
