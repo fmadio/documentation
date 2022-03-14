@@ -740,11 +740,11 @@ Maximum nanosecond of packets to download.
 Time Range mode to use for time: msecs or nanos..
 {% endswagger-parameter %}
 
-{% swagger-parameter in="query" name="TSBegin" type="integer" %}
+{% swagger-parameter in="query" name="TSBegin" type="integer" required="true" %}
 Start time in nanoseconds epoch.
 {% endswagger-parameter %}
 
-{% swagger-parameter in="query" name="TSEnd" type="integer" %}
+{% swagger-parameter in="query" name="TSEnd" type="integer" required="true" %}
 Stop time in nanoseconds epoch.
 {% endswagger-parameter %}
 
