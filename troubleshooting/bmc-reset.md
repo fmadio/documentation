@@ -79,6 +79,6 @@ The system is going down for reboot NOW!92509FE (pts/1) (Mon Mar 14 07:23:16
 sysadmin [~]#
 ```
 
-### Power Disconnect
+## Power Disconnect
 
 In some cases ipmitool is not responsive, thus the only option is a full power cable removal. Using the "power cycle" option on the BMC only resets the x86 server, it does not reboot the BMC. This is a last resort as physical access to the machine can be difficult in some cases.
