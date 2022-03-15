@@ -62,6 +62,8 @@ aaron@ingress:~$
 
 It will take a few minutes for the BMC Web interface and IPMITOOL tools to become active again.
 
+**NOTE**: Please power cycle the Host system after BMC reboot to fully clear the error condition
+
 ## BMC Reset via SSH
 
 If the above fails, a secondary option is possible using SSH into the BMC directly and issuing a reboot. Please contact support@fmad.io for password
@@ -78,6 +80,8 @@ sysadmin [~]# reboot
 The system is going down for reboot NOW!92509FE (pts/1) (Mon Mar 14 07:23:16
 sysadmin [~]#
 ```
+
+**NOTE**: Please power cycle the Host system after BMC reboot to fully clear the error condition
 
 ## Power Disconnect
 
