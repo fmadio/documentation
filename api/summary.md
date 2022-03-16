@@ -705,12 +705,28 @@ Port 3 - Disable
 
 {% swagger baseUrl="/api/v1/pcap/timerange" path="" method="get" summary="TimeRange PCAP Download" %}
 {% swagger-description %}
-Download a timerange of pcap data that can cross over a multiple pcap files.
-
-\
-
-
+Download a timerange of pcap data that can cross over a multiple pcap files.\
 The timerange results may be a portion of a single pcap stream, or a portion of multiple streams that share a connected time series.
+
+**Examples**
+
+****[**https://docs.fmad.io/fmadio-documentation/api/usage-guide#timerange-1**](https://docs.fmad.io/fmadio-documentation/api/usage-guide#timerange-1)****
+
+**TSBegin** and **TSEnd**
+
+`curl -u fmadio:xxx "http://127.0.0.1/api/v1/pcap/timerange?TSBegin=1621772572136996000&TSEnd=1621774913584264000"`
+
+``
+
+**TSBegin**, **TSEnd** and **FilterBPF**
+
+`curl -u fmadio:xxx "http://127.0.0.1/api/v1/pcap/timerange?TSBegin=1621772572136996000&TSEnd=1621774913584264000" -G --data-urlencode "FilterBPF=tcp"`
+
+``
+
+**TSBegin**, **TSEnd**, **FilterBPF** and **Compression**
+
+`curl -u fmadio:`**xxx** `"http://127.0.0.1/api/v1/pcap/timerange?TSBegin=1621772572136996000&TSEnd=1621774913584264000&Compression=fast" -G --data-urlencode "FilterBPF=tcp"`
 {% endswagger-description %}
 
 {% swagger-parameter in="query" name="Compression" type="string" %}
