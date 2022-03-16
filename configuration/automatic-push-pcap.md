@@ -296,6 +296,25 @@ FollowStart = true,
 | false | Push from the current capture position              |
 | true  | Push from the start of the currently active capture |
 
+### CPU
+
+**Requires FW: 7750+**
+
+Sets a specific CPU for streamcat to run on overriding the default CPU setting. This is helpful when multiple pushes are running in parallel.
+
+Default: the system assigned CPU number for push (typically CPU 23)
+
+Example as follows
+
+```
+CPU = 30,
+```
+
+| Setting          | Description                                                      |
+| ---------------- | ---------------------------------------------------------------- |
+| nil              | Uses the default system CPU for push operations                  |
+| \<numeric value> | Literal Numeric value indicating which CPU to run stream\_cat on |
+
 ## Analytics Scheduler
 
 In addition to configuration of
