@@ -300,7 +300,7 @@ FollowStart = true,
 
 **Requires FW: 7750+**
 
-Sets a specific CPU for streamcat to run on overriding the default CPU setting. This is helpful when multiple pushes are running in parallel.
+Sets a specific CPU for stream\_cat to run on by overriding the default CPU setting. This is helpful when multiple pushes are running in parallel.
 
 Default: the system assigned CPU number for push (typically CPU 23)
 
