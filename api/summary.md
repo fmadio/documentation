@@ -409,12 +409,14 @@ Stream capture name.
 
 {% swagger baseUrl="/pcap/single?StreamName=<capture name>&FilterRE=<string>" path="" method="get" summary="Single PCAP Download" %}
 {% swagger-description %}
-Download entire capture as a single file. 
-
-\
-
-
+Download entire capture as a single file. \
 Piping to a file or any other analysis tools is possible.
+
+Compression example:\
+`curl -u fmadio:100g "http://192.168.2.75/pcap/single?StreamName=TestCapture_20180702_1127&Compression=fast"`
+
+FilterBPF example:\
+`curl -u fmadio:100g "http://192.168.2.75/pcap/single?StreamName=hitcon_20180702_1503_58&" -G --data-urlencode "FilterBPF=tcp"`
 {% endswagger-description %}
 
 {% swagger-parameter in="query" name="FilterRE" type="string" %}
@@ -454,11 +456,7 @@ Stream capture name.
 {% endswagger-response %}
 {% endswagger %}
 
-Compression example:\
-`curl -u fmadio:100g "http://192.168.2.75/pcap/single?StreamName=TestCapture_20180702_1127&Compression=fast"`
 
-FilterBPF example:\
-`curl -u fmadio:100g "http://192.168.2.75/pcap/single?StreamName=hitcon_20180702_1503_58&" -G --data-urlencode "FilterBPF=tcp"`
 
 {% swagger baseUrl="/pcap/splittime?StreamName=<string>&Start=<int>&Stop=<int>&FilterBPF=<string>&FilterPort=<int>" path="" method="get" summary="Split PCAP Time Download" %}
 {% swagger-description %}
