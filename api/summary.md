@@ -110,7 +110,61 @@ capture_active,                                          true
 {% endswagger-response %}
 {% endswagger %}
 
+### Device Management
+
+{% swagger baseUrl="/sysmaster/stats_summary" path="" method="get" summary="System Status" %}
+{% swagger-description %}
+Get system status information
+{% endswagger-description %}
+
+{% swagger-response status="200" description="" %}
+```
+{
+	"uptime":"0D 7H 16M",
+	"packets_received":1454363817,
+	"packets_dropped":0,
+	"packets_errors":0,
+	"packets_captured":1454363968,
+	"packets_oldest":"19 May 2014 15:48:38",
+	"packets_oldest_ts":"1400482118411568128",
+	"capture_days":"1505D  0H 57M",
+	"bytes_captured":105800185305,
+	"bytes_pending":0,
+	"bytes_disk":171117117440,
+	"bytes_overflow":0,
+	"smart_errors":0,
+	"raid_errors":0,
+	"raid_status":"clean : raid5",
+	"stream_errors":0,
+	"chunk_errors":0,
+	"ecc_errors":0,
+.
+.
+.
+.
+}
+```
+{% endswagger-response %}
+{% endswagger %}
+
+{% swagger baseUrl="/pcap/del?StreamName=<full capture name>" path="" method="get" summary="Delete Capture" %}
+{% swagger-description %}
+Deletes capture off the system
+{% endswagger-description %}
+
+{% swagger-parameter in="path" name="StreamName" type="string" %}
+full name of the capture file to be deleted
+{% endswagger-parameter %}
+
+{% swagger-response status="200" description="" %}
+```
+```
+{% endswagger-response %}
+{% endswagger %}
+
 ### Downloading PCAP
+
+NOTE: These interfaces are legacy, recommend using the V1 API interfaces
 
 {% swagger baseUrl="/stream/list" path="" method="get" summary="List All Captures" %}
 {% swagger-description %}
@@ -429,15 +483,15 @@ Download the capture specifying the port capture number.
 BPF Filter to be applied to the stream.
 {% endswagger-parameter %}
 
-{% swagger-parameter in="query" name="StreamName" type="string" %}
+{% swagger-parameter in="query" name="StreamName" type="string" required="true" %}
 Stream capture name.
 {% endswagger-parameter %}
 
-{% swagger-parameter in="query" name="Stop" type="integer" %}
+{% swagger-parameter in="query" name="Stop" type="integer" required="true" %}
 Stop time in nanoseconds epoch.
 {% endswagger-parameter %}
 
-{% swagger-parameter in="query" name="Start" type="integer" %}
+{% swagger-parameter in="query" name="Start" type="integer" required="true" %}
 Start time in nanoseconds epoch.
 {% endswagger-parameter %}
 
@@ -511,64 +565,12 @@ msec   | epoch in milli seconds
 sec:      | epoch in seconds
 {% endswagger-parameter %}
 
-{% swagger-parameter in="query" name="TSBegin" type="integer" %}
+{% swagger-parameter in="query" name="TSBegin" type="integer" required="true" %}
 Start time in epoch (default nano seconds)
 {% endswagger-parameter %}
 
-{% swagger-parameter in="query" name="TSEnd" type="integer" %}
+{% swagger-parameter in="query" name="TSEnd" type="integer" required="true" %}
 Stop time in epoch (default nano seconds).
-{% endswagger-parameter %}
-
-{% swagger-response status="200" description="" %}
-```
-```
-{% endswagger-response %}
-{% endswagger %}
-
-### Device Management
-
-{% swagger baseUrl="/sysmaster/stats_summary" path="" method="get" summary="System Status" %}
-{% swagger-description %}
-Get system status information
-{% endswagger-description %}
-
-{% swagger-response status="200" description="" %}
-```
-{
-	"uptime":"0D 7H 16M",
-	"packets_received":1454363817,
-	"packets_dropped":0,
-	"packets_errors":0,
-	"packets_captured":1454363968,
-	"packets_oldest":"19 May 2014 15:48:38",
-	"packets_oldest_ts":"1400482118411568128",
-	"capture_days":"1505D  0H 57M",
-	"bytes_captured":105800185305,
-	"bytes_pending":0,
-	"bytes_disk":171117117440,
-	"bytes_overflow":0,
-	"smart_errors":0,
-	"raid_errors":0,
-	"raid_status":"clean : raid5",
-	"stream_errors":0,
-	"chunk_errors":0,
-	"ecc_errors":0,
-.
-.
-.
-.
-}
-```
-{% endswagger-response %}
-{% endswagger %}
-
-{% swagger baseUrl="/pcap/del?StreamName=<full capture name>" path="" method="get" summary="Delete Capture" %}
-{% swagger-description %}
-Deletes capture off the system
-{% endswagger-description %}
-
-{% swagger-parameter in="path" name="StreamName" type="string" %}
-full name of the capture file to be deleted
 {% endswagger-parameter %}
 
 {% swagger-response status="200" description="" %}
