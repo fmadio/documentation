@@ -277,6 +277,25 @@ Chunked = true,
 | ---- | ------------------ |
 | true | Enables chunk mode |
 
+### FollowStart
+
+**Requires FW: 7355+**
+
+FollowStart forces the push to start from the beginning of the capture. If its disabled it will push from the current capture position.
+
+Default is "false" push from the current capture position
+
+Example as follows
+
+```
+FollowStart = true,
+```
+
+|       | Description                                         |
+| ----- | --------------------------------------------------- |
+| false | Push from the current capture position              |
+| true  | Push from the start of the currently active capture |
+
 ## Analytics Scheduler
 
 In addition to configuration of
