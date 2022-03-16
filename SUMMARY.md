@@ -33,6 +33,7 @@
 ## Settings
 
 * [Capture](settings/capture.md)
+* [Download](settings/download.md)
 
 ## Operation <a href="#data-download" id="data-download"></a>
 
