@@ -13,7 +13,7 @@ Copy the tarball to /tmp
 Unpack the tarball into the /opt/fmadio/lxc directory
 
 ```
-fmadio@fmadio20n40v3-364:/mnt/store0/lxc/lib/lxc$ sudo tar xfzv /tmp/fmadshark-release_20220317_164527-314-4436d67.tar.gz
+/mnt/store0/lxc/lib/lxc$ sudo tar xfzv /tmp/fmadshark-release_20220317_164527-314-4436d67.tar.gz
 ./fshark_20220317_1646/
 ./fshark_20220317_1646/config
 ./fshark_20220317_1646/install.lua
@@ -29,32 +29,32 @@ fmadio@fmadio20n40v3-364:/mnt/store0/lxc/lib/lxc$ sudo tar xfzv /tmp/fmadshark-r
 Symlink the latest release. Optionally removing the symlink of any older version
 
 ```
-fmadio@fmadio20n40v3-364:/mnt/store0/lxc/lib/lxc$ sudo ln -s fshark_20220317_1646/ fshark
+/mnt/store0/lxc/lib/lxc$ sudo ln -s fshark_20220317_1646/ fshark
 
 ```
 
 ### Run the Container Install Script
 
 ```
-fmadio@fmadio20n40v3-364:/mnt/store0/lxc/lib/lxc$ cd fshark
+/mnt/store0/lxc/lib/lxc$ cd fshark
 
-fmadio@fmadio20n40v3-364:/mnt/store0/lxc/lib/lxc/fshark_20220317_1646$ sudo ./install.lua
+/mnt/store0/lxc/lib/lxc/fshark_20220317_1646$ sudo ./install.lua
 fmad fmadlua Mar 17 2022
-calibrating...
-0 : 2992952494           2.9930 cycles/nsec offset:7.048 Mhz
-Cycles/Sec 2992952494.0000 Std:       0 cycle std(  0.00000000) Target:3.00 Ghz
-argv /opt/fmadio/bin/fmadiolua
 loading filename [./install.lua]
 Host Address:192.168.2.225
 sudo sed -i "s/.*CONFIG_HOST$/        ip = \"192.168.1.1\", -- (Thu Mar 17 20:52:41 2022) CONFIG_HOST/" ./rootfs/srv/fshark/fmadio/etc/host_config.lua
 done 0.005622Sec 0.000094Min
-fmadio@fmadio20n40v3-364:/mnt/store0/lxc/lib/lxc/fshark_20220317_1646$
+/mnt/store0/lxc/lib/lxc/fshark_20220317_1646$
 
 ```
 
 ### Enable in the Config File
 
-Edit the file /opt/fmadio/etc/time.lua
+Edit the file&#x20;
+
+```
+/opt/fmadio/etc/time.lua
+```
 
 Setting the following \["FShark"] = true,  if the field does not exist then create it
 
