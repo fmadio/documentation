@@ -4,11 +4,11 @@ FMADIO Shark is a self contained LXC container that runs on the FMADIO Packet Ca
 
 To configure and run as follows
 
-### Download Latest FShark Release
+### Download Latest FMADIO Shark Release
 
 Copy the tarball to /tmp
 
-### Unpack FShark
+### Unpack FMADIO Shark
 
 Unpack the tarball into the /opt/fmadio/lxc directory
 
