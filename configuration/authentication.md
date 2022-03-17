@@ -421,6 +421,6 @@ Next point the browser to the FMADIO device and it will redirect to Ping Idneitt
 
 After a successful authentication the FMADIO dashboard is seen
 
-![](<../.gitbook/assets/image (129).png>)
+![](<../.gitbook/assets/image (129) (1).png>)
 
 &#x20;Any further questions or problems, please contact us support@fmad.io
