@@ -14,7 +14,7 @@ It uses a self signed certificate unless a certified certificate has been upload
 
 Login page looks like the following. Please contact support@fmad.io for default credentials
 
-![IPMI BMC Login page](<../.gitbook/assets/image (123).png>)
+![IPMI BMC Login page](<../.gitbook/assets/image (123) (1).png>)
 
 **STEP 2**
 
