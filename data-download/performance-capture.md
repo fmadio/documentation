@@ -1,5 +1,7 @@
 # Performance Capture
 
+## Firmware: **7768**
+
 FMADIO100G Capture system is for 100% lossless half duplex 100G link.
 
 The system can write 100Gbps+ to Disk and 148M Packets+ all without any loss. This assumes data is on a single 1x100G capture port
