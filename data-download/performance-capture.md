@@ -20,7 +20,9 @@ FMADIO100G Packet Capture system is fully lossless on a single 1 x 100G capture 
 
 ### Microburst 2 x 100G  @ 100 Packets
 
-Microburst of 100 packets at 2 x 100G line rate from 64B to 1500B packets. 100% full capture no loss.
+Microburst of 100 packets at 2 x 100G line rate from 64B to 1500B packets.&#x20;
+
+Microbursts @ 200Gbps up to 100packets in length is 100% full capture no loss.
 
 ![2x100G Microburst @ 100 Packets](<../.gitbook/assets/image (123).png>)
 
