@@ -12,9 +12,11 @@ The following graphs show the performance characteristics when exceeding 100Gbps
 
 
 
-Microburst 1 x 100G @ 1,000,000,000 Packets
+### Microburst 1 x 100G @ 1,000,000,000 Packets
 
+FMADIO100G Packet Capture system is fully lossless on a single 1 x 100G capture port across all packet sizes. Including up to 9218 Jumbo frame sizes.
 
+![](<../.gitbook/assets/image (122).png>)
 
 ### Microburst 2 x 100G  @ 100 Packets
 
