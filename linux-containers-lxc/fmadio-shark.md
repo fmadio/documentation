@@ -81,4 +81,4 @@ Optionally clear browser cache. Sometimes the browser will cache old Javascript 
 
 &#x20;PacketBrowser and PacketScope should be visible on the GUI as follows
 
-![FShark Packet Viewing](<../.gitbook/assets/image (129).png>)
+![FShark Packet Viewing](<../.gitbook/assets/image (129) (1).png>)

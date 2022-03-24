@@ -199,19 +199,19 @@ These fields are from the ADFS Endpoint URI information, for example as follows.
 
 The "discovery" config in the above needs to be the OpenID Connect Metadata document, as seen below.
 
-![](<../.gitbook/assets/image (118) (1) (1).png>)
+![](<../.gitbook/assets/image (118) (1) (1) (1).png>)
 
 the "client\_id" is the shown below
 
-![](<../.gitbook/assets/image (124) (1) (1).png>)
+![](<../.gitbook/assets/image (124) (1) (1) (1).png>)
 
 The "client\__secret" in the above config needs to be the Value shown below, not the secretID_
 
-![](<../.gitbook/assets/image (126) (1).png>)
+![](<../.gitbook/assets/image (126) (1) (1).png>)
 
 Finally the "redirect\_uri" needs to be registered as follows.
 
-![](<../.gitbook/assets/image (119) (1) (1).png>)
+![](<../.gitbook/assets/image (119) (1) (1) (1).png>)
 
 Once config is complete, please confirm no syntax errors by running&#x20;
 
@@ -221,7 +221,7 @@ fmadiolua /opt/fmadio/etc/oauth_opts.lua
 
 Correct output is as follows, if there are any syntax errors please correct.
 
-![](<../.gitbook/assets/image (115) (1).png>)
+![](<../.gitbook/assets/image (115) (1) (1).png>)
 
 ### Restart nginx
 
@@ -235,7 +235,7 @@ sudo killall nginx
 
 Next point a browser to the FMADIO device, it should redirect you to the Active Directory login page as follows.
 
-![](<../.gitbook/assets/image (121) (1).png>)
+![](<../.gitbook/assets/image (121) (1) (1).png>)
 
 Login to the system using your Azure / Microsoft credentials. Then the FMADIO device dashboard will be shown as below
 
@@ -245,11 +245,11 @@ Login to the system using your Azure / Microsoft credentials. Then the FMADIO de
 
 Logout is the same, using the logout button shown below
 
-![](<../.gitbook/assets/image (90) (1).png>)
+![](<../.gitbook/assets/image (90) (1) (1).png>)
 
 Then choose an account to sign out of
 
-![](<../.gitbook/assets/image (120) (1) (1).png>)
+![](<../.gitbook/assets/image (120) (1) (1) (1).png>)
 
 ## Google Cloud (SSO via OAUTH 2.0)
 
@@ -311,7 +311,7 @@ The "clientid" and "client\_secret" need to be replaced with the generated authe
 
 Next generate Google OAUTH credentials as follows.
 
-![](<../.gitbook/assets/image (90).png>)
+![](<../.gitbook/assets/image (90) (1).png>)
 
 Then fill in the information, as follows. Google is a bit more strict and requires TLD endpoints not raw IPs
 
@@ -319,7 +319,7 @@ Then fill in the information, as follows. Google is a bit more strict and requir
 
 Which results in the following secret information
 
-![](<../.gitbook/assets/image (115).png>)
+![](<../.gitbook/assets/image (115) (1).png>)
 
 Update the oauth\_opts.lua file above with the information
 
@@ -335,11 +335,11 @@ sudo killall nginx
 
 Next point the browser to the FMADIO device and it will redirect to Google Sign in account&#x20;
 
-![](<../.gitbook/assets/image (118) (1).png>)
+![](<../.gitbook/assets/image (118) (1) (1).png>)
 
 Login using your Google account information, and it will re-direct you to the FMADIO dashboard.
 
-![](<../.gitbook/assets/image (124) (1).png>)
+![](<../.gitbook/assets/image (124) (1) (1).png>)
 
 Any further questions please contact support@fmad.io for assistance.
 
@@ -401,7 +401,7 @@ The "clientid" and "client\_secret" need to be replaced with the generated authe
 
 We setup a web application using Ping Identity interface as follows. The key fields are shown in red.
 
-![](<../.gitbook/assets/image (117).png>)
+![](<../.gitbook/assets/image (117) (1).png>)
 
 These fields are mapped directly into the oauth\_opts.lua configuration file above.
 
@@ -417,10 +417,10 @@ sudo killall nginx
 
 Next point the browser to the FMADIO device and it will redirect to Ping Idneitty SSO account as follows
 
-![](<../.gitbook/assets/image (119) (1).png>)
+![](<../.gitbook/assets/image (119) (1) (1).png>)
 
 After a successful authentication the FMADIO dashboard is seen
 
-![](<../.gitbook/assets/image (129) (1).png>)
+![](<../.gitbook/assets/image (129) (1) (1).png>)
 
 &#x20;Any further questions or problems, please contact us support@fmad.io

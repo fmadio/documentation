@@ -526,7 +526,7 @@ The symptoms of this is unusual TCPDUMP output such as the following
 
 After setting the PCAP Link Layer setting using the above command the output is as follows
 
-![](<../.gitbook/assets/image (90) (1) (1) (1).png>)
+![](<../.gitbook/assets/image (90) (1) (1) (1) (1).png>)
 
 Which contains the correctly decoded packets.
 

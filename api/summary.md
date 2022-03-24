@@ -116,7 +116,7 @@ capture_active,                                          true
 {% swagger-description %}
 Get system status information. Partial example output in parsed JSON format below
 
-``![](<../.gitbook/assets/image (123).png>)``
+``![](<../.gitbook/assets/image (123) (1).png>)``
 {% endswagger-description %}
 
 {% swagger-response status="200" description="" %}

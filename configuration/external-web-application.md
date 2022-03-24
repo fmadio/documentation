@@ -96,7 +96,7 @@ API Documentation
 
 Once clicked the following Loader page is visible.
 
-![Loader Page](<../.gitbook/assets/image (119).png>)
+![Loader Page](<../.gitbook/assets/image (119) (1).png>)
 
 In addition we added the following URI to prevent automatic reload, this can be helpful for debugging purposes.
 
@@ -140,7 +140,7 @@ The following page is what the 3rd Party Application displays.&#x20;
 
 NOTE: Due to FMADIO Shark being internally developed the Web page does look like FMADIO products. This page could show anything, there's no iframes etc.
 
-![3rd Party Application B](<../.gitbook/assets/image (126).png>)
+![3rd Party Application B](<../.gitbook/assets/image (126) (1).png>)
 
 ## Recommended
 

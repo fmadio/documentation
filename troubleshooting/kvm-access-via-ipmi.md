@@ -10,11 +10,11 @@ Log into the IPMI/BMC system, please contact support@fmad.io for default IP and 
 
 It uses a self signed certificate unless a certified certificate has been uploaded. Please click thru to the login page
 
-![Self Signed Certificate](<../.gitbook/assets/image (118).png>)
+![Self Signed Certificate](<../.gitbook/assets/image (118) (1).png>)
 
 Login page looks like the following. Please contact support@fmad.io for default credentials
 
-![IPMI BMC Login page](<../.gitbook/assets/image (123) (1).png>)
+![IPMI BMC Login page](<../.gitbook/assets/image (123) (1) (1).png>)
 
 **STEP 2**
 
@@ -28,7 +28,7 @@ Select "H5Viewer" to launch the web HTML KVM page.&#x20;
 
 NOTE: this uses normal HTTPS connection no additional firewall rules or ports need to be opened
 
-![FMADIO HTML5 KVM](<../.gitbook/assets/image (125).png>)
+![FMADIO HTML5 KVM](<../.gitbook/assets/image (125) (1).png>)
 
 **STEP 4**
 
@@ -38,5 +38,5 @@ Due to screen saver, it may appear blank. Please press any key to disable the sc
 
 NOTE: the currently configured IPs are shown at boot.
 
-![](<../.gitbook/assets/image (121).png>)
+![](<../.gitbook/assets/image (121) (1).png>)
 
