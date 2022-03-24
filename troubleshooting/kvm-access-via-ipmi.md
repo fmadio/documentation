@@ -20,7 +20,7 @@ Login page looks like the following. Please contact support@fmad.io for default 
 
 Select "Remote Control" on the left menu
 
-![FMADIO IPMI Remote Control](<../.gitbook/assets/image (130).png>)
+![FMADIO IPMI Remote Control](<../.gitbook/assets/image (130) (1).png>)
 
 **STEP 3**
 

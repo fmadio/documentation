@@ -10,6 +10,12 @@ As the system has 2x100G capture ports there is a point where due to data rate o
 
 The following graphs show the performance characteristics when exceeding 100Gbps line rate
 
+
+
+Microburst 1 x 100G @ 1,000,000,000 Packets
+
+
+
 ### Microburst 2 x 100G  @ 100 Packets
 
 Microburst of 100 packets at 2 x 100G line rate from 64B to 1500B packets. 100% full capture no loss.
