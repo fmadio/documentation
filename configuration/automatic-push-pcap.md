@@ -597,3 +597,33 @@ table.insert(Config.Target,
 
 return Config
 ```
+
+### Push to Multiple lxc\_ring 24/7
+
+Example pushes different VLAN traffic to seperate lxc\_rings
+
+```
+local Config = {}
+
+Config.Target = {}
+
+-- push vlan1 data to lxc ring buffer 0
+table.insert(Config.Target,
+{
+    Desc      = "lxc-vlan0",
+    Mode      = "LXC",
+    Path      = "/opt/fmadio/queue/lxc_ring0",
+    FilterBPF = "vlan 1"
+})
+
+-- push vlan2 data to lxc ring buffer 1
+table.insert(Config.Target,
+{
+    Desc      = "lxc-vlan1",
+    Mode      = "LXC",
+    Path      = "/opt/fmadio/queue/lxc_ring1",
+    FilterBPF = "vlan 1"
+})
+
+return Config
+```
