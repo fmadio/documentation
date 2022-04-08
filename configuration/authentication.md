@@ -211,7 +211,7 @@ The "client\__secret" in the above config needs to be the Value shown below, not
 
 Finally the "redirect\_uri" needs to be registered as follows.
 
-![](<../.gitbook/assets/image (119) (1) (1) (1).png>)
+![](<../.gitbook/assets/image (119) (1) (1) (1) (1).png>)
 
 Once config is complete, please confirm no syntax errors by running&#x20;
 
@@ -417,7 +417,7 @@ sudo killall nginx
 
 Next point the browser to the FMADIO device and it will redirect to Ping Idneitty SSO account as follows
 
-![](<../.gitbook/assets/image (119) (1) (1).png>)
+![](<../.gitbook/assets/image (119) (1) (1) (1).png>)
 
 After a successful authentication the FMADIO dashboard is seen
 

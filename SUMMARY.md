@@ -78,6 +78,7 @@
 * [KVM Access via IPMI](troubleshooting/kvm-access-via-ipmi.md)
 * [Serial Port Access over LAN](troubleshooting/serial-port-access-over-lan.md)
 * [BMC Reset](troubleshooting/bmc-reset.md)
+* [Network Traffic Profile](troubleshooting/network-traffic-profile.md)
 
 ## Maintenance
 

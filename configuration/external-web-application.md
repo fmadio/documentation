@@ -96,7 +96,7 @@ API Documentation
 
 Once clicked the following Loader page is visible.
 
-![Loader Page](<../.gitbook/assets/image (119) (1).png>)
+![Loader Page](<../.gitbook/assets/image (119) (1) (1).png>)
 
 In addition we added the following URI to prevent automatic reload, this can be helpful for debugging purposes.
 
