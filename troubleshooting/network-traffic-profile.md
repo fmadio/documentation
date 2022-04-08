@@ -13,11 +13,11 @@ sudo stream_cat <insert capture name> | capinfos2 -v --size-histo
 
 This will generate a packet size histogram such as the following
 
-![](<../.gitbook/assets/image (123).png>)
+![FMADIO Network Packet Size Histogram Full](<../.gitbook/assets/image (123).png>)
 
-With a more compact histogram version shown below
+With a more compact histogram version shown below. Note the first graph is the packet size histogram of packets on the wire, the second is size based on the packets captured. In this case packets have been sliced @ 128B thus the histogram is quite short
 
-![](<../.gitbook/assets/image (119).png>)
+![FMADIO Network Packet Size Histogram Compact](<../.gitbook/assets/image (127).png>)
 
 Finally at the end there is a number list, which can be sent to FMADIO Support so we can replicate your network traffic profile locally with our synthetic packet generator.
 

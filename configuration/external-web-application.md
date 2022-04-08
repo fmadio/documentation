@@ -120,7 +120,7 @@ Once completed the above HTTP POST request into Web Application B is completed, 
 
 This redirect URL is forwarded to the Web Client is shown below
 
-![Completed Redirect](<../.gitbook/assets/image (127).png>)
+![Completed Redirect](<../.gitbook/assets/image (127) (1).png>)
 
 The 3rd Party Application returns the redirect as the response to the POST upload request. This is where the redirect URI is specific, or any error condition
 

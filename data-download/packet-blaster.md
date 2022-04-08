@@ -6,7 +6,7 @@ Packet blaster is a layer 2 (Ethernet level) packet generator that runs at full 
 
 The payload of each packet is a per physical port MAC Address followed by a 32bit incrementally increasing sequence number. This sequence number is used later post capture to ensure data of all packets has been captured correctly without error. An example packet is shown in Wireshark below.
 
-![Packet Blaster](<../.gitbook/assets/image (127) (1).png>)
+![Packet Blaster](<../.gitbook/assets/image (127) (1) (1).png>)
 
 In the above wireshark picture, you can see 2 different MAC address 11:11:11:11:11:11 (Physical Port 1) and 22:22:22:22:22 (Physical Port 2). The payload is a 32bit little endian sequence numbers
 
