@@ -203,7 +203,7 @@ The "discovery" config in the above needs to be the OpenID Connect Metadata docu
 
 the "client\_id" is the shown below
 
-![](<../.gitbook/assets/image (124) (1) (1) (1).png>)
+![](<../.gitbook/assets/image (124) (1) (1) (1) (1).png>)
 
 The "client\__secret" in the above config needs to be the Value shown below, not the secretID_
 
@@ -249,7 +249,7 @@ Logout is the same, using the logout button shown below
 
 Then choose an account to sign out of
 
-![](<../.gitbook/assets/image (120) (1) (1) (1).png>)
+![](<../.gitbook/assets/image (120) (1) (1) (1) (1).png>)
 
 ## Google Cloud (SSO via OAUTH 2.0)
 
@@ -339,7 +339,7 @@ Next point the browser to the FMADIO device and it will redirect to Google Sign 
 
 Login using your Google account information, and it will re-direct you to the FMADIO dashboard.
 
-![](<../.gitbook/assets/image (124) (1) (1).png>)
+![](<../.gitbook/assets/image (124) (1) (1) (1).png>)
 
 Any further questions please contact support@fmad.io for assistance.
 

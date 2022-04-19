@@ -60,7 +60,7 @@ Microburst of 100K packets per port 2 x 100G line rate 64B to 1500B packets
 
 Microburst of 1M Packets per port 2 x 100G line rate 64B to 1500B packets
 
-![2x100G Microburst @ 1M packets](<../.gitbook/assets/image (130).png>)
+![2x100G Microburst @ 1M packets](<../.gitbook/assets/image (130) (1).png>)
 
 
 

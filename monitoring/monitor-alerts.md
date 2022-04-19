@@ -420,11 +420,11 @@ Please update \["Target"] = setting to the correct SNMP collector address.
 
 Example output in broadcast mode is as follows, from the /mnt/store0/log/monitor\_alert.cur logfile
 
-![](<../.gitbook/assets/image (120) (1).png>)
+![](<../.gitbook/assets/image (120) (1) (1).png>)
 
 This translates to
 
-![](<../.gitbook/assets/image (124) (1).png>)
+![](<../.gitbook/assets/image (124) (1) (1).png>)
 
 #### Troubleshooting
 
