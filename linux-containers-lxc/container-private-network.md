@@ -1,6 +1,8 @@
 # Container Private Network
 
-Depending on how the container is configured, a common setup is to have the container entirely private using nginx as a proxy or iptables to port forward to the container.&#x20;
+The container can be configured to have a independent public IP address (fully bridged), a private internal IP (internal NAT) or both. All options have Pros/Cons and need to be considered for final deployment.&#x20;
+
+A common setup is to have the container entirely private using nginx as a proxy or iptables to port forward to the container.&#x20;
 
 Block diagram below shows the network topology
 
