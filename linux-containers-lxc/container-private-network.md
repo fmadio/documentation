@@ -4,7 +4,7 @@ The container can be configured to have a independent public IP address (fully b
 
 A common setup is to have the container entirely private using nginx as a proxy or iptables to port forward to the container.&#x20;
 
-Block diagram below shows the network topology
+Block diagram below shows Private only Network Topology
 
 ![Private LXC Networking](<../.gitbook/assets/image (130).png>)
 
