@@ -60,3 +60,17 @@ Container network settings need to be the following
 Gateway : 192.168.255.2
 DNS     : 8.8.8.8   (or something else)
 ```
+
+## Container Network IP Address
+
+List of private container addresses&#x20;
+
+| IP Address      | Container          | Description                     |
+| --------------- | ------------------ | ------------------------------- |
+| 192.168.255.2   | FMADIO Host        | FMADIO Host IP Address          |
+| 192.168.255.10  | FShark             | FMADIO Internal Wireshark Lite  |
+| 192.168.255.100 | Ubuntu Desktop     | Ubuntu Desktop                  |
+| 192.168.255.110 | Elastic Search 7.x | Elastic Search 7.x Container    |
+| 192.168.255.111 | Elastic Search 8.x | Elastic Search 8.x Container    |
+| 192.168.255.120 | Suricata 6.x       | Suricata 6.x Container (CentOS) |
+| 192.168.255.130 | Zeek               | Zeek Container (CentOS)         |
