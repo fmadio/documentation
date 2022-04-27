@@ -48,6 +48,7 @@
 
 ## CLI Reference
 
+* [fmadiocli](cli-reference/fmadiocli.md)
 * [stream\_cat](cli-reference/stream\_cat.md)
 * [fnic\_test](cli-reference/fnic\_test.md)
 
