@@ -2,6 +2,69 @@
 
 fmadiocli is a command line interface using a switch style interface to operate FMADIO Packet Capture devices.
 
+Breif help description is provided using ? command
+
+```
+[Wed Apr 27 07:18:20 2022] ?                                                                                : Command Line Help Info
+[Wed Apr 27 07:18:20 2022] config                                                                           : enter configuration mode
+[Wed Apr 27 07:18:20 2022] config analytics schedule del <schedule row name>                                : Deletes a analtyics scheduler row
+[Wed Apr 27 07:18:20 2022] config analytics schedule mod <schedule row name>                                : configures the analytics scheduler
+[Wed Apr 27 07:18:20 2022] config analytics schedule new                                                    : Creates a new analytics scheduler new
+[Wed Apr 27 07:18:20 2022] config capture schedule del <schedule row name>                                  : Deletes a capture scheduler row
+[Wed Apr 27 07:18:20 2022] config capture schedule mod <schedule row name>                                  : configures the capture scheduler
+[Wed Apr 27 07:18:20 2022] config capture schedule new                                                      : Creates a new capture scheduler row
+[Wed Apr 27 07:18:20 2022] config capture start <capture name>                                              : Starts a capture
+[Wed Apr 27 07:18:20 2022] config capture stop                                                              : Stops a capture
+[Wed Apr 27 07:18:20 2022] config interface dns <interface name> <dns>                                      : sets the interfaces dns
+[Wed Apr 27 07:18:20 2022] config interface gateway <interface name> <gateway>                              : sets the interfaces gateway
+[Wed Apr 27 07:18:20 2022] config interface ip <interface name> <ip address>                                : sets the interfaces IP address
+[Wed Apr 27 07:18:20 2022] config interface mode <interface name> <disabled|static>                         : sets the interfaces IP mode static or disabled
+[Wed Apr 27 07:18:20 2022] config interface netmask <interface name> <netmask>                              : sets the interfaces netmask
+.
+.
+.
+
+```
+
+Verbose help description is provided using ??? command
+
+```
+[Wed Apr 27 07:18:56 2022] > ???
+[Wed Apr 27 07:18:56 2022] =====================================================================================
+[Wed Apr 27 07:18:56 2022] ?
+[Wed Apr 27 07:18:56 2022] -------------------------------------------------------------------------------------
+[Wed Apr 27 07:18:56 2022] Command Line Help Info
+[Wed Apr 27 07:18:56 2022]
+[Wed Apr 27 07:18:56 2022] =====================================================================================
+[Wed Apr 27 07:18:56 2022] config
+[Wed Apr 27 07:18:56 2022] -------------------------------------------------------------------------------------
+[Wed Apr 27 07:18:56 2022] enter configuration mode
+[Wed Apr 27 07:18:56 2022]
+[Wed Apr 27 07:18:56 2022] =====================================================================================
+[Wed Apr 27 07:18:56 2022] config analytics schedule del
+[Wed Apr 27 07:18:56 2022] -------------------------------------------------------------------------------------
+[Wed Apr 27 07:18:56 2022] Deletes a analtyics scheduler row
+[Wed Apr 27 07:18:56 2022]
+[Wed Apr 27 07:18:56 2022] Example Usage:
+[Wed Apr 27 07:18:56 2022] > config analytics schedule del <name>                 : deletes analytics scheduler entry
+[Wed Apr 27 07:18:56 2022]
+[Wed Apr 27 07:18:56 2022]
+.
+.
+.
+
+```
+
+### Command History
+
+Command history is stored in the file
+
+```
+/opt/fmadio/etc/fmadiocli.history
+```
+
+It can be deleted to clear the history
+
 ### config interface shutdown
 
 This shuts down a specific capture interface as specified, usually this is cap0 or cap1 and depends on the SKU and Port configuration on which ports can be shutdown
