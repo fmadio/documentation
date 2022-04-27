@@ -67,6 +67,8 @@ It can be deleted to clear the history
 
 ### config interface shutdown
 
+FW: 7856+  support for 100Gv2 2x100G 2x40G
+
 This shuts down a specific capture interface as specified, usually this is cap0 or cap1 and depends on the SKU and Port configuration on which ports can be shutdown
 
 ```
@@ -81,6 +83,8 @@ This shuts down a specific capture interface as specified, usually this is cap0 
 ```
 
 ### config interface no shutdown
+
+FW: 7856+  support for 100Gv2 2x100G 2x40G
 
 Re-enables the specified capture interface from shutdown status. Depending on the link peer, the link peer might need to be bounced as it may be in a shutdown error state.
 
@@ -98,6 +102,8 @@ Re-enables the specified capture interface from shutdown status. Depending on th
 ```
 
 ### show interface status
+
+FW: 7856+
 
 Shows the current state of the interfaces
 
