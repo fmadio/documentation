@@ -2,7 +2,7 @@
 
 fmadiocli is a command line interface using a switch style interface to operate FMADIO Packet Capture devices.
 
-Breif help description is provided using ? command
+Brief help description is provided using ? command
 
 ```
 [Wed Apr 27 07:18:20 2022] ?                                                                                : Command Line Help Info
