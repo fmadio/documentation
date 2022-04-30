@@ -68,6 +68,118 @@ Default: 30e9 (30 seconds)
 
 Sets the default LXC Ring timeout value in nanoseconds.
 
+### --delta-histo
+
+Generates a histogram of the time between packets displaying it in a vertical histogram form.&#x20;
+
+Default bin size is 1nsec
+
+Default offset is 0nsec
+
+Example output is shown below
+
+```
+fmadio@fmadio100v2-228U:/mnt/store0/tmp2$  sudo stream_cat --bpf "vlan and dst 10.1.2.3" 
+                                                           --epoch-start 1651131955760021825 
+                                                           --epoch-stop 1651134322452715943   
+                                                           test_capture_20220201 
+                                                           | capinfos2 -v --delta-histo 
+                                                           --delta-histo-offset 10e6
+                                                           --delta-histo-bin 1e6
+0.03GB    0.185 Gbps    0.102 Mpps
+Total Packets: 114698
+Delta Time Histogram
+TSHisto          0 ns :     1744 (0.015) 0.000 : *******
+TSHisto    1000000 ns :        7 (0.000) 0.015 : *
+TSHisto    3000000 ns :        2 (0.000) 0.015 : *
+TSHisto    4000000 ns :      805 (0.007) 0.015 : ***
+TSHisto    5000000 ns :     1663 (0.014) 0.022 : *******
+TSHisto    6000000 ns :       11 (0.000) 0.037 : *
+TSHisto    7000000 ns :        2 (0.000) 0.037 : *
+TSHisto    8000000 ns :       29 (0.000) 0.037 : *
+TSHisto    9000000 ns :     3274 (0.029) 0.037 : ************
+TSHisto   10000000 ns :    20403 (0.178) 0.066 : ***************************************************************************
+TSHisto   11000000 ns :      307 (0.003) 0.244 : **
+TSHisto   12000000 ns :        7 (0.000) 0.246 : *
+TSHisto   13000000 ns :      175 (0.002) 0.246 : *
+TSHisto   14000000 ns :    11768 (0.103) 0.248 : *******************************************
+TSHisto   15000000 ns :    12553 (0.109) 0.350 : **********************************************
+TSHisto   16000000 ns :      118 (0.001) 0.460 : *
+TSHisto   17000000 ns :        4 (0.000) 0.461 : *
+TSHisto   18000000 ns :      115 (0.001) 0.461 : *
+TSHisto   19000000 ns :     7503 (0.065) 0.462 : ****************************
+TSHisto   20000000 ns :    22200 (0.194) 0.527 : *********************************************************************************
+TSHisto   21000000 ns :      266 (0.002) 0.721 : *
+TSHisto   22000000 ns :        8 (0.000) 0.723 : *
+TSHisto   23000000 ns :      150 (0.001) 0.723 : *
+TSHisto   24000000 ns :     8978 (0.078) 0.725 : *********************************
+TSHisto   25000000 ns :    13168 (0.115) 0.803 : *************************************************
+TSHisto   26000000 ns :      143 (0.001) 0.918 : *
+TSHisto   27000000 ns :        4 (0.000) 0.919 : *
+TSHisto   28000000 ns :       46 (0.000) 0.919 : *
+TSHisto   29000000 ns :     3015 (0.026) 0.919 : ************
+TSHisto   30000000 ns :     3868 (0.034) 0.946 : ***************
+TSHisto   31000000 ns :       24 (0.000) 0.979 : *
+TSHisto   33000000 ns :        4 (0.000) 0.980 : *
+TSHisto   34000000 ns :      411 (0.004) 0.980 : **
+TSHisto   35000000 ns :      858 (0.007) 0.983 : ****
+TSHisto   36000000 ns :        2 (0.000) 0.991 : *
+TSHisto   38000000 ns :        1 (0.000) 0.991 : *
+TSHisto   39000000 ns :      128 (0.001) 0.991 : *
+TSHisto   40000000 ns :      604 (0.005) 0.992 : ***
+TSHisto   41000000 ns :        2 (0.000) 0.997 : *
+TSHisto   44000000 ns :       16 (0.000) 0.997 : *
+TSHisto   45000000 ns :       80 (0.001) 0.997 : *
+TSHisto   49000000 ns :        4 (0.000) 0.998 : *
+TSHisto   50000000 ns :       53 (0.000) 0.998 : *
+TSHisto   54000000 ns :        1 (0.000) 0.998 : *
+TSHisto   55000000 ns :       20 (0.000) 0.998 : *
+TSHisto   59000000 ns :        2 (0.000) 0.999 : *
+TSHisto   60000000 ns :       14 (0.000) 0.999 : *
+TSHisto   65000000 ns :        6 (0.000) 0.999 : *
+TSHisto   69000000 ns :        1 (0.000) 0.999 : *
+TSHisto   70000000 ns :        6 (0.000) 0.999 : *
+TSHisto   75000000 ns :        6 (0.000) 0.999 : *
+TSHisto   79000000 ns :        2 (0.000) 0.999 : *
+TSHisto   80000000 ns :        8 (0.000) 0.999 : *
+TSHisto   85000000 ns :        6 (0.000) 0.999 : *
+TSHisto   90000000 ns :        9 (0.000) 0.999 : *
+TSHisto   91000000 ns :        1 (0.000) 0.999 : *
+TSHisto   95000000 ns :        4 (0.000) 0.999 : *
+TSHisto  100000000 ns :       11 (0.000) 0.999 : *
+TSHisto  105000000 ns :       17 (0.000) 0.999 : *
+TSHisto  110000000 ns :       23 (0.000) 0.999 : *
+TSHisto  111000000 ns :        1 (0.000) 1.000 : *
+TSHisto  115000000 ns :       13 (0.000) 1.000 : *
+TSHisto  116000000 ns :        1 (0.000) 1.000 : *
+TSHisto  119000000 ns :        1 (0.000) 1.000 : *
+TSHisto  120000000 ns :       11 (0.000) 1.000 : *
+TSHisto  125000000 ns :        3 (0.000) 1.000 : *
+TSHisto  130000000 ns :        2 (0.000) 1.000 : *
+TSHisto -484934592 ns :        1 (0.000) 1.000 : *
+TSHisto 1028065408 ns :        1 (0.000) 1.000 : *
+TSHisto 1409065408 ns :        4 (0.000) 1.000 : *
+DeltaMean      : 18.409467 ns
+DeltaStdDev    : 70.044783 ns
+TotalBytes     : 24315976
+TotalPackets   : 114698
+PayloadCRC     : 294607d5a42766
+ErrorSeq       : 0
+ErrorPktSize   : 0
+LastByte       : 0x00000000
+SeqStart       : 0x00000000 0x00000000 0x00000000 0x00000000 : 0x00000000
+SeqEnd         : 0x00000000 0x00000000 0x00000000 0x00000000 : 0x00000000
+PacketCnt      : 0 0 0 0
+TimeOrder      : 0
+CRCFail        : 0
+TotalPCAPTime  : 2366668062775 ns
+Bandwidth      : 0.000 Gbps
+Packet Rate    : 0.000 Mpps
+
+Complete
+fmadio@fmadio100v2-228U:/mnt/store0/tmp2$
+```
+
 ## Example Usage
 
 The following section shows how to use stream\_cat on the command line in various different ways.

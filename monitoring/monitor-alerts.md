@@ -416,11 +416,7 @@ Please edit the section titles \["SNMP"]  as follows
 
 Broadcast and Trap mode can be use simultaneously if required.
 
-Please update \["Target"] = setting to the correct SNMP collector address.  Multiple SNMP targets can be specified separated by spaces. For example
-
-```
-    ["Target"]     = "127.0.0.1 127.0.0.2 127.0.0.3",
-```
+Please update \["Target"] = setting to the correct SNMP collector address.
 
 Example output in broadcast mode is as follows, from the /mnt/store0/log/monitor\_alert.cur logfile
 
