@@ -522,7 +522,7 @@ printf "\x1" | dd of=<path to pcap>.pcap bs=1 seek=20 count=1 conv=notrunc
 
 The symptoms of this is unusual TCPDUMP output such as the following
 
-![](<../.gitbook/assets/image (70) (1).png>)
+![](<../.gitbook/assets/image (70) (1) (1).png>)
 
 After setting the PCAP Link Layer setting using the above command the output is as follows
 
