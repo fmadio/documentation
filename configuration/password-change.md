@@ -1,17 +1,21 @@
-# Password Change
+# Username Passwords
 
 ## WEBGUI
 
 FMADIO Packet Capture Systems use the default login and password when the system is shipped. Additional WebGUI users can be added manually using the htpasswd utility. To set a new password "password" for the fmadio account use the following command line:
 
-```text
+```
 fmadio@fmadio20v2-149:$ sudo htpasswd /opt/fmadio/etc/htpasswd fmadio password
 
 ```
 
-By default this utility overwrites the existing user account, so only 1 user account is possible. However additional users are added by appending to the /opt/fmadio/etc/htpasswd file. The following shows creating a user account "test" with the password "newpassword".
+By default this utility overwrites the existing user account, so only 1 user account is possible.&#x20;
 
-```text
+## WEBGUI Multiple Accounts
+
+Additional users are added by appending to the /opt/fmadio/etc/htpasswd file. The following shows creating a user account "test" with the password "newpassword".
+
+```
 fmadio@fmadio20v2-149:$ sudo htpasswd /tmp/ptmp test newpassword 
 fmadio@fmadio20v2-149:$ cat /tmp/ptmp >> /opt/fmadio/etc/htpasswd
 ```
@@ -26,7 +30,7 @@ Unfortunately adding additional SSH usernames is not possible, as the permission
 
 The authorized ssh keys file is located in
 
-```text
+```
 /opt/fmadio/etc/fmadio_authorized_keys
 
 ```
@@ -35,15 +39,15 @@ Please note, the authorized\_keys file in the users .ssh account directory does 
 
 ### Change default SSH password
 
-Changing the default SSH password uses the  standard linux utilit "passwd". 
+Changing the default SSH password uses the  standard linux utilit "passwd".&#x20;
 
-```text
+```
 sudo passwd fmadio
 ```
 
 Example below
 
-```text
+```
 fmadio@fmadio20v3-287:/etc$ sudo passwd fmadio
 Changing password for fmadio
 Enter the new password (minimum of 5, maximum of 8 characters)
@@ -54,6 +58,4 @@ passwd: password changed.
 fmadio@fmadio20v3-287:/etc$
 
 ```
-
-
 

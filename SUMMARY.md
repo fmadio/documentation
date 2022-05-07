@@ -22,7 +22,7 @@
 * [Capture Pipeline Flush](configuration/capture-pipeline-flush.md)
 * [Global Time PTPv2](configuration/global-time-ptpv2.md)
 * [Timestamp Accuracy](configuration/timestamp-accuracy.md)
-* [Password Change](configuration/password-change.md)
+* [Username Passwords](configuration/password-change.md)
 * [SSH Customization](configuration/ssh-customization.md)
 * [WWW Customization](configuration/www-customization.md)
 * [Authentication](configuration/authentication.md)
