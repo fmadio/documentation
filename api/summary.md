@@ -804,3 +804,20 @@ $ curl -u fmadio:100g "http://192.168.2.75/pcap/timerange?TSBegin=15304987880000
 ```
 {% endswagger-response %}
 {% endswagger %}
+
+### System
+
+{% swagger method="get" path="" baseUrl="/api/v1/system/time_current" summary="" %}
+{% swagger-description %}
+Returns the current time on the fpga in epoch nanoseconds
+{% endswagger-description %}
+
+{% swagger-response status="200: OK" description="" %}
+```javascript
+$ curl http://127.0.0.1/api/v1/system/time_current
+1652273869313808661
+$
+```
+{% endswagger-response %}
+{% endswagger %}
+
