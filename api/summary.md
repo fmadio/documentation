@@ -807,9 +807,9 @@ $ curl -u fmadio:100g "http://192.168.2.75/pcap/timerange?TSBegin=15304987880000
 
 ### System
 
-{% swagger method="get" path="" baseUrl="/api/v1/system/time_current" summary="" %}
+{% swagger method="get" path="" baseUrl="/api/v1/system/time_current" summary="Read the current FPGA System Time" %}
 {% swagger-description %}
-Returns the current time on the fpga in epoch nanoseconds
+Returns the current time on the fpga in epoch nanoseconds. This time/clock is used directly to timestamp packets on the FPGA.
 {% endswagger-description %}
 
 {% swagger-response status="200: OK" description="" %}
