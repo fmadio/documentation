@@ -133,6 +133,102 @@ sudo stream_cat --bpf "vlan and dst 10.1.2.3"
                 --delta-histo-bin 1e6     
 ```
 
+### --epoch-start \<nanosecond epoch>
+
+Filters the specified capture using start time specified argument epoch time value.
+
+Value of 0 means filter is disabled
+
+NOTE: typically --epoch-start  and --epoch-stop are used together
+
+Example: filter from epoch 1497015595000000000. This uses capinfos2 to verify the first packed (Time First) is as specified in the filter
+
+```
+fmadio@fmadio100v2-228U:~$ sudo stream_cat --epoch-start 1497015595000000000    interop17_20220430_0852  | capinfos2 -v
+Epoch Start 13:39:55.000.000.000 1497015595000000000
+Epoch found start Chunks:26491 Bytes 6.944 GB skipped
+StartChunkID: 3737931
+StartChunk: 3737931 Offset: 0 Stride: 1
+StartChunk: 3737931
+PCAP nano
+0.00GB    0.000 Gbps    0.000 Mpps
+0.40GB    3.191 Gbps    2.063 Mpps
+.
+.
+
+9.22GB    3.202 Gbps    2.067 Mpps
+9.60GB    3.074 Gbps    1.992 Mpps
+packet stream end
+20220511_131303 25.643s : SUCCESS
+Total Packets: 50746286
+TotalBytes     : 57674285331
+TotalPackets   : 50746286
+PayloadCRC     : 33ad29d7358038fd
+ErrorSeq       : 0
+ErrorPktSize   : 0
+LastByte       : 0x00000000
+SeqStart       : 0x00000000 0x00000000 0x00000000 0x00000000 : 0x00000000
+SeqEnd         : 0x00000000 0x00000000 0x00000000 0x00000000 : 0x00000000
+PacketCnt      : 0 0 0 0
+TimeOrder      : 0
+CRCFail        : 0
+Time First     : 20170609_133955 13:39:55.000.000.000 (1497015595.000000000)
+Time Last      : 20170609_133956 13:39:56.807.825.664 (1497015596.807825664)
+TotalPCAPTime  : 1807825664 ns
+Bandwidth      : 255.221 Gbps
+Packet Rate    : 28.070 Mpps
+
+Complete
+fmadio@fmadio100v2-228U:~$
+
+```
+
+### --epoch-stop \<nanosecond epoch>
+
+Filters the specified capture using and end time specified argument epoch time value.
+
+Value of 0 means filter is disabled
+
+NOTE: typically --epoch-start  and --epoch-stop are used together
+
+Example: filter up to epoch time 1497015594000000000. This example uses capinfos2 to verify the last packet (Time Last) meets the specified filter value.
+
+```
+fmadio@fmadio100v2-228U:~$ sudo stream_cat --epoch-stop 1497015594000000000    interop17_20220430_0852  | capinfos2 -v
+Epoch Stop 13:39:54.000.000.000 1497015594000000000
+StartChunkID: 3711440
+StartChunk: 3711440 Offset: 0 Stride: 1
+StartChunk: 3711440
+PCAP nano
+0.00GB    0.000 Gbps    0.000 Mpps
+0.48GB    3.804 Gbps    2.460 Mpps
+0.89GB    3.269 Gbps    2.106 Mpps
+1.29GB    3.270 Gbps    2.113 Mpps
+TimeStop reached
+20220511_131655 4.686s : SUCCESS
+Total Packets: 7839777
+TotalBytes     : 9003464361
+TotalPackets   : 7839777
+PayloadCRC     : 81ff1b0c04cdca1
+ErrorSeq       : 0
+ErrorPktSize   : 0
+LastByte       : 0x00000000
+SeqStart       : 0x00000000 0x00000000 0x00000000 0x00000000 : 0x00000000
+SeqEnd         : 0x00000000 0x00000000 0x00000000 0x00000000 : 0x00000000
+PacketCnt      : 0 0 0 0
+TimeOrder      : 0
+CRCFail        : 0
+Time First     : 20170609_133953 13:39:53.717.953.280 (1497015593.717953280)
+Time Last      : 20170609_133953 13:39:53.999.999.744 (1497015593.999999744)
+TotalPCAPTime  : 282046464 ns
+Bandwidth      : 255.375 Gbps
+Packet Rate    : 27.796 Mpps
+
+Complete
+fmadio@fmadio100v2-228U:~$
+
+```
+
 ## Example Usage
 
 The following section shows how to use stream\_cat on the command line in various different ways.
