@@ -40,7 +40,7 @@ CLI argument reference
 
 Pins stream\_cat to a specific CPU number.
 
-### --ring \<ring path> \<bpf filter>
+### --ring \<ring path> \<bpf filter> \<cpu number>
 
 Writes PCAP to the specified LXC \<ring path> when the \<bpf filter> matches.&#x20;
 
@@ -48,19 +48,29 @@ Multiple rings can be specified
 
 NOTE: if no BPF is used \<bpf filter> needs to be ""
 
+NOTE: If no CPU is specified, use setting of "0"
+
+All fields must be populated.
+
 Example:
 
 ```
-sudo stream_cat --ring /opt/fmadio/queue/lxc_ring0 "net 192.168.0.0/24"  
-                --ring /opt/fmadio/queue/lxc_ring1 "net 192.168.1.0/24"  
-                --ring /opt/fmadio/queue/lxc_ring2 "net 192.168.2.0/24"  
-                --ring /opt/fmadio/queue/lxc_ring3 "net 192.168.3.0/24"  
+sudo stream_cat --ring /opt/fmadio/queue/lxc_ring0 "net 192.168.0.0/24"  0
+                --ring /opt/fmadio/queue/lxc_ring1 "net 192.168.1.0/24"  29
+                --ring /opt/fmadio/queue/lxc_ring2 "net 192.168.2.0/24"  30
+                --ring /opt/fmadio/queue/lxc_ring3 "net 192.168.3.0/24"  31
                 my_capture_20220325_000
 ```
 
 ### --ring-reset
 
 Reset the LXC Ring read/write pointers
+
+### --ring-depth
+
+Adjusted the size of the ring FIFO depth. This value must be a Power of 2. Maximum value is 1024&#x20;
+
+Default value 8
 
 ### --ring-timeout \<timeout in nanoseconds>
 
