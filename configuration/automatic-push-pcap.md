@@ -560,6 +560,30 @@ table.insert(Config.Target,
 return Config
 ```
 
+### Push to NFS Share with BPF Filter and HHMMSS Timezone
+
+**FW: 7936+**
+
+Example pushes a single UDP multicast group 1001 at 1 minute snapshots using an Hour Min Sec with Timezone filename.
+
+```
+local Config = {}
+
+Config.Target = {}
+
+-- push all multicast port 10001 data to /mnt/remote0/push/udp-10001_*.pcap
+table.insert(Config.Target, 
+{
+    Desc      = "udp-multicast-1001", 
+    Mode      = "File", 
+    Path      = "/mnt/remote0/push/udp-10001",   
+    Split     = "--split-time 60e9", 
+    FileName  = "--filename-tstr-HHMMSS_TZ", 
+    FilterBPF = "multicast and port 10001" 
+})
+
+```
+
 ### Push to MAGPACK over FTP
 
 ```
