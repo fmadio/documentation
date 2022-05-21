@@ -160,13 +160,18 @@ Specifies how to split filename is encoded. Different downstream applications re
     FileName  = "--filename-epoch-sec-startend", 
 ```
 
-| Command                                                | Description                                                                                                                                                           |
-| ------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| --filename-epoch-sec-startend                          | <p>writes the sec epoch start/end time as the file name  </p><p></p><p>e.g March 21, 2021 1:50:55</p><p><code>1616334655-1616334755.pcap</code></p>                   |
-| --filename-epoch-sec                                   | <p>writes the sec epoch start time as the file name. </p><p></p><p>e.g March 21, 2021 1:50:55</p><p><code>1616334655.pcap</code></p>                                  |
-| --filename-tstr-HHMM                                   | <p>writes the YYYYMMDD_HHMM style file name.</p><p></p><p>e.g. 2021 Dec 1st 23:50 </p><p><code>20211201_2350.pcap</code></p>                                          |
-| --filename-tstr-HHMMSS                                 | <p>writes the YYYYMMDD_HHMMSS style file name. </p><p></p><p>e.g. 2021 Dec 1st 23:50:59 </p><p><code>20211201_235059.pcap</code></p>                                  |
-| --filename-tstr-HHMMSS\_NS                             | <p>writes the YYYYMMDD_HHMMSS.MSEC.USEC.NSEC style file name.</p><p> </p><p>e.g. 2021 Dec 1st 23:50:59 123456789nsec<code>20211201_235059.123.456.789.pcap</code></p> |
+| Command                                                | Description                                                                                                                                                                                                |
+| ------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| --filename-epoch-sec-startend                          | <p>writes the sec epoch start/end time as the file name  </p><p></p><p>e.g March 21, 2021 1:50:55</p><p><code>1616334655-1616334755.pcap</code></p>                                                        |
+| --filename-epoch-sec                                   | <p>writes the sec epoch start time as the file name. </p><p></p><p>e.g March 21, 2021 1:50:55</p><p><code>1616334655.pcap</code></p>                                                                       |
+| --filename-epoch-msec                                  | <p>Writes the epoch start time in milliseconds as the file name<br><br>e.g for April 22 02:48 GMT<br><code>fmadio_1650595712592.pcap</code></p>                                                            |
+| --filename-epoch-usec                                  | <p>Writes the epoch start time in microseconds<br><br>e.g For April 22 02:48 GMT<br><code>fmadio_1650585598007301.pcap</code></p>                                                                          |
+| --filename-epoch-nsec                                  | <p>Writes the epoch start time in nanoseconds<br><br>e.g For April 22 02:48 GMT<br><code>fmadio_1650585598007301462.pcap</code></p>                                                                        |
+| --filename-tstr-HHMM                                   | <p>writes the YYYYMMDD_HHMM style file name.</p><p></p><p>e.g. 2021 Dec 1st 23:50 </p><p><code>20211201_2350.pcap</code></p>                                                                               |
+| --filename-tstr-HHMMSS                                 | <p>writes the YYYYMMDD_HHMMSS style file name. </p><p></p><p>e.g. 2021 Dec 1st 23:50:59 </p><p><code>20211201_235059.pcap</code></p>                                                                       |
+| --filename-tstr-HHMMSS\_NS                             | <p>writes the YYYYMMDD_HHMMSS.MSEC.USEC.NSEC style file name.</p><p> </p><p>e.g. 2021 Dec 1st 23:50:59 123456789nsec<code>20211201_235059.123.456.789.pcap</code></p>                                      |
+| --filename-tstr-HHMMSS\_TZ                             | <p>Wrties the filename in Hour Min Sec with a local timezone suffix<br><br>e.g 2022 April 22 19:59 CST<br><code>fmadio__2022-04-21_19:59:58-04:00.pcap</code></p>                                          |
+| --filename-strftime \<time string>                     | <p>Generic strftime print<br><br>e.g command line<br><code>--filename-strftime "%Y%m%d%H%M%S"</code><br><code></code><br><code>Output is as follows</code><br><code>fmadio__20220421224832.pcap</code></p> |
 
 \
 
