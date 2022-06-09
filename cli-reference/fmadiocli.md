@@ -65,7 +65,7 @@ Command history is stored in the file
 
 It can be deleted to clear the history
 
-## Command Reference
+## Configure Interfaces
 
 ### config interface shutdown
 
@@ -120,6 +120,8 @@ Shows the current state of the interfaces
 [Wed Apr 27 07:16:43 2022] >
 
 ```
+
+## Automatic Push PCAP
 
 ### show push-pcap
 
