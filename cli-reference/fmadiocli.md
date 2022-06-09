@@ -65,6 +65,8 @@ Command history is stored in the file
 
 It can be deleted to clear the history
 
+## Command Reference
+
 ### config interface shutdown
 
 FW: 7856+  support for 100Gv2 2x100G 2x40G
@@ -116,5 +118,154 @@ Shows the current state of the interfaces
 [Wed Apr 27 07:16:43 2022] cap0                  notconnected    100G             100G CR   0.000 mW   0.000 mA        0.000 C          Ar Networks             Q28-PC01
 [Wed Apr 27 07:16:43 2022] cap1                  connected       100G             100G CR   0.000 mW   0.000 mA        0.000 C          Ar Networks             Q28-PC01
 [Wed Apr 27 07:16:43 2022] >
+
+```
+
+### show push-pcap
+
+FW: 7963+
+
+Shows the currently configured automatic push pcaps
+
+```
+[Thu Jun  9 08:30:42 2022] > show push-pcap
+[Thu Jun  9 08:30:42 2022] ---------------------------------------------------------------------------------------------------------------------------------
+[Thu Jun  9 08:30:42 2022] FollowStart : true
+[Thu Jun  9 08:30:42 2022] Decap       : true
+[Thu Jun  9 08:30:42 2022] ---------------------------------------------------------------------------------------------------------------------------------
+[Thu Jun  9 08:30:42 2022] [tcp] #1
+[Thu Jun  9 08:30:42 2022]   Mode        : File
+[Thu Jun  9 08:30:42 2022]   Path        : /mnt/remote0/push/ttest/
+[Thu Jun  9 08:30:42 2022]   Split       : --split-time 3600e9
+[Thu Jun  9 08:30:42 2022]   FileName    : --filename-tstr-HHMMSS
+[Thu Jun  9 08:30:42 2022]   FilterBPF   : host 192.168.1.1
+[Thu Jun  9 08:30:42 2022]   FilterFrame :
+[Thu Jun  9 08:30:42 2022] ---------------------------------------------------------------------------------------------------------------------------------
+[Thu Jun  9 08:30:42 2022] >
+
+```
+
+### config push-pcap new \<push target>
+
+FW: 7963+
+
+Creates a new push-pcap target called \<push target>
+
+NOTE: all target names should be unique
+
+```
+[Thu Jun  9 08:32:13 2022] > config push-pcap new udp-all
+[Thu Jun  9 08:32:13 2022] Add Push PCAP target [udp-all]
+[Thu Jun  9 08:32:13 2022] >
+
+```
+
+### config push-pcap del \<push target>
+
+Deletes the current push pcap entry name \<push target>
+
+```
+[Thu Jun  9 08:33:17 2022] > config push-pcap del udp-all
+[Thu Jun  9 08:33:18 2022] deleting: [udp-all] row 2
+[Thu Jun  9 08:33:18 2022] >
+```
+
+### config push-pcap mod \<push target> name \<new name>
+
+Renames the specified \<push target> entry with an updated one \<new name>
+
+```
+[Thu Jun  9 08:36:21 2022] > config push-pcap mod udp-all name udp-port-1900
+[Thu Jun  9 08:36:23 2022] Rename [udp-all] -> [udp-port-1900]
+[Thu Jun  9 08:36:23 2022] >
+
+```
+
+### config push-pcap mod \<push target> path \<new write path>
+
+Updates the push write path to the specified \<new write path>. Typically this is the NFS remote path or rclone write path.
+
+```
+[Thu Jun  9 08:41:41 2022] > config push-pcap mod udp-port-1900 path /mnt/remote0/push/
+[Thu Jun  9 08:41:44 2022] Set Path [] -> [/mnt/remote0/push/]
+[Thu Jun  9 08:41:44 2022] >
+```
+
+### config push-pcap mod \<push target> split-time \<value>
+
+Configure PCAPs to be split by the specified time value. By default \<value> is scientific notation in nanoseconds. In addition s (seconds) m (minutes) h (hours) suffix can be used also
+
+|     | Description                     |
+| --- | ------------------------------- |
+| 1e9 | 1 second in scientific notation |
+| 60s | 60 seconds                      |
+| 1m  | 1 minute                        |
+| 1h  | 1 hour                          |
+
+Example configure to split every 1 minute
+
+```
+[Thu Jun  9 08:48:05 2022] > config push-pcap mod udp-port-1900 split-time 1m
+[Thu Jun  9 08:48:06 2022] Set Split to  [--split-time 3600e9] -> [--split-time 60000000000]
+[Thu Jun  9 08:48:06 2022] >
+
+```
+
+### config push-pcap mod \<push target> split-size \<value>
+
+Configure PCAPs to be split by total byte size \<value>
+
+|      | Description                                 |   |
+| ---- | ------------------------------------------- | - |
+| 1e9  | 1 Gigabyte specified in scientific notation |   |
+| 100M | 100 Megbyte                                 |   |
+| 5G   | 5 Gigabyte                                  |   |
+
+Example below shows splitting on 1GB boundaries
+
+```
+[Thu Jun  9 08:53:32 2022] > config push-pcap mod udp-port-1900 split-size 1G
+[Thu Jun  9 08:53:33 2022] Set Split to  [--split-time 60000000000] -> [--split-byte 1000000000]
+[Thu Jun  9 08:53:33 2022] >
+
+```
+
+### config push-pcap mod \<push target> filename \<value>
+
+Specifies the filename format for each individual split PCAP
+
+| Value              | Example                           | Description              |
+| ------------------ | --------------------------------- | ------------------------ |
+| epoch-sec          | \_1654610221.pcap                 | Second Epoch             |
+| epoch-sec-startend | \_1654610221-1654620221.pcap      | Epoch start and End      |
+| epoch-msec         | \_1654610221012.pcap              | Epoch in msec            |
+| epoch-usec         | \_1654610221012345.pcap           | Epoch is micro sec       |
+| epoch-nsec         | \_1654610221012345678.pcap        | Epoch in Nano sec        |
+| HHMM               | \_20200101\_1201.pcap             | Hour Min                 |
+| HHMMSS             | \_20200101\_120159.pcap           | Hour Min Sec             |
+| HHMMSS\_TZ         | 2020-01-01\_12:01:59+09:00.pcap   | House Min Sec + Timezone |
+| HHMMSS\_NS         | \_20200101\_120159.012345678.pcap | House Min Sec Nanos      |
+
+Example uses a simple Hour Min Sec format
+
+```
+[Thu Jun  9 09:02:52 2022] > config push-pcap mod udp-port-1900 filename HHMMSS
+[Thu Jun  9 09:02:53 2022] Set Filename to  [--filename-tstr-HHMMSS_TZ] -> [--filename-tstr-HHMMSS]
+[Thu Jun  9 09:02:53 2022] >
+
+```
+
+### config push-pcap mod \<push target> filter-bpf "\<bpf filter>"
+
+Sets the specified push with a BPF filter.&#x20;
+
+**NOTE: the BPF filter must be enclosed in double quotes**
+
+Example sets for udp and port 1900
+
+```
+[Thu Jun  9 09:07:05 2022] > config push-pcap mod udp-port-1900 filter-bpf "udp and port 1900"
+[Thu Jun  9 09:07:05 2022] Set FilterBPF [] -> [udp and port 1900]
+[Thu Jun  9 09:07:05 2022] >
 
 ```
