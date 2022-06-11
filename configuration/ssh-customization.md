@@ -59,7 +59,7 @@ These will copied into \~/.ssh/idrsa and idrsa\_pub on boot
 
 FW: 7974+
 
-In many cases where the FMADIO Packet Capture device is, may not be conveniently accessible on  a network. Ability to form persistent SSH tunnels both to and from the FMADIO Packet Capture Device is important.
+The FMADIO Packet Capture device may not be conveniently accessible on  a network. Ability to form persistent SSH tunnels both to and from the FMADIO Packet Capture Device is important.
 
 We use autossh for this feature.
 
