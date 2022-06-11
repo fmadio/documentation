@@ -54,3 +54,127 @@ In many cases using the default fmadio SSH RSA ID is not a good security practic
 ```
 
 These will copied into \~/.ssh/idrsa and idrsa\_pub on boot
+
+## Persistent SSH Tunnel
+
+FW: 7974+
+
+In many cases where the FMADIO Packet Capture device is, may not be conveniently accessible on  a network. Ability to form persistent SSH tunnels both to and from the FMADIO Packet Capture Device is important.
+
+We use autossh for this feature.
+
+One typical example is pushing rsyslog traffic to a centralized location for ingest and processing. In this example we show how to configure such a tunnel that remains persistent across reboots.
+
+#### 1) Start by creating new RSA keys on the FMADIO device, storing them in /mnt/store0/etc/sshtunnel.id without any password
+
+```
+fmadio@fmadio40v3SM-455:/mnt/store0/etc$ ssh-keygen -t rsa  -f /mnt/store0/etc/sshtunnel.id
+Generating public/private rsa key pair.
+Enter passphrase (empty for no passphrase):
+Enter same passphrase again:
+Your identification has been saved in /mnt/store0/etc/sshtunnel.id.
+Your public key has been saved in /mnt/store0/etc/sshtunnel.id.pub.
+The key fingerprint is:
+0b:9f:0e:eb:2f:00:1b:ca:01:b2:ff:17:2e:9f:97:2e fmadio@fmadio40v3SM-455
+The key's randomart image is:
++--[ RSA 2048]----+
+|                 |
+|o                |
+|o.               |
+|..o              |
+|.o.+  . S        |
+|..o . .o o       |
+|   . o..+.       |
+|    o E=o        |
+|     ==*+        |
++-----------------+
+fmadio@fmadio40v3SM-455:/mnt/store0/etc$ ls -al sshtunnel.id*
+-rw-------    1 fmadio   staff         1679 Jun 11 19:12 sshtunnel.id
+-rw-r--r--    1 fmadio   staff          405 Jun 11 19:12 sshtunnel.id.pub
+fmadio@fmadio40v3SM-455:/mnt/store0/etc$
+
+```
+
+#### 2) Add the public key to the remote servers&#x20;
+
+```
+authorized_keys
+```
+
+#### 3) Test the connection by ssh to the remote server, to ensure it logs in correctly
+
+```
+fmadio@fmadio40v3SM-455:~$ ssh -i /mnt/store0/etc/sshtunnel.id ubuntu@192.168.1.100
+
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added '192.168.1.100' (ECDSA) to the list of known hosts.
+Welcome to Ubuntu 22.04 LTS (GNU/Linux 5.15.0-1008-aws aarch64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+  System information as of Sat Jun 11 10:16:26 UTC 2022
+
+  System load:  0.11376953125     Processes:             176
+  Usage of /:   98.1% of 7.59GB   Users logged in:       1
+  Memory usage: 89%              
+  Swap usage:   23%
+
+  => / is using 98.1% of 7.59GB
+
+ * Ubuntu Pro delivers the most comprehensive open source security and
+   compliance features.
+
+   https://ubuntu.com/aws/pro
+
+5 updates can be applied immediately.
+To see these additional updates run: apt list --upgradable
+$ exit
+logout
+Connection to closed.
+fmadio@fmadio40v3SM-455:~$
+```
+
+#### 4) Create an on boot file that uses autossh
+
+This gets run automatically on system boot. Because autossh handles reconnects no cronjob or monitoring is required
+
+Create the file
+
+```
+/opt/fmadio/etc/boot.lua
+```
+
+Paste the contents as follows. This is a standard lua script, in this case its running autossh with some command line arguments. Anything can be run in the script for boot time setup
+
+```
+-- setup autossh tunnel to a remote syslog server
+local Cmd = "/usr/bin/autossh -f -M 0 -N  -o StrictHostKeyChecking=false -i /mnt/store0/etc/autossh -L :5514:192.168.1.100:514 ubuntu@192.168.1.100"
+print(Cmd)
+os.execute(Cmd)
+
+
+```
+
+#### 5) Test the boot script
+
+Can test the functionality of the boot script as follows. Correct output is similar to this
+
+```
+fmadio@fmadio40v3SM-455:~$ fmadiolua /mnt/store0/etc/boot.lua
+
+fmad fmadlua Jun 11 2022 (fmadiolua /mnt/store0/etc/boot.lua )
+calibrating...
+0 : 2399987938           2.4000 cycles/nsec offset:0.012 Mhz
+Cycles/Sec 2399987938.0000 Std:       0 cycle std(  0.00000000) Target:2.40 Ghz
+failed to open self? [fmadiolua]
+/usr/bin/autossh -f -M 0 -N  -o StrictHostKeyChecking=false -i /mnt/store0/etc/sshtunnel.id .....
+done 0.001740Sec 0.000029Min
+fmadio@fmadio40v3SM-455:~$
+
+```
+
+#### 6) Reboot the system
+
+On reboot the boot.lua script is executed and a persistent ssh tunnel to the remote system is formed.
