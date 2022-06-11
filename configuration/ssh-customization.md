@@ -97,9 +97,7 @@ fmadio@fmadio40v3SM-455:/mnt/store0/etc$
 
 #### 2) Add the public key to the remote servers&#x20;
 
-```
-authorized_keys
-```
+Add the sshtunnel.id.pub key to the remote servers authorized\_keys. This allows password-less ssh access to the remote server.
 
 #### 3) Test the connection by ssh to the remote server, to ensure it logs in correctly
 
