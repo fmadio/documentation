@@ -65,7 +65,9 @@ We use autossh for this feature.
 
 One typical example is pushing rsyslog traffic to a centralized location for ingest and processing. In this example we show how to configure such a tunnel that remains persistent across reboots.
 
-#### 1) Start by creating new RSA keys on the FMADIO device, storing them in /mnt/store0/etc/sshtunnel.id without any password
+#### 1) creating new RSA keys on the FMADIO device
+
+Storing the key in /mnt/store0/etc/sshtunnel.id without any password
 
 ```
 fmadio@fmadio40v3SM-455:/mnt/store0/etc$ ssh-keygen -t rsa  -f /mnt/store0/etc/sshtunnel.id
