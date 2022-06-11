@@ -65,7 +65,7 @@ We use autossh for this feature.
 
 One typical example is pushing rsyslog traffic to a centralized location for ingest and processing. In this example we show how to configure such a tunnel that remains persistent across reboots.
 
-#### 1) creating new RSA keys on the FMADIO device
+#### 1) Create a new RSA keys on the FMADIO device
 
 Storing the key in /mnt/store0/etc/sshtunnel.id without any password
 
@@ -101,7 +101,9 @@ fmadio@fmadio40v3SM-455:/mnt/store0/etc$
 
 Add the sshtunnel.id.pub key to the remote servers authorized\_keys. This allows password-less ssh access to the remote server.
 
-#### 3) Test the connection by ssh to the remote server, to ensure it logs in correctly
+#### 3) Test the connection by ssh to the remote server
+
+To ensure it logs in correctly manually.
 
 ```
 fmadio@fmadio40v3SM-455:~$ ssh -i /mnt/store0/etc/sshtunnel.id ubuntu@192.168.1.100
@@ -138,7 +140,7 @@ fmadio@fmadio40v3SM-455:~$
 
 #### 4) Create an on boot file that uses autossh
 
-This gets run automatically on system boot. Because autossh handles reconnects no cronjob or monitoring is required
+This gets run automatically on system boot. Because autossh handles reconnects, no cronjob or monitoring is required.
 
 Create the file
 
