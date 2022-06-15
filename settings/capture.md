@@ -51,5 +51,5 @@ Add the entry set to true, to disable the Midnight roll
 ["ManualOffset"]   = 1,
 ```
 
-The config requires capture to stopped and started to load the new setting.
+The config requires capture to be stopped and started for the the new setting to load.
 
