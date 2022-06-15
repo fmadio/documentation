@@ -1,6 +1,6 @@
 # Global Time PTPv2
 
-FMADIO capture systems support PTPv2 using the linux PTP open source project. ( [http://linuxptp.sourceforge.net/](http://linuxptp.sourceforge.net) )  running only on the 10G management interface. 1G links are supported using 1G RJ45 SFP transceiver.
+FMADIO capture systems support PTPv2 using the linux PTP open source project. ( [http://linuxptp.sourceforge.net/](http://linuxptp.sourceforge.net/) )  running only on the 10G management interface. 1G links are supported using 1G RJ45 SFP transceiver.
 
 Enabling PTPv2 via GUI is as follows
 

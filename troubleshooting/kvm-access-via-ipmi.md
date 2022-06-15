@@ -28,7 +28,7 @@ Select "H5Viewer" to launch the web HTML KVM page.&#x20;
 
 NOTE: this uses normal HTTPS connection no additional firewall rules or ports need to be opened
 
-![FMADIO HTML5 KVM](<../.gitbook/assets/image (125) (1).png>)
+![FMADIO HTML5 KVM](<../.gitbook/assets/image (125) (1) (1).png>)
 
 **STEP 4**
 

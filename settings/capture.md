@@ -53,3 +53,22 @@ Add the entry set to true, to disable the Midnight roll
 
 The config requires capture to be stopped and started for the the new setting to load.
 
+### Capturing Across Midnight
+
+In some cases capturing across midnight and rolling at a different time has advantages, such as Futures/Options exchanges who typically run 23H a day restarting very early in the morning.
+
+This is achieved using the ManualOffset to offset when the capture rolls. To roll the capture as 5AM every day, setting 5 H \* 60min \* 60sec \* 1e9 nanoseconds
+
+```
+    ["ManualOffset"]    = 5 * 60 * 60 * 1e9,
+```
+
+Then setting the scheduler to start/stop at 00:00:59 and 23:59:59 as follows
+
+![](<../.gitbook/assets/image (125).png>)
+
+This will create captures from 05:00AM until 04:59:59 the next day
+
+StartTime = ManualOffset (5H) + Scheduler Start Time 00:00  = 05:00 AM
+
+StopTime = ManualOffset (5H) + Scheduler Stop Time 23:59:59 = 04:59AM + 1 Day
