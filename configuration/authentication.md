@@ -245,7 +245,7 @@ Login to the system using your Azure / Microsoft credentials. Then the FMADIO de
 
 Logout is the same, using the logout button shown below
 
-![](<../.gitbook/assets/image (90) (1) (1).png>)
+![](<../.gitbook/assets/image (90) (1) (1) (1).png>)
 
 Then choose an account to sign out of
 
@@ -311,7 +311,7 @@ The "clientid" and "client\_secret" need to be replaced with the generated authe
 
 Next generate Google OAUTH credentials as follows.
 
-![](<../.gitbook/assets/image (90) (1).png>)
+![](<../.gitbook/assets/image (90) (1) (1).png>)
 
 Then fill in the information, as follows. Google is a bit more strict and requires TLD endpoints not raw IPs
 
