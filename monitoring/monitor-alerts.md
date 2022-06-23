@@ -476,7 +476,9 @@ FMADIO Devices can send SNMP Traps based on the alert triggers described above. 
 
 Latest MIB file is found (last updated 2021/12/25)
 
-{% embed url="https://fmad.io/download/FMADIOv3-MIB.txt" %}
+{% embed url="https://github.com/fmadio/public/tree/master/snmp" %}
+FMADIO GITHUB Public Repo
+{% endembed %}
 
 #### Config
 
