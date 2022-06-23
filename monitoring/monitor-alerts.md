@@ -16,6 +16,34 @@ Alert configuration file is located in&#x20;
 
 By default all Alert triggers are disabled.
 
+An example alert.lua file is shown below
+
+```
+local L =
+{
+["AlertList"] =
+{
+    LinkState           = true,
+    ByteCache           = 1e12,
+    BytesOverflow       = true,
+    PacketError         = true,
+    PacketDrop          = true,
+    CaptureState        = true,
+    DiskSMART           = true,
+    DiskFreeStore0      = 1e9,
+    DiskFreeStore1      = 0,
+    DiskFreeRemote0     = 0,
+    CPUTemperature      = 80,
+    FANAlert            = true,
+    PSUAlert            = true,
+
+    Sleep           = 60,                           -- how long to sleep when an alert is triggered. prevents flodding
+}
+}
+return L
+
+```
+
 ## Triggers
 
 System has can trigger an a small but well defined list of critical Events. The following is a description and example for each item. Triggers are enabled or disabled in the following part of the configuration file. Each line enables/disabled or puts a threshold on the trigger
