@@ -16,6 +16,8 @@ Alert configuration file is located in&#x20;
 
 By default all Alert triggers are disabled.
 
+### Example Alert.lua
+
 An example alert.lua file is shown below
 
 ```
