@@ -18,7 +18,7 @@ By default all Alert triggers are disabled.
 
 ### Example Alert.lua
 
-An example alert.lua file is shown below
+An example alert.lua file is shown below. If the file does not exist please create.
 
 ```
 local L =
