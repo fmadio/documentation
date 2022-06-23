@@ -472,7 +472,7 @@ Verbose mode above can be set to "true" to allow additional logging.
 
 FMADIO Devices can send SNMP Traps based on the alert triggers described above. This may be preferable to email alerts for infrastructure management.
 
-#### SNMP MIB&#x20;
+### SNMP MIB&#x20;
 
 Latest MIB file is found (last updated 2021/12/25)
 
