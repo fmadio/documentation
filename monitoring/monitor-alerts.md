@@ -458,7 +458,7 @@ Example output in broadcast mode is as follows, from the /mnt/store0/log/monitor
 
 This translates to
 
-![](<../.gitbook/assets/image (124) (1) (1).png>)
+![](<../.gitbook/assets/image (124) (1) (1) (1).png>)
 
 #### Troubleshooting
 

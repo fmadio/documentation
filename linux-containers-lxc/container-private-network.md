@@ -10,7 +10,7 @@ Block diagram below shows Private only Network Topology
 
 With external access using NGINX proxy such as below.
 
-![FMADIO NGINX Proxy to Private Container](<../.gitbook/assets/image (124).png>)
+![FMADIO NGINX Proxy to Private Container](<../.gitbook/assets/image (124) (1).png>)
 
 Or use iptables to port forward packets thru the NAT, such as below
 

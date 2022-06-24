@@ -30,6 +30,7 @@
 * [Custom CRON Job](configuration/custom-cron-job.md)
 * [Disk Encryption](configuration/disk-encryption.md)
 * [External Web Application](configuration/external-web-application.md)
+* [BMC IPMI Settings](configuration/bmc-ipmi-settings.md)
 
 ## Settings
 
