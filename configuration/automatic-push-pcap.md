@@ -320,6 +320,27 @@ CPU = 30,
 | nil              | Uses the default system CPU for push operations                  |
 | \<numeric value> | Literal Numeric value indicating which CPU to run stream\_cat on |
 
+### Consumer Application Restart
+
+The default behavior of the system is to constantly re-try sending data downstream without loss. In some cases its better to restart the push process and reset the start sending position, when the consumer application restarts.
+
+An example is, if an application shuts down between 1AM and 6AM but the capture process runs 24/7. The application wants to only receive data starting at 6AM when the application starts up.
+
+Another use case is, if the application has an error for an unspecified amount of time. The application requires real-time processing, and requires FMADIO Capture system to send data from the current time now without sending old historical data.
+
+Adding the following configuration to the push\_realtime.lua config will cause stream\_cat to exit if the downstream consumer is unable to process data. FMADIO system scheduler will constantly restart the push process from the current time, until the consumer process starts processing data.
+
+```
+.
+.
+StreamCat = "--ring-timeout-exit ",
+FollowStart = false,
+.
+.
+```
+
+NOTE: Please keep the additional white space at the end of the command.
+
 ## Analytics Scheduler
 
 In addition to configuration of

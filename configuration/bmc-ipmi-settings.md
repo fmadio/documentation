@@ -80,7 +80,7 @@ Next disable SSDP using the ekey above using the command
  curl -u admin:xxxxxxxx -k -X PATCH 
                            -H "Content-Type: application/json" 
                            -H "If-None-Match: {Insert ekey}" 
-                            "https://192.168.1.1/redfish/v1/Managers/Self/NetworkProtocol"  
+                            "https://{BMC Address}/redfish/v1/Managers/Self/NetworkProtocol"  
                             -d '{"SSDP":{"ProtocolEnabled": false}}' | jq
 
 ```
