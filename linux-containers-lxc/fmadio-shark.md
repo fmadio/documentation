@@ -99,7 +99,7 @@ Near the bottom section of the config there is a "Container" section. The exampl
 
 After configuration update, reboot the system
 
-### Check FShark is running
+### Check FMADIO Shark is running
 
 Check FShark is running using the fmadiocli utility as follows
 
@@ -109,7 +109,7 @@ fmadiocli "show container"
 
 FShark should be installed and running as hilighted in red below.
 
-![Check FShark status](<../.gitbook/assets/image (70).png>)
+![Check FShark status](../.gitbook/assets/image.png)
 
 ### Packet Browser
 
