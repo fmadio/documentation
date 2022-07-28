@@ -197,3 +197,13 @@ curl -u fmadio:100g "http://127.0.0.1/api/v1/pcap/timerange?TSBegin=162177257213
 ```
 curl -u fmadio:100g "http://127.0.0.1/api/v1/pcap/timerange?TSBegin=1621772572136996000&TSEnd=1621774913584264000&Compression=fast" -G --data-urlencode "FilterBPF=tcp"
 ```
+
+#### **TSBegin**, **TSEnd**, **FilterBPF** and FilterFrame
+
+```
+// Some code
+
+```
+
+```
+```

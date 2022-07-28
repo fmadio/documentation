@@ -73,9 +73,43 @@ Setting the following \["FShark"] = true,  if the field does not exist then crea
 
 ```
 
-### Clear any Browser Cache
+### Enable automatic start on boot
 
-Optionally clear browser cache. Sometimes the browser will cache old Javascript files that need to be updated.
+By default FShark does not start on boot, enabling this in the config uses the generic LXC container framework.
+
+Edit the config file
+
+```
+/opt/fmadio/etc/time.lua
+```
+
+Near the bottom section of the config there is a "Container" section. The example below shows a basic FShark only configuration, depending on your usage there may be additional containers configured to run.
+
+```
+["Container"] =
+{
+    ["Enable"]      = true,
+    ["RingCnt"]     = 4,
+    ["List"]        =
+    {
+        [1] = { Name = "fshark", OnBoot = true},
+    }
+}
+```
+
+After configuration update, reboot the system
+
+### Check FShark is running
+
+Check FShark is running using the fmadiocli utility as follows
+
+```
+fmadiocli "show container"
+```
+
+FShark should be installed and running as hilighted in red below.
+
+![Check FShark status](<../.gitbook/assets/image (70).png>)
 
 ### Packet Browser
 

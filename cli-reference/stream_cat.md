@@ -99,7 +99,7 @@ sudo stream_cat --bpf "vlan and dst 10.1.2.3"
                 --delta-histo-bin 1e6     
 ```
 
-![stream\_cat with delta histogram](<../.gitbook/assets/image (70).png>)
+![stream\_cat with delta histogram](<../.gitbook/assets/image (70) (2).png>)
 
 Above example uses stream\_cat with an epoch and BPF filter to isolate the packet histogram deltas between packets. This is particularly useful for checking QoS SLAs
 
