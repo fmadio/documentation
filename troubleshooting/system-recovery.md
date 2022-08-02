@@ -4,7 +4,7 @@ In the unlikely event of a complete boot failure, system can be recovered by boo
 
 Start by going to the BMC interface (default IP is 192.168.0.93) contact us for default login/password
 
-![](<../.gitbook/assets/image (5).png>)
+![](<../.gitbook/assets/image (5) (1).png>)
 
 Start the Remote HTML KVM
 
@@ -12,7 +12,7 @@ Start the Remote HTML KVM
 
 Will look like this. Select Brose Files, selecting an ISO image + Start the Media
 
-![](<../.gitbook/assets/image (6).png>)
+![](<../.gitbook/assets/image (6) (2).png>)
 
 
 
@@ -26,7 +26,7 @@ System will boot as follows, it may take several minutes depending on the speed 
 
 If a particular boot stage is taking too long Ctrl-C can skip it
 
-![](<../.gitbook/assets/image (1).png>)
+![](<../.gitbook/assets/image (1) (2).png>)
 
 
 
