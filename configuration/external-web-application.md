@@ -37,7 +37,7 @@ In this example, Web Application A is "FMADIO Packet Scope" with Web Application
 The above example has an Epoch Start time and Epoch End time as well as a BPF Filter applied, the end result is the following URI
 
 ```
-http://192.168.1.100/en.loader.html?
+http://192.168.1.100/en.search.html?
                 Path=/api/v1/pcap/splittime&
                 Target=fshark&
                 StreamName=coffee_20220313_1227&
@@ -92,9 +92,9 @@ For full details please check the API v1 Documentation page
 API Documentation
 {% endembed %}
 
-## Loader Page
+## Search Page
 
-Once clicked the following Loader page is visible.
+Once clicked the following Search page is visible.
 
 ![Loader Page](<../.gitbook/assets/image (119) (1) (1).png>)
 
@@ -149,7 +149,7 @@ The recommended URI is to use the /api/v1/pcap/timerange URI endpoint. As this d
 Example as follows, please remember to Escape Encode the FilterBPF string.
 
 ```
-http://192.168.1.100/en.loader.html?
+http://192.168.1.100/en.search.html?
                 Path=/api/v1/pcap/timerange&
                 Target=fshark&
                 TSBegin=1647149672563087104ULL&
