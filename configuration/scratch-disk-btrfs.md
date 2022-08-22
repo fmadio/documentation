@@ -8,7 +8,7 @@ The system should have scratch disks setup and visible on the GUI as follows, if
 
 ![FMADIO Scratch Disk Network Analytics processing space](<../.gitbook/assets/image (49) (2) (3).png>)
 
-** **In the above example there are 2 disks SCR0 and SCR1 enabled for scratch disk these are seen on the file system as
+&#x20;**** In the above example there are 2 disks SCR0 and SCR1 enabled for scratch disk these are seen on the file system as
 
 ```
 fmadio@fmadio20v3-287:~$ ls -al /opt/fmadio/disk/scr*
@@ -171,4 +171,4 @@ In the above example we see /mnt/store1 has 3.0 GB worth of data (using du)
 
 In the above example we see /mnt/store1 has used 751.MiB of actual storage capacity (using btrfs fi show)
 
-Based on the above math (3112MB / 751MB) , the **compression rate is \~ x4.04 **
+Based on the above math (3112MB / 751MB) , the **compression rate is \~ x4.04**&#x20;

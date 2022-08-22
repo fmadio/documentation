@@ -78,7 +78,7 @@ When in continuous output flush mode this is the period (in nanoseconds) between
 
 ### FlushIdle
 
-This is the idle packet activity timeout. If no _**new **_packets are received within this period, the pipeline gets flushed. Default value is 1e9 (1 second)
+This is the idle packet activity timeout. If no _**new**_ packets are received within this period, the pipeline gets flushed. Default value is 1e9 (1 second)
 
 ```
     ["FlushIdle"]   = 1e9,
