@@ -712,6 +712,6 @@ Below is the resulting output in AWS S3
 
 &#x20;
 
-![PCAP Push to S3](<../.gitbook/assets/image (90) (2).png>)
+![PCAP Push to S3](<../.gitbook/assets/image (90).png>)
 
 This does require RCLONE S3 Config to be configured before using.

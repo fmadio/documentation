@@ -121,6 +121,44 @@ Shows the current state of the interfaces
 
 ```
 
+### config interface fec
+
+FW: 8224+ ( 2x100G only)
+
+This forces FEC on the specific capture port. FEC Autoneg is disabled. This setting is persistent across reboots.
+
+```
+Wed Aug 24 05:48:53 2022] > config interface fec cap0
+[Wed Aug 24 05:48:53 2022]     Disable cycle calibration
+[Wed Aug 24 05:48:53 2022]     FEC Force
+[Wed Aug 24 05:48:53 2022]     FECENable: 1 PortMask:0001
+[Wed Aug 24 05:48:53 2022]     [0] FECEnable: 1 FECForce:1
+[Wed Aug 24 05:48:53 2022]     [1] FECEnable: 1 FECForce:1
+[Wed Aug 24 05:48:53 2022] set interface [cap0] fec (true) -> (true)
+[Wed Aug 24 05:48:53 2022]
+[Wed Aug 24 05:48:53 2022] >
+
+```
+
+### config interface no fec
+
+FW: 8224+ ( 2x100G only)
+
+This disables the forced FEC setting where the system will try autoneg if FEC is enabled or not. Setting is persistent across reboots.
+
+```
+[Wed Aug 24 05:50:39 2022] > config interface no fec cap0
+[Wed Aug 24 05:50:39 2022]     Disable cycle calibration
+[Wed Aug 24 05:50:39 2022]     no FEC Force
+[Wed Aug 24 05:50:39 2022]     FECENable: 0 PortMask:0001
+[Wed Aug 24 05:50:39 2022]     [0] FECEnable: 1 FECForce:0
+[Wed Aug 24 05:50:39 2022]     [1] FECEnable: 1 FECForce:1
+[Wed Aug 24 05:50:39 2022] set interface [cap0] fec (true) -> (false)
+[Wed Aug 24 05:50:39 2022]
+[Wed Aug 24 05:50:39 2022] >
+
+```
+
 ## Automatic Push PCAP
 
 ### show push-pcap
