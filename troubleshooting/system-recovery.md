@@ -4,7 +4,7 @@ In the unlikely event of a complete boot failure, system can be recovered by boo
 
 Start by going to the BMC interface (default IP is 192.168.0.93) contact us for default login/password
 
-![](<../.gitbook/assets/image (5) (1).png>)
+![](<../.gitbook/assets/image (5) (1) (1).png>)
 
 Start the Remote HTML KVM
 
@@ -20,7 +20,7 @@ System will boot Ubuntu (for example), we are using ( systemrescue 8.01 amd64)
 
 [https://sourceforge.net/projects/systemrescuecd/files/sysresccd-x86/8.01/systemrescue-8.01-amd64.iso/download](https://sourceforge.net/projects/systemrescuecd/files/sysresccd-x86/8.01/systemrescue-8.01-amd64.iso/download)
 
-![](<../.gitbook/assets/image (7).png>)
+![](<../.gitbook/assets/image (7) (1).png>)
 
 System will boot as follows, it may take several minutes depending on the speed of the HTML <-> FMADIO System connection. Recommend the closer the HTML instance is to the FMAD device the better.
 
@@ -34,7 +34,7 @@ After SystemRescue CD has booted, the above is seen. Note the total number of by
 
 First step is to find the FMADIO OS and Persistant storage devices, Use the "lsblk" tool&#x20;
 
-![](<../.gitbook/assets/image (8).png>)
+![](<../.gitbook/assets/image (8) (1).png>)
 
 
 

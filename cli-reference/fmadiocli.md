@@ -103,22 +103,7 @@ Re-enables the specified capture interface from shutdown status. Depending on th
 
 ```
 
-### show interface status
-
-FW: 7856+
-
-Shows the current state of the interfaces
-
 ```
-[Wed Apr 27 07:16:43 2022] > show interface status
-[Wed Apr 27 07:16:43 2022] Port       Description Status          Speed         Transciver    RxPower    TxPower    Temperature      FEC     Vendor            Vendor PN
-[Wed Apr 27 07:16:43 2022] ------------------------------------------------------------------------------------------------------------------------------------
-[Wed Apr 27 07:16:43 2022] man0                  connected       1G
-[Wed Apr 27 07:16:43 2022] man10                 connected       40G         40G Base-SR4  0.7565 mW  0.0000 mW        36.21 C               AVAGO          AFBR-79EQDZ
-[Wed Apr 27 07:16:43 2022] cap0                  notconnected    100G             100G CR   0.000 mW   0.000 mA        0.000 C          Ar Networks             Q28-PC01
-[Wed Apr 27 07:16:43 2022] cap1                  connected       100G             100G CR   0.000 mW   0.000 mA        0.000 C          Ar Networks             Q28-PC01
-[Wed Apr 27 07:16:43 2022] >
-
 ```
 
 ### config interface fec
@@ -156,6 +141,24 @@ This disables the forced FEC setting where the system will try autoneg if FEC is
 [Wed Aug 24 05:50:39 2022] set interface [cap0] fec (true) -> (false)
 [Wed Aug 24 05:50:39 2022]
 [Wed Aug 24 05:50:39 2022] >
+
+```
+
+### show interface status
+
+FW: 7856+
+
+Shows the current state of the interfaces
+
+```
+[Wed Apr 27 07:16:43 2022] > show interface status
+[Wed Apr 27 07:16:43 2022] Port       Description Status          Speed         Transciver    RxPower    TxPower    Temperature      FEC     Vendor            Vendor PN
+[Wed Apr 27 07:16:43 2022] ------------------------------------------------------------------------------------------------------------------------------------
+[Wed Apr 27 07:16:43 2022] man0                  connected       1G
+[Wed Apr 27 07:16:43 2022] man10                 connected       40G         40G Base-SR4  0.7565 mW  0.0000 mW        36.21 C               AVAGO          AFBR-79EQDZ
+[Wed Apr 27 07:16:43 2022] cap0                  notconnected    100G             100G CR   0.000 mW   0.000 mA        0.000 C          Ar Networks             Q28-PC01
+[Wed Apr 27 07:16:43 2022] cap1                  connected       100G             100G CR   0.000 mW   0.000 mA        0.000 C          Ar Networks             Q28-PC01
+[Wed Apr 27 07:16:43 2022] >
 
 ```
 
