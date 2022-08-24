@@ -83,6 +83,7 @@
 * [Serial Port Access over LAN](troubleshooting/serial-port-access-over-lan.md)
 * [BMC Reset](troubleshooting/bmc-reset.md)
 * [Network Traffic Profile](troubleshooting/network-traffic-profile.md)
+* [100G Capture Port Link Up](troubleshooting/100g-capture-port-link-up.md)
 
 ## Maintenance
 
