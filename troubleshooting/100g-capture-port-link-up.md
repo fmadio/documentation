@@ -1,5 +1,7 @@
 # 100G Capture Port Link Up
 
+**FW: 8224+**
+
 Getting 100G links link up either works no problem out of the box or be fickle to setup and get a link.
 
 Usually the main source of problems is FEC vs non-FEC setting on both the switch and on the FMADIO system. FMADIO Packet Capture systems will try detect if FEC is on the link by alternating FEC enable / FEC disabled when trying to link up.
@@ -12,7 +14,7 @@ To check the current status the fmadiocli utility provides the easiest way to mo
 show interface status
 ```
 
-![](../.gitbook/assets/image.png)
+![](<../.gitbook/assets/image (1).png>)
 
 In the above we see capture port 0 (cap0) is link down and capture port 1(cap1) is link up
 
@@ -25,7 +27,7 @@ config interface shutdown cap1
 
 It may take 1min for the link to go down, use the show interface status command to wait for link down to complete.
 
-![](<../.gitbook/assets/image (134).png>)
+![](<../.gitbook/assets/image (2).png>)
 
 Once the link is down, disable the shutdown using the command
 
@@ -49,11 +51,11 @@ config interface fec cap0
 config interface fec cap1
 ```
 
-![](<../.gitbook/assets/image (70).png>)
+![](<../.gitbook/assets/image (90).png>)
 
 After forcing FEC on the links the interface status will show a "force-" option as follows
 
-![](<../.gitbook/assets/image (129).png>)
+![](<../.gitbook/assets/image (6).png>)
 
 This indicates FEC has been forced on for the specific interfaces.
 
@@ -69,7 +71,7 @@ fnic_test  --trans-trace -v
 
 By default it runs on cap0  using the --port 1 can run the trace on the other port. This prints out the realtime event history of the link up process, below is an example of a link bounce.
 
-![](<../.gitbook/assets/image (4).png>)
+![](../.gitbook/assets/image.png)
 
 In the above output we see the link state go from State 1 -> State 7. Where state 7 is a stable link up.
 

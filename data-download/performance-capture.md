@@ -36,7 +36,7 @@ Microbust of 200 packets per port 2 x 100G line rate from 64B to 1500B packets. 
 
 Microburst of 500packets per port 2 x 100G line rate from 64B to 1500B packets. Start to see more significant packet loss.
 
-![](<../.gitbook/assets/image (129) (2).png>)
+![](<../.gitbook/assets/image (129).png>)
 
 ### Microburst 2 x 100G @ 1,000 Packets
 

@@ -94,7 +94,7 @@ The firewall on the IPMI/BMC is a bit trickier, as there's no direct access to i
 
 IPMI does have firewall manipulation GUI but its impossible to use due to how it works. Theres no way to set a Policy on INPUT rules, instead you need to drop everything and build up the chain. Below is the final iptables rules we want to create.
 
-![ITarget IPMI Firewall Rules](<../.gitbook/assets/image (3).png>)
+![ITarget IPMI Firewall Rules](<../.gitbook/assets/image (3) (2).png>)
 
 As you can see its a bit bastardized.. but theres no choice as each rule is always added to the top of chain.
 
@@ -138,7 +138,7 @@ fmadio@fmadio100v2-228U:~$
 
 The command above adds the drop everything rule to the system, this equates to the following in iptables.
 
-![IPMI FW Drop everything](<../.gitbook/assets/image (133).png>)
+![IPMI FW Drop everything](<../.gitbook/assets/image (5).png>)
 
 Can confirm its working correctly by checking the total number of firewall rules as follows. The returned value should be 1
 
@@ -163,7 +163,7 @@ fmadio@fmadio100v2-228U:~$
 
 This adds the following iptables rule
 
-![IPMI Firewall SSH Access](<../.gitbook/assets/image (1).png>)
+![IPMI Firewall SSH Access](<../.gitbook/assets/image (1) (3).png>)
 
 Then confirm there are 2 firewall rules enabled.
 
@@ -188,11 +188,11 @@ fmadio@fmadio100v2-228U:~$
 
 This equates to the following iptables rules
 
-![IPMI BMC HTTPS Access](<../.gitbook/assets/image (6).png>)
+![IPMI BMC HTTPS Access](<../.gitbook/assets/image (6) (3).png>)
 
 At this point the IPMI BMC Webpage can be used such as the following
 
-![](<../.gitbook/assets/image (2).png>)
+![](<../.gitbook/assets/image (2) (2).png>)
 
 ### 5) Add ipmitool access
 
@@ -207,7 +207,7 @@ fmadio@fmadio100v2-228U:~$
 
 And the related iptables rule
 
-![IPMITOOL Firewall Setting](<../.gitbook/assets/image (5).png>)
+![IPMITOOL Firewall Setting](<../.gitbook/assets/image (5) (2).png>)
 
 This enable ipmitool to work over the network, which can be extremely critical and helpful when troubleshooting problems. Such as the following
 
