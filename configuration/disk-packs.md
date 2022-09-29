@@ -2,7 +2,7 @@
 
 FMADIO100 Capture system supports multiple data "Disk Packs" per capture system.
 
-The system at boot time detect which "Disk Pack" that is currently installed. It does this by checking the first Data disks serial number against all disk configurations. When it finds a match, that disk configuration will be used as the currently active disk configuration file.
+The system at boot time detect which "Disk Pack" that is currently installed, and uses that as the currently active config file.&#x20;
 
 ## Disk Swap
 
