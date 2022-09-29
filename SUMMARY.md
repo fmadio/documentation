@@ -31,6 +31,7 @@
 * [Disk Encryption](configuration/disk-encryption.md)
 * [External Web Application](configuration/external-web-application.md)
 * [BMC IPMI Settings](configuration/bmc-ipmi-settings.md)
+* [Disk Packs](configuration/disk-packs.md)
 
 ## Settings
 

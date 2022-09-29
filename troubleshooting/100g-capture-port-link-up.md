@@ -55,7 +55,7 @@ config interface fec cap1
 
 After forcing FEC on the links the interface status will show a "force-" option as follows
 
-![](<../.gitbook/assets/image (5).png>)
+![](<../.gitbook/assets/image (5) (2).png>)
 
 This indicates FEC has been forced on for the specific interfaces.
 
