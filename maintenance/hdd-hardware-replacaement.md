@@ -18,7 +18,7 @@ devblk_info.lua
 
 Below is an example output
 
-![](<../.gitbook/assets/image (5).png>)
+![](<../.gitbook/assets/image (5) (2).png>)
 
 Note in the above, the HDD with serial number 59BAK1ILFAYG has no mapping. This could be either hdd\* or par\* it depends on which disk is being replaced.
 
