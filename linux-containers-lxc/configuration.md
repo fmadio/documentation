@@ -39,5 +39,41 @@ Example below creates 4 rings on system boot
         {
         }
 }
+```
+
+LXC RingList
+
+**FW: 8307+**
+
+Sometimes its easier to use named LXC Rings to make the system self documenting on what its doing. This is configured in the same file
 
 ```
+/opt/fmadio/etc/time.lua
+```
+
+In the \["Container"] section there is a list \["RingList"]. Add in as many named queues as you need. Example shows 2 queues, one for EUREX the other for CME
+
+```
+.
+.
+["Container"] =
+{
+        ["Enable"]      = true,
+        ["RingCnt"]     = 4,
+        ["RingList"]    =
+        {
+                ["market_eurex"]        = { ["Desc"] = "EUREX market data" },
+                ["market_cme"]          = { ["Desc"] = "CME Market Data" },
+        },
+        ["List"]        =
+        {
+        [1] = { Name = "fshark", OnBoot = true},
+        }
+},
+.
+.
+
+```
+
+System requires a reboot after the change for the rings to be created.
+
