@@ -163,3 +163,131 @@ For example Market Data Gap detector LXC (mdgap) for CME is allocated to CPU 84
 ```
 
 This also requires re-running the LXC install script to correctly allocate the CPUs in the container.
+
+### Update CPU Mapping
+
+After the configuration files have been updated, a firmware update and reboot cycle are required. Its required as the Linux kernel boot command parameters (isolcpus) gets modified requiring the reboot.
+
+Start by finding the current Firmware binary, in almost all cases this is the last upload firmware
+
+```
+fmadio@fmadio20v3-287:~$ cd /mnt/system/firmware/
+fmadio@fmadio20v3-287:/mnt/sda1/firmware$ ls -altr
+total 2554288
+drwxr-xr-x    7 root     root          8192 Jan  1  1970 ../
+-rwxr-xr-x    1 root     root     107442176 Oct 13 13:16 fmadio20v3_20221013_1314.tcz
+-rwxr-xr-x    1 root     root           820 Oct 13 13:16 fmadio20v3_20221013_1314.syslinux.cfg.analytics
+-rwxr-xr-x    1 root     root          1425 Oct 13 13:16 fmadio20v3_20221013_1314.syslinux.cfg
+-rwxr-xr-x    1 root     root           868 Oct 13 13:16 fmadio20v3_20221013_1314.sign
+-rwxr-xr-x    1 root     root       9884660 Oct 13 13:16 fmadio20v3_20221013_1314.rom.2x1G
+-rwxr-xr-x    1 root     root       9868320 Oct 13 13:16 fmadio20v3_20221013_1314.rom.2x10G
+-rwxr-xr-x    1 root     root            87 Oct 13 13:16 fmadio20v3_20221013_1314.pre.lua
+-rwxr-xr-x    1 root     root           754 Oct 13 13:16 fmadio20v3_20221013_1314.post.lua
+-rwxr-xr-x    1 root     root         21356 Oct 13 13:16 fmadio20v3_20221013_1314.mydata
+-rwxr-xr-x    1 root     root       4632672 Oct 13 13:16 fmadio20v3_20221013_1314.kernel
+-rwxr-xr-x    1 root     root     312308358 Oct 13 13:16 fmadio20v3_20221013_1314.core
+-rwxr-xr-x    1 root     root     427477506 Oct 13 13:16 fmadio20v3_20221013_1314.bin
+-rwxr-xr-x    1 root     root     427590054 Oct 21 10:28 fmadio20v3_20221021_1026.bin
+-rwxr-xr-x    1 root     root     107548672 Oct 21 10:28 fmadio20v3_20221021_1026.tcz
+-rwxr-xr-x    1 root     root           820 Oct 21 10:28 fmadio20v3_20221021_1026.syslinux.cfg.analytics
+-rwxr-xr-x    1 root     root          1425 Oct 21 10:28 fmadio20v3_20221021_1026.syslinux.cfg
+-rwxr-xr-x    1 root     root           868 Oct 21 10:28 fmadio20v3_20221021_1026.sign
+-rwxr-xr-x    1 root     root       9884660 Oct 21 10:28 fmadio20v3_20221021_1026.rom.2x1G
+-rwxr-xr-x    1 root     root       9868320 Oct 21 10:28 fmadio20v3_20221021_1026.rom.2x10G
+-rwxr-xr-x    1 root     root            87 Oct 21 10:28 fmadio20v3_20221021_1026.pre.lua
+-rwxr-xr-x    1 root     root           754 Oct 21 10:28 fmadio20v3_20221021_1026.post.lua
+-rwxr-xr-x    1 root     root         21356 Oct 21 10:28 fmadio20v3_20221021_1026.mydata
+-rwxr-xr-x    1 root     root       4632672 Oct 21 10:28 fmadio20v3_20221021_1026.kernel
+-rwxr-xr-x    1 root     root     312308358 Oct 21 10:28 fmadio20v3_20221021_1026.core
+-rwxr-xr-x    1 root     root     107548672 Oct 21 11:27 fmadio20v3_20221021_1125.tcz
+-rwxr-xr-x    1 root     root           820 Oct 21 11:27 fmadio20v3_20221021_1125.syslinux.cfg.analytics
+-rwxr-xr-x    1 root     root          1425 Oct 21 11:27 fmadio20v3_20221021_1125.syslinux.cfg
+-rwxr-xr-x    1 root     root           868 Oct 21 11:27 fmadio20v3_20221021_1125.sign
+-rwxr-xr-x    1 root     root       9884660 Oct 21 11:27 fmadio20v3_20221021_1125.rom.2x1G
+-rwxr-xr-x    1 root     root       9868320 Oct 21 11:27 fmadio20v3_20221021_1125.rom.2x10G
+-rwxr-xr-x    1 root     root            87 Oct 21 11:27 fmadio20v3_20221021_1125.pre.lua
+-rwxr-xr-x    1 root     root           754 Oct 21 11:27 fmadio20v3_20221021_1125.post.lua
+-rwxr-xr-x    1 root     root         21356 Oct 21 11:27 fmadio20v3_20221021_1125.mydata
+-rwxr-xr-x    1 root     root       4632672 Oct 21 11:27 fmadio20v3_20221021_1125.kernel
+-rwxr-xr-x    1 root     root     312308358 Oct 21 11:27 fmadio20v3_20221021_1125.core
+-rwxr-xr-x    1 root     root     427587155 Oct 21 11:27 fmadio20v3_20221021_1125.bin
+drwxr-xr-x    2 root     root         40960 Oct 21 11:27 ./
+fmadio@fmadio20v3-287:/mnt/sda1/firmware$
+
+```
+
+In this case the latest firmware is named
+
+```
+fmadio20v3_20221021_1125.bin
+```
+
+Next re-install the firmware as follows. An upload is not required as the firmware is already on the system
+
+```
+sudo firmware_install.lua --install fmadio20v3_20221021_1125.bin
+```
+
+Example output as follows, note the "Update CPU Map" output
+
+```bash
+fmadio@fmadio20v3-287:/mnt/sda1/firmware$ sudo firmware_install.lua --install fmadio20v3_20221021_1125.bin
+fmad fmadlua Oct 21 2022 (/usr/local/bin/fmadiolua /opt/fmadio/bin/firmware_install.lua --install fmadio20v3_20221021_1125.bin )
+calibrating...
+0 : 2095063152           2.0951 cycles/nsec offset:4.937 Mhz
+Cycles/Sec 2095063152.0000 Std:       0 cycle std(  0.00000000) Target:2.10 Ghz
+Install Firmware [fmadio20v3_20221021_1125.bin]
+Open fSysCapture_t* [/opt/fmadio/status/capture:0/100]
+Force capture to exit
+Force capture to exit
+Force capture to exit
+Force capture to exit
+Force capture to exit
+Force capture to exit
+Force capture to exit
+FW [fmadio20v3] System[fmadio20v3]
+PreInstall script [/mnt/system//firmware/fmadio20v3_20221021_1125.pre.lua]
+fmad fmadlua Oct 21 2022 (/opt/fmadio/bin/fmadiolua /mnt/system//firmware/fmadio20v3_20221021_1125.pre.lua )
+calibrating...
+0 : 2095065834           2.0951 cycles/nsec offset:4.934 Mhz
+Cycles/Sec 2095065834.0000 Std:       0 cycle std(  0.00000000) Target:2.10 Ghz
+done 0.000043Sec 0.000001Min
+PreInstall: pre install script
+PreInstall: PREINSTALL_GOOD
+Copy [cp /mnt/system//firmware/fmadio20v3_20221021_1125.tcz /mnt/system//tce/optional/fmadio20v3_current.tcz]
+Copy [cp /mnt/system//firmware/fmadio20v3_20221021_1125.core /mnt/system//boot/fmadio20v3-corepure64.gz]
+Copy [cp /mnt/system//firmware/fmadio20v3_20221021_1125.kernel /mnt/system//boot/vmlinuz64]
+Copy [cp /mnt/system//firmware/fmadio20v3_20221021_1125.mydata /mnt/system//tce/mydata.tgz]
+Copy [cp /mnt/system//firmware/fmadio20v3_20221021_1125.syslinux.cfg /mnt/system//boot/syslinux/syslinux.cfg]
+Copy [cp /mnt/system//firmware/fmadio20v3_20221021_1125.rom.2x1G /mnt/system//boot/bitstream.rom.2x1G]
+Copy [cp /mnt/system//firmware/fmadio20v3_20221021_1125.rom.2x10G /mnt/system//boot/bitstream.rom.2x10G]
+Bitstream Config [2x10G]
+Copy [cp /mnt/system//firmware/fmadio20v3_20221021_1125.rom.2x10G /mnt/system//boot/bitstream.rom]
+os[sudo /opt/fmadio/bin/bitstream_update.lua --noreboot --write /mnt/system//boot/bitstream.rom]
+fmad fmadlua Oct 21 2022 (/opt/fmadio/bin/fmadiolua /opt/fmadio/bin/bitstream_update.lua --noreboot --write /mnt/system//boot/bitstream.rom )
+calibrating...
+0 : 2095065974           2.0951 cycles/nsec offset:4.934 Mhz
+Cycles/Sec 2095065974.0000 Std:       0 cycle std(  0.00000000) Target:2.10 Ghz
+cp: '/mnt/system//boot/bitstream.rom' and '/mnt/system//boot/bitstream.rom' are the same file
+done 0.004990Sec 0.000083Min
+Updating CPU Map
+renaming syslinux.cfg files
+/mnt/system//firmware/fmadio20v3_20221021_1125.post.lua
+fmad fmadlua Oct 21 2022 (/opt/fmadio/bin/fmadiolua /mnt/system//firmware/fmadio20v3_20221021_1125.post.lua )
+calibrating...
+0 : 2095064668           2.0951 cycles/nsec offset:4.935 Mhz
+Cycles/Sec 2095064668.0000 Std:       0 cycle std(  0.00000000) Target:2.10 Ghz
+PostInstall: post install script
+done 0.001261Sec 0.000021Min
+PostInstall: POSTINSTALL_GOOD
+Firmware Install Complete
+done 36.463587Sec 0.607726Min
+fmadio@fmadio20v3-287:/mnt/sda1/firmware$
+
+```
+
+Then reboot the system, and the new CPU mapping is reflected.
+
+```
+sudo reboot
+```
