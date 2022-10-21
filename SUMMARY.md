@@ -32,6 +32,7 @@
 * [External Web Application](configuration/external-web-application.md)
 * [BMC IPMI Settings](configuration/bmc-ipmi-settings.md)
 * [Disk Packs](configuration/disk-packs.md)
+* [CPU Mapping](configuration/cpu-mapping.md)
 
 ## Settings
 
