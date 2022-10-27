@@ -92,7 +92,7 @@ Manually configure the 1G management interface with ifconfig, example below
 sudo ifconfig eth0 192.168.2.173
 ```
 
-<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption><p>Manually configuring the 1G interface via HTMl5 BMC </p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (3).png" alt=""><figcaption><p>Manually configuring the 1G interface via HTMl5 BMC </p></figcaption></figure>
 
 The interface may be eth0 or eth1 depending on the config
 
