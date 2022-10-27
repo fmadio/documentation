@@ -36,7 +36,7 @@ Please change \["DownloadAPI"]= "legacy"   to "v1" as below. If theres no entry,
 
 It requires a browser refresh for the setting to become active.
 
-### Time Stamp Selection
+## Time Stamp Selection
 
 FMADIO Devices use our internal FPGA NIC card for hardware timestamping on all packets. This may not be sufficient for some customers as Tap/Aggregation layers add additional non-deterministic latency due to egress port buffering.
 

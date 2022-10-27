@@ -12,7 +12,7 @@ Start the Remote HTML KVM
 
 Will look like this. Select Brose Files, selecting an ISO image + Start the Media
 
-![](<../.gitbook/assets/image (6) (2).png>)
+![](<../.gitbook/assets/image (6) (2) (1).png>)
 
 
 
