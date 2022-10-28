@@ -138,7 +138,7 @@ fmadio@fmadio100v2-228U:~$
 
 The command above adds the drop everything rule to the system, this equates to the following in iptables.
 
-![IPMI FW Drop everything](<../.gitbook/assets/image (1) (1).png>)
+![IPMI FW Drop everything](<../.gitbook/assets/image (1) (1) (1).png>)
 
 Can confirm its working correctly by checking the total number of firewall rules as follows. The returned value should be 1
 

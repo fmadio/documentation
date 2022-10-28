@@ -60,6 +60,8 @@ NOTE: This can be done retro-actively. e.g. Downloaded PCAPs are generated based
 
 FMADIO System can de-encapsulate various formats both in PacketScope, Search and via the API. Please contact support if you require an additional format.
 
+De-encapsulation means the system will strip away the encapsulation, and BPF filters are run on the inner most packet.
+
 ### Supported De-Encapsulation
 
 * VLAN Single Tag
