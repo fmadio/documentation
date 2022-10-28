@@ -56,5 +56,36 @@ Use the Config page on the FMADIO Capture system to select as follows
 
 NOTE: This can be done retro-actively. e.g. Downloaded PCAPs are generated based on the timestamp selection mode. This setting does not effect the raw captured data.
 
+## Packet De-encapsulation
+
+FMADIO System can de-encapsulate various formats both in PacketScope, Search and via the API. Please contact support if you require an additional format.
+
+### Supported De-Encapsulation
+
+* VLAN Single Tag
+* VLAN Double Tag Old style (Ether Proto 0x9100)
+* VLAN Double Tag Old style (Ether Proto 0x9200)
+* VLAN Double Tag QinQ (Ether Proto 0x88a8)
+* VNTag Cisco (Ether Proto 0x8926)
+* VXLAN (Tunnel over UDP)
+* MPLS Single
+* MPLS Double
+* MPLS Triple
+* Cisco ERSPAN v1
+* Cisco ERSPAN v2 (Over GRE tunnel)
+* Cisco ERSPAN v3 (Over GRE tunnel)
+* CAPWAP (Wireless Encapsulation over UDP)
+* Arista 7150 (Insert Mode)
+* Arista 7150 (Overwrite Mode)
+* Arista 7130 (Metamako)
+* Ixia xStream&#x20;
+* Exablaze Footer
+
+### PacketScope De-encasulation
+
+By default PacketScope enables the de-encapsulation shown below as the checkbox enabled. To disable de-encapsulation uncheck the checkbox and re-run the filters.
+
+<figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption><p>PacketScope De-Encapsulation</p></figcaption></figure>
+
 
 
