@@ -605,6 +605,30 @@ table.insert(Config.Target,
 
 ```
 
+### Push to NFS/CIFS Share 1GB splits
+
+**FW: 7936+**
+
+Example pushes the raw data to a remote NFS/CIFS (Windows Share) splitting by 1GB file size
+
+```
+
+local Config = {}
+
+Config.Target = {}
+
+-- push everything to /mnt/remote0/push/capture*.pcap at 1GB splits
+table.insert(Config.Target, 
+{
+    Desc      = "capture", 
+    Mode      = "File", 
+    Path      = "/mnt/remote0/push/capture",   
+    Split     = "--split-size 1e9", 
+    FileName  = "--filename-tstr-HHMMSS_TZ", 
+    FilterBPF = "" 
+})
+```
+
 ### Push to MAGPACK over FTP
 
 ```
