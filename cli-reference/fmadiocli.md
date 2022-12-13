@@ -67,83 +67,6 @@ It can be deleted to clear the history
 
 ## Configure Interfaces
 
-### config interface shutdown
-
-FW: 7856+  support for 100Gv2 2x100G 2x40G
-
-This shuts down a specific capture interface as specified, usually this is cap0 or cap1 and depends on the SKU and Port configuration on which ports can be shutdown
-
-```
-[Wed Apr 27 07:13:15 2022] > config interface shutdown cap0
-[Wed Apr 27 07:13:15 2022]     Disable cycle calibration
-[Wed Apr 27 07:13:15 2022]     PCIVersion: 50434930 50434930
-[Wed Apr 27 07:13:15 2022]     PortMask:1 0 0 0  0 0 0 0
-[Wed Apr 27 07:13:15 2022]     2x100G pcs shutdown 1
-[Wed Apr 27 07:13:15 2022] set interface [cap0] mode () -> (disabled)
-[Wed Apr 27 07:13:15 2022]
-[Wed Apr 27 07:13:21 2022] > 
-```
-
-### config interface no shutdown
-
-FW: 7856+  support for 100Gv2 2x100G 2x40G
-
-Re-enables the specified capture interface from shutdown status. Depending on the link peer, the link peer might need to be bounced as it may be in a shutdown error state.
-
-```
-[Wed Apr 27 07:13:21 2022] > config interface no shutdown cap0
-[Wed Apr 27 07:13:21 2022]
-[Wed Apr 27 07:13:21 2022]     Disable cycle calibration
-[Wed Apr 27 07:13:21 2022]     PCIVersion: 50434930 50434930
-[Wed Apr 27 07:13:21 2022]     PortMask:1 0 0 0  0 0 0 0
-[Wed Apr 27 07:13:21 2022]     2x100G pcs shutdown 0
-[Wed Apr 27 07:13:21 2022] set interface [cap0] mode (disabled) -> ()
-[Wed Apr 27 07:13:21 2022]
-[Wed Apr 27 07:13:21 2022] >
-
-```
-
-```
-```
-
-### config interface fec
-
-FW: 8224+ ( 2x100G only)
-
-This forces FEC on the specific capture port. FEC Autoneg is disabled. This setting is persistent across reboots.
-
-```
-Wed Aug 24 05:48:53 2022] > config interface fec cap0
-[Wed Aug 24 05:48:53 2022]     Disable cycle calibration
-[Wed Aug 24 05:48:53 2022]     FEC Force
-[Wed Aug 24 05:48:53 2022]     FECENable: 1 PortMask:0001
-[Wed Aug 24 05:48:53 2022]     [0] FECEnable: 1 FECForce:1
-[Wed Aug 24 05:48:53 2022]     [1] FECEnable: 1 FECForce:1
-[Wed Aug 24 05:48:53 2022] set interface [cap0] fec (true) -> (true)
-[Wed Aug 24 05:48:53 2022]
-[Wed Aug 24 05:48:53 2022] >
-
-```
-
-### config interface no fec
-
-FW: 8224+ ( 2x100G only)
-
-This disables the forced FEC setting where the system will try autoneg if FEC is enabled or not. Setting is persistent across reboots.
-
-```
-[Wed Aug 24 05:50:39 2022] > config interface no fec cap0
-[Wed Aug 24 05:50:39 2022]     Disable cycle calibration
-[Wed Aug 24 05:50:39 2022]     no FEC Force
-[Wed Aug 24 05:50:39 2022]     FECENable: 0 PortMask:0001
-[Wed Aug 24 05:50:39 2022]     [0] FECEnable: 1 FECForce:0
-[Wed Aug 24 05:50:39 2022]     [1] FECEnable: 1 FECForce:1
-[Wed Aug 24 05:50:39 2022] set interface [cap0] fec (true) -> (false)
-[Wed Aug 24 05:50:39 2022]
-[Wed Aug 24 05:50:39 2022] >
-
-```
-
 ### show interface status
 
 FW: 7856+
@@ -185,8 +108,80 @@ Example below shows the status on an FMADIO20Gv3 system
 [Tue Dec 13 04:18:38 2022] cap0
 [Tue Dec 13 04:18:38 2022] cap1
 [Tue Dec 13 04:18:38 2022] ---------------------------------------------------------------------------------------------------------------------------------
-[Tue Dec 13 04:18:38 2022] > 
+[Tue Dec 13 04:18:38 2022] >
+```
 
+### config interface shutdown
+
+FW: 7856+  support for 100Gv2 2x100G 2x40G
+
+This shuts down a specific capture interface as specified, usually this is cap0 or cap1 and depends on the SKU and Port configuration on which ports can be shutdown
+
+```
+[Wed Apr 27 07:13:15 2022] > config interface shutdown cap0
+[Wed Apr 27 07:13:15 2022]     Disable cycle calibration
+[Wed Apr 27 07:13:15 2022]     PCIVersion: 50434930 50434930
+[Wed Apr 27 07:13:15 2022]     PortMask:1 0 0 0  0 0 0 0
+[Wed Apr 27 07:13:15 2022]     2x100G pcs shutdown 1
+[Wed Apr 27 07:13:15 2022] set interface [cap0] mode () -> (disabled)
+[Wed Apr 27 07:13:15 2022]
+[Wed Apr 27 07:13:21 2022] > 
+```
+
+### config interface no shutdown
+
+FW: 7856+  support for 100Gv2 2x100G 2x40G
+
+Re-enables the specified capture interface from shutdown status. Depending on the link peer, the link peer might need to be bounced as it may be in a shutdown error state.
+
+```
+[Wed Apr 27 07:13:21 2022] > config interface no shutdown cap0
+[Wed Apr 27 07:13:21 2022]
+[Wed Apr 27 07:13:21 2022]     Disable cycle calibration
+[Wed Apr 27 07:13:21 2022]     PCIVersion: 50434930 50434930
+[Wed Apr 27 07:13:21 2022]     PortMask:1 0 0 0  0 0 0 0
+[Wed Apr 27 07:13:21 2022]     2x100G pcs shutdown 0
+[Wed Apr 27 07:13:21 2022] set interface [cap0] mode (disabled) -> ()
+[Wed Apr 27 07:13:21 2022]
+[Wed Apr 27 07:13:21 2022] >
+
+```
+
+### config interface fec
+
+FW: 8224+ ( 2x100G only)
+
+This forces FEC on the specific capture port. FEC Autoneg is disabled. This setting is persistent across reboots.
+
+```
+Wed Aug 24 05:48:53 2022] > config interface fec cap0
+[Wed Aug 24 05:48:53 2022]     Disable cycle calibration
+[Wed Aug 24 05:48:53 2022]     FEC Force
+[Wed Aug 24 05:48:53 2022]     FECENable: 1 PortMask:0001
+[Wed Aug 24 05:48:53 2022]     [0] FECEnable: 1 FECForce:1
+[Wed Aug 24 05:48:53 2022]     [1] FECEnable: 1 FECForce:1
+[Wed Aug 24 05:48:53 2022] set interface [cap0] fec (true) -> (true)
+[Wed Aug 24 05:48:53 2022]
+[Wed Aug 24 05:48:53 2022] >
+
+```
+
+### config interface no fec
+
+FW: 8224+ ( 2x100G only)
+
+This disables the forced FEC setting where the system will try autoneg if FEC is enabled or not. Setting is persistent across reboots.
+
+```
+[Wed Aug 24 05:50:39 2022] > config interface no fec cap0
+[Wed Aug 24 05:50:39 2022]     Disable cycle calibration
+[Wed Aug 24 05:50:39 2022]     no FEC Force
+[Wed Aug 24 05:50:39 2022]     FECENable: 0 PortMask:0001
+[Wed Aug 24 05:50:39 2022]     [0] FECEnable: 1 FECForce:0
+[Wed Aug 24 05:50:39 2022]     [1] FECEnable: 1 FECForce:1
+[Wed Aug 24 05:50:39 2022] set interface [cap0] fec (true) -> (false)
+[Wed Aug 24 05:50:39 2022]
+[Wed Aug 24 05:50:39 2022] >
 ```
 
 ### config interface ip
