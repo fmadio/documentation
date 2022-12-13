@@ -311,6 +311,8 @@ Example sets for udp and port 1900
 
 ## User Management
 
+**FW: 8336+**
+
 FMADIO Web GUI supports multiple users with 2 levels of access
 
 | Permission | Description                                                          |
