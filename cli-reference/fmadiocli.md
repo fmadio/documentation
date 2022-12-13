@@ -328,7 +328,7 @@ This shows the currently configured list of users on the system
 show userlist
 ```
 
-Example output, it shows 3 users test1 (full access), fmadio (user access), bob (user access)
+Example output, it shows 2 users fmadio (full access), bob (user access)
 
 ```
 [Tue Dec 13 04:05:54 2022] > show userlist
@@ -338,12 +338,8 @@ Example output, it shows 3 users test1 (full access), fmadio (user access), bob 
 [Tue Dec 13 04:05:55 2022]
 [Tue Dec 13 04:05:55 2022] --------------------------------------------------
 [Tue Dec 13 04:05:55 2022]
-[Tue Dec 13 04:05:55 2022]   UserName   : test1
-[Tue Dec 13 04:05:55 2022]   Permission : full
-[Tue Dec 13 04:05:55 2022]   SecBPF     :
-[Tue Dec 13 04:05:55 2022]
 [Tue Dec 13 04:05:55 2022]   UserName   : fmadio
-[Tue Dec 13 04:05:55 2022]   Permission : user
+[Tue Dec 13 04:05:55 2022]   Permission : full
 [Tue Dec 13 04:05:55 2022]   SecBPF     :
 [Tue Dec 13 04:05:55 2022]
 [Tue Dec 13 04:05:55 2022]   UserName   : bob
