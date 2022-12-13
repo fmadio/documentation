@@ -258,11 +258,7 @@ Example configure to split every 1 minute
 
 Configure PCAPs to be split by total byte size \<value>
 
-|      | Description                                 |   |
-| ---- | ------------------------------------------- | - |
-| 1e9  | 1 Gigabyte specified in scientific notation |   |
-| 100M | 100 Megbyte                                 |   |
-| 5G   | 5 Gigabyte                                  |   |
+<table><thead><tr><th></th><th>Description</th><th data-hidden></th></tr></thead><tbody><tr><td>1e9</td><td>1 Gigabyte specified in scientific notation</td><td></td></tr><tr><td>100M</td><td>100 Megbyte</td><td></td></tr><tr><td>5G</td><td>5 Gigabyte</td><td></td></tr></tbody></table>
 
 Example below shows splitting on 1GB boundaries
 
@@ -312,3 +308,130 @@ Example sets for udp and port 1900
 [Thu Jun  9 09:07:05 2022] >
 
 ```
+
+## User Management
+
+FMADIO Web GUI supports multiple users with 2 levels of access
+
+| Permission | Description                                                          |
+| ---------- | -------------------------------------------------------------------- |
+| full       | Provides full admin level access to all functions                    |
+| user       | User level only, no ability to modify config and start/stop captures |
+
+Using fmadiocli to setup and configure is shown below
+
+### show userlist
+
+This shows the currently configured list of users on the system
+
+```
+show userlist
+```
+
+Example output, it shows 3 users test1 (full access), fmadio (user access), bob (user access)
+
+```
+[Tue Dec 13 04:05:54 2022] > show userlist
+[Tue Dec 13 04:05:55 2022] Showing User List
+[Tue Dec 13 04:05:55 2022]
+[Tue Dec 13 04:05:55 2022] UserList Enable: true
+[Tue Dec 13 04:05:55 2022]
+[Tue Dec 13 04:05:55 2022] --------------------------------------------------
+[Tue Dec 13 04:05:55 2022]
+[Tue Dec 13 04:05:55 2022]   UserName   : test1
+[Tue Dec 13 04:05:55 2022]   Permission : full
+[Tue Dec 13 04:05:55 2022]   SecBPF     :
+[Tue Dec 13 04:05:55 2022]
+[Tue Dec 13 04:05:55 2022]   UserName   : fmadio
+[Tue Dec 13 04:05:55 2022]   Permission : user
+[Tue Dec 13 04:05:55 2022]   SecBPF     :
+[Tue Dec 13 04:05:55 2022]
+[Tue Dec 13 04:05:55 2022]   UserName   : bob
+[Tue Dec 13 04:05:55 2022]   Permission : user
+[Tue Dec 13 04:05:55 2022]   SecBPF     :
+[Tue Dec 13 04:05:55 2022]
+[Tue Dec 13 04:05:55 2022] --------------------------------------------------
+[Tue Dec 13 04:05:55 2022] >
+
+```
+
+### config userlist add&#x20;
+
+Adds a new user with default permissions and no password
+
+```
+config userlist add <username>
+```
+
+Example adds the username "bob" to the system
+
+```
+[Tue Dec 13 04:08:14 2022] > config userlist add bob
+[Tue Dec 13 04:08:17 2022] Created new User [bob]
+[Tue Dec 13 04:08:17 2022] >
+```
+
+### config userlist del
+
+Deletes the specified username
+
+```
+config userlist del <username>
+```
+
+Example below deletes the username "bob"
+
+```
+[Tue Dec 13 04:09:15 2022] > config userlist del bob
+[Tue Dec 13 04:09:16 2022] deleted username [bob]
+[Tue Dec 13 04:09:16 2022] >
+```
+
+### config userlist password
+
+Sets the WEB user password. This has no effect on SSH access to the system
+
+```
+config userlist password <username>
+```
+
+Example below sets the web password for user "bob"
+
+```
+[Tue Dec 13 04:12:19 2022] > config userlist password bob
+[Tue Dec 13 04:12:20 2022] New Password     : ***********
+[Tue Dec 13 04:12:22 2022] Re-enter Password: ***********
+[Tue Dec 13 04:12:24 2022] web password for username [bob] set
+[Tue Dec 13 04:12:24 2022] >
+```
+
+### config userlist permission
+
+Sets the userlevel permission for the specified username
+
+```
+config userlist permission <username> <level>
+```
+
+Level types are 2
+
+* full  - provides full unrestricted GUI access
+* user - provides download and analysis only access (no configuration or capture state change)&#x20;
+
+Example below shows setting the username "bob" to be a "user" level (e.g. can not change system configuration or capture states)
+
+```
+[Tue Dec 13 04:13:55 2022] > config userlist permission bob user
+[Tue Dec 13 04:13:55 2022] modified username [bob] to permission level [user]
+[Tue Dec 13 04:13:55 2022] >
+
+```
+
+Example below shows setting username "bob" to be a full access user (e.g. can change any configuration using the GUI)
+
+```
+[Tue Dec 13 04:14:42 2022] > config userlist permission bob full
+[Tue Dec 13 04:14:42 2022] modified username [bob] to permission level [full]
+[Tue Dec 13 04:14:42 2022] >
+```
+
