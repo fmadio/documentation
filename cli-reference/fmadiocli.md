@@ -162,6 +162,197 @@ Shows the current state of the interfaces
 
 ```
 
+### show interface ip
+
+FW: 8336+
+
+Shows the currently configured IP address information for the management and BMC/IPMI/Capture ports
+
+```
+show interface ip
+```
+
+Example below shows the status on an FMADIO20Gv3 system
+
+```
+[Tue Dec 13 04:18:36 2022] > show interface ip
+[Tue Dec 13 04:18:37 2022] Port       Mode       IP              Netmask         Gateway         DNS0            DNS1
+[Tue Dec 13 04:18:37 2022] ---------------------------------------------------------------------------------------------------------------------------------
+[Tue Dec 13 04:18:38 2022] bmc        static     192.168.187.2   255.255.255.0   192.168.187.30
+[Tue Dec 13 04:18:38 2022] man0       static     192.168.187.10  255.255.255.0   192.168.187.30  1.1.1.1
+[Tue Dec 13 04:18:38 2022] man1       disabled   192.168.1.2     255.255.255.0   192.168.1.1
+[Tue Dec 13 04:18:38 2022] man10      static     192.168.91.50   255.255.255.0
+[Tue Dec 13 04:18:38 2022] cap0
+[Tue Dec 13 04:18:38 2022] cap1
+[Tue Dec 13 04:18:38 2022] ---------------------------------------------------------------------------------------------------------------------------------
+[Tue Dec 13 04:18:38 2022] > 
+
+```
+
+### config interface ip
+
+Configures the IP address of the specified network port. Typically this is used for setting the management/BMC IP address of the system
+
+```
+config interface ip <interface name> <IPv4 address>
+```
+
+Example below sets the man0 port to IP address 192.168.187.10. The exact output may vary between SKUs
+
+```
+config interface ip man0 192.168.187.10
+```
+
+```
+[Tue Dec 13 04:22:47 2022] > config interface ip man0 192.168.187.10
+[Tue Dec 13 04:22:48 2022] UPDATING: sudo /opt/fmadio/bin/setup_network.lua --nocal
+.
+.
+<snip>
+.
+.
+[Tue Dec 13 04:22:51 2022] set interface [man0] ip (192.168.187.10) -> (192.168.187.10)
+[Tue Dec 13 04:22:51 2022]
+[Tue Dec 13 04:22:51 2022] Port       Mode       IP              Netmask         Gateway         DNS0            DNS1
+[Tue Dec 13 04:22:51 2022] ---------------------------------------------------------------------------------------------------------------------------------
+[Tue Dec 13 04:22:53 2022] bmc        static     192.168.187.2   255.255.255.0   192.168.187.30
+[Tue Dec 13 04:22:53 2022] man0       static     192.168.187.10  255.255.255.0   192.168.187.30  1.1.1.1
+[Tue Dec 13 04:22:53 2022] man1       disabled   192.168.1.2     255.255.255.0   192.168.1.1
+[Tue Dec 13 04:22:53 2022] man10      static     192.168.91.50   255.255.255.0
+[Tue Dec 13 04:22:53 2022] cap0
+[Tue Dec 13 04:22:53 2022] cap1
+[Tue Dec 13 04:22:53 2022] ---------------------------------------------------------------------------------------------------------------------------------
+
+```
+
+Example below shows setting the IP address of the BMC/IPMI port
+
+```
+config interface ip bmc 192.168.187.2
+```
+
+```
+[Tue Dec 13 04:24:49 2022] > config interface ip bmc 192.168.187.2
+[Tue Dec 13 04:24:50 2022] UPDATING: sudo /opt/fmadio/bin/setup_network.lua --nocal --updatebmc
+.
+.
+<snip>
+.
+.
+[Tue Dec 13 04:26:00 2022] set interface [bmc] ip (192.168.187.2) -> (192.168.187.2)
+[Tue Dec 13 04:26:00 2022]
+[Tue Dec 13 04:26:00 2022] Port       Mode       IP              Netmask         Gateway         DNS0            DNS1
+[Tue Dec 13 04:26:00 2022] ---------------------------------------------------------------------------------------------------------------------------------
+[Tue Dec 13 04:26:04 2022] bmc        static     192.168.187.2   255.255.255.0   192.168.187.30
+[Tue Dec 13 04:26:04 2022] man0       static     192.168.187.10  255.255.255.0   192.168.187.30  1.1.1.1
+[Tue Dec 13 04:26:04 2022] man1       disabled   192.168.1.2     255.255.255.0   192.168.1.1
+[Tue Dec 13 04:26:04 2022] man10      static     192.168.91.50   255.255.255.0
+[Tue Dec 13 04:26:04 2022] cap0
+[Tue Dec 13 04:26:04 2022] cap1
+[Tue Dec 13 04:26:04 2022] ---------------------------------------------------------------------------------------------------------------------------------
+[Tue Dec 13 04:26:04 2022] >
+
+```
+
+### config interface netmask
+
+Sets the netmask of the specified interface
+
+```
+config interface netmask man0 255.255.255.0
+```
+
+<pre><code>[Tue Dec 13 04:28:02 2022] > config interface netmask man0 255.255.255.0
+[Tue Dec 13 04:28:03 2022] UPDATING: sudo /opt/fmadio/bin/setup_network.lua --nocal
+<strong>.
+</strong><strong>.
+</strong><strong>&#x3C;snip>
+</strong><strong>.
+</strong><strong>.
+</strong>[Tue Dec 13 04:28:06 2022] set interface [man0] netmask (255.255.255.0) -> (255.255.255.0)
+[Tue Dec 13 04:28:06 2022]
+[Tue Dec 13 04:28:06 2022] Port       Mode       IP              Netmask         Gateway         DNS0            DNS1
+[Tue Dec 13 04:28:06 2022] ---------------------------------------------------------------------------------------------------------------------------------
+[Tue Dec 13 04:28:07 2022] bmc        static     192.168.187.2   255.255.255.0   192.168.187.30
+[Tue Dec 13 04:28:07 2022] man0       static     192.168.187.10  255.255.255.0   192.168.187.30  1.1.1.1
+[Tue Dec 13 04:28:07 2022] man1       disabled   192.168.1.2     255.255.255.0   192.168.1.1
+[Tue Dec 13 04:28:07 2022] man10      static     192.168.91.50   255.255.255.0
+[Tue Dec 13 04:28:07 2022] cap0
+[Tue Dec 13 04:28:07 2022] cap1
+[Tue Dec 13 04:28:07 2022] ---------------------------------------------------------------------------------------------------------------------------------
+[Tue Dec 13 04:28:07 2022] >
+
+</code></pre>
+
+### config interface gateway
+
+Sets the default gateway for the specified interface
+
+```
+config interface gateway <interface> <IPv4 gateway address>
+```
+
+Example below sets the man0 management interfaces default gateway address
+
+```
+[Tue Dec 13 04:33:11 2022] > config interface gateway man0 192.168.187.30
+[Tue Dec 13 04:33:11 2022] UPDATING: sudo /opt/fmadio/bin/setup_network.lua --nocal
+.
+.
+<snip>
+.
+.
+[Tue Dec 13 04:33:14 2022] set interface [man0] Gateway (192.168.187.30) -> (192.168.187.30)
+[Tue Dec 13 04:33:14 2022]
+[Tue Dec 13 04:33:14 2022] Port       Mode       IP              Netmask         Gateway         DNS0            DNS1
+[Tue Dec 13 04:33:14 2022] ---------------------------------------------------------------------------------------------------------------------------------
+[Tue Dec 13 04:33:17 2022] bmc        static     192.168.187.2   255.255.255.0   192.168.187.30
+[Tue Dec 13 04:33:17 2022] man0       static     192.168.187.10  255.255.255.0   192.168.187.30  1.1.1.1
+[Tue Dec 13 04:33:17 2022] man1       disabled   192.168.1.2     255.255.255.0   192.168.1.1
+[Tue Dec 13 04:33:17 2022] man10      static     192.168.91.50   255.255.255.0
+[Tue Dec 13 04:33:17 2022] cap0
+[Tue Dec 13 04:33:17 2022] cap1
+[Tue Dec 13 04:33:17 2022] ---------------------------------------------------------------------------------------------------------------------------------
+[Tue Dec 13 04:33:17 2022] >
+```
+
+### config interface dns
+
+Sets the DNS server for the specified interface
+
+```
+config interface <interface> <IPv4 DNS address>
+```
+
+Example below sets the DNS server for man0 interface to be 1.1.1.1
+
+```
+config interface dns man0 1.1.1.1
+```
+
+```
+[Tue Dec 13 04:35:33 2022] > config interface dns man0 1.1.1.1
+[Tue Dec 13 04:35:34 2022] UPDATING: sudo /opt/fmadio/bin/setup_network.lua --nocal
+.
+.
+<snip>
+.
+.
+[Tue Dec 13 04:35:37 2022] set interface [man0] DNS (nil) -> (1.1.1.1)
+[Tue Dec 13 04:35:37 2022]
+[Tue Dec 13 04:35:37 2022] Port       Mode       IP              Netmask         Gateway         DNS0            DNS1
+[Tue Dec 13 04:35:37 2022] ---------------------------------------------------------------------------------------------------------------------------------
+[Tue Dec 13 04:35:40 2022] bmc        static     192.168.187.2   255.255.255.0   192.168.187.30
+[Tue Dec 13 04:35:40 2022] man0       static     192.168.187.10  255.255.255.0   192.168.187.30  1.1.1.1
+[Tue Dec 13 04:35:40 2022] man1       disabled   192.168.1.2     255.255.255.0   192.168.1.1
+[Tue Dec 13 04:35:40 2022] man10      static     192.168.91.50   255.255.255.0
+[Tue Dec 13 04:35:40 2022] cap0
+[Tue Dec 13 04:35:40 2022] cap1
+[Tue Dec 13 04:35:40 2022] ---------------------------------------------------------------------------------------------------------------------------------
+[Tue Dec 13 04:35:40 2022] >
+
+```
+
 ## Automatic Push PCAP
 
 ### show push-pcap
