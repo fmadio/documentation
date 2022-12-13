@@ -74,6 +74,12 @@ FW: 7856+
 Shows the current state of the interfaces
 
 ```
+show interface status
+```
+
+Example below shows port status on an FMADIO100Gv2 Analytics system
+
+```
 [Wed Apr 27 07:16:43 2022] > show interface status
 [Wed Apr 27 07:16:43 2022] Port       Description Status          Speed         Transciver    RxPower    TxPower    Temperature      FEC     Vendor            Vendor PN
 [Wed Apr 27 07:16:43 2022] ------------------------------------------------------------------------------------------------------------------------------------
@@ -285,6 +291,10 @@ FW: 7856+  support for 100Gv2 2x100G 2x40G
 This shuts down a specific capture interface as specified, usually this is cap0 or cap1 and depends on the SKU and Port configuration on which ports can be shutdown
 
 ```
+config interface shutdown <interface>
+```
+
+```
 [Wed Apr 27 07:13:15 2022] > config interface shutdown cap0
 [Wed Apr 27 07:13:15 2022]     Disable cycle calibration
 [Wed Apr 27 07:13:15 2022]     PCIVersion: 50434930 50434930
@@ -300,6 +310,10 @@ This shuts down a specific capture interface as specified, usually this is cap0 
 FW: 7856+  support for 100Gv2 2x100G 2x40G
 
 Re-enables the specified capture interface from shutdown status. Depending on the link peer, the link peer might need to be bounced as it may be in a shutdown error state.
+
+```
+config interface no shutdown <interface>
+```
 
 ```
 [Wed Apr 27 07:13:21 2022] > config interface no shutdown cap0
@@ -321,6 +335,10 @@ FW: 8224+ ( 2x100G only)
 This forces FEC on the specific capture port. FEC Autoneg is disabled. This setting is persistent across reboots.
 
 ```
+config interface fec <interface>
+```
+
+```
 Wed Aug 24 05:48:53 2022] > config interface fec cap0
 [Wed Aug 24 05:48:53 2022]     Disable cycle calibration
 [Wed Aug 24 05:48:53 2022]     FEC Force
@@ -338,6 +356,10 @@ Wed Aug 24 05:48:53 2022] > config interface fec cap0
 FW: 8224+ ( 2x100G only)
 
 This disables the forced FEC setting where the system will try autoneg if FEC is enabled or not. Setting is persistent across reboots.
+
+```
+config interface no fec <interface>
+```
 
 ```
 [Wed Aug 24 05:50:39 2022] > config interface no fec cap0
