@@ -605,6 +605,52 @@ table.insert(Config.Target,
 
 ```
 
+### Push to NFS Share 1min Splits with BPF Filter and LZ4 compression
+
+Example pushes 1min PCAPs with a BPF filter (port 80) and applying LZ4 compression. LZ4 compression is fast and reasonably good compression rates.
+
+```
+local Config = {}
+Config.Target = {}
+table.insert(Config.Target,
+{
+    Desc      = "port80-lz4",
+    Mode      = "File",
+    Path      = "/mnt/store0/tmp2/push/udp-10001",
+    Split     = "--split-time 60e9",
+    FileName  = "--filename-tstr-HHMMSS_TZ",
+    FilterBPF = "port 80",
+    PipeCmd   = "lz4 -c",
+    FileSuffix   = ".pcap.lz4",
+})
+
+return Config
+```
+
+### Push to NFS share 1min Splits with BPF Filter and ZSTD compression
+
+Example pushes 1min PCAPs with a BPF filter (port 80) and applying ZSTD compression. ZSTD is a new compression format with performance close to LZ4 but compression rates close to GZIP.
+
+```
+local Config = {}
+
+Config.Target = {}
+
+table.insert(Config.Target,
+{
+    Desc      = "port80 zstd",
+    Mode      = "File",
+    Path      = "/mnt/store0/tmp2/push/udp-10001",
+    Split     = "--split-time 60e9",
+    FileName  = "--filename-tstr-HHMMSS_TZ",
+    FilterBPF = "port 80",
+    PipeCmd   = "zstd -c",
+    FileSuffix   = ".pcap.zstd",
+})
+
+return Config
+```
+
 ### Push to NFS/CIFS Share 1GB splits
 
 **FW: 7936+**
