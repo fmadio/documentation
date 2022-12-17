@@ -811,7 +811,7 @@ The dataset we are testing with is a WAN connection that has an ISP like L2-L7 p
 | raw (not compressed)                     | 6.9 Gbps  | 45.5GB | 1.0     |
 | lz4                                      | 2.5Gbps   | 41.2GB | x 1.104 |
 | gzip -1  (fast)                          | 0.16Gbps  |        |         |
-| gzip default                             |           |        |         |
+| gzip default                             | 0.15Gbps  | 40.2GB |         |
 | pigz 64 CPU (Parallel GZIP with 64 CPUs) | 4.8Gbps   | 40.3GB | x 1.129 |
 | pigz 32 CPU (Parallel GZIP with 32 CPUs) | 4.4Gbps   | 40.3GB | x 1.129 |
 | pigz 8 CPU (Parallel GZIP with 8 CPUs)   | 1.04Gbps  | 40.3GB | x 1.129 |
