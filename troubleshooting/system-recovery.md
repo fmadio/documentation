@@ -20,7 +20,7 @@ System will boot Ubuntu (for example), we are using ( systemrescue 8.01 amd64)
 
 [https://sourceforge.net/projects/systemrescuecd/files/sysresccd-x86/8.01/systemrescue-8.01-amd64.iso/download](https://sourceforge.net/projects/systemrescuecd/files/sysresccd-x86/8.01/systemrescue-8.01-amd64.iso/download)
 
-![](<../.gitbook/assets/image (7) (1).png>)
+![](<../.gitbook/assets/image (7) (1) (1).png>)
 
 System will boot as follows, it may take several minutes depending on the speed of the HTML <-> FMADIO System connection. Recommend the closer the HTML instance is to the FMAD device the better.
 

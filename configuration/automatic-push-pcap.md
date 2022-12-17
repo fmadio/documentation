@@ -787,3 +787,41 @@ Below is the resulting output in AWS S3
 ![PCAP Push to S3](<../.gitbook/assets/image (90).png>)
 
 This does require RCLONE S3 Config to be configured before using.
+
+## Performance
+
+Performance of push varies by protocol filter and compression mode. Typically the remote push locations IO bandwidth is typically the bottleneck.
+
+Here we are testing against a RAM disk on the local system. This removes the network and remote IO performance from the benchmark. Focusing entirely on the FMADIO fetch filter and compress performance.
+
+Parallel GZIP (pigz) running on an FMADIO 100Gv2 Analytics System (96 CPUs total). Making good use of all the CPUs
+
+<figure><img src="../.gitbook/assets/image (3).png" alt=""><figcaption><p>Parallel GZIP 64 CPUs</p></figcaption></figure>
+
+XZ compression using 64 CPUs, more utilization than Parallel GZ
+
+<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption><p>xz compression 64 CPUs</p></figcaption></figure>
+
+### Traffic Profile ISP
+
+The dataset we are testing with is a WAN connection that has an ISP like L2-L7 packet distribution. As its ISP like traffic the data compression rate is not high.
+
+| Description                              | Gbps      | Size   | Ratio   |
+| ---------------------------------------- | --------- | ------ | ------- |
+| raw (not compressed)                     | 6.9 Gbps  | 45.5GB | 1.0     |
+| lz4                                      | 2.5Gbps   | 41.2GB | x 1.104 |
+| gzip -1  (fast)                          | 0.16Gbps  |        |         |
+| gzip default                             |           |        |         |
+| pigz 64 CPU (Parallel GZIP with 64 CPUs) | 4.8Gbps   | 40.3GB | x 1.129 |
+| pigz 32 CPU (Parallel GZIP with 32 CPUs) | 4.4Gbps   | 40.3GB | x 1.129 |
+| pigz 8 CPU (Parallel GZIP with 8 CPUs)   | 1.04Gbps  | 40.3GB | x 1.129 |
+| zstd default                             | 0.77Gbps  | 39.5GB | x 1.15  |
+| zstd --fast                              | 2.4Gbps   | 40.3GB | x 1.129 |
+| xz default                               | 0.019Gbps |        |         |
+| xz 64 CPU (-T 64)                        | 0.909Gbps | 38.9GB | x 1.17  |
+| xz 32 CPU (-T 32)                        |           |        |         |
+
+### Traffic Profile Finance
+
+The data set tested is a full days worth of OPRA A+B Feed dataset, raw uncompressed data size is just over 1TB. Financial data typically gets x2 to x3 compression ratio.
+
