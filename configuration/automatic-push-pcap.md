@@ -819,7 +819,8 @@ The dataset we are testing with is a WAN connection that has an ISP like L2-L7 p
 | zstd --fast                              | 2.4Gbps   | 40.3GB | x 1.129 |
 | xz default                               | 0.019Gbps |        |         |
 | xz 64 CPU (-T 64)                        | 0.909Gbps | 38.9GB | x 1.17  |
-| xz 32 CPU (-T 32)                        |           |        |         |
+| xz 32 CPU (-T 32)                        | 0.502Gbps | 39.3GB |         |
+|                                          |           |        |         |
 
 ### Traffic Profile Finance
 
