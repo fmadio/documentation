@@ -806,21 +806,20 @@ XZ compression using 64 CPUs, more utilization than Parallel GZ
 
 The dataset we are testing with is a WAN connection that has an ISP like L2-L7 packet distribution. As its ISP like traffic the data compression rate is not high.
 
-| Description                              | Gbps      | Size   | Ratio   |
-| ---------------------------------------- | --------- | ------ | ------- |
-| raw (not compressed)                     | 6.9 Gbps  | 45.5GB | 1.0     |
-| lz4                                      | 2.5Gbps   | 41.2GB | x 1.104 |
-| gzip -1  (fast)                          | 0.16Gbps  |        |         |
-| gzip default                             | 0.15Gbps  | 40.2GB |         |
-| pigz 64 CPU (Parallel GZIP with 64 CPUs) | 4.8Gbps   | 40.3GB | x 1.129 |
-| pigz 32 CPU (Parallel GZIP with 32 CPUs) | 4.4Gbps   | 40.3GB | x 1.129 |
-| pigz 8 CPU (Parallel GZIP with 8 CPUs)   | 1.04Gbps  | 40.3GB | x 1.129 |
-| zstd default                             | 0.77Gbps  | 39.5GB | x 1.15  |
-| zstd --fast                              | 2.4Gbps   | 40.3GB | x 1.129 |
-| xz default                               | 0.019Gbps |        |         |
-| xz 64 CPU (-T 64)                        | 0.909Gbps | 38.9GB | x 1.17  |
-| xz 32 CPU (-T 32)                        | 0.502Gbps | 39.3GB |         |
-|                                          |           |        |         |
+| Description                              | Gbps      | Size   | Ratio    |
+| ---------------------------------------- | --------- | ------ | -------- |
+| raw (not compressed)                     | 6.9 Gbps  | 45.5GB | 1.0      |
+| lz4                                      | 2.5Gbps   | 41.2GB | x 1.104  |
+| gzip -1  (fast)                          | 0.16Gbps  | 40.5GB | x 1..123 |
+| gzip default                             | 0.15Gbps  | 40.2GB | x 1.131  |
+| pigz 64 CPU (Parallel GZIP with 64 CPUs) | 4.8Gbps   | 40.3GB | x 1.129  |
+| pigz 32 CPU (Parallel GZIP with 32 CPUs) | 4.4Gbps   | 40.3GB | x 1.129  |
+| pigz 8 CPU (Parallel GZIP with 8 CPUs)   | 1.04Gbps  | 40.3GB | x 1.129  |
+| zstd default                             | 0.77Gbps  | 39.5GB | x 1.15   |
+| zstd --fast                              | 2.4Gbps   | 40.3GB | x 1.129  |
+| xz default                               | 0.019Gbps | 39.2GB | x 1.160  |
+| xz 64 CPU (-T 64)                        | 0.909Gbps | 38.9GB | x 1.17   |
+| xz 32 CPU (-T 32)                        | 0.502Gbps | 39.3GB | x 1.157  |
 
 ### Traffic Profile Finance
 
