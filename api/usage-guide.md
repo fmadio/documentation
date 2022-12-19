@@ -33,14 +33,20 @@ curl -u fmadio:100g "http://127.0.0.1/stream/list"
 ### Capture Split By Filesize
 
 ```
-curl -u fmadio:100g "http://127.0.0.1/stream/ssize?StreamName=stream_test_001&StreamView=split_1GB&"
+curl -u fmadio:100g "http://127.0.0.1/stream/ssize?
+    StreamName=stream_test_001&
+    StreamView=split_1GB&"
 ```
 
 ### Capture Split By Time
 
 ```
-curl -u fmadio:100g "http://127.0.0.1/stream/stime?StreamName=stream_test_001&StreamView=split_1sec&"
+curl -u fmadio:100g "http://127.0.0.1/stream/stime?
+    StreamName=stream_test_001&
+    StreamView=split_1sec&"
 ```
+
+## Legacy Interface&#x20;
 
 ### Single
 
@@ -114,96 +120,220 @@ The examples show how to use the different parameters for the uri endpoint.&#x20
 
 **Note**: Replace the IP 127.0.0.1 with the host IP of your FMADIO device.
 
-### Single
+## API v1 - Single
 
-**StreamName** only.
-
-```
-curl -u fmadio:100g "http://127.0.0.1/api/v1/pcap/single?StreamName=stream_test"
-```
-
-**StreamName** and **FilterBPF**
+### **StreamName** only.
 
 ```
-curl -u fmadio:100g "http://127.0.0.1/api/v1/pcap/single?StreamName=stream_test_001" -G --data-urlencode "FilterBPF=tcp"
+curl -u fmadio:xxxxx "http://127.0.0.1/api/v1/pcap/single?
+    StreamName=stream_test"
 ```
 
-**StreamName** and **Compression**
+### **StreamName** and **FilterBPF**
 
 ```
-curl -u fmadio:100g "http://127.0.0.1/api/v1/pcap/single?StreamName=stream_test_001&Compression=fast"
+curl -u fmadio:xxxxx "http://127.0.0.1/api/v1/pcap/single?
+    StreamName=stream_test_001" 
+    -G --data-urlencode "FilterBPF=tcp"
 ```
 
-**StreamName**, **Compression** and **FilterBPF**
+### **StreamName** and **Compression**
 
 ```
-curl -u fmadio:100g "http://127.0.0.1/api/v1/pcap/single?StreamName=stream_test_001&Compression=fast" -G --data-urlencode "FilterBPF=tcp"
+curl -u fmadio:xxxx "http://127.0.0.1/api/v1/pcap/single?
+    StreamName=stream_test_001&
+    Compression=fast"
 ```
 
-### SplitTime
-
-**StreamName**, **Start** and **Stop**
+### **StreamName**, **Compression** and **FilterBPF**
 
 ```
-curl -u fmadio:100g "http://127.0.0.1/api/v1/pcap/splittime?StreamName=stream_test_001&Start=1530498788000000000&Stop=1530498789000000000"
+curl -u fmadio:xxxx "http://127.0.0.1/api/v1/pcap/single?
+    StreamName=stream_test_001&
+    Compression=fast" 
+    -G --data-urlencode "FilterBPF=tcp"
 ```
 
-**StreamName**, **Start,** **Stop** and **FilterBPF**
+## API v1 - SplitTime
+
+### **StreamName**, **Start** and **Stop**
 
 ```
-curl -u fmadio:100g "http://127.0.0.1/api/v1/pcap/splittime?StreamName=stream_test_001&Start=1530498788000000000&Stop=1530498789000000000" -G --data-urlencode "FilterBPF=tcp" 
+curl -u fmadio:xxxx "http://127.0.0.1/api/v1/pcap/splittime?
+    StreamName=stream_test_001&
+    Start=1530498788000000000&
+    Stop=1530498789000000000"
 ```
 
-**StreamName**, **Start,** **Stop, FilterBPF** and **Compression**
+### **StreamName**, **Start,** **Stop** and **FilterBPF**
 
 ```
-curl -u fmadio:100g "http://127.0.0.1/api/v1/pcap/splittime?StreamName=stream_test_001&Start=1530498788000000000&Stop=1530498789000000000&Compression=fast" -G --data-urlencode "FilterBPF=tcp" 
+curl -u fmadio:xxxx "http://127.0.0.1/api/v1/pcap/splittime?
+    StreamName=stream_test_001&
+    Start=1530498788000000000&
+    Stop=1530498789000000000" 
+    -G --data-urlencode "FilterBPF=tcp" 
 ```
 
-**StreamName**, **Start,** **Stop** and **Compression**
+### **StreamName**, **Start,** **Stop, FilterBPF** and **Compression**
 
 ```
-curl -u fmadio:100g "http://127.0.0.1/api/v1/pcap/splittime?StreamName=stream_test_001&Start=1530498788000000000&Stop=1530498789000000000&Compression=fast" 
+curl -u fmadio:xxxx "http://127.0.0.1/api/v1/pcap/splittime?
+    StreamName=stream_test_001&
+    Start=1530498788000000000&
+    Stop=1530498789000000000&
+    Compression=fast" 
+    -G --data-urlencode "FilterBPF=tcp" 
 ```
 
-### TimeRange
-
-**TSBegin** and **TSEnd**
+### **StreamName**, **Start,** **Stop** and **Compression**
 
 ```
- curl -u fmadio:100g "http://127.0.0.1/api/v1/pcap/timerange?TSBegin=1621772572136996000&TSEnd=1621774913584264000"
+curl -u fmadio:xxxx"http://127.0.0.1/api/v1/pcap/splittime?
+    StreamName=stream_test_001&
+    Start=1530498788000000000&
+    Stop=1530498789000000000&
+    Compression=fast" 
 ```
 
-**TSBegin**, **TSEnd** and **TSMax**
+## API v1 - TimeRange
+
+### **TSBegin** and **TSEnd**
 
 ```
-curl -u fmadio:100g "http://127.0.0.1/api/v1/pcap/timerange?TSBegin=1621772572136996000&TSEnd=1621774913584264000&TSMax=100000"
+ curl -u fmadio:xxxx  "http://127.0.0.1/api/v1/pcap/timerange?
+  TSBegin=1621772572136996000&
+  TSEnd=1621774913584264000"
 ```
 
-**TSBegin**, **TSEnd** and **FilterBPF**
+### **TSBegin**, **TSEnd** and **TSMax**
 
 ```
-curl -u fmadio:100g "http://127.0.0.1/api/v1/pcap/timerange?TSBegin=1621772572136996000&TSEnd=1621774913584264000" -G --data-urlencode "FilterBPF=tcp"  
+curl -u fmadio:xxxx  "http://127.0.0.1/api/v1/pcap/timerange?
+    TSBegin=1621772572136996000&
+    TSEnd=1621774913584264000&
+    TSMax=100000"
 ```
 
-**TSBegin**, **TSEnd** and **Compression**
+### **TSBegin**, **TSEnd** and **FilterBPF**
 
 ```
-curl -u fmadio:100g "http://127.0.0.1/api/v1/pcap/timerange?TSBegin=1621772572136996000&TSEnd=1621774913584264000&Compression=fast"
+curl -u fmadio:xxxx  "http://127.0.0.1/api/v1/pcap/timerange?
+    TSBegin=1621772572136996000&
+    TSEnd=1621774913584264000" 
+    -G --data-urlencode "FilterBPF=tcp"  
 ```
 
-**TSBegin**, **TSEnd**, **FilterBPF** and **Compression**
+### **TSBegin**, **TSEnd** and **Compression**
 
 ```
-curl -u fmadio:100g "http://127.0.0.1/api/v1/pcap/timerange?TSBegin=1621772572136996000&TSEnd=1621774913584264000&Compression=fast" -G --data-urlencode "FilterBPF=tcp"
+curl -u fmadio:xxxx "http://127.0.0.1/api/v1/pcap/timerange?
+    TSBegin=1621772572136996000&
+    TSEnd=1621774913584264000&
+    Compression=fast"
 ```
 
-#### **TSBegin**, **TSEnd**, **FilterBPF** and FilterFrame
+### **TSBegin**, **TSEnd**, **FilterBPF** and **Compression**
 
 ```
-// Some code
+curl -u fmadio:xxxx "http://127.0.0.1/api/v1/pcap/timerange?
+    TSBegin=1621772572136996000&
+    TSEnd=1621774913584264000&
+    Compression=fast" 
+    -G --data-urlencode "FilterBPF=tcp"
+```
+
+### **TSBegin**, **TSEnd**, **FilterBPF** and FilterFrame
+
+#### Frame Filters based on FMADIO Capture system
+
+Filter based on FMADIO Capture port number
+
+```
+curl "http://127.0.0.1/api/v1/pcap/timerange?
+    TSBegin=1658744408270221800&
+    TSEnd=1658744501189259300&"
+     -G --data-urlencode "FilterFrame=capture.port==0" 
+     | tcpdump -r - -nn 
+     | head
+```
+
+Filter based on multiple FMADIO Capture port numbers
+
+```
+curl "http://127.0.0.1/api/v1/pcap/timerange?
+    TSBegin=1658744408270221800&
+    TSEnd=1658744501189259300&"
+     -G --data-urlencode "FilterFrame=capture.port==0,1,2,3" 
+     | tcpdump -r - -nn 
+     | head
+```
+
+Filter based on exclude FMADIO Capture port numbers
+
+```
+curl "http://127.0.0.1/api/v1/pcap/timerange?
+    TSBegin=1658744408270221800&
+    TSEnd=1658744501189259300&"
+     -G --data-urlencode "FilterFrame=capture.port!=0" 
+     | tcpdump -r - -nn 
+     | head
+```
+
+#### Frame filters specific to 7130 (Metamako) hardware footer
+
+Filter for a specific 7130 Device 54932 (any port)
+
+```
+curl "http://127.0.0.1/api/v1/pcap/timerange?
+    TSBegin=1658744408270221800&
+    TSEnd=1658744501189259300&"
+     -G --data-urlencode "FilterFrame=a7130.srcdevice==54932" 
+     | tcpdump -r - -nn 
+     | head
+```
+
+Filter for everything except a specific 7130 Device (not device id 54932)
+
+```
+curl "http://127.0.0.1/api/v1/pcap/timerange?
+    TSBegin=1658744408270221800&
+    TSEnd=1658744501189259300&"
+     -G --data-urlencode "FilterFrame=a7130.srcdevice!=54932" 
+     | tcpdump -r - -nn 
+     | head
+```
+
+Filter for a specific 7130 Port number 1
+
+```
+curl "http://127.0.0.1/api/v1/pcap/timerange?
+    TSBegin=1658744408270221800&
+    TSEnd=1658744501189259300&"
+     -G --data-urlencode "FilterFrame=a7130.srcport==1" 
+     | tcpdump -r - -nn 
+     | head
 
 ```
 
+Filter for multiple 7130 Port numbers 1, 2, 3, 5, 10
+
 ```
+curl "http://127.0.0.1/api/v1/pcap/timerange?
+    TSBegin=1658744408270221800&
+    TSEnd=1658744501189259300&"
+     -G --data-urlencode "FilterFrame=a7130.srcport==1,2,3,5,10" 
+     | tcpdump -r - -nn 
+     | head
+```
+
+Filter for everything except 7130 Port number 10
+
+```
+curl "http://127.0.0.1/api/v1/pcap/timerange?
+    TSBegin=1658744408270221800&
+    TSEnd=1658744501189259300&"
+     -G --data-urlencode "FilterFrame=a7130.srcport!=10" 
+     | tcpdump -r - -nn 
+     | head
 ```
