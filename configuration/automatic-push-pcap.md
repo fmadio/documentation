@@ -830,7 +830,7 @@ The data set tested is a full days worth of OPRA A+B Feed dataset, raw uncompres
 | raw (not compressed)        | 4.29Gbps  | 0.6H  | 979GB | x 1.0   |
 | lz4                         | 1.65Gbps  | 1.3H  | 372GB | x 2.629 |
 | gzip -1 (fast)              | 0.341Gbps | 6.3H  | 311GB | x 3.14  |
-| gzip (default)              | 0.129Gbps | 16.6H |       |         |
+| gzip (default)              | 0.129Gbps | 16.6H | 266GB | x 3.67  |
 | pigz 64 CPU (Parallel GZIP) | 3.92Gbps  | 0.55H | 264GB | x 3.70  |
 | pigz 32 CPU (Parallel GZIP) | 3.92Gbps  | 0.55H | 264GB | x 3.70  |
 | pigz 16 CPU (Parallel GZIP) | 1.98Gbps  | 1.09H | 264GB | x 3.70  |
