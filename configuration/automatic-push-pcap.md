@@ -823,11 +823,11 @@ The dataset we are testing with is a WAN connection that has an ISP like L2-L7 p
 
 ### Traffic Profile Finance
 
-The data set tested is a full days worth of OPRA A+B Feed dataset, raw uncompressed data size is just over 1TB. Financial data typically gets x2 to x3 compression ratio.&#x20;
+The data set tested is a full days worth of OPRA A+B Feed dataset, raw uncompressed data size is just under 1TB. Financial data typically gets x2 to x3 compression ratio with xz maxing out at x5.
 
 | Description                 | Gbps      | Time  | Size  | Ratio   |
 | --------------------------- | --------- | ----- | ----- | ------- |
-| raw (not compressed)        | 4.29Gbps  | 0.6H  | 979GB |         |
+| raw (not compressed)        | 4.29Gbps  | 0.6H  | 979GB | x 1.0   |
 | lz4                         | 1.65Gbps  | 1.3H  | 372GB | x 2.629 |
 | gzip -1 (fast)              | 0.341Gbps | 6.3H  |       |         |
 | gzip (default)              | 0.129Gbps | 16.6H |       |         |
