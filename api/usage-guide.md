@@ -198,12 +198,25 @@ curl -u fmadio:xxxx"http://127.0.0.1/api/v1/pcap/splittime?
 
 ## API v1 - TimeRange
 
-### **TSBegin** and **TSEnd**
+The Time Range function is very useful as the FMADIO system will work out which (or multiple) captures to check based on the Epoch Time stamp value.
+
+### **TSBegin** and **TSEnd**&#x20;
+
+#### **Nano second Epoch selection**
 
 ```
  curl -u fmadio:xxxx  "http://127.0.0.1/api/v1/pcap/timerange?
   TSBegin=1621772572136996000&
   TSEnd=1621774913584264000"
+```
+
+#### Second Epoch time Selection
+
+```
+curl -u fmadio:xxxx  "http://127.0.0.1/api/v1/pcap/timerange?
+  TSMode=sec&
+  TSBegin=1621772572&
+  TSEnd=1621774913"
 ```
 
 ### **TSBegin**, **TSEnd** and **TSMax**
@@ -336,4 +349,68 @@ curl "http://127.0.0.1/api/v1/pcap/timerange?
      -G --data-urlencode "FilterFrame=a7130.srcport!=10" 
      | tcpdump -r - -nn 
      | head
+```
+
+## Miscellaneous Examples
+
+### &#x20; Encapsulation Debug
+
+Many times the exact packet encapsulation is unclear, the following uses a wireshark filter expression to extract and show the full encapsulation format of the packet. From this a high speed BPF filter can be used to process the data.
+
+In the below example we are using the Wireshark filter "ip.addr == 192.168.1.1" on a historical capture.
+
+```
+curl -u fmadio:xxxx "http://127.0.0.1/api/v1/pcap/timerange?
+    TSBegin=1666706401000000000&
+    TSEnd=1666706401010000000" 
+    |  tshark -r - -T fields  -e frame.protocols -e ip.src -e ip.dst 
+    -Y "ip.addr == 192.168.1.1"
+
+```
+
+Alternatively running on the currently running capture via SSH on the fmadio box looks like the following. This example filters on any UDP traffic.
+
+```
+sudo stream_cat 
+    | tshark -r - -T fields  -e frame.protocols -e ip.src -e ip.dst -Y "udp" 
+    | head
+```
+
+The output looks like the following
+
+```
+eth:ethertype:vlan:ethertype:ip:udp:ntp 106.10.186.200  192.168.133.10
+eth:ethertype:vlan:ethertype:ip:udp:ntp 106.10.186.201  192.168.133.10
+eth:ethertype:vlan:ethertype:ip:udp:ntp 167.172.70.21   192.168.133.10
+eth:ethertype:vlan:ethertype:ip:udp:ntp 106.10.186.200  192.168.133.10
+eth:ethertype:vlan:ethertype:ip:udp:ntp 106.10.186.201  192.168.133.10
+eth:ethertype:vlan:ethertype:ip:udp:ntp 167.172.70.21   192.168.133.10
+
+```
+
+The above output shows there is a single VLAN tag in the packet. Making the equivalent BPF filter
+
+```
+vlan and udp
+```
+
+With the final BPF filter using a CURL request
+
+```
+curl -u fmadio:xxxxx "http://127.0.0.1/api/v1/pcap/timerange?
+    TSBegin=1671407102&
+    TSEnd=1671407752&
+    TSMode=sec&" 
+    -G --data-urlencode "FilterBPF=vlan and udp" 
+    | tcpdump -r - -n 
+    | head
+```
+
+Output per below
+
+```
+23:47:45.409489 IP 106.10.186.201.123 > 192.168.133.10.123: NTPv4, Server, length 48
+23:52:14.407364 IP 167.172.70.21.123 > 192.168.133.10.123: NTPv4, Server, length 48
+23:55:42.405072 IP 106.10.186.200.123 > 192.168.133.10.123: NTPv4, Server, length 48
+
 ```
