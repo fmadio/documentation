@@ -340,7 +340,19 @@ Maximum nanosecond of packets to download.
 {% endswagger-parameter %}
 
 {% swagger-parameter in="query" name="TSMode" type="string" %}
-Time Range mode to use for time: msecs or nanos..
+Time Range mode to use for time selection
+
+
+
+nanos : Nanoseconds (default)
+
+
+
+msecs : Milliseconds
+
+
+
+sec : Secconds
 {% endswagger-parameter %}
 
 {% swagger-parameter in="query" name="TSBegin" type="integer" required="true" %}
