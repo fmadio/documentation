@@ -52,7 +52,7 @@ By default FMADIO uses our internal hardware timestamps when downloading PCAPs. 
 
 Use the Config page on the FMADIO Capture system to select as follows
 
-<figure><img src="../.gitbook/assets/image (7).png" alt=""><figcaption><p>FMADIO Timestamp Selection Mode</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (7) (2).png" alt=""><figcaption><p>FMADIO Timestamp Selection Mode</p></figcaption></figure>
 
 NOTE: This can be done retro-actively. e.g. Downloaded PCAPs are generated based on the timestamp selection mode. This setting does not effect the raw captured data.
 
@@ -87,7 +87,7 @@ De-encapsulation means the system will strip away the encapsulation, and BPF fil
 
 By default PacketScope enables the de-encapsulation shown below as the checkbox enabled. To disable de-encapsulation uncheck the checkbox and re-run the filters.
 
-<figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption><p>PacketScope De-Encapsulation</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (3).png" alt=""><figcaption><p>PacketScope De-Encapsulation</p></figcaption></figure>
 
 
 

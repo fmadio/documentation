@@ -207,7 +207,7 @@ fmadio@fmadio100v2-228U:~$
 
 And the related iptables rule
 
-![IPMITOOL Firewall Setting](<../.gitbook/assets/image (5) (1).png>)
+![IPMITOOL Firewall Setting](<../.gitbook/assets/image (5) (1) (2).png>)
 
 This enable ipmitool to work over the network, which can be extremely critical and helpful when troubleshooting problems. Such as the following
 

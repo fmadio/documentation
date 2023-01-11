@@ -8,7 +8,7 @@ The system at boot time detect which "Disk Pack" that is currently installed, an
 
 FMADIO100Gv2 capture system has 10 x NVMe U.2 drive slots, of these 9 of the disks are used for data, and one disk is used for the OS. Below is the location of the OS disk. **The OS disk can not be removed or swapped, must always be inserted at the location below (top left hand corner).**
 
-<figure><img src="../.gitbook/assets/image (5).png" alt=""><figcaption><p>Location of the OS Disk</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (5) (1).png" alt=""><figcaption><p>Location of the OS Disk</p></figcaption></figure>
 
 The location of the remaining 9 data disks when installed can be in any order.
 
@@ -92,7 +92,7 @@ Manually configure the 1G management interface with ifconfig, example below
 sudo ifconfig eth0 192.168.2.173
 ```
 
-<figure><img src="../.gitbook/assets/image (6).png" alt=""><figcaption><p>Manually configuring the 1G interface via HTMl5 BMC </p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (6) (3).png" alt=""><figcaption><p>Manually configuring the 1G interface via HTMl5 BMC </p></figcaption></figure>
 
 The interface may be eth0 or eth1 depending on the config
 

@@ -118,7 +118,7 @@ There is a section name CPUMap, an example is shown below
 
 CPUS which are dedicated to FMADIO Packet Capture system can not modified, these are marked "System" in the comments section per below
 
-<figure><img src="../.gitbook/assets/image (4).png" alt=""><figcaption><p>FMADIO System CPUs</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (4) (3).png" alt=""><figcaption><p>FMADIO System CPUs</p></figcaption></figure>
 
 Any change to system CPUs will be overwritten.
 

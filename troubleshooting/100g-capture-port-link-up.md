@@ -27,7 +27,7 @@ config interface shutdown cap1
 
 It may take 1min for the link to go down, use the show interface status command to wait for link down to complete.
 
-![](<../.gitbook/assets/image (2).png>)
+![](<../.gitbook/assets/image (2) (2).png>)
 
 Once the link is down, disable the shutdown using the command
 
