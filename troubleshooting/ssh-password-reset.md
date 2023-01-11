@@ -34,10 +34,18 @@ sudo passwd fmadio
 
 <figure><img src="../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
 
-8\) Mount the persistant storage volume as follows
+8\) Mount the persistent storage volume as follows. The exact path depends on the system SKU
+
+**FMADIO100v2 or FMADIO100p3:**
 
 ```
 sudo mount /dev/nvme0n1p2 /mnt/store0
+```
+
+**FMADIO20v3 or FMADIO40v3:**
+
+```
+sudo mount /dev/sda2 /mnt/store0
 ```
 
 <figure><img src="../.gitbook/assets/image (49).png" alt=""><figcaption></figcaption></figure>
