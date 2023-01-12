@@ -67,3 +67,9 @@ sudo reboot
 11\) SSH login fmadio has the newly set password
 
 <figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+
+### Web User Password Reset
+
+In addition to the above web user password and access list can be configured using fmadiocli tool. Documentation is here
+
+[https://docs.fmad.io/fmadio-documentation/cli-reference/fmadiocli#config-userlist-password](https://docs.fmad.io/fmadio-documentation/cli-reference/fmadiocli#config-userlist-password)
