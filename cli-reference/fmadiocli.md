@@ -537,6 +537,138 @@ config interface dns man0 1.1.1.1
 
 ```
 
+## Configure Capture
+
+### show capture status
+
+Shows the current capture status
+
+```
+Sun Jan 15 11:21:17 2023] > show capture status
+[Sun Jan 15 11:21:17 2023]
+[Sun Jan 15 11:21:17 2023] Current Capture Status
+[Sun Jan 15 11:21:17 2023] ------------------+--------------------
+[Sun Jan 15 11:21:17 2023] Capture Running   | true
+[Sun Jan 15 11:21:17 2023] Capture Name      | asdf_20230115_1041
+[Sun Jan 15 11:21:17 2023] Capture Bytes     |                0
+[Sun Jan 15 11:21:17 2023] Capture Packets   |                0
+[Sun Jan 15 11:21:17 2023] Capture Drop      |                0
+[Sun Jan 15 11:21:17 2023] Capture FCS Error |                0
+[Sun Jan 15 11:21:17 2023] Capture Rate      |     0.000000 Gbps
+[Sun Jan 15 11:21:17 2023]                   |     0.000000 MPps
+[Sun Jan 15 11:21:17 2023] Capture Start     |
+[Sun Jan 15 11:21:17 2023] Capture Duration  |
+[Sun Jan 15 11:21:17 2023] ------------------+--------------------
+[Sun Jan 15 11:21:17 2023] >
+
+```
+
+### show capture schedule
+
+Shows the current capture schedule
+
+```
+[Sun Jan 15 11:22:07 2023] > show capture schedule
+[Sun Jan 15 11:22:07 2023]
+[Sun Jan 15 11:22:07 2023] Scheduled Capture Status
+[Sun Jan 15 11:22:07 2023]
+[Sun Jan 15 11:22:07 2023]                                          |   24/7 |  Start   |   Stop   |Mon|Tue|Wed|Thu|Fri|Sat|Sun|
+[Sun Jan 15 11:22:07 2023] -----------------------------------------+--------+----------+----------+---+---+---+----+--+---+---+
+[Sun Jan 15 11:22:07 2023] wan_colo0                                |  false | 00:00:00 | 24:00:00 |   |   |   |   |   |   |   |
+[Sun Jan 15 11:22:07 2023] -----------------------------------------+--------+----------+----------+---+---+---+----+--+---+---+
+[Sun Jan 15 11:22:07 2023] >
+```
+
+### show capture list
+
+Displays list of all captures on the system
+
+```
+[Sun Jan 15 11:23:21 2023] > show capture list
+[Sun Jan 15 11:23:21 2023] Showing captures
+[Sun Jan 15 11:23:21 2023] [wan_colo0_20221230_0000]          1310720 B (Wed . 18:04:08 . 28-12-2022)
+[Sun Jan 15 11:23:21 2023] [wan_colo0_20221228_0000]      29613621248 B (Wed . 18:03:58 . 28-12-2022)
+[Sun Jan 15 11:23:21 2023] [wan_colo0_20221227_0000]       3442999296 B (Tue . 23:59:35 . 27-12-2022)
+[Sun Jan 15 11:23:21 2023] [wan_colo0_20221226_0000]      16513236992 B (Mon . 23:59:38 . 26-12-2022)
+[Sun Jan 15 11:23:21 2023] [wan_colo0_20221225_0000]       1869873152 B (Sun . 23:59:42 . 25-12-2022)
+[Sun Jan 15 11:23:21 2023] [wan_colo0_20221224_0000]       6031671296 B (Sat . 23:59:39 . 24-12-2022)
+[Sun Jan 15 11:23:21 2023] [wan_colo0_20221223_0000]      33109311488 B (Fri . 23:59:36 . 23-12-2022)
+[Sun Jan 15 11:23:21 2023] >
+```
+
+### show capture roll
+
+FW: 8367+
+
+Shows the current capture roll setting
+
+```
+[Sun Jan 15 11:25:18 2023] > show capture roll
+[Sun Jan 15 11:25:18 2023] Capture Roll Setting:
+[Sun Jan 15 11:25:18 2023]    Roll every 1.00 Hour
+[Sun Jan 15 11:25:18 2023] >
+```
+
+### show capture flush
+
+FW: 8367+
+
+Shows the current capture flushing behaviour
+
+```
+[Sun Jan 15 11:25:55 2023] > show capture flush
+[Sun Jan 15 11:25:56 2023] Capture Flush Setting:
+[Sun Jan 15 11:25:56 2023]    Periodic Flush: 10 Sec
+[Sun Jan 15 11:25:56 2023] >
+```
+
+### config capture flush
+
+FW: 8367+
+
+Sets the capture flushing behavior.&#x20;
+
+Default setting is flush 1sec after capture is idle
+
+Flush always every 1 second. NOTE: 1sec is very aggressive mode and will consume additional storage. However it does provide low latency when watching low bandwidth captures.
+
+```
+// Some code
+[Sun Jan 15 11:27:34 2023] > config capture flush period 1
+[Sun Jan 15 11:27:35 2023] Setting Flush Mode[period] Timeout 1 sec
+[Sun Jan 15 11:27:35 2023]
+[Sun Jan 15 11:27:35 2023] **** requires restarting of capture to take effect ****
+[Sun Jan 15 11:27:35 2023]
+```
+
+Flush when capture is idle for >= 1sec
+
+```
+[Sun Jan 15 11:27:44 2023] > config capture flush idle 10
+[Sun Jan 15 11:27:44 2023] Setting Flush Mode[idle] Timeout 10 sec
+[Sun Jan 15 11:27:44 2023]
+[Sun Jan 15 11:27:44 2023] **** requires restarting of capture to take effect ****
+[Sun Jan 15 11:27:44 2023]
+[Sun Jan 15 11:27:44 2023] >
+```
+
+### config capture roll
+
+FW: 8367+
+
+Configures the capture rolling behavior. Default (0) is roll at midnight.
+
+Example configures capture to roll every 1 hour.
+
+```
+[Sun Jan 15 11:31:46 2023] > config capture roll 1
+[Sun Jan 15 11:31:47 2023] Setting Capture Roll Every 1 Hour
+[Sun Jan 15 11:31:47 2023]
+[Sun Jan 15 11:31:47 2023] **** requires restarting of capture to take effect ****
+[Sun Jan 15 11:31:47 2023]
+[Sun Jan 15 11:31:47 2023] >
+```
+
 ## Automatic Push PCAP
 
 ### show push-pcap
