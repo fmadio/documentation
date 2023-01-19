@@ -81,7 +81,7 @@ The system is going down for reboot NOW!92509FE (pts/1) (Mon Mar 14 07:23:16
 sysadmin [~]#
 ```
 
-**NOTE**: Please power cycle the Host system after BMC reboot to fully clear the error condition
+**NOTE**: Please power cycle the Host system after BMC reboot to fully clear the error condition. If a powercycle is not possible (due to BMC), a warm reboot can be run first.
 
 ## Power Disconnect
 
