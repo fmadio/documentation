@@ -635,6 +635,8 @@ Starts a capture  with the specified name
 
 ```
 
+Use `config capture status` to verify the current state
+
 ### config capture stop
 
 Stops the currently active capture
