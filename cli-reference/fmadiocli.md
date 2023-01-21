@@ -204,7 +204,7 @@ Example below shows FMADIO100v2 in 8x10G port output
 [Tue Dec 13 04:40:58 2022]          128-255 :                0                0
 [Tue Dec 13 04:40:58 2022]          256-511 :                0                0
 [Tue Dec 13 04:40:58 2022]         512-1023 :                0                0
-[Tue Dec 13 04:40:58 2022]        1024-1518 :                0                0
+[Tue Dec 13 04:40:58 2022]        1024-1518 :                0                0config capture
 [Tue Dec 13 04:40:58 2022]        1024-2047 :                0                0
 [Tue Dec 13 04:40:58 2022]        2048_4095 :                0                0
 [Tue Dec 13 04:40:58 2022]        4096_8191 :                0                0
@@ -218,7 +218,7 @@ Example below shows FMADIO100v2 in 8x10G port output
 [Tue Dec 13 04:40:58 2022]          128-255 :                0                0
 [Tue Dec 13 04:40:58 2022]          256-511 :                0                0
 [Tue Dec 13 04:40:58 2022]         512-1023 :                0                0
-[Tue Dec 13 04:40:58 2022]        1024-1518 :                0                0
+[Tue Dec 13 04:40:58 2022]        1024-1518 :       conf         0                0
 [Tue Dec 13 04:40:58 2022]        1024-2047 :                0                0
 [Tue Dec 13 04:40:58 2022]        2048_4095 :                0                0
 [Tue Dec 13 04:40:58 2022]        4096_8191 :                0                0
@@ -621,6 +621,37 @@ Shows the current capture flushing behaviour
 [Sun Jan 15 11:25:56 2023]    Periodic Flush: 10 Sec
 [Sun Jan 15 11:25:56 2023] >
 ```
+
+### config capture start \<name>
+
+Starts a capture  with the specified name
+
+```
+[Sat Jan 21 01:39:12 2023] > config capture start test-capture
+[Sat Jan 21 01:39:12 2023]
+[Sat Jan 21 01:39:12 2023] Starting Quick Capture [test-capture]
+[Sat Jan 21 01:39:12 2023] OK: [Sat Jan 21 01:39:12 2023] successfully started capture [test-capture]
+[Sat Jan 21 01:39:12 2023] >
+
+```
+
+### config capture stop
+
+Stops the currently active capture
+
+NOTE: This will only stop captures manually started, for scheduled captures please disable the schedule entry to stop the capture
+
+```
+[Sat Jan 21 01:40:33 2023] > config capture stop
+[Sat Jan 21 01:40:33 2023]
+[Sat Jan 21 01:40:33 2023] Stopping Capture
+[Sat Jan 21 01:40:33 2023] OK: [Sat Jan 21 01:40:33 2023] successfully stopped capture [test-capture]
+[Sat Jan 21 01:40:33 2023] >
+```
+
+Use `config capture status` to verify the current state
+
+
 
 ### config capture flush
 
