@@ -97,12 +97,21 @@ kern.err                                                /dev/console
 # log everything to disk
 *.*                                                     /mnt/store0/log/messages
 
-# remote host is: name/ip:port, e.g. 192.168.0.1:514, port optional
+# remote host is TCP: name/ip:port, e.g. 192.168.0.1:514, port optional
 *.* @@192.168.1.100:514
 
 ```
 
-In the above example all syslog log entries are also written to a server at 192.168.1.100 over UDP on port 514. Its the standard syslogd from inted package additional customization can be done if required. Example syslog output as follows
+In the above example all syslog log entries are also written to a server at 192.168.1.100 over TCP on port 514.&#x20;
+
+For UDP on port 514 use the following setting
+
+```
+// remote host over UDP is name/ip;port
+*.* @192.168.1.100:514
+```
+
+Its the standard syslogd from inted package additional customization can be done if required. Example syslog output as follows
 
 ```yaml
 Aug 12 21:06:36 box local7.info fmadio: Capture   (Enb: 0 Pkt: 0 Drop: 0 FCSError: 0 CaptureRateRate 0.00000000 Gbps)
@@ -113,4 +122,3 @@ Aug 12 21:06:46 box local7.info fmadio: Disk      OS (Temp:27 ERR: 0 ) SSD (Vali
 Aug 12 21:06:46 box local7.info fmadio: Link      Capture (1 1 0 0 0 0 0 0 ) Man (1G 1 10G 0 )
 Aug 12 21:06:46 box local7.info fmadio: DiskIO    (Rd:  0.00Gbps Wr:  0.00Gbps)
 ```
-
