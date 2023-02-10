@@ -14,4 +14,4 @@ FMADIO 20G Gen3 1U Analytics Port Layout
 
 ### FMADIO20G Gen3 1U SM Variation
 
-<figure><img src=".gitbook/assets/image (5).png" alt=""><figcaption><p>FMADIO20Gv3-1U-SM</p></figcaption></figure>
+<figure><img src=".gitbook/assets/image (8).png" alt=""><figcaption><p>FMADIO20Gv3-SM</p></figcaption></figure>

@@ -30,7 +30,7 @@ After SystemRescue CD has booted, the above is seen. Note the total number of by
 
 First step is to find the FMADIO OS and Persistant storage devices, Use the "lsblk" tool
 
-![](<../.gitbook/assets/image (8).png>)
+![](<../.gitbook/assets/image (8) (1).png>)
 
 Looking foor a small (15GB) partition as the OS boot disk. In this case its sda1 and a large (224GB or larger) partition for the Persistent storage
 
