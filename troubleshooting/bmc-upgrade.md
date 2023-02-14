@@ -59,6 +59,8 @@ Then run the update program
 sudo ./flasha64.sh
 ```
 
+Enter Y for preserve configuration settings.
+
 The process will take several minutes to complete
 
 ```
@@ -87,13 +89,11 @@ Reconnect AC power to the system
 
 Wait 5minutes for the BMC to fully reboot and host system boot
 
-### Step 6)
 
-The update process clears
 
 ### Step 6)
 
-Reboot the Host server
+Reboot the linux Host server
 
 ```
 sudo reboot
@@ -101,7 +101,7 @@ sudo reboot
 
 ### Step 7)
 
-Check BMC version is updated. It should show version 0x
+After host linux system has rebooted, Check BMC version is updated. It should show version 0xD per image below
 
 ```
 sudo ipmitool bmc info
