@@ -84,10 +84,10 @@
 * [KVM Access via IPMI](troubleshooting/kvm-access-via-ipmi.md)
 * [Serial Port Access over LAN](troubleshooting/serial-port-access-over-lan.md)
 * [BMC Reset](troubleshooting/bmc-reset.md)
+* [BMC Upgrade](troubleshooting/bmc-upgrade.md)
 * [Network Traffic Profile](troubleshooting/network-traffic-profile.md)
 * [100G Capture Port Link Up](troubleshooting/100g-capture-port-link-up.md)
 * [SSH Password Reset](troubleshooting/ssh-password-reset.md)
-* [BMC Upgrade](troubleshooting/bmc-upgrade.md)
 
 ## Maintenance
 
