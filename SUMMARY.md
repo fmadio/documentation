@@ -87,6 +87,7 @@
 * [Network Traffic Profile](troubleshooting/network-traffic-profile.md)
 * [100G Capture Port Link Up](troubleshooting/100g-capture-port-link-up.md)
 * [SSH Password Reset](troubleshooting/ssh-password-reset.md)
+* [BMC Upgrade](troubleshooting/bmc-upgrade.md)
 
 ## Maintenance
 

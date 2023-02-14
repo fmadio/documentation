@@ -800,7 +800,7 @@ Parallel GZIP (pigz) running on an FMADIO 100Gv2 Analytics System (96 CPUs total
 
 XZ compression using 64 CPUs, more utilization than Parallel GZ
 
-<figure><img src="../.gitbook/assets/image (4).png" alt=""><figcaption><p>xz compression 64 CPUs</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (4) (4).png" alt=""><figcaption><p>xz compression 64 CPUs</p></figcaption></figure>
 
 ### Traffic Profile ISP
 

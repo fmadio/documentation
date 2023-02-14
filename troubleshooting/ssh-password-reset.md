@@ -8,7 +8,7 @@ To reset the SSH password system the system requires KVM either directly with a 
 
 2\) The KVM viewer looks similar to below. If the screen is blank press a few random keys to disable the screensaver
 
-<figure><img src="../.gitbook/assets/image (6).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (6) (4).png" alt=""><figcaption></figcaption></figure>
 
 3\) Reboot the system using the Power menu
 
@@ -16,7 +16,7 @@ To reset the SSH password system the system requires KVM either directly with a 
 
 4\) Need to catch the system boot prompt here. One way is to tap space key or letter "r" every few secconds. This will prevent the bootloader from automatically starting.
 
-<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (6).png" alt=""><figcaption></figcaption></figure>
 
 5\) Enter system "rescue" mode at the prompt and hit enter. This will boot the system into rescue mode.
 
