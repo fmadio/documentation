@@ -436,3 +436,100 @@ After a successful authentication the FMADIO dashboard is seen
 ![](<../.gitbook/assets/image (129) (1) (1).png>)
 
 &#x20;Any further questions or problems, please contact us support@fmad.io
+
+## PAM LDAP
+
+**FW: 8529+**
+
+FMADIO systems support Linux PAM ( [https://github.com/linux-pam/linux-pam](https://github.com/linux-pam/linux-pam) ) as an authetication method. One option for centralized authentication is to use LDAP via PAM.
+
+1\) To enable first run fmadiocli settings
+
+[https://docs.fmad.io/fmadio-documentation/cli-reference/fmadiocli#config-security-auth](https://docs.fmad.io/fmadio-documentation/cli-reference/fmadiocli#config-security-auth)
+
+```
+config security auth pam-ldap
+```
+
+2\) We also strongly recommend to disable HTTP access as all username / passwords are sent over un-encrypted HTTP
+
+[https://docs.fmad.io/fmadio-documentation/cli-reference/fmadiocli#config-security-http](https://docs.fmad.io/fmadio-documentation/cli-reference/fmadiocli#config-security-http)
+
+```
+config security http false
+```
+
+3\) Also require to configure nslcd  the LDAP client side. Copy the default config file as follows
+
+```
+cp /opt/fmadio/etc_ro/nslcd.conf /opt/fmadio/etc/nslcd.conf
+```
+
+The default config looks like the following
+
+```
+fmadio@fmadio100v2-228U:~$ cat /opt/fmadio/etc_ro/nslcd.conf
+# /etc/nslcd.conf
+# nslcd configuration file. See nslcd.conf(5)
+# for details.
+#log none debug
+
+# The user and group nslcd should run as.
+uid root
+gid root
+
+# The location at which the LDAP server(s) should be reachable.
+uri ldap://192.168.1.100
+
+# The search base that will be used for all queries.
+base dc=fmad,dc=io
+
+# The LDAP protocol version to use.
+#ldap_version 3
+
+# The DN to bind with for normal lookups.
+#binddn cn=annonymous,dc=example,dc=net
+#bindpw secret
+
+# The DN used for password modifications by root.
+#rootpwmoddn cn=admin,dc=example,dc=com
+
+# SSL options
+#ssl off
+#tls_reqcert never
+#tls_cacertfile /etc/ssl/certs/ca-certificates.crt
+
+# The search scope.
+#scope sub
+
+#ssl start_tls
+#tls_reqcert allow
+
+fmadio@fmadio100v2-228U:~$
+
+```
+
+Modify the uri, base and any other LDAP specific configs in the file and save it.
+
+4\) reboot system
+
+5\) check ldap connectivity
+
+Changing the username/domain/ip address etc to match your environment
+
+```
+fmadio@fmadio100v2-228U:~$ ldapwhoami -x  -D cn=fmadio-user,dc=fmad,dc=io  -H ldap://192.168.1.100/ -w "password"
+dn:cn=fmadio-user,dc=fmad,dc=io
+```
+
+Once this is working, both SSH, WWW-ADMIN and WWW-USER LDAP posix group members can login to the system.
+
+The LDAP posixGroups are
+
+fmadio-ssh-admin  - for SSH access
+
+fmadio-www-admin - for WWW admin access (can change anything)
+
+fmadio-www-user - for WWW user access (monitoring and pcap downloading)
+
+6\) Both SSH and WWW now fully configured using LDAP as centralized authentication
