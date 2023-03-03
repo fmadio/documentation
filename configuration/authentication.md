@@ -443,7 +443,7 @@ After a successful authentication the FMADIO dashboard is seen
 
 FMADIO systems support Linux PAM ( [https://github.com/linux-pam/linux-pam](https://github.com/linux-pam/linux-pam) ) as an authetication method. One option for centralized authentication is to use LDAP via PAM.
 
-1\) To enable first run fmadiocli settings
+1\) First run fmadiocli settings to set the authentication method
 
 [https://docs.fmad.io/fmadio-documentation/cli-reference/fmadiocli#config-security-auth](https://docs.fmad.io/fmadio-documentation/cli-reference/fmadiocli#config-security-auth)
 
@@ -459,7 +459,7 @@ config security auth pam-ldap
 config security http false
 ```
 
-3\) Also require to configure nslcd  the LDAP client side. Copy the default config file as follows
+3\) Configure LDAP client nslcd. Copy the default config file as follows
 
 ```
 cp /opt/fmadio/etc_ro/nslcd.conf /opt/fmadio/etc/nslcd.conf
@@ -509,20 +509,26 @@ fmadio@fmadio100v2-228U:~$
 
 ```
 
-Modify the uri, base and any other LDAP specific configs in the file and save it.
+Modify the uri, base and any other LDAP specific configs to the enviroment and save it
 
 4\) reboot system
 
-5\) check ldap connectivity
+5\) check LDAP connectivity
 
 Changing the username/domain/ip address etc to match your environment
+
+```
+ldapwhoami -x  -D cn=fmadio-user,dc=fmad,dc=io  -H ldap://192.168.1.100/ -w "password"
+```
+
+Successful authentication looks like the following
 
 ```
 fmadio@fmadio100v2-228U:~$ ldapwhoami -x  -D cn=fmadio-user,dc=fmad,dc=io  -H ldap://192.168.1.100/ -w "password"
 dn:cn=fmadio-user,dc=fmad,dc=io
 ```
 
-Once this is working, both SSH, WWW-ADMIN and WWW-USER LDAP posix group members can login to the system.
+Once this is working, both SSH, WWW-Admin and WWW-User LDAP posix group members can login to the system.
 
 The LDAP posixGroups are
 
@@ -536,7 +542,7 @@ fmadio-www-user - for WWW user access (monitoring and pcap downloading)
 
 ### LDAP Optional
 
-Some enviroments require a notice when logging in, such as the following
+Some environments require a notice when logging in, such as the following
 
 <figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
 
