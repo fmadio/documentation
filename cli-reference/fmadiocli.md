@@ -973,3 +973,72 @@ Example below shows setting username "bob" to be a full access user (e.g. can ch
 [Tue Dec 13 04:14:42 2022] >
 ```
 
+## Security Management
+
+Various commands to set and modify the security settings of the system
+
+### show security
+
+Shows the current security settings
+
+```
+show security
+```
+
+```
+[Fri Mar  3 14:21:57 2023] > show security
+[Fri Mar  3 14:21:58 2023] Authentication: BASIC
+[Fri Mar  3 14:21:58 2023] HTTP Access   : enable
+[Fri Mar  3 14:21:58 2023]
+[Fri Mar  3 14:21:58 2023] >
+
+```
+
+### config security auth&#x20;
+
+This sets the authentication method of the system. Number of options as follows
+
+* BASIC - this is basic authencation, low security level
+* OAUTH - OAUTH 2.0  includding Active Directory, Google, Ping Identity
+* RADIUS - Use Radius based authentication
+* PAM-LDAP - Use the linux PAM system with an LDAP authentication mode
+
+Example to set PAM-LDAP as follows
+
+```
+config security auth pam-ldap
+```
+
+Output as follows
+
+```
+[Fri Mar  3 14:24:34 2023] > config security auth pam-ldap
+[Fri Mar  3 14:24:35 2023] Authentication [BASIC] -> [PAM-LDAP]
+[Fri Mar  3 14:24:35 2023] rebooting the system may be required
+[Fri Mar  3 14:24:35 2023] >
+
+```
+
+For some authentication methods it requires a system reboot. In this case a reboot is required as the system needs to start LDAP client daemons.
+
+### config security http
+
+This enables/disables HTTP as a mode of access to the device. HTTP is plain clear text transport protocol, meaning all private data such as username and password are sent in the clear.
+
+For private and secure networks this is ok(ish) for most situations HTTP should be disabled, allowing only HTTPS as the mode of access.
+
+To disable HTTP access (HTTPS only)
+
+```
+config security http false
+```
+
+Example output
+
+```
+[Fri Mar  3 14:27:34 2023] > config security http false
+[Fri Mar  3 14:27:34 2023] HTTP Access [enable] -> [false]
+[Fri Mar  3 14:27:35 2023] please wait 60sec for web access to restart
+[Fri Mar  3 14:27:35 2023] >
+```
+
