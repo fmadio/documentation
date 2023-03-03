@@ -56,7 +56,7 @@ cd /opt/fmadio/firmware/bmc/
 Then run the update program
 
 ```
-sudo ./flasha64.sh
+sudo ./flash64.sh
 ```
 
 Enter Y for preserve configuration settings.
@@ -88,8 +88,6 @@ Reconnect AC power to the system
 ### Step 5)
 
 Wait 5minutes for the BMC to fully reboot and host system boot
-
-
 
 ### Step 6)
 
