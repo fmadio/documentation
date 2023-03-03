@@ -66,7 +66,7 @@ sudo reboot
 
 11\) SSH login fmadio has the newly set password
 
-<figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (3).png" alt=""><figcaption></figcaption></figure>
 
 ### Web User Password Reset
 

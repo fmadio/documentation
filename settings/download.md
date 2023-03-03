@@ -87,7 +87,7 @@ De-encapsulation means the system will strip away the encapsulation, and BPF fil
 
 By default PacketScope enables the de-encapsulation shown below as the checkbox enabled. To disable de-encapsulation uncheck the checkbox and re-run the filters.
 
-<figure><img src="../.gitbook/assets/image (1) (3).png" alt=""><figcaption><p>PacketScope De-Encapsulation</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (3) (1).png" alt=""><figcaption><p>PacketScope De-Encapsulation</p></figcaption></figure>
 
 
 

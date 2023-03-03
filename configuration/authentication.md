@@ -533,3 +533,31 @@ fmadio-www-admin - for WWW admin access (can change anything)
 fmadio-www-user - for WWW user access (monitoring and pcap downloading)
 
 6\) Both SSH and WWW now fully configured using LDAP as centralized authentication
+
+### LDAP Optional
+
+Some enviroments require a notice when logging in, such as the following
+
+<figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+
+This can be customized as follows
+
+1\) copy the default template&#x20;
+
+```
+cp /opt/fmadio/www/login/authorized_access.html.default /opt/fmadio/etc/authorized_access.html
+```
+
+2\) Edit the content of
+
+```
+/opt/fmadio/etc/authorized_access.html
+```
+
+3\) restart nginx
+
+kill nginx and wait 60sec for it to restart
+
+```
+sudo killall nginx
+```
