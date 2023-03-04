@@ -572,9 +572,10 @@ sudo killall nginx
 
 Configuration usually does not go as planned, as such heres some tips to try
 
-1\) span nslcd directory in the foreground
+1\) run nslcd in the foreground
 
 ```
+sudo killall nslcd
 sudo /usr/local/sbin/nslcd -f
 ```
 
