@@ -567,3 +567,39 @@ kill nginx and wait 60sec for it to restart
 ```
 sudo killall nginx
 ```
+
+### Troubleshooting
+
+Configuration usually does not go as planned, as such heres some tips to try
+
+1\) span nslcd directory in the foreground
+
+```
+sudo /usr/local/sbin/nslcd -f
+```
+
+This will check the /etc/nslcd.conf configuration file is working correctly, either config typeo or LDAP server problems.
+
+Once its running ensure local lookups work correctly as follows
+
+```
+ldapwhoami -x  -D cn=fmadio-user,dc=fmad,dc=io  -H ldap://192.168.1.100/ -w "password"
+```
+
+2\) check nginx config files
+
+The nginx logfiles are located in
+
+```
+tail -F -n 100 /mnt/store0/log/nginx_error.log
+```
+
+Any errors there might help understand the issues
+
+3\) check syslog file for PAM logs
+
+```
+tail -F -n 100 /mnt/store0/log/messages |grep -i pam
+```
+
+This will print out logs of all PAM messages and may help debugging
