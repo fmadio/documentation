@@ -93,3 +93,4 @@
 
 * [SSD Replacement](maintenance/ssd-replacement.md)
 * [Firmware Update (CLI)](maintenance/firmware-update-cli.md)
+* [Firmware Revert (CLI)](maintenance/firmware-revert-cli.md)
