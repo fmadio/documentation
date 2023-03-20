@@ -7,7 +7,7 @@ FMADIO Capture System has built in utility "capinfos2" which can provide fast an
 For network profile information please run as follows
 
 ```
-sudo stream_cat <insert capture name> | capinfos2 -v --size-histo
+sudo stream_cat <insert capture name> | capinfos2 -v --histo-size
 ```
 
 This will generate a packet size histogram such as the following
