@@ -26,7 +26,7 @@ System will boot as follows, it may take several minutes depending on the speed 
 
 If a particular boot stage is taking too long Ctrl-C can skip it
 
-![](<../.gitbook/assets/image (1) (2).png>)
+![](<../.gitbook/assets/image (1) (2) (1).png>)
 
 
 

@@ -544,7 +544,7 @@ fmadio-www-user - for WWW user access (monitoring and pcap downloading)
 
 Some environments require a notice when logging in, such as the following
 
-<figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (2).png" alt=""><figcaption></figcaption></figure>
 
 This can be customized as follows
 

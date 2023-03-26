@@ -24,7 +24,7 @@ To reset the SSH password system the system requires KVM either directly with a 
 
 6\) Rescue mode drop to a default prompt as follows
 
-<figure><img src="../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (2) (1).png" alt=""><figcaption></figcaption></figure>
 
 7\) Set a new password for fmadio user  as follows
 

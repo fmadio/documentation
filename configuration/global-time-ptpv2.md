@@ -92,6 +92,47 @@ fmadio@fmadio20n40v3-364:~$
 
 ```
 
+## PTPv2 on Second Port
+
+The above config assumes PTPv2 is running on the primary 10G management port. There is not requirement for using the primary port, instead the 2nd 10G management port can also be used. Below are the differences required
+
+1\) in the udev rules phy10 -> phy11 -> man11
+
+Use phy11 interface
+
+<figure><img src="../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
+
+Rename to man11
+
+<figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+
+2\) Set the IP address of man11
+
+man11 needs to be configured with an IP address, either editing  network config file directly
+
+```
+/opt/fmadio/etc/network.lua
+```
+
+or using the fmadiocli command line utility
+
+
+
+3\) Specify man11 in the ptp config per below
+
+```
+["PTP"] =
+{
+    ["Master0"] = "",
+    ["Master1"] = "",
+    ["Master2"] = "",
+    ["Master3"] = "",
+    ["UpdateRate"] = "",
+    ["VLANID"] = nil,
+    ["Interface"] = "man11",
+},
+```
+
 ### Custom LinuxPTP Config
 
 FMADIO system use the standard LinuxPTP project for time synchronization

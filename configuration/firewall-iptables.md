@@ -192,7 +192,7 @@ This equates to the following iptables rules
 
 At this point the IPMI BMC Webpage can be used such as the following
 
-![](<../.gitbook/assets/image (2) (1).png>)
+![](<../.gitbook/assets/image (2) (1) (1).png>)
 
 ### 5) Add ipmitool access
 
