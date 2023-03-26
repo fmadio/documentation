@@ -22,7 +22,7 @@ Changed to "man10" as follows
 
 System must be rebooted for the above to take effect.
 
-### PTPv2 VLAN Interface
+## PTPv2 VLAN Interface
 
 In some environments PTPv2 is run on its own dedicated VLAN interface. To enable this update the configuration file
 
@@ -133,7 +133,7 @@ or using the fmadiocli command line utility
 },
 ```
 
-### Custom LinuxPTP Config
+## Custom LinuxPTP Config
 
 FMADIO system use the standard LinuxPTP project for time synchronization
 
