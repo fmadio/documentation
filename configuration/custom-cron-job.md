@@ -3,7 +3,7 @@
 FMADIO System uses a default cronjob that is located as below
 
 ```
-/etc/cronjob.root
+/etc/crontab.root
 ```
 
 Direct edits to this file will be lost every reboot, as the directory is on the RAMDisk and not persistant.
