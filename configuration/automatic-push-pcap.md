@@ -7,45 +7,56 @@ FMADIO Packet Capture systems provide a built in Push mode to transfer capture P
 Configuration is via configuration scripts located:
 
 ```
-/opt/fmadio/etc/push_realtime.lua
+/opt/fmadio/etc/push_pcap.lua
+```
+
+If there is no such file above, please copy the basic example from the following location
+
+```
+/opt/fmadio/etc_ro/push_pcap.lua.basic
 ```
 
 An example is shown as follows:
 
 ```lua
-fmadio@fmadio20v3-287:/opt/fmadio/etc$ cat push_realtime.lua
 local Config = {}
 
-Config.Target = {}
+Config.TimeoutRing      = 5*60e9
+Config.Target           = {}
 
--- push all pcap data to /mnt/remote0/push/all_*.pcap
-table.insert(Config.Target, 
+table.insert(Config.Target,
 {
-    Desc      = "pcap-all",
-    Mode      = "File",
-    Path      = "/mnt/remote0/push/all",
-    Split     = "--split-time 60e9",
-    FileName  = "--filename-epoch-sec-startend",
-    FilterBPF = nil 
+        Desc      = "Full",
+        Mode      = "File",
+        Path      = os.date("/mnt/remote0/pcap/%Y%m%d/all-"),
+        Split     = "--split-time "..(60*60*1e9),
+        SplitCmd  = "-Z fmadio",
+        FileName  = "--filename-tstr-HHMMSS",
+        FilterBPF = "",
+        PipeCmd   = "zstd -c -T8",
+        FileSuffix= ".pcap.zstd",
 })
 
--- push all tcp data to /mnt/remote0/push/tcp_*.pcap
-table.insert(Config.Target, 
+table.insert(Config.Target,
 {
-    Desc      = "pcap-tcp", 
-    Mode      = "File", 
-    Path      = "/mnt/remote0/push/tcp",   
-    Split     = "--split-time 60e9", 
-    FileName  = "--filename-epoch-sec-startend", 
-    FilterBPF = "net 192.168.1.0/24 and tcp" 
+        Desc      = "tcp_192_168_1_0",
+        Mode      = "File",
+        Path      = os.date("/mnt/remote0/pcap/%Y%m%d/tcp_host-"),
+        Split     = "--split-time "..(60*60*1e9),
+        SplitCmd  = "-Z fmadio",
+        FileName  = "--filename-tstr-HHMMSS",
+        FilterBPF = "net 192.168.1.0/24",
+        PipeCmd   = "zstd -c -T8",
+        FileSuffix= ".pcap.zstd",
 })
 
 return Config
+
 ```
 
 Multiple push targets can be specified, there is no real limit however throughput does get effected.
 
-In the above example thre are 2 push rules
+In the above example there are 2 push rules
 
 #### A) Push all packet data (no filter)
 
@@ -61,7 +72,7 @@ The sepcified is "FilterBPF=nil" meaning there is no filter, thus all traffic is
 
 The second example shows pushing all TCP data on the network 192.168.1.0/24 to the specified /mnt/remote0/push/ directory with a PCAP file prefix of "tcp\_\*"
 
-Note `FilterBP=net 192.168.1.0/24 and tcp`  This applies a full BPF (Berkley Packet Filter [https://en.wikipedia.org/wiki/Berkeley\_Packet\_Filter](https://en.wikipedia.org/wiki/Berkeley\_Packet\_Filter) ) with the filter "tcp" on the packets before writing it to the location. This results in only TCP data written to the /mnt/remote0/push/tcp\_\*.pcap output files
+Note `FilterBPF=net 192.168.1.0/24 and tcp`  This applies a full BPF (Berkley Packet Filter [https://en.wikipedia.org/wiki/Berkeley\_Packet\_Filter](https://en.wikipedia.org/wiki/Berkeley\_Packet\_Filter) ) with the filter "tcp" on the packets before writing it to the location. This results in only TCP data written to the /mnt/remote0/push/tcp\_\*.pcap output files
 
 ### Supported Endpoints
 
@@ -160,18 +171,18 @@ Specifies how to split filename is encoded. Different downstream applications re
     FileName  = "--filename-epoch-sec-startend", 
 ```
 
-| Command                                                | Description                                                                                                                                                                                                |
-| ------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| --filename-epoch-sec-startend                          | <p>writes the sec epoch start/end time as the file name  </p><p></p><p>e.g March 21, 2021 1:50:55</p><p><code>1616334655-1616334755.pcap</code></p>                                                        |
-| --filename-epoch-sec                                   | <p>writes the sec epoch start time as the file name. </p><p></p><p>e.g March 21, 2021 1:50:55</p><p><code>1616334655.pcap</code></p>                                                                       |
-| --filename-epoch-msec                                  | <p>Writes the epoch start time in milliseconds as the file name<br><br>e.g for April 22 02:48 GMT<br><code>fmadio_1650595712592.pcap</code></p>                                                            |
-| --filename-epoch-usec                                  | <p>Writes the epoch start time in microseconds<br><br>e.g For April 22 02:48 GMT<br><code>fmadio_1650585598007301.pcap</code></p>                                                                          |
-| --filename-epoch-nsec                                  | <p>Writes the epoch start time in nanoseconds<br><br>e.g For April 22 02:48 GMT<br><code>fmadio_1650585598007301462.pcap</code></p>                                                                        |
-| --filename-tstr-HHMM                                   | <p>writes the YYYYMMDD_HHMM style file name.</p><p></p><p>e.g. 2021 Dec 1st 23:50 </p><p><code>20211201_2350.pcap</code></p>                                                                               |
-| --filename-tstr-HHMMSS                                 | <p>writes the YYYYMMDD_HHMMSS style file name. </p><p></p><p>e.g. 2021 Dec 1st 23:50:59 </p><p><code>20211201_235059.pcap</code></p>                                                                       |
-| --filename-tstr-HHMMSS\_NS                             | <p>writes the YYYYMMDD_HHMMSS.MSEC.USEC.NSEC style file name.</p><p> </p><p>e.g. 2021 Dec 1st 23:50:59 123456789nsec<code>20211201_235059.123.456.789.pcap</code></p>                                      |
-| --filename-tstr-HHMMSS\_TZ                             | <p>Wrties the filename in Hour Min Sec with a local timezone suffix<br><br>e.g 2022 April 22 19:59 CST<br><code>fmadio__2022-04-21_19:59:58-04:00.pcap</code></p>                                          |
-| --filename-strftime \<time string>                     | <p>Generic strftime print<br><br>e.g command line<br><code>--filename-strftime "%Y%m%d%H%M%S"</code><br><code></code><br><code>Output is as follows</code><br><code>fmadio__20220421224832.pcap</code></p> |
+| Command                                                | Description                                                                                                                                                                                   |
+| ------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| --filename-epoch-sec-startend                          | <p>writes the sec epoch start/end time as the file name  </p><p></p><p>e.g March 21, 2021 1:50:55</p><p><code>1616334655-1616334755.pcap</code></p>                                           |
+| --filename-epoch-sec                                   | <p>writes the sec epoch start time as the file name. </p><p></p><p>e.g March 21, 2021 1:50:55</p><p><code>1616334655.pcap</code></p>                                                          |
+| --filename-epoch-msec                                  | <p>Writes the epoch start time in milliseconds as the file name<br><br>e.g for April 22 02:48 GMT<br><code>fmadio_1650595712592.pcap</code></p>                                               |
+| --filename-epoch-usec                                  | <p>Writes the epoch start time in microseconds<br><br>e.g For April 22 02:48 GMT<br><code>fmadio_1650585598007301.pcap</code></p>                                                             |
+| --filename-epoch-nsec                                  | <p>Writes the epoch start time in nanoseconds<br><br>e.g For April 22 02:48 GMT<br><code>fmadio_1650585598007301462.pcap</code></p>                                                           |
+| --filename-tstr-HHMM                                   | <p>writes the YYYYMMDD_HHMM style file name.</p><p></p><p>e.g. 2021 Dec 1st 23:50 </p><p><code>20211201_2350.pcap</code></p>                                                                  |
+| --filename-tstr-HHMMSS                                 | <p>writes the YYYYMMDD_HHMMSS style file name. </p><p></p><p>e.g. 2021 Dec 1st 23:50:59 </p><p><code>20211201_235059.pcap</code></p>                                                          |
+| --filename-tstr-HHMMSS\_NS                             | <p>writes the YYYYMMDD_HHMMSS.MSEC.USEC.NSEC style file name.</p><p> </p><p>e.g. 2021 Dec 1st 23:50:59 123456789nsec<code>20211201_235059.123.456.789.pcap</code></p>                         |
+| --filename-tstr-HHMMSS\_TZ                             | <p>Wrties the filename in Hour Min Sec with a local timezone suffix<br><br>e.g 2022 April 22 19:59 CST<br><code>fmadio__2022-04-21_19:59:58-04:00.pcap</code></p>                             |
+| --filename-strftime \<time string>                     | <p>Generic strftime print<br><br>e.g command line<br><code>--filename-strftime "%Y%m%d%H%M%S"</code><br><br><code>Output is as follows</code><br><code>fmadio__20220421224832.pcap</code></p> |
 
 \
 
@@ -345,34 +356,34 @@ NOTE: Please keep the additional white space at the end of the command.
 
 In addition to configuration of
 
-`/opt/fmadio/etc/push_realtime.lua`
+`/opt/fmadio/etc/push_pcap.lua`
 
 To specify when the Push operation occurs the Analytics scheduler must be configured. This is on the "CONFIG" tab of the FMADIO GUI. An Example configuration to push files 24/7,&#x20;
 
 The "Analytics Engine" field must be exactly the following text.&#x20;
 
 ```bash
-push_realtime
+push_pcap
 ```
 
 Screenshot of 24/7 schedule is shown below
 
-![Analytics Schedule to Push PCAP 24/7](<../.gitbook/assets/image (42) (1).png>)
+<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
 
-## Troubleshooting
+Troubleshooting
 
 ### Logfiles
 
 Configuration problems often occour when setting up the system. The following log files can be used to debug
 
 ```bash
-/mnt/store0/log/analytics_push_realtime.cur
+/mnt/store0/log/analytics_push_pcap.cur
 ```
 
 Monitoring the output can be as follows
 
 ```bash
-fmadio@fmadio20v3-287:/mnt/store0/log$ tail -F analytics_push_realtime.cur
+fmadio@fmadio20v3-287:/mnt/store0/log$ tail -F analytics_push_pcap.cur
 [Sat May 29 15:36:46 2021] push [pcap-all                                 : stream_cat:true split:true]
 [Sat May 29 15:37:01 2021] push [pcap-all                                 : stream_cat:true split:true]
 [Sat May 29 15:37:16 2021] push [pcap-all                                 : stream_cat:true split:true]
@@ -428,7 +439,7 @@ In addition to log files its sometimes easier to debug via the CLI interface, by
 This is done as the following CLI command
 
 ```bash
-sudo /opt/fmadio/analytics/push_realtime.lua --force --offline <capture name>
+sudo /opt/fmadio/analytics/push_pcap.lua --force --offline <capture name>
 ```
 
 Replace capture name with the complete name of the capture. Also ensure push scheduler has been disabled
@@ -436,7 +447,7 @@ Replace capture name with the complete name of the capture. Also ensure push sch
 Example output of successful offline mode run is shown below.
 
 ```bash
-fmadio@fmadio20n40v3-363:~$ sudo /opt/fmadio/analytics/push_realtime.lua  --force --offline capture1_20210521_0101
+fmadio@fmadio20n40v3-363:~$ sudo /opt/fmadio/analytics/push_pcap.lua  --force --offline capture1_20210521_0101
 loading filename [/opt/fmadio/analytics/push_realtime.lua]
 sudo /opt/fmadio/bin/stream_cat --uid push_1622272417078768896 capture1_20210521_0101  | /opt/fmadio/bin/pcap_split --uid push_1622272417078768896 -o /mnt/remote0/push/  --split-time 60e9 --filename-epoch-sec-startend > /mnt/store0/log/push_pcap-all_20210529_1613 2>&1 &
 stream_cat UID [push_1622272417078768896]

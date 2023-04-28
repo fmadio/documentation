@@ -116,7 +116,7 @@ capture_active,                                          true
 {% swagger-description %}
 Get system status information. Partial example output in parsed JSON format below
 
-``![](<../.gitbook/assets/image (123) (1) (1).png>)``
+![](<../.gitbook/assets/image (123) (1) (1).png>)
 {% endswagger-description %}
 
 {% swagger-response status="200" description="" %}
@@ -297,19 +297,19 @@ The timerange results may be a portion of a single pcap stream, or a portion of 
 
 **Examples**
 
-****[**https://docs.fmad.io/fmadio-documentation/api/usage-guide#timerange-1**](https://docs.fmad.io/fmadio-documentation/api/usage-guide#timerange-1)****
+[**https://docs.fmad.io/fmadio-documentation/api/usage-guide#timerange-1**](https://docs.fmad.io/fmadio-documentation/api/usage-guide#timerange-1)
 
 **TSBegin** and **TSEnd**
 
 `curl -u fmadio:xxx "http://127.0.0.1/api/v1/pcap/timerange?TSBegin=1621772572136996000&TSEnd=1621774913584264000"`
 
-``
+
 
 **TSBegin**, **TSEnd** and **FilterBPF**
 
 `curl -u fmadio:xxx "http://127.0.0.1/api/v1/pcap/timerange?TSBegin=1621772572136996000&TSEnd=1621774913584264000" -G --data-urlencode "FilterBPF=tcp"`
 
-``
+
 
 **TSBegin**, **TSEnd**, **FilterBPF** and **Compression**
 
@@ -445,6 +445,12 @@ $
 ```
 {% endswagger-response %}
 {% endswagger %}
+
+
+
+
+
+
 
 ### Legacy Download
 

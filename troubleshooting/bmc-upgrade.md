@@ -105,7 +105,7 @@ After host linux system has rebooted, Check BMC version is updated. It should sh
 sudo ipmitool bmc info
 ```
 
-<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
 
 ### &#x20;Step 8)
 

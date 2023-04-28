@@ -32,7 +32,7 @@ To reset the SSH password system the system requires KVM either directly with a 
 sudo passwd fmadio
 ```
 
-<figure><img src="../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (3) (3).png" alt=""><figcaption></figcaption></figure>
 
 8\) Mount the persistent storage volume as follows. The exact path depends on the system SKU
 
