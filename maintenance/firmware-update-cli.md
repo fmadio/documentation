@@ -2,7 +2,7 @@
 description: System Firmware Update
 ---
 
-# Firmware Update \(CLI\)
+# Firmware Update (CLI)
 
 Upload Firmware into the system is the following process
 
@@ -11,27 +11,27 @@ Upload Firmware into the system is the following process
 3. install the firmware on the system
 4. reboot the system
 
-Its fairly straight forward to do, in many instances CLI based update is easier than a GUI 
+Its fairly straight forward to do, in many instances CLI based update is easier than a GUI&#x20;
 
-### 1\)  Copy firmware to the system
+### 1)  Copy firmware to the system
 
 This is either scp or curl -O the firmware to the home directory, example below uses curl directly from the webpage
 
-### 2\) Upload the firmware into the system
+### 2) Upload the firmware into the system
 
-While the .bin file may be on the system, It needs to be uploaded and processed by the system to make it accessible. Using the following command line on the FW file from 1\)
+While the .bin file may be on the system, It needs to be uploaded and processed by the system to make it accessible. Using the following command line on the FW file from 1)
 
-```text
-fmadio@fmadio20v3-287:~$ sudo firmware_install.lua --upload <full firware filename>
+```
+sudo firmware_install.lua --upload <full firware filename>
 ```
 
-NOTE: the firmware filename must be exactly as downloaded, e.g. no \(1\) or other suffix appended.
+NOTE: the firmware filename must be exactly as downloaded, e.g. no (1) or other suffix appended.
 
 Below example filename is "fmadio20v3\_20210831\_1136.bin"
 
 Example upload process
 
-```text
+```
 fmadio@fmadio20v3-287:~$ sudo firmware_install.lua --upload fmadio20v3_20210831_1136.bin
 fmad fmadlua Aug 31 2021
 calibrating...
@@ -88,21 +88,20 @@ Firmware is valid
 Firmware Copy Took 1.473866 sec
 Firmware Update Complete
 done 18.199007Sec 0.303317Min
-fmadio@fmadio20v3-287:~$ sudo reboot
 
 ```
 
-### 3\) Firmware Install
+### 3) Firmware Install
 
 Next the firmware needs to be installed using the command
 
-```text
+```
 $ sudo firmware_install.lua --install <firmware filename.bin>
 ```
 
 Example output is shown below. Note if the capture is running as shown, it will eventually timeout and complete the update.
 
-```text
+```
 fmadio@fmadio20v2-149:$ sudo firmware_install.lua --install fmadio20v2_20210906_1606.bin
 fmad fmadlua Jul 21 2021
 calibrating...
@@ -180,15 +179,14 @@ done 34.044320Sec 0.567405Min
 fmadio@fmadio20v2-149:$ 
 ```
 
-### 4\) Reboot 
+### 4) Reboot&#x20;
 
 System needs to be rebooted, It will power cycle also after the 1st reboot to complete the update process.
 
 Example
 
-```text
+```
 $ sudo reboot
 Connection to 192.168.2.145 closed by remote host.
 
 ```
-
