@@ -311,7 +311,8 @@ Then choose an account to sign out of
 
 </br>
 
-<img src="../.gitbook/assets/image (120) (1) (1) (1).png" width="800px">
+<img src="../.gitbook/assets/image (120) (1) (1) (1).png" width="800px">  
+</br>
 
 ## Google Cloud
 [Google]: https://github.com/fmadio/documentation/edit/fmadio100v2/configuration/authentication.md  "Google Cloud"
