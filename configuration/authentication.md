@@ -19,7 +19,7 @@
 # Authentication  
 [Supported]: https://github.com/fmadio/documentation/edit/fmadio100v2/configuration/authentication.md  "Authentication"
 
-In many environments, different Authentication is required. By default, FMADIO captures systems  </br> 
+Many environments require different Authentication processes. By default, FMADIO captures systems  </br> 
 using built-in BASIC authentication over HTTP as this makes configuration and setup simple.  </br> However, it is a very weak security setting. The following is a list of [Supported Authentication](#supported-authentication) methods  
 </br>
 
