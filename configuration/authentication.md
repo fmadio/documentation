@@ -154,7 +154,8 @@ You should see a login page to access FMADIO as shown in the screenshot below:
 </br>
   
 <img src="../.gitbook/assets/image (80) (1).png" width="800px" height="400px">
-</br>
+</br>  
+
 ### **TROUBLESHOOTING**
 
 If there are some problems, please confirm on CLI using radclient, see example below.
@@ -177,9 +178,11 @@ FMADIO Capture devices can authenticate the users using Active Directory via the
 
 ### Public IP Testing
 
-In the following example, we have used a reverse SSH tunnel to temporarily put the FMADIO system  </br> on a public IP, as Azure Active Directory services require internet-accessible devices for the redirect\_uri.&#x20;
+In the following example, we have used a reverse SSH tunnel to temporarily put the FMADIO system  </br> on a public IP, as Azure Active Directory services require internet-accessible devices for the redirect\_uri.&#x20;  
+</br>
 
-> :memo: **Note:**  For an On-Premise Active Directory Server, this is not required.&#x20;
+> :memo: **Note:**  For an On-Premise Active Directory Server, this is not required.&#x20;  
+</br>
 
 Example of Reverse SSH Tunnel:
 
@@ -244,7 +247,9 @@ The "discovery" config in the above needs to be the OpenID   </br> Connect Metad
 the "client\_id" is shown below  
 </br>
 
-<img src="../.gitbook/assets/image (124) (1) (1) (1) (1) (1).png" width="800px" height="400px">
+<img src="../.gitbook/assets/image (124) (1) (1) (1) (1) (1).png" width="800px" height="400px">  
+
+</br>
 
 > :memo: **Note:** The "client\__secret" in the above config needs to be the Value shown below, not the secretID_  
 
@@ -344,9 +349,12 @@ Next create a file name
 
 ```c
 /opt/fmadio/etc/oauth_opts.lua
-```
+```  
+</br>  
 
-> :memo: **Note:**  This file contains the Google Cloud OAUTH End points as follows.&#x20;
+> :memo: **Note:**  This file contains the Google Cloud OAUTH End points as follows.&#x20;  
+
+</br>
 
 ```c
 local config =
@@ -361,9 +369,11 @@ local config =
 }
 
 return config
-```
+```  
+</br>  
 
-> :memo: **Note:**  The "clientid" and "client\_secret" need to be replaced with the generated   </br> authentication information from google as shown below. The above is a throw away example only
+> :memo: **Note:**  The "clientid" and "client\_secret" need to be replaced with the generated   </br> authentication information from google as shown below. The above is only a throw away example  
+</br>
 
 ### Google Credentials
 
@@ -371,8 +381,11 @@ Next, generate Google OAUTH credentials as follows:
 </br>
 
 <img src="../.gitbook/assets/image (90) (1) (1).png" width="800px">  
+
 </br>
 Then fill in the information, as follows. Google is a bit more strict and requires TLD endpoints  </br> not raw IPs  
+
+</br>
 </br>
 
 <img src="../.gitbook/assets/image (80).png" width="800px">
@@ -398,7 +411,8 @@ sudo killall nginx
 Next, point the browser to the FMADIO device and it will redirect to Google Sign in account&#x20;  
 </br>
 
-<img src="../.gitbook/assets/image (118) (1) (1) (1).png" width="800px" height="400px">
+<img src="../.gitbook/assets/image (118) (1) (1) (1).png" width="800px" height="400px">  
+</br>
 
 Login using your Google account information, and it will re-direct you to the FMADIO dashboard.  
 
@@ -641,8 +655,10 @@ sudo killall nginx
 ```
 
 ### Troubleshooting
+</br>  
 
-Configuration usually does not go as planned, as such here are some > :memo: **Note:**tips to try
+> :memo: **Note:** Configuration usually does not go as planned, as such here are some tips to try  
+</br>
 
 1\) run nslcd in the foreground
 
