@@ -1,23 +1,29 @@
-### Authentication
+##  [Authentication ](#authentication)
+    
 [Supported Authentication](#supported-authentication)
-
+    
 [HTTPS only](#https-only)
-
+    
 [RADIUS](#radius)
 
 [Active Directory](#active-directory)
 
 [Google Cloud](#google-cloud)
-
+    
 [Ping Identity](#ping-identity)
+    
+[LDAP Optional](#ldap-optional)  
+</br>
 
-[LDAP Optional](#ldap-optional)
 
-# Authentication 
+# Authentication  
+[Supported]: https://github.com/fmadio/documentation/edit/fmadio100v2/configuration/authentication.md  "Authentication"
 
-In many environments, different Authentication is required. By default, FMADIO captures systems using built-in BASIC authentication over HTTP as this makes configuration and setup simple. However, it is a very weak security setting.
+In many environments, different Authentication is required. By default, FMADIO captures systems  </br> 
+using built-in BASIC authentication over HTTP as this makes configuration and setup simple.  </br> However, it is a very weak security setting. The following is a list of [Supported Authentication](#supported-authentication) methods  
+</br>
 
-### Supported Authentication
+## Supported Authentication
 [Supported]: https://github.com/fmadio/documentation/edit/fmadio100v2/configuration/authentication.md  "Supported Authentication"
 
 * BASIC (insecure)
@@ -25,14 +31,15 @@ In many environments, different Authentication is required. By default, FMADIO c
 * RADIUS
 * Active Directory (SSO via OAUTH 2.0)
 * Google Cloud (SSO via OAUTH 2.0)
-* Ping Identity Cloud (SSO via OAUTH 2.0)
+* Ping Identity Cloud (SSO via OAUTH 2.0)  
+</br>
 
-### HTTPS Only
+## HTTPS Only
 [HTTPS only]: https://github.com/fmadio/documentation/edit/fmadio100v2/configuration/authentication.md "HTTPS only"
 
-By default, HTTP and HTTPS are enabled on the GUI. In any security setting, HTTP must be disabled, as it's an unsecured protocol. To disable HTTP edit the config file
+By default, HTTP and HTTPS are enabled on the GUI. In any security setting, HTTP must be disabled,  </br> as it's an unsecured protocol. To disable HTTP, edit the config file:
 
-###### General Config
+### General Config
 
 ```c
 /opt/fmadio/etc/time.lua
@@ -67,26 +74,26 @@ Restart nginx by running the following command:
 sudo killall nginx
 ```
 
-NGINX will restart automatically within 60 seconds with the updated configuration. Only HTTPS access is now possible.
+NGINX will restart automatically within 60 seconds with the updated configuration. Only HTTPS  </br> access is now possible.
+SSO configuration is more complicated, please contact support@fmad.io  </br> and we can walk you thru the setup personally  
+</br>
 
-SSO configuration is more complicated, please contact support@fmad.io and we can walk you thru the setup personally
-
-### RADIUS
+## RADIUS
 [RADIUS]: https://github.com/fmadio/documentation/edit/fmadio100v2/configuration/authentication.md  "Radius"
 
 **FW: 7563+**
 
 We support RADIUS authentication using the freeradius client. Configuration is as follow
 
-##### **General Config**
+### **General Config**
 
-Edit the configuration file&#x20;
+Edit the configuration file using the command&#x20;
 
 ```c
 /opt/fmadio/etc/time.lua
 ```
 
-Find the "Security" section, as in the example shown below:
+Find the "Security" section, as shown below:
 
 ```c
 ["Security"] =
@@ -103,9 +110,9 @@ Find the "Security" section, as in the example shown below:
 
 ```
 
-##### **Disable HTTP Access**
+### **Disable HTTP Access**
 
-Edit the following piece of code. This disables the HTTP protocol:&#x20;
+Edit the following configuration. This disables the HTTP protocol:&#x20;
 
 ```c
 ["HTTPAccess"] = false,
@@ -125,30 +132,32 @@ Configure your RADIUS login information
 ["RADIUS_Protocol"] = "PPP",
 ```
 
-Finally, the Timeout, is how long the system waits until it will automatically log out the user and require them to re-authenticate. The value is in nanoseconds, scientific notation, and the formula is no problem. As seen below, 24 hours \* 60 min \* 60 sec \* 1e9 (nanos)
+Finally, there's a Timeout, the user is logged out and will be required to re-authenticate. The value is  </br> in nanoseconds, an example of converting 1 day to nanoseconds and setting it as the timeout value  </br>is shown below:
 
 ```c
     ["RADIUS_Timeout"] = 24*60*60*1e9,
 
 ```
 
-##### **Restart Nginx**
+### **Restart Nginx**
 
-Restart nginx as follows, it will re-spawn within 60sec automatically
+Restart nginx using the command below and it will re-spawn within 60sec automatically
 
 ```c
 sudo killall nginx
 ```
 
-##### **Login**
+### **Login**
 
-You should see a login page when accessing FMADIO as shown in the following screenshot:
+You should see a login page to access FMADIO as shown in the screenshot below:  
 
-![](<../.gitbook/assets/image (80) (1).png>)
+</br>
+  
+<img src="../.gitbook/assets/image (80) (1).png" width="800px" height="400px">
+</br>
+### **TROUBLESHOOTING**
 
-##### **TROUBLESHOOTING**
-
-If there are some problems, please confirm on CLI using radclient, an example is shown below.
+If there are some problems, please confirm on CLI using radclient, see example below.
 
 ```c
 fmadio@fmadio100v2-228U:$ echo "User-Name = steve" | radclient <radius server ip>:1812 auth testing123
@@ -164,13 +173,13 @@ fmadio@fmadio100v2-228U:$
 
 **FW:7608+**
 
-FMADIO Capture devices can authenticate the users using Active Directory via the OAUTH 2.0 protocol. This enable Single Sign On with ADFS.
+FMADIO Capture devices can authenticate the users using Active Directory via the OAUTH 2.0  </br> protocol. This enables Single Sign On with ADFS.
 
-##### Public IP Testing
+### Public IP Testing
 
-In the following example, we have used a reverse SSH tunnel to temporarily put the FMADIO system on a public IP, as Azure Active Directory services require internet-accessible devices for the redirect\_uri.&#x20;
+In the following example, we have used a reverse SSH tunnel to temporarily put the FMADIO system  </br> on a public IP, as Azure Active Directory services require internet-accessible devices for the redirect\_uri.&#x20;
 
-For an On-Premise Active Directory Server, this is not required.&#x20;
+> :memo: **Note:**  For an On-Premise Active Directory Server, this is not required.&#x20;
 
 Example of Reverse SSH Tunnel:
 
@@ -178,9 +187,9 @@ Example of Reverse SSH Tunnel:
  ssh -R 8888:192.168.1.100:443 ec2-user@aws-instance.compute.amazonaws.com
 ```
 
-NOTE: SSH tunnel should not use localhost, as all localhost-sourced requests bypass authentication. Instead, use the IP address of the management interface
+NOTE: SSH tunnel should not use localhost, as all localhost-sourced requests bypass authentication.  </br>Instead, use the IP address of the management interface
 
-##### General Config
+### General Config
 
 Start by editing the general FMADIO configuration file
 
@@ -188,7 +197,7 @@ Start by editing the general FMADIO configuration file
 /opt/fmadio/etc/time.lua
 ```
 
-Then setting HTTP (un-encrypted) access to "disable", and Auth method to "OAUTH", as shown in the example below. The other security fields can be left as they are.
+Then setting HTTP (un-encrypted) access to "disable", and Auth method to "OAUTH", as shown in the  </br> example below. The other security fields can be left as they are.
 
 ```c
 ["Security"] =
@@ -201,7 +210,7 @@ Then setting HTTP (un-encrypted) access to "disable", and Auth method to "OAUTH"
 
 Save the file and ensure there are no parse errors by running fmadiolua /opt/fmadio/etc/time.lua
 
-##### OAUTH Config
+### OAUTH Config
 
 Next, create a file name
 
@@ -226,23 +235,29 @@ local config =
 return config
 ```
 
-These fields are from the ADFS Endpoint URI information. We created a fmadio sign-in entry, which has the client\_id entered above.
+These fields are from the ADFS Endpoint URI information. We created a fmadio sign-in entry, which  </br> has the client\_id entered above.
+The "discovery" config in the above needs to be the OpenID   </br> Connect Metadata document, as seen in the screenshot below.  
+</br>
 
-The "discovery" config in the above needs to be the OpenID Connect Metadata document, as seen in the screenshot below.
+<img src="../.gitbook/assets/image (118) (1) (1) (1).png" width="800px" height="400px">
 
-![](<../.gitbook/assets/image (118) (1) (1) (1).png>)
+the "client\_id" is shown below  
+</br>
 
-the "client\_id" is shown below
+<img src="../.gitbook/assets/image (124) (1) (1) (1) (1) (1).png" width="800px" height="400px">
 
-![](<../.gitbook/assets/image (124) (1) (1) (1) (1) (1).png>)
+> :memo: **Note:** The "client\__secret" in the above config needs to be the Value shown below, not the secretID_  
 
-The "client\__secret" in the above config needs to be the Value shown below, not the secretID_
+</br>
 
-![](<../.gitbook/assets/image (126) (1) (1).png>)
+<img src="../.gitbook/assets/image (126) (1) (1).png" width="800px" height="400px" alt="Alt text" style="box-shadow: 3px 3px 3px gray;">  
 
-Finally the "redirect\_uri" needs to be registered as follows:
+</br>
 
-![](<../.gitbook/assets/image (119) (1) (1) (1) (1).png>)
+Finally the "redirect\_uri" needs to be registered as follows:  
+
+</br>
+<img src="../.gitbook/assets/image (119) (1) (1) (1).png" width="800px" height="400px">
 
 Once config is complete, please confirm there are no syntax errors by running&#x20;
 
@@ -250,48 +265,59 @@ Once config is complete, please confirm there are no syntax errors by running&#x
 fmadiolua /opt/fmadio/etc/oauth_opts.lua
 ```
 
-The correct output is as shown in the screenshot below. If there are any syntax errors please correct them.
+The correct output is as shown in the screenshot below. If there are any syntax errors, please correct  </br> them.  
 
-![](<../.gitbook/assets/image (115) (1) (1).png>)
+</br>
 
-##### Restart nginx
+<img src="../.gitbook/assets/image (115) (1) (1).png" width="800px">
 
-Restart nginx to load in the new configuration file, by killing the process using the command below. It will re-spawn on a 1min cron job automatically
+### Restart nginx
+
+Restart nginx to load in the new configuration file, by killing the process using the command below.  </br> It will re-spawn on a 1min cron job automatically
 
 ```c
 sudo killall nginx
 ```
 
-##### Logging in
+### Logging in
 
-Next, point a browser to the FMADIO device. It should redirect you to the Active Directory login page as shown in the screenshot below.
+Next, point a browser to the FMADIO device. It should redirect you to the Active Directory login  </br> page as shown in the screenshot below.   
 
-![](<../.gitbook/assets/image (121) (1) (1).png>)
+</br>
 
-Login to the system using your Azure / Microsoft credentials. Then the FMADIO device dashboard will be as shown below
+<img src="../.gitbook/assets/image (121) (1) (1).png" width="800px" height="400px">  
+</br>
 
-![](<../.gitbook/assets/image (127) (1) (1) (1).png>)
+Login to the system using your Azure / Microsoft credentials. Then the FMADIO device dashboard  </br> will be as shown below   
+</br>
 
-##### Logout
+<img src="../.gitbook/assets/image (127) (1) (1) (1).png" width="800px" height="400px">  
+</br>
 
-Logout is the same, using the logout button shown below
+### Logout
 
-![](<../.gitbook/assets/image (90) (1) (1) (1).png>)
+Logout is the same, using the logout button shown below:  
+</br>
+ 
+<img src="../.gitbook/assets/image (90) (1) (1) (1).png" width="800px" height="400px">  
+</br>
 
 Then choose an account to sign out of 
 
-![](<../.gitbook/assets/image (120) (1) (1) (1) (1).png>)
+</br>
 
-### Google Cloud
+<img src="../.gitbook/assets/image (120) (1) (1) (1).png" width="800px">
+
+## Google Cloud
 [Google]: https://github.com/fmadio/documentation/edit/fmadio100v2/configuration/authentication.md  "Google Cloud"
 
 **FW:7608+**
 
-While less practical as its typically for publicly accessible sites, it can be used with a Google Cloud VPC to tunnel authentication requests from a private network to Google Cloud infrastructure.
+While less practical as its typically for publicly accessible sites, it can be used with a Google   </br> Cloud VPC to tunnel authentication requests from a private network to Google Cloud infrastructure.
 
-In this example, we just reverse ssh tunnel an FMADIO system onto the public internet (strongly discouraged) for demonstration purposes only.&#x20;
+In this example, we just reverse ssh tunnel an FMADIO system onto the public internet   </br> (strongly discouraged) for demonstration purposes only.&#x20;
 
-##### General Config
+### General Config
 
 Start by editing the general FMADIO configuration file
 
@@ -299,7 +325,7 @@ Start by editing the general FMADIO configuration file
 /opt/fmadio/etc/time.lua
 ```
 
-Then setting HTTP (un-encrypted) access to "disable", and Auth method to "OAUTH", example shown below. The other security fields can be left as they are.
+Then set HTTP (un-encrypted) access to "disable", and Auth method to "OAUTH", as shown in the   </br> example below. The other security fields can be left as they are.
 
 ```c
 ["Security"] =
@@ -312,7 +338,7 @@ Then setting HTTP (un-encrypted) access to "disable", and Auth method to "OAUTH"
 
 Save the file and ensure there are no parse errors by running fmadiolua /opt/fmadio/etc/time.lua
 
-#### OAUTH Config
+### OAUTH Config
 
 Next create a file name
 
@@ -320,7 +346,7 @@ Next create a file name
 /opt/fmadio/etc/oauth_opts.lua
 ```
 
-This file contains the Google Cloud OAUTH End points as follows.&#x20;
+> :memo: **Note:**  This file contains the Google Cloud OAUTH End points as follows.&#x20;
 
 ```c
 local config =
@@ -337,52 +363,63 @@ local config =
 return config
 ```
 
-The "clientid" and "client\_secret" need to be replaced with the generated authentication information from google as shown below. The above is a throw away example only
+> :memo: **Note:**  The "clientid" and "client\_secret" need to be replaced with the generated   </br> authentication information from google as shown below. The above is a throw away example only
 
-##### Google Credentials
+### Google Credentials
 
-Next, generate Google OAUTH credentials as follows:
+Next, generate Google OAUTH credentials as follows:  
+</br>
 
-![](<../.gitbook/assets/image (90) (1) (1).png>)
+<img src="../.gitbook/assets/image (90) (1) (1).png" width="800px">  
+</br>
+Then fill in the information, as follows. Google is a bit more strict and requires TLD endpoints  </br> not raw IPs  
+</br>
 
-Then fill in the information, as follows. Google is a bit more strict and requires TLD endpoints not raw IPs
+<img src="../.gitbook/assets/image (80).png" width="800px">
 
-![](<../.gitbook/assets/image (80).png>)
+Which results in the following secret information  
 
-Which results in the following secret information
-
-![](<../.gitbook/assets/image (115) (1).png>)
+</br>
+<img src="../.gitbook/assets/image (115) (1).png" width="800px">  
+</br>
 
 Update the oauth\_opts.lua file above with the information
 
 ### Restart nginx
 
-Restart nginx to load in the new configuration file, by killing the process with the command below. It will re-spawn on a 1min cron job automatically
+Restart nginx to load in the new configuration file, by killing the process with the command   </br> below. It will re-spawn on a 1min cron job automatically
 
 ```c
 sudo killall nginx
 ```
 
-##### Logging In
+### Logging In
 
-Next, point the browser to the FMADIO device and it will redirect to Google Sign in account&#x20;
+Next, point the browser to the FMADIO device and it will redirect to Google Sign in account&#x20;  
+</br>
 
-![](<../.gitbook/assets/image (118) (1) (1).png>)
+<img src="../.gitbook/assets/image (118) (1) (1) (1).png" width="800px" height="400px">
 
-Login using your Google account information, and it will re-direct you to the FMADIO dashboard.
+Login using your Google account information, and it will re-direct you to the FMADIO dashboard.  
 
-![](<../.gitbook/assets/image (124) (1) (1) (1) (1).png>)
+</br>
 
-Any further questions please contact support@fmad.io for assistance.
+<img src="../.gitbook/assets/image (119) (1) (1) (1).png" width="800px" height="400px">  
+
+</br>
+
+> :memo: **Note:**  Any further questions please contact support@fmad.io for assistance.  
+
+</br>
 
 ## Ping Identity
 [Ping]: https://github.com/fmadio/documentation/edit/fmadio100v2/configuration/authentication.md  "Ping Identity"
 
 **FW:7608+**
 
-Ping Identity is a popular On-Premise authentication system typically used in large organizations. We support Single Sign On with their product suite. Below is an example configuration using the Cloud Services. This example uses a reverse SSH tunnel to put the FMADIO device on a publicly accessible IP (we strongly discourage this approach) for demonstration purposes only, to replicate setting up an On-Premise install.
+Ping Identity is a popular On-Premise authentication system typically used in large organizations.   </br> We support Single Sign On with their product suite. Below is an example of a configuration setup  </br> using the Cloud Services. This example uses a reverse SSH tunnel to put  </br> the FMADIO device on a publicly accessible IP (we strongly discourage this approach)  </br> for demonstration purposes only, to replicate setting up an On-Premise install.
 
-##### General Config
+### General Config
 
 Start by editing the general FMADIO configuration file
 
@@ -390,7 +427,7 @@ Start by editing the general FMADIO configuration file
 /opt/fmadio/etc/time.lua
 ```
 
-Then set HTTP (un-encrypted) access to "disable" and Auth method to "OAUTH" as shown below. The other security fields can be left as they are.
+Then set HTTP (un-encrypted) access to "disable" and Auth method to "OAUTH" as shown below. The other  </br> security fields can be left as they are.
 
 ```c
 ["Security"] =
@@ -403,7 +440,7 @@ Then set HTTP (un-encrypted) access to "disable" and Auth method to "OAUTH" as s
 
 Save the file and ensure there are no parse errors by running fmadiolua /opt/fmadio/etc/time.lua
 
-##### OAUTH Config
+### OAUTH Config
 
 Next, create a file name
 
@@ -428,33 +465,43 @@ local config =
 return config
 ```
 
-The "clientid" and "client\_secret" need to be replaced with the generated authentication information from Ping Identity interface as shown below. The above is a throw away example only
+The "clientid" and "client\_secret" need to be replaced with the generated authentication information </br> from Ping Identity interface as shown below. The above is a throw away example only
 
-##### Ping Identity Credentials
+### Ping Identity Credentials
 
-We setup a web application using Ping Identity interface as follows. The key fields are shown in red.
+We setup a web application using Ping Identity interface as follows. The key fields are shown in red.  
 
-![](<../.gitbook/assets/image (117) (1).png>)
+</br>
+ 
+<img src="../.gitbook/assets/image (117) (1).png" width="800px" height="400px"> 
+
+</br> 
+<img src="../.gitbook/assets/image (118) (1) (1).png" width="800px" height="400px"> 
+
+</br>
 
 These fields are mapped directly into the oauth\_opts.lua configuration file above.
 
-##### Restart nginx
+### Restart nginx
 
-Restart nginx to load in the new configuration file, by killing the process using the command below. It will re-spawn on a 1min cron job automatically.
+Restart nginx to load in the new configuration file, by killing the process using the command below.  </br> It will re-spawn on a 1min cron job automatically.
 
 ```c
 sudo killall nginx
 ```
 
-##### Logging In
+### Logging In
 
-Next, point the browser to the FMADIO device and it will redirect to Ping Identity SSO account as follows
+Next, point the browser to the FMADIO device and it will redirect to Ping Identity SSO account  </br> as follows  
+</br>
+  
+<img src="../.gitbook/assets/image (119) (1) (1) (1).png" width="800px" height="400px">
 
-![](<../.gitbook/assets/image (119) (1) (1) (1).png>)
 
-After a successful authentication, the FMADIO dashboard is as shown below:
+After a successful authentication, the FMADIO dashboard is as shown below:  
+</br>
 
-![](<../.gitbook/assets/image (129) (1) (1).png>)
+<img src="../.gitbook/assets/image (129) (1) (1).png" width="800px"> 
 
 &#x20;Any further questions or problems, please contact us support@fmad.io
 
@@ -462,7 +509,7 @@ After a successful authentication, the FMADIO dashboard is as shown below:
 
 **FW: 8529+**
 
-FMADIO systems support Linux PAM ( [https://github.com/linux-pam/linux-pam](https://github.com/linux-pam/linux-pam) ) as an authetication method. One option for centralized authentication is to use LDAP via PAM.
+FMADIO systems support Linux PAM ( [https://github.com/linux-pam/linux-pam](https://github.com/linux-pam/linux-pam) ) as an authetication   </br> method. One option for centralized authentication is to use LDAP via PAM.
 
 1\) First run fmadiocli settings to set the authentication method
 
@@ -472,7 +519,7 @@ FMADIO systems support Linux PAM ( [https://github.com/linux-pam/linux-pam](http
 config security auth pam-ldap
 ```
 
-2\) We also strongly recommend to disable HTTP access as all username / passwords are sent over un-encrypted HTTP
+2\) We also strongly recommend to disable HTTP access as all username / passwords are sent over  </br> un-encrypted HTTP
 
 [https://docs.fmad.io/fmadio-documentation/cli-reference/fmadiocli#config-security-http](https://docs.fmad.io/fmadio-documentation/cli-reference/fmadiocli#config-security-http)
 
@@ -549,24 +596,27 @@ fmadio@fmadio100v2-228U:~$ ldapwhoami -x  -D cn=fmadio-user,dc=fmad,dc=io  -H ld
 dn:cn=fmadio-user,dc=fmad,dc=io
 ```
 
-Once this is working, both SSH, WWW-Admin and WWW-User LDAP posix group members can login to the system.
+Once this is working, both SSH, WWW-Admin and WWW-User LDAP posix group members can  </br> login to the system.
 
-The LDAP posixGroups are
+The LDAP posixGroups are:  </br>
 
+```c
 fmadio-ssh-admin  - for SSH access
 
 fmadio-www-admin - for WWW admin access (can change anything)
 
 fmadio-www-user - for WWW user access (monitoring and pcap downloading)
+```
 
 6\) Both SSH and WWW now fully configured using LDAP as centralized authentication
 
-### LDAP Optional
+## LDAP Optional
 [LDAP]: https://github.com/fmadio/documentation/edit/fmadio100v2/configuration/authentication.md  "LDAP Optional"
 
-Some environments require a notice when logging in, such as the following
-
-<figure><img src="../.gitbook/assets/image (1) (2).png" alt=""><figcaption></figcaption></figure>
+Some environments require a notice when logging in, such as the following  
+</br>
+<img src="../.gitbook/assets/image (1) (2).png" width="800px">  
+</br>
 
 This can be customized as follows:
 
@@ -590,9 +640,9 @@ kill nginx and wait 60sec for it to restart
 sudo killall nginx
 ```
 
-##### Troubleshooting
+### Troubleshooting
 
-Configuration usually does not go as planned, as such here are some tips to try
+Configuration usually does not go as planned, as such here are some > :memo: **Note:**tips to try
 
 1\) run nslcd in the foreground
 
@@ -601,7 +651,7 @@ sudo killall nslcd
 sudo /usr/local/sbin/nslcd -f
 ```
 
-This will check the /etc/nslcd.conf configuration file is working correctly, either config type or LDAP server problems.
+This will check the /etc/nslcd.conf configuration file is working correctly, either config type  </br> or LDAP server problems.
 
 Once its running ensure local lookups work correctly as follows
 
