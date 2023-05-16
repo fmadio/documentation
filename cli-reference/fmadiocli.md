@@ -1070,3 +1070,5 @@ With the following output
 ```
 
 NOTE: the system requires a reboot for the changes to take effect.
+
+To Disable the timeout set the value to 0
