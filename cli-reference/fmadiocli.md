@@ -1052,6 +1052,7 @@ Time units supported are
 s - second
 m - minute
 h - hour
+disable - disable timeout
 ```
 
 An example of setting a 1 minute idle timeout as follows
@@ -1071,4 +1072,3 @@ With the following output
 
 NOTE: the system requires a reboot for the changes to take effect.
 
-To Disable the timeout set the value to 0
