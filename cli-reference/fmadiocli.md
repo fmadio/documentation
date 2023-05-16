@@ -986,12 +986,12 @@ show security
 ```
 
 ```
-[Fri Mar  3 14:21:57 2023] > show security
-[Fri Mar  3 14:21:58 2023] Authentication: BASIC
-[Fri Mar  3 14:21:58 2023] HTTP Access   : enable
-[Fri Mar  3 14:21:58 2023]
-[Fri Mar  3 14:21:58 2023] >
-
+[Tue May 16 17:42:54 2023] > show security
+[Tue May 16 17:42:55 2023] Authentication: BASIC
+[Tue May 16 17:42:55 2023] HTTP Access   : enable
+[Tue May 16 17:42:55 2023] Idle Timeout  : 0.500000min
+[Tue May 16 17:42:55 2023]
+[Tue May 16 17:42:55 2023] >
 ```
 
 ### config security auth&#x20;
@@ -1042,3 +1042,31 @@ Example output
 [Fri Mar  3 14:27:35 2023] >
 ```
 
+### config security idle\_timeout
+
+This sets the SSH idle timeout and WWW timeout value. Use "show security" to validate the value is correct.
+
+Time units supported are
+
+```
+s - second
+m - minute
+h - hour
+```
+
+An example of setting a 1 minute idle timeout as follows
+
+```
+config security idle_timeout 1m
+```
+
+With the following output
+
+```
+[Tue May 16 17:45:16 2023] > config security idle_timeout 1m
+[Tue May 16 17:45:17 2023] Idle Timeout [30000000000] -> [60000000000]
+[Tue May 16 17:45:17 2023] please reboot for new setting to take effect
+[Tue May 16 17:45:17 2023] >
+```
+
+NOTE: the system requires a reboot for the changes to take effect.
