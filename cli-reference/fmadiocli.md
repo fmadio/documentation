@@ -986,12 +986,12 @@ show security
 ```
 
 ```
-[Tue May 16 17:42:54 2023] > show security
-[Tue May 16 17:42:55 2023] Authentication: BASIC
-[Tue May 16 17:42:55 2023] HTTP Access   : enable
-[Tue May 16 17:42:55 2023] Idle Timeout  : 0.500000min
-[Tue May 16 17:42:55 2023]
-[Tue May 16 17:42:55 2023] >
+[Wed May 17 13:56:44 2023] > show security
+[Wed May 17 13:56:44 2023] Authentication: PAM-LDAP
+[Wed May 17 13:56:44 2023] HTTP Access   : enabled
+[Wed May 17 13:56:44 2023] Timeout SSH   : 0.166667min (idle)
+[Wed May 17 13:56:44 2023] Timeout WWW   : 1.000000min (session
+[Wed May 17 13:56:44 2023] >
 ```
 
 ### config security auth&#x20;
@@ -1042,9 +1042,9 @@ Example output
 [Fri Mar  3 14:27:35 2023] >
 ```
 
-### config security idle\_timeout
+### config security timeoutSSH
 
-This sets the SSH idle timeout and WWW timeout value. Use "show security" to validate the value is correct.
+This sets the SSH idle timeout timeout value. Use "show security" to validate the value is correct.
 
 Time units supported are
 
@@ -1055,20 +1055,50 @@ h - hour
 disable - disable timeout
 ```
 
-An example of setting a 1 minute idle timeout as follows
+An example of setting a 30 sec idle timeout as follows
 
 ```
-config security idle_timeout 1m
+config security timeoutSSH 30s
 ```
 
 With the following output
 
 ```
-[Tue May 16 17:45:16 2023] > config security idle_timeout 1m
-[Tue May 16 17:45:17 2023] Idle Timeout [30000000000] -> [60000000000]
-[Tue May 16 17:45:17 2023] please reboot for new setting to take effect
-[Tue May 16 17:45:17 2023] >
+[Wed May 17 13:57:23 2023] > config security timeoutSSH 30s
+[Wed May 17 13:57:24 2023] SSH Timeout [10000000000] -> [30000000000]
+[Wed May 17 13:57:24 2023] please reboot for new setting to take effect
+[Wed May 17 13:57:24 2023] >
 ```
 
 NOTE: the system requires a reboot for the changes to take effect.
 
+### config security timeoutWWW
+
+This sets the WWW session timeout value. This is the maximum session duration. Once the session duration is reached the web interface will require a re-login.
+
+Time units supported are
+
+```
+// Some code
+s - second
+m - minute
+h - hour
+disable - disable timeout
+```
+
+An example setting a 1 hour maximum session timeout
+
+```
+config security timeoutWWW 1h
+```
+
+Example output
+
+```
+[Wed May 17 14:00:35 2023] > config security timeoutWWW 1h
+[Wed May 17 14:00:35 2023] WWW Timeout [60000000000] -> [3600000000000]
+[Wed May 17 14:00:35 2023] please reboot for new setting to take effect
+[Wed May 17 14:00:35 2023] >
+```
+
+NOTE: a the system requires a reboot for the changes to take effect.
