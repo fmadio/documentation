@@ -183,9 +183,13 @@ On reboot the boot.lua script is executed and a persistent ssh tunnel to the rem
 
 ## Custom sudoers File
 
-A customized persistant /etc/sudoers file can be created at the following location /opt/fmadio/etc/sudoers
+A customized persistant /etc/sudoers file can be created at the following location&#x20;
 
-On boot the system will override the default /etc/sudoers file with the file in&#x20;
+```
+/opt/fmadio/etc/sudoers
+```
+
+On boot the system will override the default /etc/sudoers file with the file created per above
 
 ```
 /opt/fmadio/etc/sudoers
