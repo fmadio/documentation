@@ -5,6 +5,7 @@
 * [Network Port Layout](network-port-layout.md)
 * [Hardware](hardware.md)
 * [Performance](performance.md)
+* [Getting Started](getting-started.md)
 
 ## Configuration
 
