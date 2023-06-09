@@ -4,22 +4,20 @@
 
 There are 4 ways to connect to the appliance for initial configuration:
 
-KVM – The appliance has a VGA port for a monitor and USB for keyboard.\
-Serial – The serial port can be used with a configuration of 115200, 8, None, 1.\
-SSH to the OS – There are 2 management ports preconfigured with IP addresses:
+* KVM – The appliance has a VGA port for a monitor and USB for keyboard.
+* Serial – The serial port can be used with a configuration of 115200, 8, None, 1.
+* SSH to the OS – There are 2 management ports preconfigured with IP addresses:
 
 ```
 man0 (1GbE copper): 192.168.0.95 / 24
 man10 (10GbE SFP+): 192.168.15.10 / 24
 ```
 
-SSH to the IPMI – The IPMI port is preconfigured with IP address:&#x20;
+* IPMITOOL to the IPMI – The IPMI port is preconfigured with IP address:&#x20;
 
 ```
 bmc (1GbE copper):       192.168.0.93 / 24
 ```
-
-Example, is setting a secondary IP address on the switch directly connected to the device. Using a 192.168.0.0/24 IP and address. Then ssh from the switch to the system.
 
 ## Show Network Status
 
