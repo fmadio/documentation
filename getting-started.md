@@ -13,7 +13,7 @@ man0 (1GbE copper): 192.168.0.95 / 24
 man10 (10GbE SFP+): 192.168.15.10 / 24
 ```
 
-* IPMITOOL to the IPMI – The IPMI port is preconfigured with IP address:&#x20;
+* IPMITOOL to the IPMI/BMC/iLO/iDARC – The IPMI port is preconfigured with IP address:&#x20;
 
 ```
 bmc (1GbE copper):       192.168.0.93 / 24
