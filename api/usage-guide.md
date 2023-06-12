@@ -351,6 +351,30 @@ curl "http://127.0.0.1/api/v1/pcap/timerange?
      | head
 ```
 
+Filter on  a specific 7130 Port number and use the 7130 Footer Timestamp as the PCAP timestamp. Overriding the current TimeStamp setting
+
+```
+curl "http://127.0.0.1/api/v1/pcap/timerange?
+    TSBegin=1658744408270221800&
+    TSEnd=1658744501189259300&TSMode=arista7130"
+     -G --data-urlencode "FilterFrame=a7130.srcport!=10" 
+     | tcpdump -r - -nn 
+     | head
+```
+
+#### Frame filters specific to Cisco 3550 (Exablaze) hardware footer
+
+Filter on a specific ingress port of the Cisco 3550, and use the Footer timestamp as the PCAP timestamp.
+
+```
+curl "http://127.0.0.1/api/v1/pcap/timerange?
+    TSBegin=1658744408270221800&
+    TSEnd=1658744501189259300&TSMode=cisco3550"
+     -G --data-urlencode "FilterFrame=c3550.srcport==48" 
+     | tcpdump -r - -nn 
+     | head
+```
+
 ## Miscellaneous Examples
 
 ### &#x20; Encapsulation Debug
