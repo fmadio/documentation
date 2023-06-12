@@ -711,6 +711,10 @@ Shows the current PCAP timestamp mode. e.g. from the FMADIO FPGA or extract timi
 Example below shows the PCAP timestamp uses the Arista 7130 (Metamako) footer timestamp
 
 ```
+show pcap timestamp
+```
+
+```
 [Mon Jun 12 16:48:09 2023] > show pcap timestamp
 [Mon Jun 12 16:48:10 2023] TimeStamp Mode: arista7130 : (Arista 7130 (Metamako))
 [Mon Jun 12 16:48:10 2023]
