@@ -702,6 +702,91 @@ Example configures capture to roll every 1 hour.
 [Sun Jan 15 11:31:47 2023] >
 ```
 
+## Configure PCAP Download
+
+### show pcap timestamp
+
+Shows the current PCAP timestamp mode. e.g. from the FMADIO FPGA or extract timing information from a packet broker
+
+Example below shows the PCAP timestamp uses the Arista 7130 (Metamako) footer timestamp
+
+```
+[Mon Jun 12 16:48:09 2023] > show pcap timestamp
+[Mon Jun 12 16:48:10 2023] TimeStamp Mode: arista7130 : (Arista 7130 (Metamako))
+[Mon Jun 12 16:48:10 2023]
+[Mon Jun 12 16:48:10 2023] >
+
+```
+
+### config pcap timestamp \<tsmode>
+
+Configures the default PCAP timestamp mode when downloading PCAP data. this value can be overidden by URI option TSMode.
+
+Supported Timestamp Modes
+
+* nic - FMADIO FPGA timestamp
+* arista7130 - Arista 7130 (Metamako) Footer
+* arista7150\_overwrite - Arista 7150 Overwite FCS + Keyframes
+* arista7150\_insert - Arista 7150 Insert 32bit + Keyframes
+* arista7280\_mac48 - Arista 7280 Source MAC 48bit Overwrite
+* arista7280\_eth64 - Arista 7280 Ethernet Insert 64bit
+* erspanv3 - Cisco ERSPANv3 Encapsulation
+* cisco3550 - Cisco 3550 (Exablaze) Footer
+
+Help command
+
+```
+[Mon Jun 12 16:50:30 2023] > config pcap timestamp
+[Mon Jun 12 16:50:31 2023] Example Usage:
+[Mon Jun 12 16:50:31 2023] > config pcap timestamp <mode>                           : configure default PCAP timestamp mode
+[Mon Jun 12 16:50:31 2023]                         arista7280_mac48                 : Arista 7280 (Source MAC 48bit)
+[Mon Jun 12 16:50:31 2023]                         arista7130                       : Arista 7130 (Metamako)
+[Mon Jun 12 16:50:31 2023]                         arista7280_eth64                 : Arista 7280 (Ethernet 64bit)
+[Mon Jun 12 16:50:31 2023]                         arista7150_overwrite             : Arista 7150 (Overwrite FCS)
+[Mon Jun 12 16:50:31 2023]                         erspanv3                         : CISCO ERSPANv3 Timestamp
+[Mon Jun 12 16:50:31 2023]                         arista7150_insert                : Arista 7150 (Insert FCS)
+[Mon Jun 12 16:50:31 2023]                         nic                              : Timestamp is the FMADIO FPGAs internal timestamp
+[Mon Jun 12 16:50:31 2023]                         cisco3550                        : CISCO 3550 Timestamp (Exablaze)
+[Mon Jun 12 16:50:31 2023]
+[Mon Jun 12 16:50:31 2023] ERROR:  Unknown Command [config pcap timestamp]
+[Mon Jun 12 16:50:31 2023] >
+
+```
+
+Example to set the default behavior to use Arista 7130 footer. It takes 60sec to restart the processes after the setting.
+
+```
+config pcap timestamp arista7130
+```
+
+```
+[Mon Jun 12 16:54:04 2023] > config pcap timestamp arista7130
+[Mon Jun 12 16:54:04 2023] TimeStamp Mode set to [arista7130] : (Arista 7130 (Metamako))
+[Mon Jun 12 16:54:04 2023]
+[Mon Jun 12 16:54:04 2023] Restarting Processes
+[Mon Jun 12 16:54:14 2023] Wait 60sec for processes to restart
+[Mon Jun 12 16:54:14 2023]       0/60
+[Mon Jun 12 16:54:15 2023]       1/60
+[Mon Jun 12 16:54:16 2023]       2/60
+[Mon Jun 12 16:54:17 2023]       3/60
+[Mon Jun 12 16:54:18 2023]       4/60
+.
+.
+
+[Mon Jun 12 16:55:07 2023]       53/60
+[Mon Jun 12 16:55:08 2023]       54/60
+[Mon Jun 12 16:55:09 2023]       55/60
+[Mon Jun 12 16:55:10 2023]       56/60
+[Mon Jun 12 16:55:11 2023]       57/60
+[Mon Jun 12 16:55:12 2023]       58/60
+[Mon Jun 12 16:55:13 2023]       59/60
+[Mon Jun 12 16:55:14 2023]       60/60
+[Mon Jun 12 16:55:15 2023] done
+[Mon Jun 12 16:55:15 2023] >
+```
+
+
+
 ## Automatic Push PCAP
 
 ### show push-pcap
@@ -813,17 +898,7 @@ Example below shows splitting on 1GB boundaries
 
 Specifies the filename format for each individual split PCAP
 
-| Value              | Example                           | Description              |
-| ------------------ | --------------------------------- | ------------------------ |
-| epoch-sec          | \_1654610221.pcap                 | Second Epoch             |
-| epoch-sec-startend | \_1654610221-1654620221.pcap      | Epoch start and End      |
-| epoch-msec         | \_1654610221012.pcap              | Epoch in msec            |
-| epoch-usec         | \_1654610221012345.pcap           | Epoch is micro sec       |
-| epoch-nsec         | \_1654610221012345678.pcap        | Epoch in Nano sec        |
-| HHMM               | \_20200101\_1201.pcap             | Hour Min                 |
-| HHMMSS             | \_20200101\_120159.pcap           | Hour Min Sec             |
-| HHMMSS\_TZ         | 2020-01-01\_12:01:59+09:00.pcap   | House Min Sec + Timezone |
-| HHMMSS\_NS         | \_20200101\_120159.012345678.pcap | House Min Sec Nanos      |
+<table><thead><tr><th width="290.37282229965155">Value</th><th width="301.23912015287374">Example</th><th>Description</th></tr></thead><tbody><tr><td>epoch-sec</td><td>_1654610221.pcap</td><td>Second Epoch</td></tr><tr><td>epoch-sec-startend</td><td>_1654610221-1654620221.pcap</td><td>Epoch start and End</td></tr><tr><td>epoch-msec</td><td>_1654610221012.pcap</td><td>Epoch in msec</td></tr><tr><td>epoch-usec</td><td>_1654610221012345.pcap</td><td>Epoch is micro sec</td></tr><tr><td>epoch-nsec</td><td>_1654610221012345678.pcap</td><td>Epoch in Nano sec</td></tr><tr><td>HHMM</td><td>_20200101_1201.pcap</td><td>Hour Min</td></tr><tr><td>HHMMSS</td><td>_20200101_120159.pcap</td><td>Hour Min Sec</td></tr><tr><td>HHMMSS_TZ</td><td>2020-01-01_12:01:59+09:00.pcap</td><td>House Min Sec + Timezone</td></tr><tr><td>HHMMSS_NS</td><td>_20200101_120159.012345678.pcap</td><td>House Min Sec Nanos</td></tr></tbody></table>
 
 Example uses a simple Hour Min Sec format
 
@@ -855,10 +930,7 @@ Example sets for udp and port 1900
 
 FMADIO Web GUI supports multiple users with 2 levels of access
 
-| Permission | Description                                                          |
-| ---------- | -------------------------------------------------------------------- |
-| full       | Provides full admin level access to all functions                    |
-| user       | User level only, no ability to modify config and start/stop captures |
+<table><thead><tr><th width="243">Permission</th><th>Description</th></tr></thead><tbody><tr><td>full</td><td>Provides full admin level access to all functions</td></tr><tr><td>user</td><td>User level only, no ability to modify config and start/stop captures</td></tr></tbody></table>
 
 Using fmadiocli to setup and configure is shown below
 
