@@ -212,16 +212,40 @@ Stream capture name.
 BPF Filter to be applied to the stream.
 {% endswagger-parameter %}
 
-{% swagger-parameter in="query" name="FilterPort" %}
-Port filter string. e.g  0001 &#x20;
+{% swagger-parameter in="query" name="FilterFrame" %}
+Filter on the Packet Frame
 
-Port 0 - Enable
 
-Port 1 - Disable
 
-Port 2 - Disable
+a7130.device=\<device id>
 
-Port 3 - Disable
+a7130.srcport=\<port id>
+
+c3550.srcport=\<portid>
+
+capture.srcport=\<portid>
+{% endswagger-parameter %}
+
+{% swagger-parameter in="query" name="TSMode" %}
+Sets the Timestamp of the PCAP
+
+
+
+nic - FMADIO FPGA timestamp
+
+arista7130 - Arista 7130 (Metamako)
+
+arista7150\_overwrite - Arista 7150   FCS Overwrite
+
+arista7150\_insert - Arista 7150 Insert 32bit
+
+arista7280\_eth64 - Arista 7280 Ethernet 64bit header
+
+arista7280\_mac48 - Arista 7280 SrcMAC 48bit Overwrite&#x20;
+
+erspanv3 - Cisco ERPSANv3
+
+c3550 - Cisco 3550 (Exablaze)
 {% endswagger-parameter %}
 
 {% swagger-response status="200" description="" %}
@@ -268,15 +292,39 @@ Escape Encoded BPF filter
 {% endswagger-parameter %}
 
 {% swagger-parameter in="query" name="FilterPort" %}
-Port filter string. e.g  0001 &#x20;
+Filter on the Packet Frame
 
-Port 0 - Enable
 
-Port 1 - Disable
 
-Port 2 - Disable
+a7130.device=\<device id>
 
-Port 3 - Disable
+a7130.srcport=\<port id>
+
+c3550.srcport=\<portid>
+
+capture.srcport=\<portid>
+{% endswagger-parameter %}
+
+{% swagger-parameter in="query" name="TSMode" %}
+Sets the Timestamp of the PCAP
+
+
+
+nic - FMADIO FPGA timestamp
+
+arista7130 - Arista 7130 (Metamako)
+
+arista7150\_overwrite - Arista 7150   FCS Overwrite
+
+arista7150\_insert - Arista 7150 Insert 32bit
+
+arista7280\_eth64 - Arista 7280 Ethernet 64bit header
+
+arista7280\_mac48 - Arista 7280 SrcMAC 48bit Overwrite&#x20;
+
+erspanv3 - Cisco ERPSANv3
+
+c3550 - Cisco 3550 (Exablaze)
 {% endswagger-parameter %}
 
 {% swagger-response status="200: OK" description="" %}
@@ -405,6 +453,28 @@ a7130.srcdevice==54931 and a7130.srcport=1,2,3,4
 a7130.srcdevice==54931 and a7130.srcport!=1
 
 (fetch data for Arista 7130 device ie 54931 and all ports except port 1)
+{% endswagger-parameter %}
+
+{% swagger-parameter in="query" name="TSMode" %}
+Sets the Timestamp of the PCAP
+
+
+
+nic - FMADIO FPGA timestamp
+
+arista7130 - Arista 7130 (Metamako)
+
+arista7150\_overwrite - Arista 7150   FCS Overwrite
+
+arista7150\_insert - Arista 7150 Insert 32bit
+
+arista7280\_eth64 - Arista 7280 Ethernet 64bit header
+
+arista7280\_mac48 - Arista 7280 SrcMAC 48bit Overwrite&#x20;
+
+erspanv3 - Cisco ERPSANv3
+
+c3550 - Cisco 3550 (Exablaze)
 {% endswagger-parameter %}
 
 {% swagger-response status="200" description="" %}
