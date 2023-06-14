@@ -66,7 +66,7 @@
 
 * [Dashboard](monitoring/dashboard.md)
 * [Alerts](monitoring/monitor-alerts.md)
-* [Syslog FMADIO100Gv2](monitoring/syslog-fmadio100gv2.md)
+* [Telemetry Syslog](monitoring/syslog-fmadio100gv2.md)
 
 ## Linux Containers (LXC)
 
