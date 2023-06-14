@@ -19,6 +19,8 @@ Telemetry is provided in JSON format for easy ingestion in monitoring and observ
 * FMADIO Push PCAP Split (event indicating each PCAP split completion)
 * FMADIO Alert (Custom onbox system alerts)
 
+## JSON Header
+
 All FMADIO JSON messages have the following header fields
 
 ```
