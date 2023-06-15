@@ -76,6 +76,7 @@
 * [Mounting Host Scratch Disk](linux-containers-lxc/mounting-host-scratch-disk.md)
 * [Container Private Network](linux-containers-lxc/container-private-network.md)
 * [FMADIO Shark](linux-containers-lxc/fmadio-shark.md)
+* [Getting Packets](linux-containers-lxc/getting-packets.md)
 
 ## Troubleshooting
 

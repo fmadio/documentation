@@ -368,7 +368,7 @@ push_pcap
 
 Screenshot of 24/7 schedule is shown below
 
-<figure><img src="../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (5).png" alt=""><figcaption></figcaption></figure>
 
 Troubleshooting
 
