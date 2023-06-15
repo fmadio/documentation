@@ -368,7 +368,7 @@ push_pcap
 
 Screenshot of 24/7 schedule is shown below
 
-<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
 
 Troubleshooting
 
@@ -817,40 +817,11 @@ XZ compression using 64 CPUs, more utilization than Parallel GZ
 
 The dataset we are testing with is a WAN connection that has an ISP like L2-L7 packet distribution. As its ISP like traffic the data compression rate is not high.
 
-| Description                              | Gbps      | Size   | Ratio    |
-| ---------------------------------------- | --------- | ------ | -------- |
-| raw (not compressed)                     | 6.9 Gbps  | 45.5GB | 1.0      |
-| lz4                                      | 2.5Gbps   | 41.2GB | x 1.104  |
-| gzip -1  (fast)                          | 0.16Gbps  | 40.5GB | x 1..123 |
-| gzip default                             | 0.15Gbps  | 40.2GB | x 1.131  |
-| pigz 64 CPU (Parallel GZIP with 64 CPUs) | 4.8Gbps   | 40.3GB | x 1.129  |
-| pigz 32 CPU (Parallel GZIP with 32 CPUs) | 4.4Gbps   | 40.3GB | x 1.129  |
-| pigz 8 CPU (Parallel GZIP with 8 CPUs)   | 1.04Gbps  | 40.3GB | x 1.129  |
-| zstd default                             | 0.77Gbps  | 39.5GB | x 1.15   |
-| zstd --fast                              | 2.4Gbps   | 40.3GB | x 1.129  |
-| xz default                               | 0.019Gbps | 39.2GB | x 1.160  |
-| xz 64 CPU (-T 64)                        | 0.909Gbps | 38.9GB | x 1.17   |
-| xz 32 CPU (-T 32)                        | 0.502Gbps | 39.3GB | x 1.157  |
+<table><thead><tr><th width="399">Description</th><th width="129">Gbps</th><th width="123">Size</th><th>Ratio</th></tr></thead><tbody><tr><td>raw (not compressed)</td><td>6.9 Gbps</td><td>45.5GB</td><td>1.0</td></tr><tr><td>lz4</td><td>2.5Gbps</td><td>41.2GB</td><td>x 1.104</td></tr><tr><td>gzip -1  (fast)</td><td>0.16Gbps</td><td>40.5GB</td><td>x 1..123</td></tr><tr><td>gzip default</td><td>0.15Gbps</td><td>40.2GB</td><td>x 1.131</td></tr><tr><td>pigz 64 CPU (Parallel GZIP with 64 CPUs)</td><td>4.8Gbps</td><td>40.3GB</td><td>x 1.129</td></tr><tr><td>pigz 32 CPU (Parallel GZIP with 32 CPUs)</td><td>4.4Gbps</td><td>40.3GB</td><td>x 1.129</td></tr><tr><td>pigz 8 CPU (Parallel GZIP with 8 CPUs)</td><td>1.04Gbps</td><td>40.3GB</td><td>x 1.129</td></tr><tr><td>zstd default </td><td>0.77Gbps</td><td>39.5GB</td><td>x 1.15</td></tr><tr><td>zstd --fast</td><td>2.4Gbps</td><td>40.3GB</td><td>x 1.129</td></tr><tr><td>xz default</td><td>0.019Gbps</td><td>39.2GB</td><td>x 1.160</td></tr><tr><td>xz 64 CPU (-T 64)</td><td>0.909Gbps</td><td>38.9GB</td><td>x 1.17</td></tr><tr><td>xz 32 CPU (-T 32)</td><td>0.502Gbps</td><td>39.3GB</td><td>x 1.157</td></tr></tbody></table>
 
 ### Traffic Profile Finance
 
 The data set tested is a full days worth of OPRA A+B Feed dataset, raw uncompressed data size is just under 1TB. Financial data typically gets x2 to x3 compression ratio with xz maxing out at x5.
 
-| Description                 | Gbps      | Time  | Size  | Ratio   |
-| --------------------------- | --------- | ----- | ----- | ------- |
-| raw (not compressed)        | 4.29Gbps  | 0.6H  | 979GB | x 1.0   |
-| lz4                         | 1.65Gbps  | 1.3H  | 372GB | x 2.629 |
-| gzip -1 (fast)              | 0.341Gbps | 6.3H  | 311GB | x 3.14  |
-| gzip (default)              | 0.129Gbps | 16.6H | 266GB | x 3.67  |
-| pigz 64 CPU (Parallel GZIP) | 3.92Gbps  | 0.55H | 264GB | x 3.70  |
-| pigz 32 CPU (Parallel GZIP) | 3.92Gbps  | 0.55H | 264GB | x 3.70  |
-| pigz 16 CPU (Parallel GZIP) | 1.98Gbps  | 1.09H | 264GB | x 3.70  |
-| pigz 8 CPU (Parallel GZIP)  | 0.997     | 2.1 H | 264GB | x 3.70  |
-| zstd default                | 1.118Gbps | 1.9H  | 255GB | x 3.83  |
-| zstd --fast                 | 1.90Gbps  | 1.13H | 294GB | x 3.32  |
-| xz default                  | 0.012Gbps | 181H  | 184GB | x 5.32  |
-| xz 64 CPU                   | 0.604Gbps | 3.6H  | 184GB | x 5.32  |
-| xz 32 CPU                   | 0.372Gbps | 5.8H  | 184GB | x 5.32  |
-| xz 16 CPU                   | 0.192Gbps | 11.3H | 184GB | x 5.32  |
-| xz 8 CPU                    | 0.096Gbps | 22.6H | 184GB | x 5.32  |
+<table><thead><tr><th width="280">Description</th><th width="161">Gbps</th><th>Time</th><th width="90">Size</th><th>Ratio</th></tr></thead><tbody><tr><td>raw (not compressed)</td><td>4.29Gbps</td><td>0.6H</td><td>979GB</td><td>x 1.0</td></tr><tr><td>lz4</td><td>1.65Gbps</td><td>1.3H</td><td>372GB</td><td>x 2.629</td></tr><tr><td>gzip -1 (fast)</td><td>0.341Gbps</td><td>6.3H</td><td>311GB</td><td>x 3.14</td></tr><tr><td>gzip (default)</td><td>0.129Gbps</td><td>16.6H</td><td>266GB</td><td>x 3.67</td></tr><tr><td>pigz 64 CPU (Parallel GZIP)</td><td>3.92Gbps</td><td>0.55H</td><td>264GB</td><td>x 3.70</td></tr><tr><td>pigz 32 CPU (Parallel GZIP)</td><td>3.92Gbps</td><td>0.55H</td><td>264GB</td><td>x 3.70</td></tr><tr><td>pigz 16 CPU (Parallel GZIP)</td><td>1.98Gbps</td><td>1.09H</td><td>264GB</td><td>x 3.70</td></tr><tr><td>pigz 8 CPU (Parallel GZIP)</td><td>0.997</td><td>2.1 H</td><td>264GB</td><td>x 3.70</td></tr><tr><td>zstd default</td><td>1.118Gbps</td><td>1.9H</td><td>255GB</td><td>x 3.83</td></tr><tr><td>zstd --fast</td><td>1.90Gbps</td><td>1.13H</td><td>294GB</td><td>x 3.32</td></tr><tr><td>xz default</td><td>0.012Gbps</td><td>181H</td><td>184GB</td><td>x 5.32</td></tr><tr><td>xz 64 CPU</td><td>0.604Gbps</td><td>3.6H</td><td>184GB</td><td>x 5.32</td></tr><tr><td>xz 32 CPU</td><td>0.372Gbps</td><td>5.8H</td><td>184GB</td><td>x 5.32</td></tr><tr><td>xz 16 CPU</td><td>0.192Gbps</td><td>11.3H</td><td>184GB</td><td>x 5.32</td></tr><tr><td>xz 8 CPU</td><td>0.096Gbps</td><td>22.6H</td><td>184GB</td><td>x 5.32</td></tr></tbody></table>
 

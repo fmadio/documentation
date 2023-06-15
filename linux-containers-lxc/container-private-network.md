@@ -65,12 +65,4 @@ DNS     : 8.8.8.8   (or something else)
 
 List of private container addresses&#x20;
 
-| IP Address      | Container          | Description                     |
-| --------------- | ------------------ | ------------------------------- |
-| 192.168.255.2   | FMADIO Host        | FMADIO Host IP Address          |
-| 192.168.255.10  | FShark             | FMADIO Internal Wireshark Lite  |
-| 192.168.255.100 | Ubuntu Desktop     | Ubuntu Desktop                  |
-| 192.168.255.110 | Elastic Search 7.x | Elastic Search 7.x Container    |
-| 192.168.255.111 | Elastic Search 8.x | Elastic Search 8.x Container    |
-| 192.168.255.120 | Suricata 6.x       | Suricata 6.x Container (CentOS) |
-| 192.168.255.130 | Zeek               | Zeek Container (CentOS)         |
+<table><thead><tr><th width="171">IP Address</th><th width="150">Container</th><th>Description</th></tr></thead><tbody><tr><td>192.168.255.2</td><td>FMADIO Host</td><td>FMADIO Host IP Address</td></tr><tr><td>192.168.255.10</td><td>FShark</td><td>FMADIO Internal Wireshark Lite</td></tr><tr><td>192.168.255.100</td><td>Ubuntu Desktop</td><td>Ubuntu Desktop </td></tr><tr><td>192.168.255.110</td><td>Elastic Search 7.x</td><td>Elastic Search 7.x Container</td></tr><tr><td>192.168.255.111</td><td>Elastic Search 8.x</td><td>Elastic Search 8.x Container</td></tr><tr><td>192.168.255.120</td><td>Suricata 6.x</td><td>Suricata 6.x Container (CentOS)</td></tr><tr><td>192.168.255.130</td><td>Zeek</td><td>Zeek Container (CentOS)</td></tr></tbody></table>
