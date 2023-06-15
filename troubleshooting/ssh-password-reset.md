@@ -6,7 +6,7 @@ To reset the SSH password system the system requires KVM either directly with a 
 
 <div align="left">
 
-<figure><img src="../.gitbook/assets/image (7).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (7) (3).png" alt=""><figcaption></figcaption></figure>
 
 </div>
 

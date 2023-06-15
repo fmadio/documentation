@@ -1,8 +1,8 @@
 # Getting Packets
 
-FMADIO LXC system high level architecture is shown below
+FMADIO LXC system high level architecture is shown below.
 
-<figure><img src="../.gitbook/assets/image (3).png" alt=""><figcaption><p>FMADIO LXC Architecture</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (7).png" alt=""><figcaption><p>FMADIO LXC Architecture</p></figcaption></figure>
 
 This provides a full lossless filtered version of data directly into the LXC container for processing.&#x20;
 
@@ -18,7 +18,7 @@ During development its typically easiest to send data into the LXC container in 
 
 In this example we will use the application "fmadio2pcap" which converts the LXC ring into a standard PCAP formatted stream of data.
 
-Its recomened to start the data consumer aka LXC application first, then start the replay.
+Its recommended to start the data consumer aka LXC application first, then start the replay.
 
 ### Consumer - fmadio2pcap tcpdump
 
