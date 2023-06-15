@@ -8,9 +8,7 @@ This provides a full lossless filtered version of data directly into the LXC con
 
 Backpressure is provided thru the LXC Ring structure, allowing the application to consume data as fast or slow as possible without dropping anything.
 
-Reference code, to ingest directly from the LXC ring
 
-[https://github.com/fmadio/platform/blob/main/include/fmadio\_packet.h](https://github.com/fmadio/platform/blob/main/include/fmadio\_packet.h)
 
 ## Sending Data to LXC Offline
 
@@ -116,4 +114,47 @@ reading from file -, link-type EN10MB (Ethernet)
 .
 
 
+```
+
+## Custom Application&#x20;
+
+For a custom application to directly ingest data, the following reference code is provided
+
+Primary header file with all functions and strcutures inline
+
+[https://github.com/fmadio/platform/blob/main/include/fmadio\_packet.h](https://github.com/fmadio/platform/blob/main/include/fmadio\_packet.h)
+
+Core example code to retreive packets
+
+[https://github.com/fmadio/platform/blob/main/fmadio2pcap/main.c#L160-L185](https://github.com/fmadio/platform/blob/main/fmadio2pcap/main.c#L160-L185)
+
+Core loop snippet, this converts from LXC Ring into standard PCAP Packet format
+
+```c
+while (!s_Exit)
+{
+	u64 TS;
+	PCAPPacket_t* Pkt	= (PCAPPacket_t*)PktBuffer;
+
+	// fetch packet from ring without blocking
+	int ret = FMADPacket_RecvV1(s_RING, false, &TS, &Pkt->LengthWire, &Pkt->LengthCapture, NULL, Pkt + 1);
+
+	// if it has valid data
+	if (ret > 0)
+	{
+		// convert 64b epoch into sec/subsec for pcap
+		Pkt->Sec 			= TS / (u64)1e9;
+		Pkt->NSec 			= TS % (u64)1e9;
+
+		// write PCAP header and payload 	
+		fwrite(PktBuffer, 1, sizeof(PCAPPacket_t) + Pkt->LengthCapture, FPCAP); 
+
+		// general stats
+		TotalPkt 	+= 1;
+		TotalByte 	+= ret;
+	}	
+
+	// end of stream
+	if (ret < 0) break;
+}
 ```
