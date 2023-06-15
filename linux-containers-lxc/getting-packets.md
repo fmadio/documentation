@@ -2,13 +2,13 @@
 
 FMADIO LXC system high level architecture is shown below
 
-<figure><img src="../.gitbook/assets/image (2).png" alt=""><figcaption><p>FMADIO LXC Architecture</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (3).png" alt=""><figcaption><p>FMADIO LXC Architecture</p></figcaption></figure>
 
 This provides a full lossless filtered version of data directly into the LXC container for processing.&#x20;
 
 Backpressure is provided thru the LXC Ring structure, allowing the application to consume data as fast or slow as possible without dropping anything.
 
-Reference code
+Reference code, to ingest directly from the LXC ring
 
 [https://github.com/fmadio/platform/blob/main/include/fmadio\_packet.h](https://github.com/fmadio/platform/blob/main/include/fmadio\_packet.h)
 
