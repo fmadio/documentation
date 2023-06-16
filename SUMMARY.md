@@ -6,6 +6,7 @@
 * [Hardware](hardware.md)
 * [Performance](performance.md)
 * [Getting Started](getting-started.md)
+* [Errata](errata.md)
 
 ## Configuration
 
