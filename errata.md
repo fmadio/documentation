@@ -6,7 +6,9 @@ description: Errata related to FMADIO100v2 Capture System
 
 ## Capture Port 0&#x20;
 
-Due to design decision of the FPGA clocking QSFP0 Capture port must be connected first or put in shutdown mode using the fmadiocli
+Due to design decision of the FPGA clocking QSFP0 Capture port must be connected first or put in shutdown mode using the fmadiocli.
+
+Recommended configuration is always connect QSFP0 port first
 
 ### Root cause
 
