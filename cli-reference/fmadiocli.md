@@ -1624,15 +1624,15 @@ Example below shows a fully setup 100Gp3 system with PSID and Encryption enabled
 
 Using TCG OPAL2 sedutils the system will factory reset the device using the PSID values, initialize the drives for encryption and set a default password.
 
-When complete the drives data is encrypted with a default password with a randomly generated encryption key.
+When complete the drives data is encrypted with a default password to access a randomly generated AES256 encryption key.
 
-When complete the drives are in the unlocked state. To enable locking use the config disk lock comand
+When complete the drives are in the unlocked state. To enable locking use the `config disk lock` comand
 
 ```
 config disk sanitize
 ```
 
-Example shows a partial log of the 100G systems sanitize operation. Entire operation takes about 60seconds
+Example shows a partial log of the 100G systems sanitize operation. Entire operation takes about 60 seconds
 
 ```
 [Sat Jun 24 17:53:32 2023] > config disk sanitize
@@ -1714,13 +1714,13 @@ Example shows a partial log of the 100G systems sanitize operation. Entire opera
 
 ### config disk password&#x20;
 
-Changes the password used to unlock all data drives.
+Changes the password used for all encryption related disk operations.
 
 Enter Old Password may be ENTER/NULL  in which case the default password will be used
 
-Enter Old Password  can be read from the file /tmp/disk-password-old if the file exists
+Enter Old Password  can be read without keyboard input from the file /tmp/disk-password-old if the file exists
 
-Enter New Password can be read from the file /tmp/disk-password if the file exists
+Enter New Password can be read without keyboard input from the file /tmp/disk-password if the file exists
 
 ```
 config disk password
@@ -1816,7 +1816,7 @@ This sets the disks into the locked state requiring a password.
 
 On any power cycle command (disks loose power) the disks will need to be unlocked using the `config disk unlock` command and a password
 
-The password can be read from the file `/tmp/disk-password` if the file exists
+The password can be read without keyboard input from the file`/tmp/disk-password` if the file exists
 
 ```
 config disk lock
@@ -1925,7 +1925,7 @@ Example locks all data disks
 
 Unlocks the drives using the specified password
 
-The password can be read from the file `/tmp/disk-password` if the file exists
+The password can be read without keyboard input from the file `/tmp/disk-password` if the file exists
 
 ```
 config disk unlock
