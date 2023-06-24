@@ -1333,7 +1333,7 @@ Example set the timezone to New York
 [Sat Jun 24 15:32:01 2023] >
 ```
 
-NOTE change only takes effect on next reboot
+_**NOTE change only takes effect on next reboot**_
 
 ## User Management
 
