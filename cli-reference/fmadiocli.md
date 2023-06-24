@@ -793,14 +793,14 @@ config pcap timestamp arista7130
 
 ## Automatic Push PCAP
 
-### show push-pcap
+### show push pcap status
 
 FW: 7963+
 
 Shows the currently configured automatic push pcaps
 
 ```
-[Thu Jun  9 08:30:42 2022] > show push-pcap
+[Thu Jun  9 08:30:42 2022] > show push pcap status
 [Thu Jun  9 08:30:42 2022] ---------------------------------------------------------------------------------------------------------------------------------
 [Thu Jun  9 08:30:42 2022] FollowStart : true
 [Thu Jun  9 08:30:42 2022] Decap       : true
@@ -817,53 +817,53 @@ Shows the currently configured automatic push pcaps
 
 ```
 
-### config push-pcap new \<push target>
+### config push pcap add \<push target>
 
 FW: 7963+
 
-Creates a new push-pcap target called \<push target>
+Creates a new push pcap target called \<push target>
 
 NOTE: all target names should be unique
 
 ```
-[Thu Jun  9 08:32:13 2022] > config push-pcap new udp-all
+[Thu Jun  9 08:32:13 2022] > config push pcap add udp-all
 [Thu Jun  9 08:32:13 2022] Add Push PCAP target [udp-all]
 [Thu Jun  9 08:32:13 2022] >
 
 ```
 
-### config push-pcap del \<push target>
+### config push pcap del \<push target>
 
 Deletes the current push pcap entry name \<push target>
 
 ```
-[Thu Jun  9 08:33:17 2022] > config push-pcap del udp-all
+[Thu Jun  9 08:33:17 2022] > config push pcap del udp-all
 [Thu Jun  9 08:33:18 2022] deleting: [udp-all] row 2
 [Thu Jun  9 08:33:18 2022] >
 ```
 
-### config push-pcap mod \<push target> name \<new name>
+### config push pcap name \<push target> \<new name>
 
 Renames the specified \<push target> entry with an updated one \<new name>
 
 ```
-[Thu Jun  9 08:36:21 2022] > config push-pcap mod udp-all name udp-port-1900
+[Thu Jun  9 08:36:21 2022] > config push pcap name udp-all udp-port-1900
 [Thu Jun  9 08:36:23 2022] Rename [udp-all] -> [udp-port-1900]
 [Thu Jun  9 08:36:23 2022] >
 
 ```
 
-### config push-pcap mod \<push target> path \<new write path>
+### config push pcap path \<push target> \<new write path>
 
 Updates the push write path to the specified \<new write path>. Typically this is the NFS remote path or rclone write path.
 
 ```
-[Thu Jun  9 08:41:41 2022] > config push-pcap mod udp-port-1900 path /mnt/remote0/push/
+[Thu Jun  9 08:41:41 2022] > config push pcap path udp-port-1900 /mnt/remote0/push/
 [Thu Jun  9 08:41:44 2022] Set Path [] -> [/mnt/remote0/push/]
 [Thu Jun  9 08:41:44 2022] >
 ```
 
-### config push-pcap mod \<push target> split-time \<value>
+### config push pcap split-time \<push target> \<value>
 
 Configure PCAPs to be split by the specified time value. By default \<value> is scientific notation in nanoseconds. In addition s (seconds) m (minutes) h (hours) suffix can be used also
 
@@ -877,13 +877,13 @@ Configure PCAPs to be split by the specified time value. By default \<value> is 
 Example configure to split every 1 minute
 
 ```
-[Thu Jun  9 08:48:05 2022] > config push-pcap mod udp-port-1900 split-time 1m
+[Thu Jun  9 08:48:05 2022] > config push pcap split-time udp-port-1900 1m
 [Thu Jun  9 08:48:06 2022] Set Split to  [--split-time 3600e9] -> [--split-time 60000000000]
 [Thu Jun  9 08:48:06 2022] >
 
 ```
 
-### config push-pcap mod \<push target> split-size \<value>
+### config push pcap split-size \<push target> \<value>
 
 Configure PCAPs to be split by total byte size \<value>
 
@@ -892,13 +892,13 @@ Configure PCAPs to be split by total byte size \<value>
 Example below shows splitting on 1GB boundaries
 
 ```
-[Thu Jun  9 08:53:32 2022] > config push-pcap mod udp-port-1900 split-size 1G
+[Thu Jun  9 08:53:32 2022] > config push pcap split-size udp-port-1900 1G
 [Thu Jun  9 08:53:33 2022] Set Split to  [--split-time 60000000000] -> [--split-byte 1000000000]
 [Thu Jun  9 08:53:33 2022] >
 
 ```
 
-### config push-pcap mod \<push target> filename \<value>
+### config push pcap filename \<push target> \<value>
 
 Specifies the filename format for each individual split PCAP
 
@@ -907,13 +907,13 @@ Specifies the filename format for each individual split PCAP
 Example uses a simple Hour Min Sec format
 
 ```
-[Thu Jun  9 09:02:52 2022] > config push-pcap mod udp-port-1900 filename HHMMSS
+[Thu Jun  9 09:02:52 2022] > config push pcap filename udp-port-1900 HHMMSS
 [Thu Jun  9 09:02:53 2022] Set Filename to  [--filename-tstr-HHMMSS_TZ] -> [--filename-tstr-HHMMSS]
 [Thu Jun  9 09:02:53 2022] >
 
 ```
 
-### config push-pcap mod \<push target> filter-bpf "\<bpf filter>"
+### config push pcap filter-bpf \<push target> "\<bpf filter>"
 
 Sets the specified push with a BPF filter.&#x20;
 
@@ -922,11 +922,98 @@ Sets the specified push with a BPF filter.&#x20;
 Example sets for udp and port 1900
 
 ```
-[Thu Jun  9 09:07:05 2022] > config push-pcap mod udp-port-1900 filter-bpf "udp and port 1900"
+[Thu Jun  9 09:07:05 2022] > config push pcap filter-bpf udp-port-1900 "udp and port 1900"
 [Thu Jun  9 09:07:05 2022] Set FilterBPF [] -> [udp and port 1900]
 [Thu Jun  9 09:07:05 2022] >
+```
+
+## Automatic Push to LXC (Container)
+
+The system can push automatically into a lxc\_ring enabling a container to consume the data. These functions are to add/delete/modify these push functions.
+
+NOTE this requires the push\_lxc analytics script to be running
+
+### show push lxc
+
+Shows the current push lxc targets configured on the system
 
 ```
+show push lxc
+```
+
+Example shown below, indicates a single suricata ring is enabled with a BPF filter to remove all traffic from subnet 192.168.100.0/24
+
+```
+[Sat Jun 24 14:22:12 2023] > show push lxc
+[Sat Jun 24 14:22:12 2023]
+[Sat Jun 24 14:22:12 2023] Ring name                                       : Enable :       From : Description                     : Filter Frame         : Filter BPF
+[Sat Jun 24 14:22:12 2023] ------------------------------------------------+--------+------------+---------------------------------+----------------------+-----------------------------------------------------------------
+[Sat Jun 24 14:22:12 2023] /opt/fmadio/queue/lxc_ring_suricata             :   true :      start : suricata ids feed               :                      : not net 192.168.100.0/24
+[Sat Jun 24 14:22:12 2023] ------------------------------------------------+--------+------------+---------------------------------+----------------------+-----------------------------------------------------------------
+[Sat Jun 24 14:22:12 2023] >
+```
+
+### config push lxc add \<ring name>
+
+This adds a new LXC push to the ring named \<ring name>.&#x20;
+
+By default the push is disabled when created.
+
+```
+config push lxc add <ring name>
+```
+
+Example below shows adding a push to the ring named "general"
+
+```
+[Sat Jun 24 14:25:26 2023] > config push lxc add general
+[Sat Jun 24 14:25:26 2023] New Push LXC target [/opt/fmadio/queue/lxc_ring_general]
+[Sat Jun 24 14:25:26 2023] >
+```
+
+NOTE this does not create the ring, it only creates the push to the specified ring
+
+### config push lxc del \<ring name>
+
+Removes the specified LXC push target
+
+```
+config push lxc del <ring name>
+```
+
+Example removes the push lxc target named "general"
+
+```
+[Sat Jun 24 14:32:31 2023] > config push lxc del general
+[Sat Jun 24 14:32:32 2023] Delete Push LXC target [/opt/fmadio/queue/lxc_ring_general]
+[Sat Jun 24 14:32:32 2023] >
+```
+
+### config push lxc enable \<ring name>
+
+Enables the specified lxc ring push target. By default when adding a new target the state is disabled.
+
+```
+config push lxc enable <ring name>
+```
+
+Example enables the push lxc ring target named "general"
+
+```
+[Sat Jun 24 14:36:29 2023] > config push lxc enable general
+[Sat Jun 24 14:36:29 2023] Set LXC target [/opt/fmadio/queue/lxc_ring_general] Enable
+[Sat Jun 24 14:36:29 2023] >
+```
+
+
+
+
+
+
+
+
+
+
 
 ## User Management
 
