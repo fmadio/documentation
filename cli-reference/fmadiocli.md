@@ -789,7 +789,176 @@ config pcap timestamp arista7130
 [Mon Jun 12 16:55:15 2023] >
 ```
 
+## LXC Container Management
 
+Following provides commands for configuration and managing LXC containers on the system
+
+### show lxc status
+
+Shows the current LXC container status of the system
+
+```
+show lxc status
+```
+
+Example shows 2 containers "suricata" and "centos7"
+
+Suricata is enabled to start at boot time.
+
+```
+[Sat Jun 24 15:39:35 2023] > show lxc status
+[Sat Jun 24 15:39:35 2023]
+[Sat Jun 24 15:39:35 2023] Name                 OnBoot     Install    State      Desc
+[Sat Jun 24 15:39:35 2023] ---------------------------------------------------------------------------------------------------------------------------------
+[Sat Jun 24 15:39:35 2023] suricata             true       yes        STOPPED    suricata ids service
+[Sat Jun 24 15:39:35 2023] centos7              false      yes        STOPPED
+[Sat Jun 24 15:39:35 2023] ---------------------------------------------------------------------------------------------------------------------------------
+[Sat Jun 24 15:39:35 2023] >
+```
+
+### config lxc add \<lxc name>
+
+Adds an already installed container to the configuration file
+
+```
+config lxc add <lxc name>
+```
+
+In the example below adding an already installed container named "ubuntu20" to the system
+
+```
+[Sat Jun 24 15:45:56 2023] > config lxc add ubuntu20
+[Sat Jun 24 15:45:57 2023] Added container [ubuntu20] to the configuration
+[Sat Jun 24 15:45:57 2023] >
+```
+
+### config lxc del \<lxc name>
+
+Removes the specified container from the configuration
+
+NOTE it does not delete the container on disk. Only removes it from the configuration files
+
+```
+config lxc del <lxc name>
+```
+
+Example deletes the container "ubuntu20" from the configuration files
+
+```
+[Sat Jun 24 15:48:24 2023] > config lxc del ubuntu20
+[Sat Jun 24 15:48:25 2023] Removed container [ubuntu20] to the configuration
+[Sat Jun 24 15:48:25 2023] >
+```
+
+### config lxc desc \<lxc name> "\<description>"
+
+Adds a human description to the lxc to provide context
+
+```
+config lxc desc <lxc name> "<description>"
+```
+
+Example set a human readable description for the container "ubuntu20" this is visibile when using the show lxc command
+
+```
+[Sat Jun 24 15:51:01 2023] > config lxc desc ubuntu20 "general purpose ubuntu20 container"
+[Sat Jun 24 15:51:01 2023] Set container [ubuntu20] to description to [general purpose ubuntu20 container]
+[Sat Jun 24 15:51:02 2023] >
+```
+
+### config lxc boot \<lxc name>
+
+Sets the specified container to boot on startup
+
+```
+config lxc boot <lxc name>
+```
+
+Example set the "ubuntu20" container to boot on system startup
+
+```
+[Sat Jun 24 15:53:06 2023] > config lxc boot ubuntu20
+[Sat Jun 24 15:53:07 2023] Set container [ubuntu20] to boot on system start
+[Sat Jun 24 15:54:11 2023] >
+```
+
+### config lxc no-boot \<lxc name>
+
+Sets the specified LXC container to not boot at startup
+
+```
+config lxc no-boot <lxc name>
+```
+
+Example sets the LXC container "ubuntu20" to not boot on startup
+
+```
+[Sat Jun 24 15:57:50 2023] > config lxc no-boot ubuntu20
+[Sat Jun 24 15:57:50 2023] Set container [ubuntu20] to NOT boot on system start
+[Sat Jun 24 15:57:50 2023] >
+```
+
+### config lxc start \<lxc name>
+
+Starts the specified container named \<lxc name> if the container starts successfully system will return back to the prompt
+
+```
+config lxc start <lxc name>
+```
+
+Example starts the fshark2 container on the system
+
+```
+[Sat Jun 24 16:03:05 2023] > config lxc start fshark2
+[Sat Jun 24 16:03:05 2023] sudo lxc-start -n fshark2 --logfile /tmp/lxc_fshark2_1687593785847943936
+[Sat Jun 24 16:03:07 2023]
+[Sat Jun 24 16:03:07 2023] use the following on a shell to attach to the conatiners console
+[Sat Jun 24 16:03:07 2023] sudo lxc-attach -n fshark2
+[Sat Jun 24 16:03:07 2023]
+[Sat Jun 24 16:03:07 2023] >
+
+```
+
+When a container fails to start the output will look similar to below.
+
+```
+[Sat Jun 24 16:04:24 2023] > config lxc start ubuntu20
+[Sat Jun 24 16:04:24 2023] sudo lxc-start -n ubuntu20 --logfile /tmp/lxc_ubuntu20_1687593864919910912
+[Sat Jun 24 16:04:24 2023] lxc: lxc-start: ubuntu20: tools/lxc_start.c: main: 322 Executing '/sbin/init' with no configuration file may crash the host
+[Sat Jun 24 16:04:24 2023] lxc:       lxc-start ubuntu20 20230624080424.927 ERROR    lxc_start_ui - tools/lxc_start.c:main:322 - Executing '/sbin/init' with no configuration file may crash the host
+[Sat Jun 24 16:04:24 2023]
+[Sat Jun 24 16:04:24 2023] >
+```
+
+### config lxc stop \<lxc name>
+
+Stops the specified container from running
+
+```
+config lxc stop <lxc name>
+```
+
+Example stops the fshark2 container running
+
+```
+[Sat Jun 24 16:06:49 2023] > config lxc stop fshark2
+[Sat Jun 24 16:06:50 2023] sudo lxc-stop -n fshark2 --logfile /tmp/lxc_fshark2_1687594010169326080
+[Sat Jun 24 16:06:50 2023]
+```
+
+### config lxc list
+
+**TBD** lists all available containers in the public repo
+
+contact support@fmad.io for more info
+
+### config lxc install&#x20;
+
+**TBD** installs the specified container from the public repo
+
+### config lxc uninstall
+
+**TBD** removes the specified container from the configuration and disk
 
 ## Automatic Push PCAP
 
