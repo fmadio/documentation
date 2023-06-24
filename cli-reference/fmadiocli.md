@@ -1581,3 +1581,430 @@ Example output
 ```
 
 NOTE: a the system requires a reboot for the changes to take effect.
+
+## Disk Management
+
+Configuration and status information for disks and disk encryption
+
+### show disk status
+
+Shows the current disk status information
+
+```
+show disk status
+```
+
+Example below shows a fully setup 100Gp3 system with PSID and Encryption enabled
+
+```
+[Sat Jun 24 17:48:45 2023] > show disk status
+[Sat Jun 24 17:48:45 2023] SSD Cache
+[Sat Jun 24 17:48:46 2023] Disk  :               Serial :    Size  : Temp   :  Used : Error : Total Write :  Total Read : SED : PSID : SED Enb : SED Lock :
+[Sat Jun 24 17:48:46 2023] ------+----------------------+----------+--------+-------+-------+-------------+-------------+-----+------+---------+----------+
+[Sat Jun 24 17:48:46 2023] os0   :     50026B7685513F33 :  0.00 TB :    0 C :   0 % :     0 :     0.00 TB :     0.00 TB :   N :    N :       N :        N :
+[Sat Jun 24 17:48:46 2023] par0  :         22443E9D2087 :  0.00 TB :   30 C :   0 % :     0 :     0.00 TB :     0.00 TB :   Y :    Y :       Y :        Y :
+[Sat Jun 24 17:48:46 2023] ssd0  :         22443E9D204F :  0.15 TB :   29 C :   0 % :     0 :     0.01 TB :     0.00 TB :   Y :    Y :       Y :        Y :
+[Sat Jun 24 17:48:46 2023] ssd1  :         22223AD5BFC3 :  0.15 TB :   32 C :   0 % :     0 :     0.02 TB :     0.00 TB :   Y :    Y :       Y :        Y :
+[Sat Jun 24 17:48:46 2023] ssd2  :         22443E9D3AFF :  0.15 TB :   28 C :   0 % :     0 :     0.01 TB :     0.00 TB :   Y :    Y :       Y :        Y :
+[Sat Jun 24 17:48:46 2023] ssd3  :         22443E9DC543 :  0.15 TB :   30 C :   0 % :     0 :     0.01 TB :     0.00 TB :   Y :    Y :       Y :        Y :
+[Sat Jun 24 17:48:46 2023] ssd4  :         22443E9D2076 :  0.15 TB :   29 C :   0 % :     0 :     0.01 TB :     0.00 TB :   Y :    Y :       Y :        Y :
+[Sat Jun 24 17:48:46 2023] ssd5  :         22443E9D3B41 :  0.15 TB :   29 C :   0 % :     0 :     0.01 TB :     0.00 TB :   Y :    Y :       Y :        Y :
+[Sat Jun 24 17:48:46 2023] ssd6  :         22443E9D3B65 :  0.15 TB :   30 C :   0 % :     0 :     0.01 TB :     0.00 TB :   Y :    Y :       Y :        Y :
+[Sat Jun 24 17:48:46 2023] ssd7  :         22443E9D20A4 :  0.15 TB :   28 C :   0 % :     0 :     0.01 TB :     0.00 TB :   Y :    Y :       Y :        Y :
+[Sat Jun 24 17:48:46 2023] ssd8  :         22443E9DC54E :  0.15 TB :   31 C :   0 % :     0 :     0.01 TB :     0.00 TB :   Y :    Y :       Y :        Y :
+[Sat Jun 24 17:48:46 2023] ------+----------------------+----------+--------+-------+-------+-------------+-------------+-----+------+---------+----------+
+[Sat Jun 24 17:48:46 2023] >
+```
+
+### config disk sanitize
+
+Using TCG OPAL2 sedutils the system will factory reset the device using the PSID values, initialize the drives for encryption and set a default password.
+
+When complete the drives data is encrypted with a default password with a randomly generated encryption key.
+
+When complete the drives are in the unlocked state. To enable locking use the config disk lock comand
+
+```
+config disk sanitize
+```
+
+Example shows a partial log of the 100G systems sanitize operation. Entire operation takes about 60seconds
+
+```
+[Sat Jun 24 17:53:32 2023] > config disk sanitize
+[Sat Jun 24 17:53:32 2023] -----------------------------------------------------------------------------------
+[Sat Jun 24 17:53:32 2023] [par0] sudo /usr/bin/sedutil-cli-sha512 --isValidSED /dev/nvme9n1
+[Sat Jun 24 17:53:32 2023] [par0] /dev/nvme9n1 SED -2----- Micron_7450_MTFDKCC3T8TFR                E2MU110
+[Sat Jun 24 17:53:32 2023]
+[Sat Jun 24 17:53:32 2023] [par0] factory reset 22443E9D2087
+[Sat Jun 24 17:53:32 2023] [par0] sudo /usr/bin/sedutil-cli-sha512 --PSIDrevert 11EDDF5767CA7C0BBC0FD8643803B657 /dev/nvme9n1
+[Sat Jun 24 17:53:35 2023] [par0] revertTper completed successfully
+[Sat Jun 24 17:53:35 2023]
+[Sat Jun 24 17:53:35 2023] [par0] set default password
+[Sat Jun 24 17:53:35 2023] [par0] sudo /usr/bin/sedutil-cli-sha512 --initialSetup ***** /dev/nvme9n1
+[Sat Jun 24 17:53:35 2023] [par0] SID password changed
+[Sat Jun 24 17:53:36 2023] [par0] takeOwnership complete
+[Sat Jun 24 17:53:37 2023] [par0] Locking SP Activate Complete
+[Sat Jun 24 17:53:38 2023] [par0] LockingRange0 disabled
+[Sat Jun 24 17:53:38 2023] [par0] LockingRange0 set to RW
+[Sat Jun 24 17:53:39 2023] [par0] MBRDone set on
+[Sat Jun 24 17:53:40 2023] [par0] MBREnable set on
+[Sat Jun 24 17:53:40 2023] [par0] Initial setup of TPer complete on /dev/nvme9n1
+[Sat Jun 24 17:53:40 2023]
+[Sat Jun 24 17:53:40 2023] [par0] disable MBR
+[Sat Jun 24 17:53:40 2023] [par0] sudo /usr/bin/sedutil-cli-sha512 --setMBREnable off ***** /dev/nvme9n1
+[Sat Jun 24 17:53:40 2023] [par0] MBRDone set on
+[Sat Jun 24 17:53:41 2023] [par0] MBREnable set off
+[Sat Jun 24 17:53:41 2023] -----------------------------------------------------------------------------------
+[Sat Jun 24 17:53:41 2023] [ssd0] sudo /usr/bin/sedutil-cli-sha512 --isValidSED /dev/nvme10n1
+[Sat Jun 24 17:53:41 2023] [ssd0] /dev/nvme10n1 SED -2----- Micron_7450_MTFDKCC3T8TFR                E2MU110
+[Sat Jun 24 17:53:41 2023]
+[Sat Jun 24 17:53:41 2023] [ssd0] factory reset 22443E9D204F
+[Sat Jun 24 17:53:41 2023] [ssd0] sudo /usr/bin/sedutil-cli-sha512 --PSIDrevert 7306CD8CE0BE5F694793FBD8409E7CFE /dev/nvme10n1
+[Sat Jun 24 17:53:43 2023] [ssd0] revertTper completed successfully
+[Sat Jun 24 17:53:43 2023]
+[Sat Jun 24 17:53:43 2023] [ssd0] set default password
+[Sat Jun 24 17:53:43 2023] [ssd0] sudo /usr/bin/sedutil-cli-sha512 --initialSetup ***** /dev/nvme10n1
+[Sat Jun 24 17:53:44 2023] [ssd0] SID password changed
+[Sat Jun 24 17:53:44 2023] [ssd0] takeOwnership complete
+[Sat Jun 24 17:53:46 2023] [ssd0] Locking SP Activate Complete
+[Sat Jun 24 17:53:47 2023] [ssd0] LockingRange0 disabled
+[Sat Jun 24 17:53:47 2023] [ssd0] LockingRange0 set to RW
+[Sat Jun 24 17:53:48 2023] [ssd0] MBRDone set on
+[Sat Jun 24 17:53:49 2023] [ssd0] MBREnable set on
+[Sat Jun 24 17:53:49 2023] [ssd0] Initial setup of TPer complete on /dev/nvme10n1
+[Sat Jun 24 17:53:49 2023]
+[Sat Jun 24 17:53:49 2023] [ssd0] disable MBR
+[Sat Jun 24 17:53:49 2023] [ssd0] sudo /usr/bin/sedutil-cli-sha512 --setMBREnable off ***** /dev/nvme10n1
+[Sat Jun 24 17:53:49 2023] [ssd0] MBRDone set on
+[Sat Jun 24 17:53:50 2023] [ssd0] MBREnable set off
+[Sat Jun 24 17:53:50 2023] -----------------------------------------------------------------------------------
+.
+.
+.
+[Sat Jun 24 17:54:53 2023] -----------------------------------------------------------------------------------
+[Sat Jun 24 17:54:53 2023] [ssd8] sudo /usr/bin/sedutil-cli-sha512 --isValidSED /dev/nvme8n1
+[Sat Jun 24 17:54:53 2023] [ssd8] /dev/nvme8n1 SED -2----- Micron_7450_MTFDKCC3T8TFR                E2MU110
+[Sat Jun 24 17:54:53 2023]
+[Sat Jun 24 17:54:53 2023] [ssd8] factory reset 22443E9DC54E
+[Sat Jun 24 17:54:53 2023] [ssd8] sudo /usr/bin/sedutil-cli-sha512 --PSIDrevert 8287AD621B440D756AB1D1E8273C6F94 /dev/nvme8n1
+[Sat Jun 24 17:54:56 2023] [ssd8] revertTper completed successfully
+[Sat Jun 24 17:54:56 2023]
+[Sat Jun 24 17:54:56 2023] [ssd8] set default password
+[Sat Jun 24 17:54:56 2023] [ssd8] sudo /usr/bin/sedutil-cli-sha512 --initialSetup ***** /dev/nvme8n1
+[Sat Jun 24 17:54:57 2023] [ssd8] SID password changed
+[Sat Jun 24 17:54:57 2023] [ssd8] takeOwnership complete
+[Sat Jun 24 17:54:58 2023] [ssd8] Locking SP Activate Complete
+[Sat Jun 24 17:54:59 2023] [ssd8] LockingRange0 disabled
+[Sat Jun 24 17:54:59 2023] [ssd8] LockingRange0 set to RW
+[Sat Jun 24 17:55:00 2023] [ssd8] MBRDone set on
+[Sat Jun 24 17:55:01 2023] [ssd8] MBREnable set on
+[Sat Jun 24 17:55:01 2023] [ssd8] Initial setup of TPer complete on /dev/nvme8n1
+[Sat Jun 24 17:55:01 2023]
+[Sat Jun 24 17:55:01 2023] [ssd8] disable MBR
+[Sat Jun 24 17:55:01 2023] [ssd8] sudo /usr/bin/sedutil-cli-sha512 --setMBREnable off ***** /dev/nvme8n1
+[Sat Jun 24 17:55:01 2023] [ssd8] MBRDone set on
+[Sat Jun 24 17:55:02 2023] [ssd8] MBREnable set off
+[Sat Jun 24 17:55:02 2023] >
+```
+
+### config disk password&#x20;
+
+Changes the password used to unlock all data drives.
+
+Enter Old Password may be ENTER/NULL  in which case the default password will be used
+
+Enter Old Password  can be read from the file /tmp/disk-password-old if the file exists
+
+Enter New Password can be read from the file /tmp/disk-password if the file exists
+
+```
+config disk password
+```
+
+Example of setting a new password from the default password
+
+```
+[Sat Jun 24 17:58:51 2023] > config disk password
+[Sat Jun 24 17:58:53 2023] Enter Old Password:
+
+[Sat Jun 24 17:58:56 2023] Enter New Password:
+****
+[Sat Jun 24 17:58:59 2023] Re-Enter New Password:
+****
+[Sat Jun 24 17:59:28 2023] -----------------------------------------------------------------------------------
+[Sat Jun 24 17:59:28 2023] [par0] sudo /usr/bin/sedutil-cli-sha512 --isValidSED /dev/nvme9n1
+[Sat Jun 24 17:59:28 2023] [par0] /dev/nvme9n1 SED -2----- Micron_7450_MTFDKCC3T8TFR                E2MU110
+[Sat Jun 24 17:59:28 2023]
+[Sat Jun 24 17:59:28 2023] [par0] set new password 22443E9D2087
+[Sat Jun 24 17:59:28 2023] [par0] sudo /usr/bin/sedutil-cli-sha512 --setPassword ***** Admin1 ***** /dev/nvme9n1
+[Sat Jun 24 17:59:29 2023] [par0] Admin1 password changed
+[Sat Jun 24 17:59:29 2023] -----------------------------------------------------------------------------------
+[Sat Jun 24 17:59:29 2023] [ssd0] sudo /usr/bin/sedutil-cli-sha512 --isValidSED /dev/nvme10n1
+[Sat Jun 24 17:59:29 2023] [ssd0] /dev/nvme10n1 SED -2----- Micron_7450_MTFDKCC3T8TFR                E2MU110
+[Sat Jun 24 17:59:29 2023]
+[Sat Jun 24 17:59:29 2023] [ssd0] set new password 22443E9D204F
+[Sat Jun 24 17:59:29 2023] [ssd0] sudo /usr/bin/sedutil-cli-sha512 --setPassword ***** Admin1 ***** /dev/nvme10n1
+[Sat Jun 24 17:59:30 2023] [ssd0] Admin1 password changed
+[Sat Jun 24 17:59:30 2023] -----------------------------------------------------------------------------------
+[Sat Jun 24 17:59:30 2023] [ssd1] sudo /usr/bin/sedutil-cli-sha512 --isValidSED /dev/nvme1n1
+[Sat Jun 24 17:59:30 2023] [ssd1] /dev/nvme1n1 SED -2----- Micron_7450_MTFDKCC3T8TFR                E2MU110
+[Sat Jun 24 17:59:30 2023]
+[Sat Jun 24 17:59:30 2023] [ssd1] set new password 22223AD5BFC3
+[Sat Jun 24 17:59:30 2023] [ssd1] sudo /usr/bin/sedutil-cli-sha512 --setPassword ***** Admin1 ***** /dev/nvme1n1
+[Sat Jun 24 17:59:32 2023] [ssd1] Admin1 password changed
+[Sat Jun 24 17:59:32 2023] -----------------------------------------------------------------------------------
+[Sat Jun 24 17:59:32 2023] [ssd2] sudo /usr/bin/sedutil-cli-sha512 --isValidSED /dev/nvme6n1
+[Sat Jun 24 17:59:32 2023] [ssd2] /dev/nvme6n1 SED -2----- Micron_7450_MTFDKCC3T8TFR                E2MU110
+[Sat Jun 24 17:59:32 2023]
+[Sat Jun 24 17:59:32 2023] [ssd2] set new password 22443E9D3AFF
+[Sat Jun 24 17:59:32 2023] [ssd2] sudo /usr/bin/sedutil-cli-sha512 --setPassword ***** Admin1 ***** /dev/nvme6n1
+[Sat Jun 24 17:59:33 2023] [ssd2] Admin1 password changed
+[Sat Jun 24 17:59:33 2023] -----------------------------------------------------------------------------------
+[Sat Jun 24 17:59:33 2023] [ssd3] sudo /usr/bin/sedutil-cli-sha512 --isValidSED /dev/nvme5n1
+[Sat Jun 24 17:59:33 2023] [ssd3] /dev/nvme5n1 SED -2----- Micron_7450_MTFDKCC3T8TFR                E2MU110
+[Sat Jun 24 17:59:33 2023]
+[Sat Jun 24 17:59:33 2023] [ssd3] set new password 22443E9DC543
+[Sat Jun 24 17:59:33 2023] [ssd3] sudo /usr/bin/sedutil-cli-sha512 --setPassword ***** Admin1 ***** /dev/nvme5n1
+[Sat Jun 24 17:59:34 2023] [ssd3] Admin1 password changed
+[Sat Jun 24 17:59:34 2023] -----------------------------------------------------------------------------------
+[Sat Jun 24 17:59:34 2023] [ssd4] sudo /usr/bin/sedutil-cli-sha512 --isValidSED /dev/nvme7n1
+[Sat Jun 24 17:59:34 2023] [ssd4] /dev/nvme7n1 SED -2----- Micron_7450_MTFDKCC3T8TFR                E2MU110
+[Sat Jun 24 17:59:34 2023]
+[Sat Jun 24 17:59:34 2023] [ssd4] set new password 22443E9D2076
+[Sat Jun 24 17:59:34 2023] [ssd4] sudo /usr/bin/sedutil-cli-sha512 --setPassword ***** Admin1 ***** /dev/nvme7n1
+[Sat Jun 24 17:59:36 2023] [ssd4] Admin1 password changed
+[Sat Jun 24 17:59:36 2023] -----------------------------------------------------------------------------------
+[Sat Jun 24 17:59:36 2023] [ssd5] sudo /usr/bin/sedutil-cli-sha512 --isValidSED /dev/nvme2n1
+[Sat Jun 24 17:59:36 2023] [ssd5] /dev/nvme2n1 SED -2----- Micron_7450_MTFDKCC3T8TFR                E2MU110
+[Sat Jun 24 17:59:36 2023]
+[Sat Jun 24 17:59:36 2023] [ssd5] set new password 22443E9D3B41
+[Sat Jun 24 17:59:36 2023] [ssd5] sudo /usr/bin/sedutil-cli-sha512 --setPassword ***** Admin1 ***** /dev/nvme2n1
+[Sat Jun 24 17:59:37 2023] [ssd5] Admin1 password changed
+[Sat Jun 24 17:59:37 2023] -----------------------------------------------------------------------------------
+[Sat Jun 24 17:59:37 2023] [ssd6] sudo /usr/bin/sedutil-cli-sha512 --isValidSED /dev/nvme3n1
+[Sat Jun 24 17:59:37 2023] [ssd6] /dev/nvme3n1 SED -2----- Micron_7450_MTFDKCC3T8TFR                E2MU110
+[Sat Jun 24 17:59:37 2023]
+[Sat Jun 24 17:59:37 2023] [ssd6] set new password 22443E9D3B65
+[Sat Jun 24 17:59:37 2023] [ssd6] sudo /usr/bin/sedutil-cli-sha512 --setPassword ***** Admin1 ***** /dev/nvme3n1
+[Sat Jun 24 17:59:39 2023] [ssd6] Admin1 password changed
+[Sat Jun 24 17:59:39 2023] -----------------------------------------------------------------------------------
+[Sat Jun 24 17:59:39 2023] [ssd7] sudo /usr/bin/sedutil-cli-sha512 --isValidSED /dev/nvme4n1
+[Sat Jun 24 17:59:39 2023] [ssd7] /dev/nvme4n1 SED -2----- Micron_7450_MTFDKCC3T8TFR                E2MU110
+[Sat Jun 24 17:59:39 2023]
+[Sat Jun 24 17:59:39 2023] [ssd7] set new password 22443E9D20A4
+[Sat Jun 24 17:59:39 2023] [ssd7] sudo /usr/bin/sedutil-cli-sha512 --setPassword ***** Admin1 ***** /dev/nvme4n1
+[Sat Jun 24 17:59:40 2023] [ssd7] Admin1 password changed
+[Sat Jun 24 17:59:40 2023] -----------------------------------------------------------------------------------
+[Sat Jun 24 17:59:40 2023] [ssd8] sudo /usr/bin/sedutil-cli-sha512 --isValidSED /dev/nvme8n1
+[Sat Jun 24 17:59:40 2023] [ssd8] /dev/nvme8n1 SED -2----- Micron_7450_MTFDKCC3T8TFR                E2MU110
+[Sat Jun 24 17:59:40 2023]
+[Sat Jun 24 17:59:40 2023] [ssd8] set new password 22443E9DC54E
+[Sat Jun 24 17:59:40 2023] [ssd8] sudo /usr/bin/sedutil-cli-sha512 --setPassword ***** Admin1 ***** /dev/nvme8n1
+[Sat Jun 24 17:59:41 2023] [ssd8] Admin1 password changed
+[Sat Jun 24 17:59:41 2023] >
+
+```
+
+### config disk lock
+
+This sets the disks into the locked state requiring a password.
+
+On any power cycle command (disks loose power) the disks will need to be unlocked using the `config disk unlock` command and a password
+
+The password can be read from the file `/tmp/disk-password` if the file exists
+
+```
+config disk lock
+```
+
+Example locks all data disks
+
+```
+[Sat Jun 24 18:03:58 2023] > config disk lock
+[Sat Jun 24 18:03:58 2023] Enter Password. or CR for default:
+****
+[Sat Jun 24 18:04:00 2023] -----------------------------------------------------------------------------------
+[Sat Jun 24 18:04:00 2023] [par0] sudo /usr/bin/sedutil-cli-sha512 --isValidSED /dev/nvme9n1
+[Sat Jun 24 18:04:00 2023] [par0] /dev/nvme9n1 SED -2----- Micron_7450_MTFDKCC3T8TFR                E2MU110
+[Sat Jun 24 18:04:00 2023] [par0] sudo /usr/bin/sedutil-cli-sha512 --enableLockingRange 0 ***** /dev/nvme9n1
+[Sat Jun 24 18:04:01 2023] [par0] LockingRange0 enabled ReadLocking,WriteLocking
+[Sat Jun 24 18:04:01 2023]
+[Sat Jun 24 18:04:01 2023] [par0] set to locked22443E9D2087
+[Sat Jun 24 18:04:01 2023] [par0] sudo /usr/bin/sedutil-cli-sha512 --setLockingRange 0 LK ***** /dev/nvme9n1
+[Sat Jun 24 18:04:02 2023] [par0] LockingRange0 set to LK
+[Sat Jun 24 18:04:02 2023] -----------------------------------------------------------------------------------
+[Sat Jun 24 18:04:02 2023] [ssd0] sudo /usr/bin/sedutil-cli-sha512 --isValidSED /dev/nvme10n1
+[Sat Jun 24 18:04:02 2023] [ssd0] /dev/nvme10n1 SED -2----- Micron_7450_MTFDKCC3T8TFR                E2MU110
+[Sat Jun 24 18:04:02 2023] [ssd0] sudo /usr/bin/sedutil-cli-sha512 --enableLockingRange 0 ***** /dev/nvme10n1
+[Sat Jun 24 18:04:03 2023] [ssd0] LockingRange0 enabled ReadLocking,WriteLocking
+[Sat Jun 24 18:04:03 2023]
+[Sat Jun 24 18:04:03 2023] [ssd0] set to locked22443E9D204F
+[Sat Jun 24 18:04:03 2023] [ssd0] sudo /usr/bin/sedutil-cli-sha512 --setLockingRange 0 LK ***** /dev/nvme10n1
+[Sat Jun 24 18:04:04 2023] [ssd0] LockingRange0 set to LK
+[Sat Jun 24 18:04:04 2023] -----------------------------------------------------------------------------------
+[Sat Jun 24 18:04:04 2023] [ssd1] sudo /usr/bin/sedutil-cli-sha512 --isValidSED /dev/nvme1n1
+[Sat Jun 24 18:04:04 2023] [ssd1] /dev/nvme1n1 SED -2----- Micron_7450_MTFDKCC3T8TFR                E2MU110
+[Sat Jun 24 18:04:04 2023] [ssd1] sudo /usr/bin/sedutil-cli-sha512 --enableLockingRange 0 ***** /dev/nvme1n1
+[Sat Jun 24 18:04:05 2023] [ssd1] LockingRange0 enabled ReadLocking,WriteLocking
+[Sat Jun 24 18:04:05 2023]
+[Sat Jun 24 18:04:05 2023] [ssd1] set to locked22223AD5BFC3
+[Sat Jun 24 18:04:05 2023] [ssd1] sudo /usr/bin/sedutil-cli-sha512 --setLockingRange 0 LK ***** /dev/nvme1n1
+[Sat Jun 24 18:04:06 2023] [ssd1] LockingRange0 set to LK
+[Sat Jun 24 18:04:06 2023] -----------------------------------------------------------------------------------
+[Sat Jun 24 18:04:06 2023] [ssd2] sudo /usr/bin/sedutil-cli-sha512 --isValidSED /dev/nvme6n1
+[Sat Jun 24 18:04:06 2023] [ssd2] /dev/nvme6n1 SED -2----- Micron_7450_MTFDKCC3T8TFR                E2MU110
+[Sat Jun 24 18:04:06 2023] [ssd2] sudo /usr/bin/sedutil-cli-sha512 --enableLockingRange 0 ***** /dev/nvme6n1
+[Sat Jun 24 18:04:07 2023] [ssd2] LockingRange0 enabled ReadLocking,WriteLocking
+[Sat Jun 24 18:04:07 2023]
+[Sat Jun 24 18:04:07 2023] [ssd2] set to locked22443E9D3AFF
+[Sat Jun 24 18:04:07 2023] [ssd2] sudo /usr/bin/sedutil-cli-sha512 --setLockingRange 0 LK ***** /dev/nvme6n1
+[Sat Jun 24 18:04:07 2023] [ssd2] LockingRange0 set to LK
+[Sat Jun 24 18:04:07 2023] -----------------------------------------------------------------------------------
+[Sat Jun 24 18:04:07 2023] [ssd3] sudo /usr/bin/sedutil-cli-sha512 --isValidSED /dev/nvme5n1
+[Sat Jun 24 18:04:07 2023] [ssd3] /dev/nvme5n1 SED -2----- Micron_7450_MTFDKCC3T8TFR                E2MU110
+[Sat Jun 24 18:04:07 2023] [ssd3] sudo /usr/bin/sedutil-cli-sha512 --enableLockingRange 0 ***** /dev/nvme5n1
+[Sat Jun 24 18:04:08 2023] [ssd3] LockingRange0 enabled ReadLocking,WriteLocking
+[Sat Jun 24 18:04:08 2023]
+[Sat Jun 24 18:04:08 2023] [ssd3] set to locked22443E9DC543
+[Sat Jun 24 18:04:08 2023] [ssd3] sudo /usr/bin/sedutil-cli-sha512 --setLockingRange 0 LK ***** /dev/nvme5n1
+[Sat Jun 24 18:04:09 2023] [ssd3] LockingRange0 set to LK
+[Sat Jun 24 18:04:09 2023] -----------------------------------------------------------------------------------
+[Sat Jun 24 18:04:09 2023] [ssd4] sudo /usr/bin/sedutil-cli-sha512 --isValidSED /dev/nvme7n1
+[Sat Jun 24 18:04:09 2023] [ssd4] /dev/nvme7n1 SED -2----- Micron_7450_MTFDKCC3T8TFR                E2MU110
+[Sat Jun 24 18:04:09 2023] [ssd4] sudo /usr/bin/sedutil-cli-sha512 --enableLockingRange 0 ***** /dev/nvme7n1
+[Sat Jun 24 18:04:10 2023] [ssd4] LockingRange0 enabled ReadLocking,WriteLocking
+[Sat Jun 24 18:04:10 2023]
+[Sat Jun 24 18:04:10 2023] [ssd4] set to locked22443E9D2076
+[Sat Jun 24 18:04:10 2023] [ssd4] sudo /usr/bin/sedutil-cli-sha512 --setLockingRange 0 LK ***** /dev/nvme7n1
+[Sat Jun 24 18:04:10 2023] [ssd4] LockingRange0 set to LK
+[Sat Jun 24 18:04:10 2023] -----------------------------------------------------------------------------------
+[Sat Jun 24 18:04:10 2023] [ssd5] sudo /usr/bin/sedutil-cli-sha512 --isValidSED /dev/nvme2n1
+[Sat Jun 24 18:04:10 2023] [ssd5] /dev/nvme2n1 SED -2----- Micron_7450_MTFDKCC3T8TFR                E2MU110
+[Sat Jun 24 18:04:10 2023] [ssd5] sudo /usr/bin/sedutil-cli-sha512 --enableLockingRange 0 ***** /dev/nvme2n1
+[Sat Jun 24 18:04:11 2023] [ssd5] LockingRange0 enabled ReadLocking,WriteLocking
+[Sat Jun 24 18:04:11 2023]
+[Sat Jun 24 18:04:11 2023] [ssd5] set to locked22443E9D3B41
+[Sat Jun 24 18:04:11 2023] [ssd5] sudo /usr/bin/sedutil-cli-sha512 --setLockingRange 0 LK ***** /dev/nvme2n1
+[Sat Jun 24 18:04:12 2023] [ssd5] LockingRange0 set to LK
+[Sat Jun 24 18:04:12 2023] -----------------------------------------------------------------------------------
+[Sat Jun 24 18:04:12 2023] [ssd6] sudo /usr/bin/sedutil-cli-sha512 --isValidSED /dev/nvme3n1
+[Sat Jun 24 18:04:12 2023] [ssd6] /dev/nvme3n1 SED -2----- Micron_7450_MTFDKCC3T8TFR                E2MU110
+[Sat Jun 24 18:04:12 2023] [ssd6] sudo /usr/bin/sedutil-cli-sha512 --enableLockingRange 0 ***** /dev/nvme3n1
+[Sat Jun 24 18:04:13 2023] [ssd6] LockingRange0 enabled ReadLocking,WriteLocking
+[Sat Jun 24 18:04:13 2023]
+[Sat Jun 24 18:04:13 2023] [ssd6] set to locked22443E9D3B65
+[Sat Jun 24 18:04:13 2023] [ssd6] sudo /usr/bin/sedutil-cli-sha512 --setLockingRange 0 LK ***** /dev/nvme3n1
+[Sat Jun 24 18:04:13 2023] [ssd6] LockingRange0 set to LK
+[Sat Jun 24 18:04:13 2023] -----------------------------------------------------------------------------------
+[Sat Jun 24 18:04:13 2023] [ssd7] sudo /usr/bin/sedutil-cli-sha512 --isValidSED /dev/nvme4n1
+[Sat Jun 24 18:04:13 2023] [ssd7] /dev/nvme4n1 SED -2----- Micron_7450_MTFDKCC3T8TFR                E2MU110
+[Sat Jun 24 18:04:13 2023] [ssd7] sudo /usr/bin/sedutil-cli-sha512 --enableLockingRange 0 ***** /dev/nvme4n1
+[Sat Jun 24 18:04:14 2023] [ssd7] LockingRange0 enabled ReadLocking,WriteLocking
+[Sat Jun 24 18:04:14 2023]
+[Sat Jun 24 18:04:14 2023] [ssd7] set to locked22443E9D20A4
+[Sat Jun 24 18:04:14 2023] [ssd7] sudo /usr/bin/sedutil-cli-sha512 --setLockingRange 0 LK ***** /dev/nvme4n1
+[Sat Jun 24 18:04:15 2023] [ssd7] LockingRange0 set to LK
+[Sat Jun 24 18:04:15 2023] -----------------------------------------------------------------------------------
+[Sat Jun 24 18:04:15 2023] [ssd8] sudo /usr/bin/sedutil-cli-sha512 --isValidSED /dev/nvme8n1
+[Sat Jun 24 18:04:15 2023] [ssd8] /dev/nvme8n1 SED -2----- Micron_7450_MTFDKCC3T8TFR                E2MU110
+[Sat Jun 24 18:04:15 2023] [ssd8] sudo /usr/bin/sedutil-cli-sha512 --enableLockingRange 0 ***** /dev/nvme8n1
+[Sat Jun 24 18:04:16 2023] [ssd8] LockingRange0 enabled ReadLocking,WriteLocking
+[Sat Jun 24 18:04:16 2023]
+[Sat Jun 24 18:04:16 2023] [ssd8] set to locked22443E9DC54E
+[Sat Jun 24 18:04:16 2023] [ssd8] sudo /usr/bin/sedutil-cli-sha512 --setLockingRange 0 LK ***** /dev/nvme8n1
+[Sat Jun 24 18:04:16 2023] [ssd8] LockingRange0 set to LK
+
+```
+
+### config disk unlock
+
+Unlocks the drives using the specified password
+
+The password can be read from the file `/tmp/disk-password` if the file exists
+
+```
+config disk unlock
+```
+
+Example of unlocking
+
+```
+[Sat Jun 24 18:07:22 2023] > config disk unlock
+[Sat Jun 24 18:07:23 2023] Enter Password:
+****
+[Sat Jun 24 18:07:24 2023] -----------------------------------------------------------------------------------
+[Sat Jun 24 18:07:24 2023] [par0] sudo /usr/bin/sedutil-cli-sha512 --isValidSED /dev/nvme9n1
+[Sat Jun 24 18:07:24 2023] [par0] /dev/nvme9n1 SED -2----- Micron_7450_MTFDKCC3T8TFR                E2MU110
+[Sat Jun 24 18:07:24 2023]
+[Sat Jun 24 18:07:24 2023] [par0] set to locked 22443E9D2087
+[Sat Jun 24 18:07:24 2023] [par0] sudo /usr/bin/sedutil-cli-sha512 --setLockingRange 0 RW ***** /dev/nvme9n1
+[Sat Jun 24 18:07:25 2023] [par0] LockingRange0 set to RW
+[Sat Jun 24 18:07:25 2023] -----------------------------------------------------------------------------------
+[Sat Jun 24 18:07:25 2023] [ssd0] sudo /usr/bin/sedutil-cli-sha512 --isValidSED /dev/nvme10n1
+[Sat Jun 24 18:07:25 2023] [ssd0] /dev/nvme10n1 SED -2----- Micron_7450_MTFDKCC3T8TFR                E2MU110
+[Sat Jun 24 18:07:25 2023]
+[Sat Jun 24 18:07:25 2023] [ssd0] set to locked 22443E9D204F
+[Sat Jun 24 18:07:25 2023] [ssd0] sudo /usr/bin/sedutil-cli-sha512 --setLockingRange 0 RW ***** /dev/nvme10n1
+[Sat Jun 24 18:07:25 2023] [ssd0] LockingRange0 set to RW
+[Sat Jun 24 18:07:25 2023] -----------------------------------------------------------------------------------
+[Sat Jun 24 18:07:25 2023] [ssd1] sudo /usr/bin/sedutil-cli-sha512 --isValidSED /dev/nvme1n1
+[Sat Jun 24 18:07:25 2023] [ssd1] /dev/nvme1n1 SED -2----- Micron_7450_MTFDKCC3T8TFR                E2MU110
+[Sat Jun 24 18:07:25 2023]
+[Sat Jun 24 18:07:25 2023] [ssd1] set to locked 22223AD5BFC3
+[Sat Jun 24 18:07:25 2023] [ssd1] sudo /usr/bin/sedutil-cli-sha512 --setLockingRange 0 RW ***** /dev/nvme1n1
+[Sat Jun 24 18:07:26 2023] [ssd1] LockingRange0 set to RW
+[Sat Jun 24 18:07:26 2023] -----------------------------------------------------------------------------------
+[Sat Jun 24 18:07:26 2023] [ssd2] sudo /usr/bin/sedutil-cli-sha512 --isValidSED /dev/nvme6n1
+[Sat Jun 24 18:07:26 2023] [ssd2] /dev/nvme6n1 SED -2----- Micron_7450_MTFDKCC3T8TFR                E2MU110
+[Sat Jun 24 18:07:26 2023]
+[Sat Jun 24 18:07:26 2023] [ssd2] set to locked 22443E9D3AFF
+[Sat Jun 24 18:07:26 2023] [ssd2] sudo /usr/bin/sedutil-cli-sha512 --setLockingRange 0 RW ***** /dev/nvme6n1
+[Sat Jun 24 18:07:27 2023] [ssd2] LockingRange0 set to RW
+[Sat Jun 24 18:07:27 2023] -----------------------------------------------------------------------------------
+[Sat Jun 24 18:07:27 2023] [ssd3] sudo /usr/bin/sedutil-cli-sha512 --isValidSED /dev/nvme5n1
+[Sat Jun 24 18:07:27 2023] [ssd3] /dev/nvme5n1 SED -2----- Micron_7450_MTFDKCC3T8TFR                E2MU110
+[Sat Jun 24 18:07:27 2023]
+[Sat Jun 24 18:07:27 2023] [ssd3] set to locked 22443E9DC543
+[Sat Jun 24 18:07:27 2023] [ssd3] sudo /usr/bin/sedutil-cli-sha512 --setLockingRange 0 RW ***** /dev/nvme5n1
+[Sat Jun 24 18:07:27 2023] [ssd3] LockingRange0 set to RW
+[Sat Jun 24 18:07:27 2023] -----------------------------------------------------------------------------------
+[Sat Jun 24 18:07:27 2023] [ssd4] sudo /usr/bin/sedutil-cli-sha512 --isValidSED /dev/nvme7n1
+[Sat Jun 24 18:07:27 2023] [ssd4] /dev/nvme7n1 SED -2----- Micron_7450_MTFDKCC3T8TFR                E2MU110
+[Sat Jun 24 18:07:27 2023]
+[Sat Jun 24 18:07:27 2023] [ssd4] set to locked 22443E9D2076
+[Sat Jun 24 18:07:27 2023] [ssd4] sudo /usr/bin/sedutil-cli-sha512 --setLockingRange 0 RW ***** /dev/nvme7n1
+[Sat Jun 24 18:07:28 2023] [ssd4] LockingRange0 set to RW
+[Sat Jun 24 18:07:28 2023] -----------------------------------------------------------------------------------
+[Sat Jun 24 18:07:28 2023] [ssd5] sudo /usr/bin/sedutil-cli-sha512 --isValidSED /dev/nvme2n1
+[Sat Jun 24 18:07:28 2023] [ssd5] /dev/nvme2n1 SED -2----- Micron_7450_MTFDKCC3T8TFR                E2MU110
+[Sat Jun 24 18:07:28 2023]
+[Sat Jun 24 18:07:28 2023] [ssd5] set to locked 22443E9D3B41
+[Sat Jun 24 18:07:28 2023] [ssd5] sudo /usr/bin/sedutil-cli-sha512 --setLockingRange 0 RW ***** /dev/nvme2n1
+[Sat Jun 24 18:07:29 2023] [ssd5] LockingRange0 set to RW
+[Sat Jun 24 18:07:29 2023] -----------------------------------------------------------------------------------
+[Sat Jun 24 18:07:29 2023] [ssd6] sudo /usr/bin/sedutil-cli-sha512 --isValidSED /dev/nvme3n1
+[Sat Jun 24 18:07:29 2023] [ssd6] /dev/nvme3n1 SED -2----- Micron_7450_MTFDKCC3T8TFR                E2MU110
+[Sat Jun 24 18:07:29 2023]
+[Sat Jun 24 18:07:29 2023] [ssd6] set to locked 22443E9D3B65
+[Sat Jun 24 18:07:29 2023] [ssd6] sudo /usr/bin/sedutil-cli-sha512 --setLockingRange 0 RW ***** /dev/nvme3n1
+[Sat Jun 24 18:07:29 2023] [ssd6] LockingRange0 set to RW
+[Sat Jun 24 18:07:29 2023] -----------------------------------------------------------------------------------
+[Sat Jun 24 18:07:29 2023] [ssd7] sudo /usr/bin/sedutil-cli-sha512 --isValidSED /dev/nvme4n1
+[Sat Jun 24 18:07:29 2023] [ssd7] /dev/nvme4n1 SED -2----- Micron_7450_MTFDKCC3T8TFR                E2MU110
+[Sat Jun 24 18:07:29 2023]
+[Sat Jun 24 18:07:29 2023] [ssd7] set to locked 22443E9D20A4
+[Sat Jun 24 18:07:29 2023] [ssd7] sudo /usr/bin/sedutil-cli-sha512 --setLockingRange 0 RW ***** /dev/nvme4n1
+[Sat Jun 24 18:07:30 2023] [ssd7] LockingRange0 set to RW
+[Sat Jun 24 18:07:30 2023] -----------------------------------------------------------------------------------
+[Sat Jun 24 18:07:30 2023] [ssd8] sudo /usr/bin/sedutil-cli-sha512 --isValidSED /dev/nvme8n1
+[Sat Jun 24 18:07:30 2023] [ssd8] /dev/nvme8n1 SED -2----- Micron_7450_MTFDKCC3T8TFR                E2MU110
+[Sat Jun 24 18:07:30 2023]
+[Sat Jun 24 18:07:30 2023] [ssd8] set to locked 22443E9DC54E
+[Sat Jun 24 18:07:30 2023] [ssd8] sudo /usr/bin/sedutil-cli-sha512 --setLockingRange 0 RW ***** /dev/nvme8n1
+[Sat Jun 24 18:07:31 2023] [ssd8] LockingRange0 set to RW
+[Sat Jun 24 18:07:31 2023] >
+```
+
+
+
