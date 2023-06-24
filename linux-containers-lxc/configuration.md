@@ -2,6 +2,8 @@
 
 ## Install
 
+The following are generalized steps to install setup and start the specified container. Please consult any container specific documentation in addition to this process.
+
 ### Step 1)
 
 Download the LXC into the directory  below
