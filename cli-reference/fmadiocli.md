@@ -1005,13 +1005,91 @@ Example enables the push lxc ring target named "general"
 [Sat Jun 24 14:36:29 2023] >
 ```
 
+### config push lxc disable \<ring name>
 
+Disables the specified lxc push \<ring name>&#x20;
 
+```
+config push lxc disable <ring name>
+```
 
+Example disables the lxc ring named "general"
 
+```
+[Sat Jun 24 14:39:44 2023] > config push lxc disable general
+[Sat Jun 24 14:39:45 2023] Set LXC target [/opt/fmadio/queue/lxc_ring_general] to Disable
+[Sat Jun 24 14:39:45 2023] >
+```
 
+### config push lxc filter-bpf \<ring name> "\<filter bpf>"
 
+Adds the specified BPF filter to the LXC push to the ring.&#x20;
 
+NOTE The filter must be enclosed in double quotes ""
+
+```
+config push lxc filter-bpf <ring name> "<filter bpf>"
+```
+
+Example adds a subnet "192.168.0.0/24" filter to the ring named "general"
+
+```
+[Sat Jun 24 14:44:11 2023] > config push lxc filter-bpf general "net 192.168.0.0/24"
+[Sat Jun 24 14:44:12 2023] Set LXC target [/opt/fmadio/queue/lxc_ring_general] filter bpf to (net 192.168.0.0/24)
+[Sat Jun 24 14:44:12 2023] >
+```
+
+### config push lxc filter-frame \<ring name> "\<filter bpf>"
+
+Adds the specified frame filter to the lxc push to the ring.
+
+NOTE the filter must be enclosed in double quotes ""
+
+```
+config push lxc filter-frame <ring name> "<filter frame>"
+```
+
+Example add a Frame filter of capture port 0 only to the ring named "general"
+
+```
+[Sat Jun 24 14:46:56 2023] > config push lxc filter-frame general "capture.port=0"
+[Sat Jun 24 14:46:56 2023] Set LXC target [/opt/fmadio/queue/lxc_ring_general] filter frame to (capture.port=0)
+[Sat Jun 24 14:46:56 2023] >
+```
+
+### config push lxc from-now \<ring name>
+
+Sets the push to start from the current capture position into the lxc ring.
+
+This is the default behaviour
+
+```
+config push lxc from-now <ring name>
+```
+
+Example sets the ring "general" to push data into the ring from now.
+
+```
+[Sat Jun 24 14:50:03 2023] > config push lxc from-now general
+[Sat Jun 24 14:50:04 2023] Set LXC target [/opt/fmadio/queue/lxc_ring_general] fetch from current capture position
+[Sat Jun 24 14:50:04 2023] >
+```
+
+### config push lxc from-start \<ring name>
+
+Sets the push to start from the beginning of the capture.
+
+```
+config push lxc from-start <ring name>
+```
+
+Example sets the ring "general" to start from the begnining of the capture
+
+```
+[Sat Jun 24 14:51:48 2023] > config push lxc from-start general
+[Sat Jun 24 14:51:48 2023] Set LXC target [/opt/fmadio/queue/lxc_ring_general] fetch from start of capture
+[Sat Jun 24 14:51:48 2023] >
+```
 
 
 
