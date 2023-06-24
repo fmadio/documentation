@@ -1103,7 +1103,7 @@ Shows all rings status information
 show ring status
 ```
 
-Example
+Example, this can be helpful for monitoring data is being produced and consumed correctly.
 
 ```
 [Sat Jun 24 15:23:25 2023] > show ring status
