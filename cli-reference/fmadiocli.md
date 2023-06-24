@@ -956,9 +956,13 @@ contact support@fmad.io for more info
 
 **TBD** installs the specified container from the public repo
 
+contact support@fmad.io for more info
+
 ### config lxc uninstall
 
 **TBD** removes the specified container from the configuration and disk
+
+contact support@fmad.io for more info
 
 ## Automatic Push PCAP
 
