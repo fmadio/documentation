@@ -1151,10 +1151,11 @@ config timezone "<city>"
 Example set the timezone to New York
 
 ```
-[Sat Jun 24 15:30:44 2023] > config timezone "New York"
-[Sat Jun 24 15:30:45 2023] setting timezone to [/usr/share/zoneinfo/America/New_York]
-[Sat Jun 24 15:30:45 2023]     UTC -04:00 M (EDT)
-[Sat Jun 24 15:30:45 2023] >
+[Sat Jun 24 15:32:00 2023] > config timezone "New York"
+[Sat Jun 24 15:32:01 2023] setting timezone to [/usr/share/zoneinfo/America/New_York]
+[Sat Jun 24 15:32:01 2023]     UTC -04:00 M (EDT)
+[Sat Jun 24 15:32:01 2023] *** System requires a reboot to take effect ****
+[Sat Jun 24 15:32:01 2023] >
 ```
 
 NOTE change only takes effect on next reboot
