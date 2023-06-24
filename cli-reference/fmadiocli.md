@@ -1115,6 +1115,50 @@ Example
 [Sat Jun 24 15:23:25 2023] >
 ```
 
+## Time
+
+Various functions for configuration and monitoring time
+
+### show timezone
+
+Shows the current timezone the system is configured&#x20;
+
+```
+show timezone
+```
+
+Example showing the current timezone
+
+```
+[Sat Jun 24 15:25:29 2023] > show timezone
+[Sat Jun 24 15:25:30 2023] Timezone: Asia/Singapore
+[Sat Jun 24 15:25:30 2023]     UTC +08:00 (SGT)
+[Sat Jun 24 15:25:32 2023] >
+```
+
+### config timezone "\<city>"
+
+Configures the timezone by searching the timezone list for the location named "\<city>"
+
+System uses the first found match
+
+For cities with spaces in the name, ensure to use double quotes around the city name
+
+```
+config timezone "<city>"
+```
+
+Example set the timezone to New York
+
+```
+[Sat Jun 24 15:30:44 2023] > config timezone "New York"
+[Sat Jun 24 15:30:45 2023] setting timezone to [/usr/share/zoneinfo/America/New_York]
+[Sat Jun 24 15:30:45 2023]     UTC -04:00 M (EDT)
+[Sat Jun 24 15:30:45 2023] >
+```
+
+NOTE change only takes effect on next reboot
+
 ## User Management
 
 **FW: 8336+**
