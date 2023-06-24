@@ -1091,7 +1091,29 @@ Example sets the ring "general" to start from the begnining of the capture
 [Sat Jun 24 14:51:48 2023] >
 ```
 
+## Ring management
 
+Various functions for monitoring the ring status both push pcap and push lxc
+
+### show ring status
+
+Shows all rings status information
+
+```
+show ring status
+```
+
+Example
+
+```
+[Sat Jun 24 15:23:25 2023] > show ring status
+[Sat Jun 24 15:23:25 2023] Name                 : Path                                               :     Status :          Pkt Put :          Pkt Get : Pkt Queued : Desc
+[Sat Jun 24 15:23:25 2023] ---------------------+----------------------------------------------------+------------+------------------+------------------+------------+------------------------------------
+[Sat Jun 24 15:23:25 2023] suricata             : /opt/fmadio/queue/lxc_ring_suricata                :       full :            1,023 :                0 :       1023 :
+[Sat Jun 24 15:23:25 2023] general              : /opt/fmadio/queue/lxc_ring_general                 :     online :                0 :                0 :          0 :
+[Sat Jun 24 15:23:25 2023] ---------------------+----------------------------------------------------+------------+------------------+------------------+------------+------------------------------------
+[Sat Jun 24 15:23:25 2023] >
+```
 
 ## User Management
 
