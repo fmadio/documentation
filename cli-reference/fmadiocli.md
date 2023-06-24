@@ -962,6 +962,8 @@ contact support@fmad.io for more info
 
 ## Automatic Push PCAP
 
+Configure and monitor the automatic push generation of PCAPs to storage locations.
+
 ### show push pcap status
 
 FW: 7963+
