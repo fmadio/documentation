@@ -1281,13 +1281,24 @@ show ring status
 Example, this can be helpful for monitoring data is being produced and consumed correctly.
 
 ```
-[Sat Jun 24 15:23:25 2023] > show ring status
-[Sat Jun 24 15:23:25 2023] Name                 : Path                                               :     Status :          Pkt Put :          Pkt Get : Pkt Queued : Desc
-[Sat Jun 24 15:23:25 2023] ---------------------+----------------------------------------------------+------------+------------------+------------------+------------+------------------------------------
-[Sat Jun 24 15:23:25 2023] suricata             : /opt/fmadio/queue/lxc_ring_suricata                :       full :            1,023 :                0 :       1023 :
-[Sat Jun 24 15:23:25 2023] general              : /opt/fmadio/queue/lxc_ring_general                 :     online :                0 :                0 :          0 :
-[Sat Jun 24 15:23:25 2023] ---------------------+----------------------------------------------------+------------+------------------+------------------+------------+------------------------------------
-[Sat Jun 24 15:23:25 2023] >
+> show ring status
+Name                           : Path                                               :     Status :          Pkt Put :          Pkt Get : Pkt Queued : Desc
+-------------------------------+----------------------------------------------------+------------+------------------+------------------+------------+------------------------------------
+lxc_ring_suricata              : /opt/fmadio/queue/lxc_ring_suricata                :     online :       31,168,075 :       31,168,075 :          0 : suricata data feed
+pcap_ring_all                  : /opt/fmadio/queue/pcap_ring_all                    :     online :       20,691,048 :       20,691,048 :          0 :
+pcap_ring_aws-sg2              : /opt/fmadio/queue/pcap_ring_aws-sg2                :     online :          120,701 :          120,701 :          0 :
+pcap_ring_dns                  : /opt/fmadio/queue/pcap_ring_dns                    :     online :            5,280 :            5,280 :          0 :
+pcap_ring_icmp                 : /opt/fmadio/queue/pcap_ring_icmp                   :     online :          214,985 :          214,985 :          0 :
+pcap_ring_ssh                  : /opt/fmadio/queue/pcap_ring_ssh                    :     online :          809,078 :          809,078 :          0 :
+pcap_ring_vlan-4091            : /opt/fmadio/queue/pcap_ring_vlan-4091              :     online :        2,455,256 :        2,455,256 :          0 :
+pcap_ring_voip-hk              : /opt/fmadio/queue/pcap_ring_voip-hk                :     online :        5,529,573 :        5,529,573 :          0 :
+pcap_ring_wireguard-50001      : /opt/fmadio/queue/pcap_ring_wireguard-50001        :     online :              308 :              308 :          0 :
+pcap_ring_wireguard-50002      : /opt/fmadio/queue/pcap_ring_wireguard-50002        :     online :                6 :                6 :          0 :
+pcap_ring_wireguard-50003      : /opt/fmadio/queue/pcap_ring_wireguard-50003        :     online :                0 :                0 :          0 :
+pcap_ring_wireguard-50104      : /opt/fmadio/queue/pcap_ring_wireguard-50104        :     online :                0 :                0 :          0 :
+-------------------------------+----------------------------------------------------+------------+------------------+------------------+------------+------------------------------------
+>
+
 ```
 
 ## Time
