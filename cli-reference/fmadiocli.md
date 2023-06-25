@@ -1292,10 +1292,6 @@ pcap_ring_icmp                 : /opt/fmadio/queue/pcap_ring_icmp               
 pcap_ring_ssh                  : /opt/fmadio/queue/pcap_ring_ssh                    :     online :          809,078 :          809,078 :          0 :
 pcap_ring_vlan-4091            : /opt/fmadio/queue/pcap_ring_vlan-4091              :     online :        2,455,256 :        2,455,256 :          0 :
 pcap_ring_voip-hk              : /opt/fmadio/queue/pcap_ring_voip-hk                :     online :        5,529,573 :        5,529,573 :          0 :
-pcap_ring_wireguard-50001      : /opt/fmadio/queue/pcap_ring_wireguard-01           :     online :              308 :              308 :          0 :
-pcap_ring_wireguard-50002      : /opt/fmadio/queue/pcap_ring_wireguard-02           :     online :                6 :                6 :          0 :
-pcap_ring_wireguard-50003      : /opt/fmadio/queue/pcap_ring_wireguard-03           :     online :                0 :                0 :          0 :
-pcap_ring_wireguard-50104      : /opt/fmadio/queue/pcap_ring_wireguard-04           :     online :                0 :                0 :          0 :
 -------------------------------+----------------------------------------------------+------------+------------------+------------------+------------+------------------------------------
 >
 
