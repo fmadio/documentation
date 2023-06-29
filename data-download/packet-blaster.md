@@ -39,7 +39,7 @@ Packet blaster is operated only by the CLI interface, each FMAD SKU has a slight
 ### FMADIO100v2
 
 ```
-fmadio@fmadio100v2-228:$ sudo ./stream_generate_f100 --blaster --help
+fmadio@fmadio100v2-228:$ sudo stream_generate_f100 --blaster --help
 Packet Gen: Oct  3 2019 18:44:18
 stream_generate_f100 --blaster ::: FMADIO 100G Packet Blaster :::
 
@@ -56,7 +56,7 @@ fmadio@fmadio100v2-228:$
 Example operation, generate 1 billion 64B packets on a single 100G port at full line rate
 
 ```
-fmadio@fmadio100v2-228:$ sudo ./stream_generate_f100 --blaster --pktcnt 1e9 --pktsize 64 --port-enable 01
+fmadio@fmadio100v2-228:$ sudo stream_generate_f100 --blaster --pktcnt 1e9 --pktsize 64 --port-enable 01
 Packet Gen: Oct  3 2019 18:44:18
 PktCnt: 1000000000
 PktSize: 64
