@@ -1927,6 +1927,68 @@ Example locks all data disks
 
 ```
 
+### config disk no-lock
+
+This removes the disk locking function of the drives.
+
+```
+config disk no-lock
+```
+
+Example below shows a disk no-lock operation
+
+```
+[Fri Jun 30 08:59:34 2023] > config disk no-lock
+[Fri Jun 30 08:59:34 2023] Enter Password. or CR for default:
+**********
+[Fri Jun 30 08:59:37 2023] -----------------------------------------------------------------------------------
+[Fri Jun 30 08:59:37 2023] [par0] sudo /usr/bin/sedutil-cli-sha512 --isValidSED /dev/nvme8n1
+[Fri Jun 30 08:59:37 2023] [par0] /dev/nvme8n1 SED -2----- SAMSUNG MZQL23T8HCLS-00A07               GDC5602Q
+[Fri Jun 30 08:59:37 2023] [par0] sudo /usr/bin/sedutil-cli-sha512 --disableLockingRange 0 ***** /dev/nvme8n1
+[Fri Jun 30 08:59:38 2023] [par0] LockingRange0 disabled
+[Fri Jun 30 08:59:38 2023] -----------------------------------------------------------------------------------
+[Fri Jun 30 08:59:38 2023] [ssd0] sudo /usr/bin/sedutil-cli-sha512 --isValidSED /dev/nvme2n1
+[Fri Jun 30 08:59:38 2023] [ssd0] /dev/nvme2n1 SED -2----- SAMSUNG MZQL23T8HCLS-00A07               GDC5602Q
+[Fri Jun 30 08:59:38 2023] [ssd0] sudo /usr/bin/sedutil-cli-sha512 --disableLockingRange 0 ***** /dev/nvme2n1
+[Fri Jun 30 08:59:39 2023] [ssd0] LockingRange0 disabled
+[Fri Jun 30 08:59:39 2023] -----------------------------------------------------------------------------------
+[Fri Jun 30 08:59:39 2023] [ssd1] sudo /usr/bin/sedutil-cli-sha512 --isValidSED /dev/nvme9n1
+[Fri Jun 30 08:59:39 2023] [ssd1] /dev/nvme9n1 SED -2----- SAMSUNG MZQL23T8HCLS-00A07               GDC5602Q
+[Fri Jun 30 08:59:39 2023] [ssd1] sudo /usr/bin/sedutil-cli-sha512 --disableLockingRange 0 ***** /dev/nvme9n1
+[Fri Jun 30 08:59:40 2023] [ssd1] LockingRange0 disabled
+[Fri Jun 30 08:59:40 2023] -----------------------------------------------------------------------------------
+[Fri Jun 30 08:59:40 2023] [ssd2] sudo /usr/bin/sedutil-cli-sha512 --isValidSED /dev/nvme7n1
+[Fri Jun 30 08:59:40 2023] [ssd2] /dev/nvme7n1 SED -2----- SAMSUNG MZQL23T8HCLS-00A07               GDC5602Q
+[Fri Jun 30 08:59:40 2023] [ssd2] sudo /usr/bin/sedutil-cli-sha512 --disableLockingRange 0 ***** /dev/nvme7n1
+[Fri Jun 30 08:59:42 2023] [ssd2] LockingRange0 disabled
+[Fri Jun 30 08:59:42 2023] -----------------------------------------------------------------------------------
+[Fri Jun 30 08:59:42 2023] [ssd3] sudo /usr/bin/sedutil-cli-sha512 --isValidSED /dev/nvme6n1
+[Fri Jun 30 08:59:42 2023] [ssd3] /dev/nvme6n1 SED -2----- SAMSUNG MZQL23T8HCLS-00A07               GDC5602Q
+[Fri Jun 30 08:59:42 2023] [ssd3] sudo /usr/bin/sedutil-cli-sha512 --disableLockingRange 0 ***** /dev/nvme6n1
+[Fri Jun 30 08:59:43 2023] [ssd3] LockingRange0 disabled
+[Fri Jun 30 08:59:43 2023] -----------------------------------------------------------------------------------
+[Fri Jun 30 08:59:43 2023] [ssd4] sudo /usr/bin/sedutil-cli-sha512 --isValidSED /dev/nvme4n1
+[Fri Jun 30 08:59:43 2023] [ssd4] /dev/nvme4n1 SED -2----- SAMSUNG MZQL23T8HCLS-00A07               GDC5602Q
+[Fri Jun 30 08:59:43 2023] [ssd4] sudo /usr/bin/sedutil-cli-sha512 --disableLockingRange 0 ***** /dev/nvme4n1
+[Fri Jun 30 08:59:44 2023] [ssd4] LockingRange0 disabled
+[Fri Jun 30 08:59:44 2023] -----------------------------------------------------------------------------------
+[Fri Jun 30 08:59:44 2023] [ssd5] sudo /usr/bin/sedutil-cli-sha512 --isValidSED /dev/nvme5n1
+[Fri Jun 30 08:59:44 2023] [ssd5] /dev/nvme5n1 SED -2----- SAMSUNG MZQL23T8HCLS-00A07               GDC5602Q
+[Fri Jun 30 08:59:44 2023] [ssd5] sudo /usr/bin/sedutil-cli-sha512 --disableLockingRange 0 ***** /dev/nvme5n1
+[Fri Jun 30 08:59:45 2023] [ssd5] LockingRange0 disabled
+[Fri Jun 30 08:59:45 2023] -----------------------------------------------------------------------------------
+[Fri Jun 30 08:59:45 2023] [ssd6] sudo /usr/bin/sedutil-cli-sha512 --isValidSED /dev/nvme3n1
+[Fri Jun 30 08:59:45 2023] [ssd6] /dev/nvme3n1 SED -2----- SAMSUNG MZQL23T8HCLS-00A07               GDC5602Q
+[Fri Jun 30 08:59:45 2023] [ssd6] sudo /usr/bin/sedutil-cli-sha512 --disableLockingRange 0 ***** /dev/nvme3n1
+[Fri Jun 30 08:59:46 2023] [ssd6] LockingRange0 disabled
+[Fri Jun 30 08:59:46 2023] -----------------------------------------------------------------------------------
+[Fri Jun 30 08:59:46 2023] [ssd7] sudo /usr/bin/sedutil-cli-sha512 --isValidSED /dev/nvme1n1
+[Fri Jun 30 08:59:46 2023] [ssd7] /dev/nvme1n1 SED -2----- SAMSUNG MZQL23T8HCLS-00A07               GDC5602Q
+[Fri Jun 30 08:59:46 2023] [ssd7] sudo /usr/bin/sedutil-cli-sha512 --disableLockingRange 0 ***** /dev/nvme1n1
+[Fri Jun 30 08:59:48 2023] [ssd7] LockingRange0 disabled
+[Fri Jun 30 08:59:48 2023] >
+```
+
 ### config disk unlock
 
 Unlocks the drives using the specified password
