@@ -109,7 +109,7 @@ fmadiocli "show container"
 
 FShark should be installed and running as hilighted in red below.
 
-![Check FShark status](<../.gitbook/assets/image (4) (2).png>)
+![Check FShark status](<../.gitbook/assets/image (4) (2) (1).png>)
 
 ### Packet Browser
 
