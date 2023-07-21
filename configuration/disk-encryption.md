@@ -85,4 +85,153 @@ Command will unlock and verify correct functionality of the disks. Starts by unl
 
 Reference documentation is&#x20;
 
-[https://docs.fmad.io/fmadio-documentation/cli-reference/fmadiocli#config-disk-unlock](https://docs.fmad.io/fmadio-documentation/cli-reference/fmadiocli#config-disk-unlock)\
+{% embed url="https://docs.fmad.io/fmadio-documentation/cli-reference/fmadiocli#config-disk-unlock" %}
+
+### Automatic Unlock
+
+Generally entering passwords manually is fairly cumbersome / time intensive. The system has the ability to unlock the disks on boot.
+
+The general purpose boot setup file `/opt/fmadio/etc/boot.lua` can be used to fetch the password from a key server, e.g. via CURL or copy a password file from the local disk
+
+Below is an example boot.lua file to automatically unlock the disks at boot time, using the saved password in `/opt/fmadio/etc/disk-password`
+
+```
+-- unlock the disks
+print(os.date() .. " : unlocking sed disks")
+io.stdout:flush()
+
+-- fetch password local
+os.execute('cp /mnt/store0/etc/disk-password /tmp/disk-password')
+
+-- fetch password remote
+--os.execute('curl -s https://192.168.1.1/disk-password > /tmp/disk-password')
+
+-- unlock
+os.execute('/opt/fmadio/bin/fmadiocli "config disk unlock"')
+os.execute('/opt/fmadio/bin/fmadiocli "show disk status"')
+io.stdout:flush()
+
+print(os.date() .. " : unlocking sed disks... done")
+io.stdout:flush()
+```
+
+For debugging the logfile is located in
+
+&#x20;/mnt/store0/log/boot.log&#x20;
+
+example output is shown below
+
+```
+Fri Jul 21 14:53:53 2023 : unlocking sed disks
+[Fri Jul 21 14:53:53 2023]   _____                    .___.__
+[Fri Jul 21 14:53:53 2023] _/ ____\_____  _____     __| _/|__|  ____
+[Fri Jul 21 14:53:53 2023] \   __\/    /\ \__  \   / __ | |  | /  _ \
+[Fri Jul 21 14:53:53 2023]  |  | |  Y Y  \ / __ \_/ /_/ | |  |(  <_> )
+[Fri Jul 21 14:53:53 2023]  |__| |__|_|  /(____  /\____ | |__| \____/
+[Fri Jul 21 14:53:53 2023]             \/      \/      \/
+[Fri Jul 21 14:53:53 2023] ============================================
+[Fri Jul 21 14:53:53 2023]   -+ Packets confiscated by Customs +-
+[Fri Jul 21 14:53:53 2023]
+[Fri Jul 21 14:53:53 2023]  type '?' for command information
+[Fri Jul 21 14:53:53 2023]  type '???' for verbose information
+[Fri Jul 21 14:53:53 2023]
+[Fri Jul 21 14:53:53 2023] History: 1804
+[Fri Jul 21 14:53:53 2023] CmdLine [config disk unlock]
+[Fri Jul 21 14:53:53 2023] Cmd [config disk unlock]
+[Fri Jul 21 14:53:53 2023] Enter Current Password. or Blank for default:
+[Fri Jul 21 14:53:53 2023] -----------------------------------------------------------------------------------
+[Fri Jul 21 14:53:53 2023] [par0] sudo /usr/bin/sedutil-cli-sha512 --isValidSED /dev/nvme8n1
+[Fri Jul 21 14:53:53 2023] [par0] /dev/nvme8n1 SED -2----- SAMSUNG MZQL23T8HCLS-00A07               GDC5602Q
+[Fri Jul 21 14:53:53 2023]
+[Fri Jul 21 14:53:53 2023] [par0] set to unlocked S64HNJ0T707660
+[Fri Jul 21 14:53:53 2023] [par0] sudo /usr/bin/sedutil-cli-sha512 --setLockingRange 0 RW ***** /dev/nvme8n1
+[Fri Jul 21 14:53:54 2023] [par0] LockingRange0 set to RW
+[Fri Jul 21 14:53:54 2023] -----------------------------------------------------------------------------------
+[Fri Jul 21 14:53:54 2023] [ssd0] sudo /usr/bin/sedutil-cli-sha512 --isValidSED /dev/nvme2n1
+[Fri Jul 21 14:53:54 2023] [ssd0] /dev/nvme2n1 SED -2----- SAMSUNG MZQL23T8HCLS-00A07               GDC5602Q
+[Fri Jul 21 14:53:54 2023]
+[Fri Jul 21 14:53:54 2023] [ssd0] set to unlocked S64HNJ0T707662
+[Fri Jul 21 14:53:54 2023] [ssd0] sudo /usr/bin/sedutil-cli-sha512 --setLockingRange 0 RW ***** /dev/nvme2n1
+[Fri Jul 21 14:53:55 2023] [ssd0] LockingRange0 set to RW
+[Fri Jul 21 14:53:55 2023] -----------------------------------------------------------------------------------
+[Fri Jul 21 14:53:55 2023] [ssd1] sudo /usr/bin/sedutil-cli-sha512 --isValidSED /dev/nvme9n1
+[Fri Jul 21 14:53:55 2023] [ssd1] /dev/nvme9n1 SED -2----- SAMSUNG MZQL23T8HCLS-00A07               GDC5602Q
+[Fri Jul 21 14:53:55 2023]
+[Fri Jul 21 14:53:55 2023] [ssd1] set to unlocked S64HNJ0T707794
+[Fri Jul 21 14:53:55 2023] [ssd1] sudo /usr/bin/sedutil-cli-sha512 --setLockingRange 0 RW ***** /dev/nvme9n1
+[Fri Jul 21 14:53:56 2023] [ssd1] LockingRange0 set to RW
+[Fri Jul 21 14:53:56 2023] -----------------------------------------------------------------------------------
+[Fri Jul 21 14:53:56 2023] [ssd2] sudo /usr/bin/sedutil-cli-sha512 --isValidSED /dev/nvme7n1
+[Fri Jul 21 14:53:56 2023] [ssd2] /dev/nvme7n1 SED -2----- SAMSUNG MZQL23T8HCLS-00A07               GDC5602Q
+[Fri Jul 21 14:53:56 2023]
+[Fri Jul 21 14:53:56 2023] [ssd2] set to unlocked S64HNJ0T707657
+[Fri Jul 21 14:53:56 2023] [ssd2] sudo /usr/bin/sedutil-cli-sha512 --setLockingRange 0 RW ***** /dev/nvme7n1
+[Fri Jul 21 14:53:58 2023] [ssd2] LockingRange0 set to RW
+[Fri Jul 21 14:53:58 2023] -----------------------------------------------------------------------------------
+[Fri Jul 21 14:53:58 2023] [ssd3] sudo /usr/bin/sedutil-cli-sha512 --isValidSED /dev/nvme6n1
+[Fri Jul 21 14:53:58 2023] [ssd3] /dev/nvme6n1 SED -2----- SAMSUNG MZQL23T8HCLS-00A07               GDC5602Q
+[Fri Jul 21 14:53:58 2023]
+[Fri Jul 21 14:53:58 2023] [ssd3] set to unlocked S64HNJ0T707659
+[Fri Jul 21 14:53:58 2023] [ssd3] sudo /usr/bin/sedutil-cli-sha512 --setLockingRange 0 RW ***** /dev/nvme6n1
+[Fri Jul 21 14:53:59 2023] [ssd3] LockingRange0 set to RW
+[Fri Jul 21 14:53:59 2023] -----------------------------------------------------------------------------------
+[Fri Jul 21 14:53:59 2023] [ssd4] sudo /usr/bin/sedutil-cli-sha512 --isValidSED /dev/nvme4n1
+[Fri Jul 21 14:53:59 2023] [ssd4] /dev/nvme4n1 SED -2----- SAMSUNG MZQL23T8HCLS-00A07               GDC5602Q
+[Fri Jul 21 14:53:59 2023]
+[Fri Jul 21 14:53:59 2023] [ssd4] set to unlocked S64HNJ0T707658
+[Fri Jul 21 14:53:59 2023] [ssd4] sudo /usr/bin/sedutil-cli-sha512 --setLockingRange 0 RW ***** /dev/nvme4n1
+[Fri Jul 21 14:54:00 2023] [ssd4] LockingRange0 set to RW
+[Fri Jul 21 14:54:00 2023] -----------------------------------------------------------------------------------
+[Fri Jul 21 14:54:00 2023] [ssd5] sudo /usr/bin/sedutil-cli-sha512 --isValidSED /dev/nvme5n1
+[Fri Jul 21 14:54:00 2023] [ssd5] /dev/nvme5n1 SED -2----- SAMSUNG MZQL23T8HCLS-00A07               GDC5602Q
+[Fri Jul 21 14:54:00 2023]
+[Fri Jul 21 14:54:00 2023] [ssd5] set to unlocked S64HNJ0T707656
+[Fri Jul 21 14:54:00 2023] [ssd5] sudo /usr/bin/sedutil-cli-sha512 --setLockingRange 0 RW ***** /dev/nvme5n1
+[Fri Jul 21 14:54:01 2023] [ssd5] LockingRange0 set to RW
+[Fri Jul 21 14:54:01 2023] -----------------------------------------------------------------------------------
+[Fri Jul 21 14:54:01 2023] [ssd6] sudo /usr/bin/sedutil-cli-sha512 --isValidSED /dev/nvme3n1
+[Fri Jul 21 14:54:01 2023] [ssd6] /dev/nvme3n1 SED -2----- SAMSUNG MZQL23T8HCLS-00A07               GDC5602Q
+[Fri Jul 21 14:54:01 2023]
+[Fri Jul 21 14:54:01 2023] [ssd6] set to unlocked S64HNJ0T707655
+[Fri Jul 21 14:54:01 2023] [ssd6] sudo /usr/bin/sedutil-cli-sha512 --setLockingRange 0 RW ***** /dev/nvme3n1
+[Fri Jul 21 14:54:02 2023] [ssd6] LockingRange0 set to RW
+[Fri Jul 21 14:54:02 2023] -----------------------------------------------------------------------------------
+[Fri Jul 21 14:54:02 2023] [ssd7] sudo /usr/bin/sedutil-cli-sha512 --isValidSED /dev/nvme1n1
+[Fri Jul 21 14:54:02 2023] [ssd7] /dev/nvme1n1 SED -2----- SAMSUNG MZQL23T8HCLS-00A07               GDC5602Q
+[Fri Jul 21 14:54:02 2023]
+[Fri Jul 21 14:54:02 2023] [ssd7] set to unlocked S64HNJ0T707793
+[Fri Jul 21 14:54:02 2023] [ssd7] sudo /usr/bin/sedutil-cli-sha512 --setLockingRange 0 RW ***** /dev/nvme1n1
+[Fri Jul 21 14:54:03 2023] [ssd7] LockingRange0 set to RW
+[Fri Jul 21 14:54:03 2023]   _____                    .___.__
+[Fri Jul 21 14:54:03 2023] _/ ____\_____  _____     __| _/|__|  ____
+[Fri Jul 21 14:54:03 2023] \   __\/    /\ \__  \   / __ | |  | /  _ \
+[Fri Jul 21 14:54:03 2023]  |  | |  Y Y  \ / __ \_/ /_/ | |  |(  <_> )
+[Fri Jul 21 14:54:03 2023]  |__| |__|_|  /(____  /\____ | |__| \____/
+[Fri Jul 21 14:54:03 2023]             \/      \/      \/
+[Fri Jul 21 14:54:03 2023] ============================================
+[Fri Jul 21 14:54:03 2023]   -+ Packets confiscated by Customs +-
+[Fri Jul 21 14:54:03 2023]
+[Fri Jul 21 14:54:03 2023]  type '?' for command information
+[Fri Jul 21 14:54:03 2023]  type '???' for verbose information
+[Fri Jul 21 14:54:03 2023]
+[Fri Jul 21 14:54:03 2023] History: 1804
+[Fri Jul 21 14:54:03 2023] CmdLine [show disk status]
+[Fri Jul 21 14:54:03 2023] Cmd [show disk status]
+[Fri Jul 21 14:54:03 2023] SSD Cache
+[Fri Jul 21 14:54:04 2023] Disk  :               Serial :    Size  : Temp   :  Used : Error : Total Write :  Total Read : SED : PSID : SED Enb : SED Lock :
+[Fri Jul 21 14:54:04 2023] ------+----------------------+----------+--------+-------+-------+-------------+-------------+-----+------+---------+----------+
+[Fri Jul 21 14:54:04 2023] os0   :         1949256760C6 :  0.00 TB :    0 C :   0 % :     0 :     0.00 TB :     0.00 TB :   N :    N :       N :        N :
+[Fri Jul 21 14:54:04 2023] par0  :       S64HNJ0T707660 :  0.00 TB :   30 C :   0 % :     0 :     0.00 TB :     0.00 TB :   Y :    Y :       Y :        N :
+[Fri Jul 21 14:54:04 2023] ssd0  :       S64HNJ0T707662 :  3.84 TB :   35 C :   0 % :     0 :     0.01 TB :     0.01 TB :   Y :    Y :       Y :        N :
+[Fri Jul 21 14:54:04 2023] ssd1  :       S64HNJ0T707794 :  3.84 TB :   30 C :   0 % :     0 :     0.01 TB :     0.01 TB :   Y :    Y :       Y :        N :
+[Fri Jul 21 14:54:04 2023] ssd2  :       S64HNJ0T707657 :  3.84 TB :   31 C :   0 % :     0 :     0.01 TB :     0.01 TB :   Y :    Y :       Y :        N :
+[Fri Jul 21 14:54:04 2023] ssd3  :       S64HNJ0T707659 :  3.84 TB :   29 C :   0 % :     0 :     0.01 TB :     0.01 TB :   Y :    Y :       Y :        N :
+[Fri Jul 21 14:54:04 2023] ssd4  :       S64HNJ0T707658 :  3.84 TB :   30 C :   0 % :     0 :     0.01 TB :     0.01 TB :   Y :    Y :       Y :        N :
+[Fri Jul 21 14:54:04 2023] ssd5  :       S64HNJ0T707656 :  3.84 TB :   32 C :   0 % :     0 :     0.01 TB :     0.01 TB :   Y :    Y :       Y :        N :
+[Fri Jul 21 14:54:04 2023] ssd6  :       S64HNJ0T707655 :  3.84 TB :   32 C :   0 % :     0 :     0.01 TB :     0.01 TB :   Y :    Y :       Y :        N :
+[Fri Jul 21 14:54:04 2023] ssd7  :       S64HNJ0T707793 :  3.84 TB :   33 C :   0 % :     0 :     0.01 TB :     0.01 TB :   Y :    Y :       Y :        N :
+[Fri Jul 21 14:54:04 2023] ------+----------------------+----------+--------+-------+-------+-------------+-------------+-----+------+---------+----------+
+Fri Jul 21 14:54:04 2023 : unlocking sed disks... done
+
+```
+
