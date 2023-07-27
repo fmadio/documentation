@@ -131,7 +131,7 @@ As the version jump from the factory installed to this version is very large, al
 
 In addition BMC passwords and other items are also lost. The way to update this is via the FMADIO x86 Host system, where the host is always powered on enabling it to set the BMC Network settings and User passwords directly.
 
-### Step 1)
+### Step 1) Flash BMC
 
 Start the BMC update process using the following commands on the FMADIO host system
 
@@ -149,7 +149,7 @@ Example output shown below, it will take about 5minutes to run. Note the warning
 
 <figure><img src="../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
 
-### Step 2)
+### Step 2) BMC Version check
 
 After the BMC is flashed and has rebooted confirm the new BMC version is 12.60.39 using the following command
 
@@ -161,7 +161,7 @@ The output should look like the following
 
 <figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
 
-### Step 3)
+### Step 3) BMC Network Config
 
 Set the new network configuration information.
 
@@ -176,7 +176,7 @@ sudo ipmitool lan set 1 ipsrc static
 Set a new IP address, netmask and gateway, replace addresses with the assigned BMC network address
 
 ```
-sudo ipmitool lan set ipaddr 192.168.2.173
+sudo ipmitool lan set 1 ipaddr 192.168.2.173
 ```
 
 <figure><img src="../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
@@ -207,7 +207,7 @@ Example output is shown below
 
 The BMC webpage should be accessiable at this point.
 
-### Step 4)
+### Step 4) BMC User Password
 
 The BMC update will delete all the settings, these need to be added back
 
@@ -221,7 +221,7 @@ sudo ipmitool user set password 2 secret
 
 After setting this, logging into the BMC using the admin account and above password.
 
-### Step 5)
+### Step 5) BMC Fan Profile
 
 As all BMC settings are disabled, the first critical setting is a custom FAN profile. Usually this is set at the factory however it needs to be created again after the BMC update
 
@@ -243,7 +243,7 @@ Finally activate the profile
 
 <figure><img src="../.gitbook/assets/image (14).png" alt=""><figcaption></figcaption></figure>
 
-### Step 6)
+### Step 6) BIOS Upgrade
 
 BIOS update, go to the Firmware Update page
 
@@ -263,7 +263,7 @@ It will present something like this as it goes thru the process, will take a few
 
 Once completed the system needs to be rebooted, either using the BMC or the FMADIO linux command line.
 
-### Step 7)
+### Step 7) BIOS Settings
 
 After BIOS update all settings are lost and need to be set-again, the system will fail to boot also as the BIOS settings have not been configured
 
@@ -301,7 +301,7 @@ Security -> Secure Boot
 
 Save changes and exit
 
-### Step 8)
+### Step 8) Done
 
 The system should boot normally now without any BIOS password prompt.
 
