@@ -26,7 +26,7 @@ Drives can never be "bricked" as the drives can be reset by creating a new AES25
 
 ### Disk state flow chart
 
-<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption><p>Encrypted Disk flow chart</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (29).png" alt=""><figcaption><p>Encrypted Disk flow chart</p></figcaption></figure>
 
 ### **Drive Encryption Status**
 

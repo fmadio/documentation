@@ -4,17 +4,19 @@
 
 There are many cases where the FMADIO Packet Capture system should subscribe to Multicast traffic via the capture Port.
 
-![](../.gitbook/assets/image%20%2821%29.png)
+![](<../.gitbook/assets/image (21) (1).png>)
 
-In the above example each capture port is connected to 2 separate switches \(e.g. Market Data Feed A and B\) such that each capture port receives the a direct Market data feed, instead of relying on SPAN/Mirror sessions in a passive setup.
+In the above example each capture port is connected to 2 separate switches (e.g. Market Data Feed A and B) such that each capture port receives the a direct Market data feed, instead of relying on SPAN/Mirror sessions in a passive setup.
 
 To configure start with enabling the capture ports IP/MAC address as per
 
-{% page-ref page="capture-port-ip-mac.md" %}
+{% content-ref url="capture-port-ip-mac.md" %}
+[capture-port-ip-mac.md](capture-port-ip-mac.md)
+{% endcontent-ref %}
 
 Next is configuring the IGMP groups and port configuration. Example configuration for the OPRA Options market data feed is as follows. Edit or create the file
 
-```text
+```
 /opt/fmadio/etc/igmp.lua
 ```
 
@@ -125,7 +127,7 @@ return { Port0, Port1, Interval = 30e9, }
 
 ```
 
-Note each Capture port \(Port0/Port1\) is subscribing to a different MC Group. Also the interval for broadcasting the joins by default is 60sec. In the above example this is reduced to 30sec \(Interval = 30e9  is in nanoseconds\)
+Note each Capture port (Port0/Port1) is subscribing to a different MC Group. Also the interval for broadcasting the joins by default is 60sec. In the above example this is reduced to 30sec (Interval = 30e9  is in nanoseconds)
 
 After editing the file confirm the syntax is correct by running the command as follows
 
@@ -143,7 +145,7 @@ fmadio@fmadio100v2-228U:~$
 
 ```
 
-There should not be any syntax errors or error statements. 
+There should not be any syntax errors or error statements.&#x20;
 
 Changes to this file requires the capture to be restarted. Please stop the current capture, then restart it. After the restart the system will issue the IGMP joins based on the above.
 
@@ -172,4 +174,3 @@ IGMP cap0:    8 : VLAN:     0 IGMP Group:233. 43.202.  9 Port: 11109
 
 
 ```
-

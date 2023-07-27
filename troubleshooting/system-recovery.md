@@ -8,7 +8,7 @@ Start by going to the BMC interface (default IP is 192.168.0.93) contact us for 
 
 Start the Remote HTML KVM
 
-![](<../.gitbook/assets/image (10).png>)
+![](<../.gitbook/assets/image (10) (1).png>)
 
 Will look like this. Select Brose Files, selecting an ISO image + Start the Media
 

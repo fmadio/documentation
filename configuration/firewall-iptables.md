@@ -138,7 +138,7 @@ fmadio@fmadio100v2-228U:~$
 
 The command above adds the drop everything rule to the system, this equates to the following in iptables.
 
-![IPMI FW Drop everything](<../.gitbook/assets/image (1) (1) (1).png>)
+![IPMI FW Drop everything](<../.gitbook/assets/image (1) (1) (1) (2).png>)
 
 Can confirm its working correctly by checking the total number of firewall rules as follows. The returned value should be 1
 
@@ -188,7 +188,7 @@ fmadio@fmadio100v2-228U:~$
 
 This equates to the following iptables rules
 
-![IPMI BMC HTTPS Access](<../.gitbook/assets/image (6) (1).png>)
+![IPMI BMC HTTPS Access](<../.gitbook/assets/image (6) (1) (3).png>)
 
 At this point the IPMI BMC Webpage can be used such as the following
 
@@ -207,7 +207,7 @@ fmadio@fmadio100v2-228U:~$
 
 And the related iptables rule
 
-![IPMITOOL Firewall Setting](<../.gitbook/assets/image (5) (1) (2).png>)
+![IPMITOOL Firewall Setting](<../.gitbook/assets/image (5) (1) (2) (1).png>)
 
 This enable ipmitool to work over the network, which can be extremely critical and helpful when troubleshooting problems. Such as the following
 

@@ -14,7 +14,7 @@ To check the current status the fmadiocli utility provides the easiest way to mo
 show interface status
 ```
 
-![](<../.gitbook/assets/image (9).png>)
+![](<../.gitbook/assets/image (9) (2).png>)
 
 In the above we see capture port 0 (cap0) is link down and capture port 1(cap1) is link up
 
@@ -51,7 +51,7 @@ config interface fec cap0
 config interface fec cap1
 ```
 
-![](<../.gitbook/assets/image (7) (1).png>)
+![](<../.gitbook/assets/image (7) (1) (2).png>)
 
 After forcing FEC on the links the interface status will show a "force-" option as follows
 
@@ -71,7 +71,7 @@ fnic_test  --trans-trace -v
 
 By default it runs on cap0  using the --port 1 can run the trace on the other port. This prints out the realtime event history of the link up process, below is an example of a link bounce.
 
-![](<../.gitbook/assets/image (8).png>)
+![](<../.gitbook/assets/image (8) (2).png>)
 
 In the above output we see the link state go from State 1 -> State 7. Where state 7 is a stable link up.
 
