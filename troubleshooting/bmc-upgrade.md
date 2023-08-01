@@ -4,7 +4,7 @@
 
 Upgrading the BMC software is simple process but requires physical access to the system. Physical access is required as the power cables need to be disconnected after BMC upgrade has been completed.
 
-### Step 1)
+### Step 1) Version Check
 
 Retrieve the current BMC version as follows
 
@@ -47,7 +47,7 @@ The key value difference is shown below, the firmware gets upgraded to version 0
 
 <figure><img src="../.gitbook/assets/image (4) (2) (1).png" alt=""><figcaption></figcaption></figure>
 
-### Step 2)
+### Step 2) BMC Upgrade
 
 Run the BMC update  in the following directory
 
@@ -79,19 +79,19 @@ fmadio@fmadio100v2-228U:/opt/fmadio/firmware/bmc$
 
 ```
 
-### Step 3)
+### Step 3) Power disconnect
 
 Disconnect the AC power from the system. Wait for 1 minute
 
-### Step 4)
+### Step 4) Power Connect
 
 Reconnect AC power to the system
 
-### Step 5)
+### Step 5) Boot BMC
 
 Wait 5minutes for the BMC to fully reboot and host system boot
 
-### Step 6)
+### Step 6) Reboot host
 
 Reboot the linux Host server
 
@@ -99,7 +99,7 @@ Reboot the linux Host server
 sudo reboot
 ```
 
-### Step 7)
+### Step 7) Confirm update
 
 After host linux system has rebooted, Check BMC version is updated. It should show version 0xD per image below
 
@@ -109,13 +109,13 @@ sudo ipmitool bmc info
 
 <figure><img src="../.gitbook/assets/image (3) (3).png" alt=""><figcaption></figcaption></figure>
 
-### &#x20;Step 8)
+### &#x20;Step 8) Done
 
 Update is complete
 
 
 
-## BMC Upgrade Version 12.60.39
+## BMC Upgrade Version 12.61.01
 
 BMC upgrade to version 12.60.39 resolves CVEs and makes possible boot without prompt when enabling full disk encryption.
 
@@ -138,16 +138,18 @@ Start the BMC update process using the following commands on the FMADIO host sys
 
 
 ```
-cd /opt/fmadio/firmware/bmc
+cd /opt/fmadio/firmware/bmc/bmc/
 ```
 
 ```
 sudo bash bmc_fw_update_linux.sh
 ```
 
-Example output shown below, it will take about 5minutes to run. Note the warning, performing a full flash update is OK, enter Y
+Example output shown below, it will take about 5minutes to run.&#x20;
 
-<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+**Note the warning, performing a full flash update is OK, enter Y**
+
+<figure><img src="../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
 
 ### Step 2) BMC Version check
 
@@ -159,7 +161,7 @@ sudo ipmitool bmc info
 
 The output should look like the following
 
-<figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (3).png" alt=""><figcaption></figcaption></figure>
 
 ### Step 3) BMC Network Config
 
@@ -179,7 +181,7 @@ Set a new IP address, netmask and gateway, replace addresses with the assigned B
 sudo ipmitool lan set 1 ipaddr 192.168.2.173
 ```
 
-<figure><img src="../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (3) (4).png" alt=""><figcaption></figcaption></figure>
 
 ```
 sudo ipmitool lan set 1 netmask 255.255.255.0
@@ -273,7 +275,7 @@ Setting the Boot settings as follows
 
 Advanced -> Trusted computing set the following
 
-<figure><img src="../.gitbook/assets/image (20).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
 
 Advacne -> Serial Port Console
 
@@ -287,17 +289,11 @@ Advanced -> Chipset Configuration
 
 <figure><img src="../.gitbook/assets/image (23).png" alt=""><figcaption></figcaption></figure>
 
-Advacned -> PCIe Configuration. Please set exactly as shown below
-
-<figure><img src="../.gitbook/assets/image (26).png" alt=""><figcaption></figcaption></figure>
+Advacned -> PCIe Configuration. Please set exactly as shown below, everything disabled exept the hilighted
 
 Advanced -> NVMe Configuration
 
 <figure><img src="../.gitbook/assets/image (25).png" alt=""><figcaption></figcaption></figure>
-
-Security -> Secure Boot
-
-<figure><img src="../.gitbook/assets/image (24).png" alt=""><figcaption></figcaption></figure>
 
 Save changes and exit
 
