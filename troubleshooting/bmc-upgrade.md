@@ -142,18 +142,18 @@ cd /opt/fmadio/firmware/bmc/bmc/
 ```
 
 ```
-sudo bash bmc_fw_update_linux.sh
+sudo ./bmc_fw_update_linux.sh
 ```
 
 Example output shown below, it will take about 5minutes to run.&#x20;
 
-**Note the warning, performing a full flash update is OK, enter Y**
+**Note the warning, Do you want preseve configuration,  enter N**
 
-<figure><img src="../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (133).png" alt=""><figcaption></figcaption></figure>
 
 ### Step 2) BMC Version check
 
-After the BMC is flashed and has rebooted confirm the new BMC version is 12.60.39 using the following command
+After the BMC is flashed and has rebooted confirm the new BMC version is 12.61.01 using the following command
 
 ```
 sudo ipmitool bmc info
@@ -161,7 +161,7 @@ sudo ipmitool bmc info
 
 The output should look like the following
 
-<figure><img src="../.gitbook/assets/image (1) (3).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (134).png" alt=""><figcaption></figcaption></figure>
 
 ### Step 3) BMC Network Config
 
@@ -207,7 +207,7 @@ Example output is shown below
 
 <figure><img src="../.gitbook/assets/image (7).png" alt=""><figcaption></figcaption></figure>
 
-The BMC webpage should be accessiable at this point.
+The BMC webpage should be accessible at this point.
 
 ### Step 4) BMC User Password
 
@@ -247,23 +247,29 @@ Finally activate the profile
 
 ### Step 6) BIOS Upgrade
 
-BIOS update, go to the Firmware Update page
+BIOS update, bios update is located in
 
-<figure><img src="../.gitbook/assets/image (15).png" alt=""><figcaption></figcaption></figure>
+```
+/opt/fmadio/firmware/bmc/bios_f23
+```
 
-Choose the R23 BIOS file provided by the support team, and start the update process
+Files look like the following
 
-<figure><img src="../.gitbook/assets/image (16).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (135).png" alt=""><figcaption></figcaption></figure>
 
-Select BIOS, then proceed to Flash
+To update the BIOS run the command
 
-<figure><img src="../.gitbook/assets/image (17).png" alt=""><figcaption></figcaption></figure>
+```
+sudo ./f.sh
+```
 
-It will present something like this as it goes thru the process, will take a few minutes only.
+It will take a few minutes to update, the console output looks like the following
 
-<figure><img src="../.gitbook/assets/image (18).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (136).png" alt=""><figcaption></figcaption></figure>
 
-Once completed the system needs to be rebooted, either using the BMC or the FMADIO linux command line.
+Then power off the system + power it on&#x20;
+
+**A full power off is required to load the new BIOS**
 
 ### Step 7) BIOS Settings
 
@@ -277,7 +283,7 @@ Advanced -> Trusted computing set the following
 
 <figure><img src="../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
 
-Advacne -> Serial Port Console
+Advanced -> Serial Port Console
 
 <figure><img src="../.gitbook/assets/image (21).png" alt=""><figcaption></figcaption></figure>
 
@@ -288,12 +294,6 @@ Advanced -> Network Stack&#x20;
 Advanced -> Chipset Configuration
 
 <figure><img src="../.gitbook/assets/image (23).png" alt=""><figcaption></figcaption></figure>
-
-Advacned -> PCIe Configuration. Please set exactly as shown below, everything disabled exept the hilighted
-
-Advanced -> NVMe Configuration
-
-<figure><img src="../.gitbook/assets/image (25).png" alt=""><figcaption></figcaption></figure>
 
 Save changes and exit
 
