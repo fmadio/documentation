@@ -131,11 +131,25 @@ As the version jump from the factory installed to this version is very large, al
 
 In addition BMC passwords and other items are also lost. The way to update this is via the FMADIO x86 Host system, where the host is always powered on enabling it to set the BMC Network settings and User passwords directly.
 
-### Step 1) Flash BMC
+### Step 1) setup UEFI on Boot partition
+
+After updating the FMADIO Firmware the following files are located at
+
+<figure><img src="../.gitbook/assets/image (7).png" alt=""><figcaption></figcaption></figure>
+
+Copy the files as follows
+
+```
+sudo cp startup.nsh /mnt/system/
+```
+
+```
+sudo cp -R EFI /mnt/system/
+```
+
+### Step 2) Flash BMC
 
 Start the BMC update process using the following commands on the FMADIO host system
-
-
 
 ```
 cd /opt/fmadio/firmware/bmc/bmc/
@@ -151,7 +165,7 @@ Example output shown below, it will take about 5minutes to run.&#x20;
 
 <figure><img src="../.gitbook/assets/image (133).png" alt=""><figcaption></figcaption></figure>
 
-### Step 2) BMC Version check
+### Step 3) BMC Version check
 
 After the BMC is flashed and has rebooted confirm the new BMC version is 12.61.01 using the following command
 
@@ -163,7 +177,7 @@ The output should look like the following
 
 <figure><img src="../.gitbook/assets/image (134).png" alt=""><figcaption></figcaption></figure>
 
-### Step 3) BMC Network Config
+### Step 4) BMC Network Config
 
 Set the new network configuration information.
 
@@ -173,7 +187,7 @@ Set to use static ip per below
 sudo ipmitool lan set 1 ipsrc static
 ```
 
-<figure><img src="../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (2) (3).png" alt=""><figcaption></figcaption></figure>
 
 Set a new IP address, netmask and gateway, replace addresses with the assigned BMC network address
 
@@ -181,19 +195,19 @@ Set a new IP address, netmask and gateway, replace addresses with the assigned B
 sudo ipmitool lan set 1 ipaddr 192.168.2.173
 ```
 
-<figure><img src="../.gitbook/assets/image (3) (4).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (3) (4) (1).png" alt=""><figcaption></figcaption></figure>
 
 ```
 sudo ipmitool lan set 1 netmask 255.255.255.0
 ```
 
-<figure><img src="../.gitbook/assets/image (4).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (4) (1).png" alt=""><figcaption></figcaption></figure>
 
 ```
 sudo ipmitool lan set 1 defgw ipaddr 192.168.2.254
 ```
 
-<figure><img src="../.gitbook/assets/image (5).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (5) (2).png" alt=""><figcaption></figcaption></figure>
 
 At this point the network should be reachable via ping, however the username password will be reverted to the default setting.
 
@@ -205,11 +219,11 @@ sudo ipmitool lan print
 
 Example output is shown below
 
-<figure><img src="../.gitbook/assets/image (7).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (7) (1).png" alt=""><figcaption></figcaption></figure>
 
 The BMC webpage should be accessible at this point.
 
-### Step 4) BMC User Password
+### Step 5) BMC User Password
 
 The BMC update will delete all the settings, these need to be added back
 
@@ -219,19 +233,19 @@ First one is to set the admin password as follows, replacing "secret" with the p
 sudo ipmitool user set password 2 secret
 ```
 
-<figure><img src="../.gitbook/assets/image (8).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (8) (3).png" alt=""><figcaption></figcaption></figure>
 
 After setting this, logging into the BMC using the admin account and above password.
 
-### Step 5) BMC Fan Profile
+### Step 6) BMC Fan Profile
 
 As all BMC settings are disabled, the first critical setting is a custom FAN profile. Usually this is set at the factory however it needs to be created again after the BMC update
 
-<figure><img src="../.gitbook/assets/image (9).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (9) (3).png" alt=""><figcaption></figcaption></figure>
 
 Then copy the default fan profile as follows
 
-<figure><img src="../.gitbook/assets/image (10).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (10) (2).png" alt=""><figcaption></figcaption></figure>
 
 The new fan profile is named "fmadio100v2" with the following settings. Ensure all CPU sensor and all FANs are selected
 
@@ -245,17 +259,17 @@ Finally activate the profile
 
 <figure><img src="../.gitbook/assets/image (14).png" alt=""><figcaption></figcaption></figure>
 
-### Step 6) BIOS Upgrade
+### Step 7) BIOS Upgrade
 
 BIOS update, bios update is located in
 
 ```
-/opt/fmadio/firmware/bmc/bios_f23
+/opt/fmadio/firmware/bmc/bios_r23
 ```
 
 Files look like the following
 
-<figure><img src="../.gitbook/assets/image (135).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
 
 To update the BIOS run the command
 
@@ -271,33 +285,57 @@ Then power off the system + power it on&#x20;
 
 **A full power off is required to load the new BIOS**
 
-### Step 7) BIOS Settings
+### Step 8) BIOS Settings
 
 After BIOS update all settings are lost and need to be set-again, the system will fail to boot also as the BIOS settings have not been configured
 
 Setting the Boot settings as follows
 
-<figure><img src="../.gitbook/assets/image (19).png" alt=""><figcaption></figcaption></figure>
-
 Advanced -> Trusted computing set the following
 
-<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
 
 Advanced -> Serial Port Console
 
 <figure><img src="../.gitbook/assets/image (21).png" alt=""><figcaption></figcaption></figure>
 
+Advance -> PCIe Subsystem, configure as follows
+
+<figure><img src="../.gitbook/assets/image (6).png" alt=""><figcaption></figcaption></figure>
+
 Advanced -> Network Stack&#x20;
 
 <figure><img src="../.gitbook/assets/image (22).png" alt=""><figcaption></figcaption></figure>
+
+Advance -> NVMe Configuration, configure as follows
+
+<figure><img src="../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
 
 Advanced -> Chipset Configuration
 
 <figure><img src="../.gitbook/assets/image (23).png" alt=""><figcaption></figcaption></figure>
 
+Boot configure as follows
+
+<figure><img src="../.gitbook/assets/image (4).png" alt=""><figcaption></figcaption></figure>
+
+Boot -> UEFI Application Boot Priorities
+
+<figure><img src="../.gitbook/assets/image (5).png" alt=""><figcaption></figcaption></figure>
+
 Save changes and exit
 
-### Step 8) Done
+### Step 9) System boot
+
+System boot will look different as it now boots via UEFI, similar to the following.&#x20;
+
+<figure><img src="../.gitbook/assets/image (8).png" alt=""><figcaption></figcaption></figure>
+
+After boot completation the usual prompt will be shown on both the VGA and Serial ports
+
+<figure><img src="../.gitbook/assets/image (9).png" alt=""><figcaption></figcaption></figure>
+
+### Step 10 Done
 
 The system should boot normally now without any BIOS password prompt.
 

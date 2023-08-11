@@ -14,7 +14,7 @@ Then edit the network configuration\`s IP/Netmask/Gateway/DNS setting as shown i
 
 Select the tools menu from the top toolbar, as shown in the image below.
 
-![](<../.gitbook/assets/image (4) (1).png>)
+![](<../.gitbook/assets/image (4) (1) (1).png>)
 
 And finally select the Power Cycle / Reboot button to restart the system
 

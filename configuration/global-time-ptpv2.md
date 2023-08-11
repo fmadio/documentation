@@ -104,7 +104,7 @@ Use phy11 interface
 
 Rename to man11
 
-<figure><img src="../.gitbook/assets/image (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 2\) Set the IP address of man11
 

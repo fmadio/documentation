@@ -2,7 +2,7 @@
 
 FMADIO LXC system high level architecture is shown below.
 
-<figure><img src="../.gitbook/assets/image (7) (1).png" alt=""><figcaption><p>FMADIO LXC Architecture</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (7) (1) (2).png" alt=""><figcaption><p>FMADIO LXC Architecture</p></figcaption></figure>
 
 This provides a full lossless filtered version of data directly into the LXC container for processing.&#x20;
 
