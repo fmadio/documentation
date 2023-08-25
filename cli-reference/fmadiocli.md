@@ -2078,5 +2078,52 @@ Example of unlocking
 [Sat Jun 24 18:07:31 2023] >
 ```
 
+## System Configuration
 
+### config system fpga firmware
+
+This configures the systems FPGA firmware, currently support modes
+
+* capture-2x100G  (2 x100G packet capture mode)
+* capture-2x40G (2x40G packet capture mode)
+* capture-8x10G (8x10G packet capture mode)
+
+NOTE: this only sets up the system. **Reboot is required to start the configuration change**
+
+Example:
+
+```
+config system fpga firmware capture-2x100G
+```
+
+Output
+
+```
+[Fri Aug 25 15:52:35 2023] > config system fpga firmware capture-2x100G
+[Fri Aug 25 15:52:35 2023]     fmad fmadlua Aug 24 2023 (/usr/local/bin/fmadiolua /opt/fmadio/bin/firmware_install.lua --portchange )
+[Fri Aug 25 15:52:35 2023]     calibrating...
+[Fri Aug 25 15:52:36 2023]     0 : 2095071170           2.0951 cycles/nsec offset:4.929 Mhz
+[Fri Aug 25 15:52:36 2023]     Cycles/Sec 2095071170.0000 Std:       0 cycle std(  0.00000000) Target:2.10 Ghz
+[Fri Aug 25 15:52:36 2023]     Change PortMode
+[Fri Aug 25 15:52:36 2023]     Copy [cp /mnt/system/boot/bitstream.rom.2x100G /mnt/system/boot/bitstream.rom]
+[Fri Aug 25 15:52:36 2023]     os[sudo /opt/fmadio/bin/bitstream_update.lua --noreboot --write /mnt/system/boot/bitstream.rom]
+[Fri Aug 25 15:52:36 2023]     fmad fmadlua Aug 24 2023 (/opt/fmadio/bin/fmadiolua /opt/fmadio/bin/bitstream_update.lua --noreboot --write /mnt/system/boot/bitstream.rom )
+[Fri Aug 25 15:52:36 2023]     calibrating...
+[Fri Aug 25 15:52:37 2023]     0 : 2095073220           2.0951 cycles/nsec offset:4.927 Mhz
+[Fri Aug 25 15:52:37 2023]     Cycles/Sec 2095073220.0000 Std:       0 cycle std(  0.00000000) Target:2.10 Ghz
+[Fri Aug 25 15:52:37 2023]     cp: '/mnt/system/boot/bitstream.rom' and '/mnt/system//boot/bitstream.rom' are the same file
+[Fri Aug 25 15:52:37 2023]     done 0.006711Sec 0.000112Min
+[Fri Aug 25 15:52:37 2023]     Firmware Install Complete
+[Fri Aug 25 15:52:37 2023]     done 1.083203Sec 0.018053Min
+[Fri Aug 25 15:52:37 2023] set port mode from(2x40G) -> (2x100G)
+[Fri Aug 25 15:52:37 2023]
+[Fri Aug 25 15:52:37 2023] ****************************************************
+[Fri Aug 25 15:52:37 2023] *********** REBOOT IS REQUIRED. ********************
+[Fri Aug 25 15:52:37 2023] ****************************************************
+[Fri Aug 25 15:52:37 2023]
+[Fri Aug 25 15:52:37 2023] Reboot -> Safe Mode -> FPGA Flash -> Reboot -> System ready (5-10 minutes)
+[Fri Aug 25 15:52:37 2023]
+[Fri Aug 25 15:52:37 2023] >
+
+```
 
