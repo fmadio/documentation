@@ -144,8 +144,10 @@ sudo cp startup.nsh /mnt/system/
 ```
 
 ```
-sudo cp -R EFI /mnt/system/
+sudo cp -RL EFI /mnt/system/
 ```
+
+NOTE: -L in the cp forces a literal copy (no sym links)
 
 ### Step 2) Flash BMC
 
@@ -259,7 +261,13 @@ Finally activate the profile
 
 <figure><img src="../.gitbook/assets/image (14).png" alt=""><figcaption></figcaption></figure>
 
-### Step 7) BIOS Upgrade
+### Step 7) Remote Media settings
+
+Disable all remote media settings as follows
+
+<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+
+### Step 8) BIOS Upgrade
 
 BIOS update, bios update is located in
 
@@ -269,7 +277,7 @@ BIOS update, bios update is located in
 
 Files look like the following
 
-<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
 
 To update the BIOS run the command
 
@@ -285,7 +293,7 @@ Then power off the system + power it on&#x20;
 
 **A full power off is required to load the new BIOS**
 
-### Step 8) BIOS Settings
+### Step 9) BIOS Settings
 
 After BIOS update all settings are lost and need to be set-again, the system will fail to boot also as the BIOS settings have not been configured
 
@@ -293,7 +301,7 @@ Setting the Boot settings as follows
 
 Advanced -> Trusted computing set the following
 
-<figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 Advanced -> Serial Port Console
 
@@ -325,7 +333,7 @@ Boot -> UEFI Application Boot Priorities
 
 Save changes and exit
 
-### Step 9) System boot
+### Step 10) System boot
 
 System boot will look different as it now boots via UEFI, similar to the following.&#x20;
 
@@ -335,7 +343,7 @@ After boot completation the usual prompt will be shown on both the VGA and Seria
 
 <figure><img src="../.gitbook/assets/image (9).png" alt=""><figcaption></figcaption></figure>
 
-### Step 10 Done
+### Step 11 Done
 
 The system should boot normally now without any BIOS password prompt.
 

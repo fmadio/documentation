@@ -19,4 +19,4 @@ FMADIO 100G Gen2 System,\
 
 **High Level Architecture**
 
-![](<.gitbook/assets/image (1) (1) (1) (1) (1).png>)
+![](<.gitbook/assets/image (1) (1) (1) (1) (1) (1).png>)
