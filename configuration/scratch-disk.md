@@ -4,6 +4,8 @@ Scratch Disks are helpful for keeping temporary or persistant data outside of th
 
 Scratch Disks can be run as a RAID0 or RAIDx group of drives, allow you the system flexible allocation of the total storage capacity of the system between Capture vs Analytics.
 
+## ScratchDisk Configuration
+
 ### Step 1) Assign physical disks
 
 Start by editing the disk configuration file
