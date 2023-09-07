@@ -94,7 +94,7 @@ The firewall on the IPMI/BMC is a bit trickier, as there's no direct access to i
 
 IPMI does have firewall manipulation GUI but its impossible to use due to how it works. Theres no way to set a Policy on INPUT rules, instead you need to drop everything and build up the chain. Below is the final iptables rules we want to create.
 
-![ITarget IPMI Firewall Rules](<../.gitbook/assets/image (3) (1).png>)
+![ITarget IPMI Firewall Rules](<../.gitbook/assets/image (3) (1) (1).png>)
 
 As you can see its a bit bastardized.. but theres no choice as each rule is always added to the top of chain.
 
@@ -192,7 +192,7 @@ This equates to the following iptables rules
 
 At this point the IPMI BMC Webpage can be used such as the following
 
-![](<../.gitbook/assets/image (2) (1) (1).png>)
+![](<../.gitbook/assets/image (2) (1) (1) (1).png>)
 
 ### 5) Add ipmitool access
 

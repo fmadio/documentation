@@ -28,7 +28,7 @@ To reset the SSH password system the system requires KVM either directly with a 
 
 4\) Need to catch the system boot prompt here. One way is to tap space key or letter "r" every few secconds. This will prevent the bootloader from automatically starting.
 
-<figure><img src="../.gitbook/assets/image (6) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (6) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 5\) Enter system "rescue" mode at the prompt and hit enter. This will boot the system into rescue mode.
 

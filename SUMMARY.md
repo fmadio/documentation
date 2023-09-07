@@ -35,6 +35,7 @@
 * [BMC IPMI Settings](configuration/bmc-ipmi-settings.md)
 * [Disk Packs](configuration/disk-packs.md)
 * [CPU Mapping](configuration/cpu-mapping.md)
+* [Scratch Disk](configuration/scratch-disk.md)
 
 ## Settings
 

@@ -135,7 +135,7 @@ In addition BMC passwords and other items are also lost. The way to update this 
 
 After updating the FMADIO Firmware the following files are located at
 
-<figure><img src="../.gitbook/assets/image (7).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (7) (1).png" alt=""><figcaption></figcaption></figure>
 
 Copy the files as follows
 
@@ -203,7 +203,7 @@ sudo ipmitool lan set 1 ipaddr 192.168.2.173
 sudo ipmitool lan set 1 netmask 255.255.255.0
 ```
 
-<figure><img src="../.gitbook/assets/image (4) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (4) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 ```
 sudo ipmitool lan set 1 defgw ipaddr 192.168.2.254
@@ -221,7 +221,7 @@ sudo ipmitool lan print
 
 Example output is shown below
 
-<figure><img src="../.gitbook/assets/image (7) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (7) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 The BMC webpage should be accessible at this point.
 
@@ -265,7 +265,7 @@ Finally activate the profile
 
 Disable all remote media settings as follows
 
-<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (8).png" alt=""><figcaption></figcaption></figure>
 
 ### Step 8) BIOS Upgrade
 
@@ -277,7 +277,7 @@ BIOS update, bios update is located in
 
 Files look like the following
 
-<figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 To update the BIOS run the command
 
@@ -301,7 +301,7 @@ Setting the Boot settings as follows
 
 Advanced -> Trusted computing set the following
 
-<figure><img src="../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 Advanced -> Serial Port Console
 
@@ -309,7 +309,7 @@ Advanced -> Serial Port Console
 
 Advance -> PCIe Subsystem, configure as follows
 
-<figure><img src="../.gitbook/assets/image (6).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (6) (1).png" alt=""><figcaption></figcaption></figure>
 
 Advanced -> Network Stack&#x20;
 
@@ -317,7 +317,7 @@ Advanced -> Network Stack&#x20;
 
 Advance -> NVMe Configuration, configure as follows
 
-<figure><img src="../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (3) (1).png" alt=""><figcaption></figcaption></figure>
 
 Advanced -> Chipset Configuration
 
@@ -325,11 +325,11 @@ Advanced -> Chipset Configuration
 
 Boot configure as follows
 
-<figure><img src="../.gitbook/assets/image (4).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (4) (1).png" alt=""><figcaption></figcaption></figure>
 
 Boot -> UEFI Application Boot Priorities
 
-<figure><img src="../.gitbook/assets/image (5).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (5) (1).png" alt=""><figcaption></figcaption></figure>
 
 Save changes and exit
 
@@ -337,7 +337,7 @@ Save changes and exit
 
 System boot will look different as it now boots via UEFI, similar to the following.&#x20;
 
-<figure><img src="../.gitbook/assets/image (8).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (8) (1).png" alt=""><figcaption></figcaption></figure>
 
 After boot completation the usual prompt will be shown on both the VGA and Serial ports
 
