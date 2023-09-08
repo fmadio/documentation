@@ -19,7 +19,7 @@ Telemetry is provided in JSON format for easy ingestion in monitoring and observ
 * FMADIO Push PCAP Split (event indicating each PCAP split completion)
 * FMADIO Alert (Custom onbox system alerts)
 
-### FMADIO Telemetry Service
+## FMADIO Telemetry Service
 
 FMADIO Telemetry service is included without charge on all support contracts. It provides a dashboard for each system, example screen shot shown below.
 
@@ -61,7 +61,7 @@ This is the epoch time in seconds, where the FMADIO Monitoring system generated 
 
 This is the Firmware Version, it allows easy backwards compatibility as the system updates and improves as data is ingested into the monitoring system.
 
-## Generic SYSLOG
+### Generic SYSLOG
 
 This includes generic syslog messages in free form plain text events. Example shown below
 
@@ -75,7 +75,7 @@ This includes generic syslog messages in free form plain text events. Example sh
 
 ```
 
-## FMADIO Temperature
+### FMADIO Temperature
 
 This provides thermal monitoring of the system to ensure its running within operating ranges.
 
@@ -105,7 +105,7 @@ Example JSON Pretty
 
 ```
 
-## FMADIO Time
+### FMADIO Time
 
 Provides monitoring of time synchronization
 
@@ -152,7 +152,7 @@ Pretty JSON
 }
 ```
 
-## FMADIO Other
+### FMADIO Other
 
 Miscellaneous other fields
 
@@ -184,7 +184,7 @@ Pretty JSON
 }
 ```
 
-## FMADIO Power
+### FMADIO Power
 
 Provides power status and utilization information
 
@@ -207,7 +207,7 @@ Pretty JSON
 
 ```
 
-## FMADIO Capture
+### FMADIO Capture
 
 Provides status information around the capture process
 
@@ -251,7 +251,7 @@ Pretty JSON
 
 ```
 
-## FMADIO IO
+### FMADIO IO
 
 Provides status and performance of IO disk/network related systems
 
@@ -272,7 +272,7 @@ Pretty JSON
 }
 ```
 
-## FMADIO Link
+### FMADIO Link
 
 Status information around port link status
 
@@ -301,7 +301,7 @@ Pretty JSON
 }
 ```
 
-## FMADIO Fan
+### FMADIO Fan
 
 Status information around fans and cooling
 
@@ -328,7 +328,7 @@ Pretty JSON
 }
 ```
 
-## FMADIO Disk
+### FMADIO Disk
 
 Status around the capture and os disk
 
@@ -382,7 +382,7 @@ Pretty JSON
 }
 ```
 
-## FMADIO Cat
+### FMADIO Cat
 
 stream\_cat is the core FMADIO utility for extracting packets off the storage system. Its used heavily for download, realtime processing and troubleshooting. This provides statistics and state of the currently running stream\_cat instances.
 
@@ -656,7 +656,7 @@ Pretty JSON
 }
 ```
 
-## FMADIO Push PCAP Status
+### FMADIO Push PCAP Status
 
 Provides status information of the currently active Push PCAP proceses
 
@@ -685,7 +685,7 @@ Pretty JSON
 }
 ```
 
-## FMADIO Push PCAP File
+### FMADIO Push PCAP File
 
 Called after completing a PCAP file split event. Helpful to monitoring each and every PCAP split leaving the system
 
@@ -712,7 +712,7 @@ Pretty JSON
 
 ```
 
-## FMADIO Alert
+### FMADIO Alert
 
 The system has capibility to generate system alerts based on configuration files. These alerts can be sent to SYSLOG for ingestion by a monitoring system
 
@@ -732,4 +732,109 @@ Pretty JSON
   "Message": "CPU Temperature Over CPU0:39 CPU1:43 > 20"
 }
 ```
+
+
+
+## Telemetry Service Setup
+
+Setting up automatic telemetry as follows
+
+### Step 1) Generate unique SSH key
+
+FMADIO devices by default have a pre-installed ssh key. To correctly secure and uniquely identify the system generate your own SSH key as follows.&#x20;
+
+```
+ssh-keygen -t rsa -b 3072
+```
+
+Using a password less key ensures the automatic setup requires no manual intervention.&#x20;
+
+Example output per below
+
+```
+fmadio@fmadio100p3-539:~$ ssh-keygen -t rsa -b 3072
+Generating public/private rsa key pair.
+Enter file in which to save the key (/home/fmadio/.ssh/id_rsa):
+/home/fmadio/.ssh/id_rsa already exists.
+Overwrite (y/n)? y
+Enter passphrase (empty for no passphrase):
+Enter same passphrase again:
+Your identification has been saved in /home/fmadio/.ssh/id_rsa
+Your public key has been saved in /home/fmadio/.ssh/id_rsa.pub
+The key fingerprint is:
+SHA256:G/***************************** fmadio@fmadio100p3-539
+The key's randomart image is:
++---[RSA 3072]----+
+|  Eo.oo=Bo  .    |
+|  o .o.. o.. +   |
+| . ..+  +.o o o  |
+|. .   =..+   . ..|
+| .     +S o     o|
+|    .  ..+ o   . |
+|   ..+.oo.  o .  |
+|  o. o= =  o   . |
+|   oo..o .  .oo  |
++----[SHA256]-----+
+fmadio@fmadio100p3-539:~$
+```
+
+Send the above public key (below) to support@fmad.io
+
+```
+/opt/fmadio/etc/fmadio_id_rsa.pub
+```
+
+### Step 2) Copy to persistent Storage
+
+The SSH public/private keys are on the volatile file system. Copy the keys to the persistent storage.
+
+```
+cp .ssh/id_rsa /opt/fmadio/etc/fmadio_id_rsa
+```
+
+```
+cp .ssh/id_rsa.pub /opt/fmadio/etc/fmadio_id_rsa.pub
+```
+
+NOTE:  the key is renamed with an fmadio\_\* prefix. The system copies the keys from this location and renames them in the .ssh/id\_rsa .ssh/id\_rsa.pub directory during the boot process.
+
+### Step 3) Copy the reference boot script
+
+There is a reference boot script located in
+
+```
+/opt/fmadio/etc_ro/boot.lua.telemetry_mon2
+```
+
+Copy this to to the /opt/fmadio/etc/boot.lua file to automatically establish ssh tunnel to the telemetry service.
+
+```
+cp /opt/fmadio/etc_ro/boot.lua.telemetry_mon2  /opt/fmadio/etc/boot.lua
+```
+
+After copying replace the "username" to the username provided by fmadio support and save the file.
+
+<figure><img src="../.gitbook/assets/image (137).png" alt=""><figcaption></figcaption></figure>
+
+### Step 4) Copy the reference rsyslog config
+
+In addition to ssh tunnel setup, rsyslog configuration to forward syslog messages to the SSH tunnel.
+
+Copy the reference config to /opt/fmadio/etc/  directory as follows
+
+```
+cp /opt/fmadio/etc_ro/syslogd.conf.tunnel /opt/fmadio/etc/syslogd.conf
+```
+
+No modifications are required.
+
+### Step 5) Reboot the system
+
+Reboot the system to check all the above steps are executed correctly
+
+### Step 6) Validate
+
+After rebooting log into the Grafana monitoring site with the assigned username and confirm data is being recevied.&#x20;
+
+Any problems please contact support@fmad.io
 
