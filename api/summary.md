@@ -223,7 +223,7 @@ a7130.srcport=\<port id>
 
 c3550.srcport=\<portid>
 
-capture.srcport=\<portid>
+capture.port=\<portid>
 {% endswagger-parameter %}
 
 {% swagger-parameter in="query" name="TSMode" %}
@@ -243,9 +243,9 @@ arista7280\_eth64 - Arista 7280 Ethernet 64bit header
 
 arista7280\_mac48 - Arista 7280 SrcMAC 48bit Overwrite&#x20;
 
-erspanv3 - Cisco ERPSANv3
+cisco\_erspanv3 - Cisco ERPSANv3
 
-c3550 - Cisco 3550 (Exablaze)
+cisco3550 - Cisco 3550 (Exablaze)
 {% endswagger-parameter %}
 
 {% swagger-response status="200" description="" %}
@@ -291,7 +291,7 @@ EPOCH Nanosecond stop time
 Escape Encoded BPF filter
 {% endswagger-parameter %}
 
-{% swagger-parameter in="query" name="FilterPort" %}
+{% swagger-parameter in="query" name="FilterFrame" %}
 Filter on the Packet Frame
 
 
@@ -302,7 +302,7 @@ a7130.srcport=\<port id>
 
 c3550.srcport=\<portid>
 
-capture.srcport=\<portid>
+capture.port=\<portid>
 {% endswagger-parameter %}
 
 {% swagger-parameter in="query" name="TSMode" %}
@@ -322,9 +322,9 @@ arista7280\_eth64 - Arista 7280 Ethernet 64bit header
 
 arista7280\_mac48 - Arista 7280 SrcMAC 48bit Overwrite&#x20;
 
-erspanv3 - Cisco ERPSANv3
+cisco\_erspanv3 - Cisco ERPSANv3
 
-c3550 - Cisco 3550 (Exablaze)
+cisco3550 - Cisco 3550 (Exablaze)
 {% endswagger-parameter %}
 
 {% swagger-response status="200: OK" description="" %}
@@ -387,7 +387,7 @@ Compress the returned stream with gzip.
 Maximum nanosecond of packets to download.
 {% endswagger-parameter %}
 
-{% swagger-parameter in="query" name="TSMode" type="string" %}
+{% swagger-parameter in="query" name="TSUnit" type="string" %}
 Time Range mode to use for time selection
 
 
@@ -472,9 +472,9 @@ arista7280\_eth64 - Arista 7280 Ethernet 64bit header
 
 arista7280\_mac48 - Arista 7280 SrcMAC 48bit Overwrite&#x20;
 
-erspanv3 - Cisco ERPSANv3
+cisco\_erspanv3 - Cisco ERPSANv3
 
-c3550 - Cisco 3550 (Exablaze)
+cisco3550 - Cisco 3550 (Exablaze)
 {% endswagger-parameter %}
 
 {% swagger-response status="200" description="" %}
