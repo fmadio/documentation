@@ -243,7 +243,7 @@ arista7280\_eth64 - Arista 7280 Ethernet 64bit header
 
 arista7280\_mac48 - Arista 7280 SrcMAC 48bit Overwrite&#x20;
 
-cisco\_erspanv3 - Cisco ERPSANv3
+cisco\_erspan3 - Cisco ERPSANv3
 
 cisco3550 - Cisco 3550 (Exablaze)
 {% endswagger-parameter %}
@@ -322,7 +322,7 @@ arista7280\_eth64 - Arista 7280 Ethernet 64bit header
 
 arista7280\_mac48 - Arista 7280 SrcMAC 48bit Overwrite&#x20;
 
-cisco\_erspanv3 - Cisco ERPSANv3
+cisco\_erspan3 - Cisco ERPSANv3
 
 cisco3550 - Cisco 3550 (Exablaze)
 {% endswagger-parameter %}
@@ -472,7 +472,7 @@ arista7280\_eth64 - Arista 7280 Ethernet 64bit header
 
 arista7280\_mac48 - Arista 7280 SrcMAC 48bit Overwrite&#x20;
 
-cisco\_erspanv3 - Cisco ERPSANv3
+cisco\_erspan3 - Cisco ERPSANv3
 
 cisco3550 - Cisco 3550 (Exablaze)
 {% endswagger-parameter %}
