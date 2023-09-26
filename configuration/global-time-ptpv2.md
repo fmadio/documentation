@@ -135,6 +135,8 @@ or using the fmadiocli command line utility
 
 PTPv2 can be run on the 2nd 1G management interface, as it supports both a PHC clock and IEE1588 hardware timestamping.
 
+_**NOTE: PTPv2 can not be run on the primary/first 1G interface as this is a software bridged interface and does not support hardware timestamping.**_
+
 ### 1) Configure the udev rules as follows
 
 ```
