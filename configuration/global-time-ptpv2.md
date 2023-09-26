@@ -92,11 +92,11 @@ fmadio@fmadio20n40v3-364:~$
 
 ```
 
-## PTPv2 on Second Port
+## PTPv2 on Second 10G Port
 
 The above config assumes PTPv2 is running on the primary 10G management port. There is not requirement for using the primary port, instead the 2nd 10G management port can also be used. Below are the differences required
 
-1\) in the udev rules phy10 -> phy11 -> man11
+### 1) in the udev rules phy10 -> phy11 -> man11
 
 Use phy11 interface
 
@@ -104,9 +104,9 @@ Use phy11 interface
 
 Rename to man11
 
-<figure><img src="../.gitbook/assets/image (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
-2\) Set the IP address of man11
+### 2) Set the IP address of man11
 
 man11 needs to be configured with an IP address, either editing  network config file directly
 
@@ -116,9 +116,7 @@ man11 needs to be configured with an IP address, either editing  network config 
 
 or using the fmadiocli command line utility
 
-
-
-3\) Specify man11 in the ptp config per below
+### 3) Specify man11 in the ptp config per below
 
 ```
 ["PTP"] =
@@ -130,6 +128,45 @@ or using the fmadiocli command line utility
     ["UpdateRate"] = "",
     ["VLANID"] = nil,
     ["Interface"] = "man11",
+},
+```
+
+## PTP on the Second 1G RJ45 Port
+
+PTPv2 can be run on the 2nd 1G management interface, as it supports both a PHC clock and IEE1588 hardware timestamping.
+
+### 1) Configure the udev rules as follows
+
+```
+/opt/fmadio/etc/60-persistent-ethernet.rules
+```
+
+Set the phy1 interface renamed to man1 as shown below
+
+<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+
+### &#x20;2) Set the IP address of man1
+
+man1 needs to be configured with an IP address that the PTP master can reach. Set the network information either editing  network config file directly
+
+```
+/opt/fmadio/etc/network.lua
+```
+
+or using the fmadiocli command line utility
+
+### 3) Specify man1 in the ptp config per below
+
+```
+["PTP"] =
+{
+    ["Master0"] = "",
+    ["Master1"] = "",
+    ["Master2"] = "",
+    ["Master3"] = "",
+    ["UpdateRate"] = "",
+    ["VLANID"] = nil,
+    ["Interface"] = "man1",
 },
 ```
 

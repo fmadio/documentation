@@ -116,7 +116,7 @@ sudo mdadm --create /dev/md1 --force --verbose --level=raid0 --raid-devices=2 /o
 
 The output will look something like below
 
-<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption><p>Create RAID0 Scratch Drive</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption><p>Create RAID0 Scratch Drive</p></figcaption></figure>
 
 ### Step 3) Create Filesystem&#x20;
 
@@ -128,7 +128,7 @@ sudo mkfs.ext4 /dev/md1
 
 Example output looks like below
 
-<figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 ### Step 4) Confirm the filesystem mounts correct
 
