@@ -520,7 +520,69 @@ $
 
 
 
+{% swagger method="get" path="" baseUrl="" summary="version" %}
+{% swagger-description %}
+Returns the current system version.
 
+Example output:
+
+`fmadio@fmadio100v2-228U:$ curl http://127.0.0.1/api/v1/system/version {"version":"9120","device":"fmadio100v2","build":"Wed Sep 27 03:08:27 2023"} fmadio@fmadio100v2-228U:$`
+{% endswagger-description %}
+{% endswagger %}
+
+
+
+{% swagger method="get" path="" baseUrl="" summary="port_stats" %}
+{% swagger-description %}
+returns RMON1 capture port statistics&#x20;
+
+Example:
+
+`fmadio@fmadio100v2-228U:$ curl -s http://127.0.0.1/api/v1/system/port_stats | jq`&#x20;
+
+`{`&#x20;
+
+`"cap0":`&#x20;
+
+`{ "Pkt": 0, "Byte": 0, "Pkt_RUNT": 0, "Pkt_64": 0, "Pkt_65_127": 0, "Pkt_128_255": 0, "Pkt_256_511": 0, "Pkt_512_1023": 0, "Pkt_1024_1518": 0, "Pkt_1024_2047": 0, "Pkt_2048_4095": 0, "Pkt_4096_8191": 0, "Pkt_8192_9216": 0, "Pkt_OVER": 0 },`&#x20;
+
+`"cap1":`&#x20;
+
+`{ "Pkt": 0, "Byte": 0, "Pkt_RUNT": 0, "Pkt_64": 0, "Pkt_65_127": 0, "Pkt_128_255": 0, "Pkt_256_511": 0, "Pkt_512_1023": 0, "Pkt_1024_1518": 0, "Pkt_1024_2047": 0, "Pkt_2048_4095": 0, "Pkt_4096_8191": 0, "Pkt_8192_9216": 0, "Pkt_OVER": 0 },`
+
+`"cap2":`
+
+`{ "Pkt": 0, "Byte": 0, "Pkt_RUNT": 0, "Pkt_64": 0, "Pkt_65_127": 0, "Pkt_128_255": 0, "Pkt_256_511": 0, "Pkt_512_1023": 0, "Pkt_1024_1518": 0, "Pkt_1024_2047": 0, "Pkt_2048_4095": 0, "Pkt_4096_8191": 0, "Pkt_8192_9216": 0, "Pkt_OVER": 0 },`
+
+`"cap3":`
+
+`{ "Pkt": 0, "Byte": 0, "Pkt_RUNT": 0, "Pkt_64": 0, "Pkt_65_127": 0, "Pkt_128_255": 0, "Pkt_256_511": 0, "Pkt_512_1023": 0, "Pkt_1024_1518": 0, "Pkt_1024_2047": 0, "Pkt_2048_4095": 0, "Pkt_4096_8191": 0, "Pkt_8192_9216": 0, "Pkt_OVER": 0 },`
+
+`"cap4":`
+
+`{ "Pkt": 0, "Byte": 0, "Pkt_RUNT": 0, "Pkt_64": 0, "Pkt_65_127": 0, "Pkt_128_255": 0, "Pkt_256_511": 0, "Pkt_512_1023": 0, "Pkt_1024_1518": 0, "Pkt_1024_2047": 0, "Pkt_2048_4095": 0, "Pkt_4096_8191": 0, "Pkt_8192_9216": 0, "Pkt_OVER": 0 },`
+
+`"cap5":`
+
+`{ "Pkt": 0, "Byte": 0, "Pkt_RUNT": 0, "Pkt_64": 0, "Pkt_65_127": 0, "Pkt_128_255": 0, "Pkt_256_511": 0, "Pkt_512_1023": 0, "Pkt_1024_1518": 0, "Pkt_1024_2047": 0, "Pkt_2048_4095": 0, "Pkt_4096_8191": 0, "Pkt_8192_9216": 0, "Pkt_OVER": 0 },`
+
+`"cap6":`&#x20;
+
+`{ "Pkt": 7237, "Byte": 1936022, "Pkt_RUNT": 0, "Pkt_64": 55, "Pkt_65_127": 559, "Pkt_128_255": 257, "Pkt_256_511": 6136, "Pkt_512_1023": 180, "Pkt_1024_1518": 50, "Pkt_1024_2047": 50, "Pkt_2048_4095": 0, "Pkt_4096_8191": 0, "Pkt_8192_9216": 0, "Pkt_OVER": 0 },`
+
+`"cap7":`
+
+`{ "Pkt": 0, "Byte": 0, "Pkt_RUNT": 0, "Pkt_64": 0, "Pkt_65_127": 0, "Pkt_128_255": 0, "Pkt_256_511": 0, "Pkt_512_1023": 0, "Pkt_1024_1518": 0, "Pkt_1024_2047": 0, "Pkt_2048_4095": 0, "Pkt_4096_8191": 0, "Pkt_8192_9216": 0, "Pkt_OVER": 0 },`&#x20;
+
+`"port_config": "8x10G"`&#x20;
+
+`}`
+
+`fmadio@fmadio100v2-228U:$`
+
+
+{% endswagger-description %}
+{% endswagger %}
 
 ### Legacy Download
 
