@@ -520,7 +520,7 @@ $
 
 
 
-{% swagger method="get" path="" baseUrl="" summary="version" %}
+{% swagger method="get" path="" baseUrl="/api/v1/system/version" summary="Get current system version information" %}
 {% swagger-description %}
 Returns the current system version.
 
@@ -532,7 +532,7 @@ Example output:
 
 
 
-{% swagger method="get" path="" baseUrl="" summary="port_stats" %}
+{% swagger method="get" path="" baseUrl="/api/v1/system/port_stats" summary="Get RMON1 capture port stats " %}
 {% swagger-description %}
 returns RMON1 capture port statistics&#x20;
 
