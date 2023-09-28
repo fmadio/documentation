@@ -523,11 +523,11 @@ PCAP Nano
 
 Multiple push\_pcap schedules can be added to the system, for example
 
-1\) Realtime 1min push
+Push A) Realtime 1min push
 
 * used for realtime monitoring throughout the day
 
-2\) End of Day, recon push.&#x20;
+Push B) End of Day, recon push.&#x20;
 
 * Used for End of Day Recon pushing data to back office systems
 
