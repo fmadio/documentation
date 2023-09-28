@@ -519,6 +519,71 @@ PCAP Nano
 
 ```
 
+## Multiple Push Schedules
+
+Multiple push\_pcap schedules can be added to the system, for example
+
+1\) Realtime 1min push
+
+* used for realtime monitoring throughout the day
+
+2\) End of Day, recon push.&#x20;
+
+* Used for End of Day Recon pushing data to back office systems
+
+This can be acheived with the following steps
+
+### 1) create a directory for custom analytics schedules
+
+```
+mkdir /opt/fmadio/etc/analytics/
+```
+
+All files in this directory are sym linked to the /opt/fmadio/analytics directory used by the scheduler.
+
+### 2) Copy the current push\_pcap loader and rename it
+
+Create a new push\_pcap\_eod loader as follows
+
+```
+cp /opt/fmadio/analytics/push_pcap /opt/fmadio/etc/analytics/push_pcap_eod
+```
+
+&#x20;Then Edit the file to load a different configuration
+
+```
+fmadio@fmadio100v2-228U:~$ cat /opt/fmadio/etc/analytics/push_pcap_eod
+#!/bin/sh
+ulimit -n 10000000
+/opt/fmadio/analytics/push_pcap.lua --config /opt/fmadio/etc/push_pcap_eod.lua
+fmadio@fmadio100v2-228U:~$
+
+```
+
+In this case the config file is called `push_pcap_eod.lua`&#x20;
+
+### 3) Configure the new push\_pcap\_eod.lua
+
+Configure the new push\_pcap\_eod.lua file, it will require hand editing of the file, as fmadiocli only operates on the default configuration
+
+### 4) Enable in the scheduler
+
+Going to the GUI -> Config page add the new loader file into the schedule with the new loader file `push_pcap_eod`
+
+Example is shown below
+
+<figure><img src="../.gitbook/assets/image (140).png" alt=""><figcaption></figcaption></figure>
+
+### 5) Confirm operation
+
+Log files for (push\_pcap\_eod) are named
+
+```
+/mnt/store0/log/analytics_push_pcap_eod.cur
+```
+
+
+
 ## Performance testing
 
 Push performance is critical and subject to multiple factors. The following provides a baseline test of different variables.
