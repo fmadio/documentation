@@ -531,7 +531,7 @@ Push B) End of Day, recon push.&#x20;
 
 * Used for End of Day Recon pushing data to back office systems
 
-This can be acheived with the following steps
+This can be achieved with the following steps
 
 ### 1) create a directory for custom analytics schedules
 
@@ -588,9 +588,9 @@ Log files for (push\_pcap\_eod) are named
 
 Push performance is critical and subject to multiple factors. The following provides a baseline test of different variables.
 
-### Remote Write Performace
+### Remote Write Performance
 
-A first initial setp is to confirm the writing to the remote file system has sufficent bandwidth. This is simply achieved running the commands
+A first initial step is to confirm the writing to the remote file system has sufficient bandwidth. This is simply achieved running the commands
 
 ```
 time sudo dd if=/dev/zero bs=1G count=20 > /mnt/remote0/test1.bin
