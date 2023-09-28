@@ -1102,6 +1102,37 @@ Example sets for udp and port 1900
 [Thu Jun  9 09:07:05 2022] >
 ```
 
+### config push pcap restart
+
+Shutsdown the current push procesess and restarts them
+
+```
+config push pcap restart
+```
+
+Example output
+
+```
+[Thu Sep 28 12:18:53 2023] > config push pcap restart
+Killing 78246 {push_pcap.lua}
+Killing 78403 /opt/fmadio/bin/stream_cat
+Killing 78406 /opt/fmadio/bin/pcap_split
+Killing 78412 /opt/fmadio/bin/pcap_split
+wait for respawn 0/120
+wait for respawn 1/120
+wait for respawn 2/120
+wait for respawn 3/120
+wait for respawn 4/120
+wait for respawn 5/120
+wait for respawn 6/120
+wait for respawn 7/120
+wait for respawn 8/120
+wait for respawn 9/120
+wait for respawn 10/120
+process respawned
+[Thu Sep 28 12:19:05 2023] >
+```
+
 ## Automatic Push to LXC (Container)
 
 The system can push automatically into a lxc\_ring enabling a container to consume the data. These functions are to add/delete/modify these push functions.
@@ -1264,6 +1295,41 @@ Example sets the ring "general" to start from the begnining of the capture
 [Sat Jun 24 14:51:48 2023] > config push lxc from-start general
 [Sat Jun 24 14:51:48 2023] Set LXC target [/opt/fmadio/queue/lxc_ring_general] fetch from start of capture
 [Sat Jun 24 14:51:48 2023] >
+```
+
+### config push lxc restart
+
+This shutsdown and then restarts the push lxc processes.
+
+```
+config push lxc restart
+```
+
+Example output
+
+```
+[Thu Sep 28 12:14:27 2023] > config push lxc restart
+Killing 78263 {push_lxc.lua}
+Killing 78376 /opt/fmadio/bin/stream_cat
+wait for respawn 0/120
+wait for respawn 1/120
+wait for respawn 2/120
+wait for respawn 3/120
+wait for respawn 4/120
+wait for respawn 5/120
+wait for respawn 6/120
+.
+.
+wait for respawn 29/120
+wait for respawn 30/120
+wait for respawn 31/120
+wait for respawn 32/120
+wait for respawn 33/120
+wait for respawn 34/120
+wait for respawn 35/120
+wait for respawn 36/120
+process respawned
+[Thu Sep 28 12:15:05 2023] >
 ```
 
 ## Ring management
