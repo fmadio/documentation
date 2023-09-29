@@ -34,11 +34,7 @@ Stream capture name
 
 {% swagger baseUrl="/sysmaster/capture_stop" path="" method="get" summary="Capture Stop" %}
 {% swagger-description %}
-Stops any currently capturing process. 
-
-\
-
-
+Stops any currently capturing process. \
 NOTE: this does NOT stop scheduled captures.
 {% endswagger-description %}
 
@@ -186,21 +182,9 @@ Download entire capture as a single file. Piping to a file or any other analysis
 {% endswagger-description %}
 
 {% swagger-parameter in="query" name="Compression" type="string" %}
-Compress the returned stream with gzip. 
-
-\
-
-
-'fast'   Fastest compression but not smallest.
-
-\
-
-
-'best'  Slowest compression smallest size.
-
-\
-
-
+Compress the returned stream with gzip. \
+'fast'   Fastest compression but not smallest.\
+'best'  Slowest compression smallest size.\
 1-9      The range from 'fast' to 'best'
 {% endswagger-parameter %}
 
@@ -217,13 +201,13 @@ Filter on the Packet Frame
 
 
 
-a7130.device=\<device id>
+a7130.device==\<device id>
 
-a7130.srcport=\<port id>
+a7130.srcport==\<port id>
 
-c3550.srcport=\<portid>
+c3550.srcport==\<portid>
 
-capture.port=\<portid>
+capture.port==\<portid>
 {% endswagger-parameter %}
 
 {% swagger-parameter in="query" name="TSMode" %}
@@ -296,13 +280,13 @@ Filter on the Packet Frame
 
 
 
-a7130.device=\<device id>
+a7130.device==\<device id>
 
-a7130.srcport=\<port id>
+a7130.srcport==\<port id>
 
-c3550.srcport=\<portid>
+c3550.srcport==\<portid>
 
-capture.port=\<portid>
+capture.port==\<portid>
 {% endswagger-parameter %}
 
 {% swagger-parameter in="query" name="TSMode" %}
@@ -365,21 +349,9 @@ The timerange results may be a portion of a single pcap stream, or a portion of 
 {% endswagger-description %}
 
 {% swagger-parameter in="query" name="Compression" type="string" %}
-Compress the returned stream with gzip. 
-
-\
-
-
-'fast'    Fastest compression but not smallest. 
-
-\
-
-
-'best'   Slowest compression smallest size. 
-
-\
-
-
+Compress the returned stream with gzip. \
+'fast'    Fastest compression but not smallest. \
+'best'   Slowest compression smallest size. \
 1-9       The range from 'fast' to 'best'
 {% endswagger-parameter %}
 
@@ -400,7 +372,11 @@ msecs : Milliseconds
 
 
 
-sec : Secconds
+sec : Seconds
+
+
+
+YYYYMMDD\_HHMMSS:  this year year month day hour min second time format
 {% endswagger-parameter %}
 
 {% swagger-parameter in="query" name="TSBegin" type="integer" required="true" %}
@@ -420,9 +396,15 @@ Filtering based on frame parameters
 
 
 
-capture.port=0,1
+capture.port==0,1
 
 (fetch data for capture ports 0 and 1 only)
+
+
+
+capture.port!=0
+
+(fetch data for capture ports NOT equal to 0)
 
 
 
@@ -622,81 +604,25 @@ $ curl -u fmadio:100g http://192.168.2.75/stream/list
 
 {% swagger baseUrl="/stream/ssize?StreamName=<capture sname>&StreamView=<split mode>" path="" method="get" summary="Split Capture by filesize" %}
 {% swagger-description %}
-Lists splits for a specific capture based on file size. 
-
+Lists splits for a specific capture based on file size. \
 \
-
-
-
-
-\
-
-
-Usually this is a 2 step process of 
-
-\
-
-
-1\) get the split list 
-
-\
-
-
-2\) download a specific split. 
+Usually this is a 2 step process of \
+1\) get the split list \
+2\) download a specific split.&#x20;
 {% endswagger-description %}
 
 {% swagger-parameter in="query" name="StreamView" type="string" %}
-Stream time slice name
-
+Stream time slice name\
 \
-
-
-
-
-\
-
-
-split_10MB
-
-\
-
-
-split_100MB
-
-\
-
-
-split_250MB
-
-\
-
-
-split_1GB
-
-\
-
-
-split_2GB
-
-\
-
-
-split_5GB
-
-\
-
-
-split_10GB
-
-\
-
-
-split_100GB
-
-\
-
-
-split_1TB
+split\_10MB\
+split\_100MB\
+split\_250MB\
+split\_1GB\
+split\_2GB\
+split\_5GB\
+split\_10GB\
+split\_100GB\
+split\_1TB
 {% endswagger-parameter %}
 
 {% swagger-parameter in="query" name="StreamName" type="string" %}
@@ -743,96 +669,28 @@ Stream capture name
 
 {% swagger baseUrl="/stream/stime?StreamName=<capture sname>&StreamView=<split mode>" path="" method="get" summary="Split Capture by time" %}
 {% swagger-description %}
-Lists splits for a specific capture based on a time unit.
-
+Lists splits for a specific capture based on a time unit.\
 \
-
-
-
-
-\
-
-
-Usually this is a 2 step process of 
-
-\
-
-
-1\) get the split list 
-
-\
-
-
-2\) download a specific split
-
-\
-
-
+Usually this is a 2 step process of \
+1\) get the split list \
+2\) download a specific split\
 
 {% endswagger-description %}
 
 {% swagger-parameter in="query" name="StreamView" type="string" %}
-Split options for the time split
-
+Split options for the time split\
 \
-
-
-
-
-\
-
-
-split_1sec
-
-\
-
-
-split_10sec
-
-\
-
-
-split_1min
-
-\
-
-
-split_10min
-
-\
-
-
-split_15min
-
-\
-
-
-split_1hour
-
-\
-
-
-split_2hour
-
-\
-
-
-split_4hour
-
-\
-
-
-split_6hour
-
-\
-
-
-split_8hour
-
-\
-
-
-split_12hour
+split\_1sec\
+split\_10sec\
+split\_1min\
+split\_10min\
+split\_15min\
+split\_1hour\
+split\_2hour\
+split\_4hour\
+split\_6hour\
+split\_8hour\
+split\_12hour
 {% endswagger-parameter %}
 
 {% swagger-parameter in="query" name="StreamName" type="string" %}
@@ -866,22 +724,10 @@ BPF Filter to be applied to the stream
 {% endswagger-parameter %}
 
 {% swagger-parameter in="query" name="Compression" type="string" %}
-Compress the returned stream with gzip. 
-
-\
-
-
-'fast'      Fastest compression but not smallest
-
-\
-
-
-'best'    Slowest compression smallest size
-
-\
-
-
-1-9        The range from 'fast' to 'best' 
+Compress the returned stream with gzip. \
+'fast'      Fastest compression but not smallest\
+'best'    Slowest compression smallest size\
+1-9        The range from 'fast' to 'best'&#x20;
 {% endswagger-parameter %}
 
 {% swagger-parameter in="query" name="StreamName" type="string" %}
@@ -898,16 +744,8 @@ Stream capture name.
 
 {% swagger baseUrl="/pcap/splittime?StreamName=<string>&Start=<int>&Stop=<int>&FilterBPF=<string>&FilterPort=<int>" path="" method="get" summary="Split PCAP Time Download" %}
 {% swagger-description %}
-Download the capture with a time filter. 
-
-\
-
-
-Note: the nanosecond Epoch Start is 1530498788000000000. 
-
-\
-
-
+Download the capture with a time filter. \
+Note: the nanosecond Epoch Start is 1530498788000000000. \
 Removing the nanosecond part convert epoch to date/time.
 {% endswagger-description %}
 
@@ -955,16 +793,8 @@ $ curl -u fmadio:100g "http://192.168.2.75/pcap/splittime?StreamName=TestCapture
 
 {% swagger baseUrl="/pcap/timerange?TSBegin=<epoch start>&TSEnd=<epoch stop>&TSMax=<size>&TSMode=<nanos or msecs>" path="" method="get" summary="TimeRange PCAP Download" %}
 {% swagger-description %}
-Download a timerange of pcap data without any capture file referenced. The system will search all captures for the specified timerange.
-
+Download a timerange of pcap data without any capture file referenced. The system will search all captures for the specified timerange.\
 \
-
-
-
-
-\
-
-
 At most it can cross two pcap files
 {% endswagger-description %}
 
@@ -973,31 +803,11 @@ Maximum nanosecond of packets to download.
 {% endswagger-parameter %}
 
 {% swagger-parameter in="query" name="TSMode" type="string" %}
-Time Range mode to use for time: 
-
+Time Range mode to use for time: \
 \
-
-
-
-
-\
-
-
-nsec    | epoch in  nano seconds (default)
-
-\
-
-
-usec    | epoch in micro seconds
-
-\
-
-
-msec   | epoch in milli seconds
-
-\
-
-
+nsec    | epoch in  nano seconds (default)\
+usec    | epoch in micro seconds\
+msec   | epoch in milli seconds\
 sec:      | epoch in seconds
 {% endswagger-parameter %}
 
