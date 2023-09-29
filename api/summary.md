@@ -562,7 +562,7 @@ Example:
 
 ###
 
-{% swagger method="get" path="" baseUrl="/api/v1/system_status" summary="Get system status" %}
+{% swagger method="get" path="" baseUrl="/api/v1/status" summary="Get system status" %}
 {% swagger-description %}
 Returns the system status, this is identical to the Telemetry data
 
