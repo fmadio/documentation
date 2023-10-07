@@ -202,7 +202,7 @@ The Time Range function is very useful as the FMADIO system will work out which 
 
 ### **TSBegin** and **TSEnd**&#x20;
 
-#### **Nano second Epoch selection**
+### **Nanosecond Epoch selection**
 
 ```
  curl -u fmadio:xxxx  "http://127.0.0.1/api/v1/pcap/timerange?
@@ -210,14 +210,59 @@ The Time Range function is very useful as the FMADIO system will work out which 
   TSEnd=1621774913584264000"
 ```
 
-#### Second Epoch time Selection
+### Second Epoch time Selection
 
 ```
 curl -u fmadio:xxxx  "http://127.0.0.1/api/v1/pcap/timerange?
-  TSMode=sec&
+  TSUnit=sec&
   TSBegin=1621772572&
   TSEnd=1621774913"
 ```
+
+### Year Month Day Hour Min
+
+Using the TSUnit option can use a more friendly time selection.
+
+By default it uses the TimeZone configured on the system
+
+Fetch PCAP from 3AM to 4AM on 2023 / 10 (October) / 1st
+
+```
+curl -u fmadio:xxxx  "http://127.0.0.1/api/v1/pcap/timerange?
+  TSUnit=YYYYMMDD_HHMMSS&
+  TSBegin=20231001_030000&
+  TSEnd=20231001_040000"
+```
+
+### Year Month Dat Hour Min with Timezone
+
+Same as above but specifying the timezone.
+
+NOTE: if using the full `TSZone = Asia/Singapore` for example, CURL will append a ? to the URL. Its recommended to use the City name only to avoid confusing CURL.
+
+```
+curl -u fmadio:xxxx  "http://127.0.0.1/api/v1/pcap/timerange?
+  TSUnit=YYYYMMDD_HHMMSS&
+  TSZone=Singapore&
+  TSBegin=20231001_030000&
+  TSEnd=20231001_040000"
+```
+
+### Year Month Day Hour Min Timzone and BPF Filter with De-encapsulation
+
+Specifying all of the above with a BPF Filter, with BPF De-encapsulation enabled
+
+```
+curl -u fmadio:xxxx  "http://127.0.0.1/api/v1/pcap/timerange?
+  TSUnit=YYYYMMDD_HHMMSS&
+  TSZone=Singapore&
+  TSBegin=20231001_030000&
+  TSEnd=20231001_040000&
+  FilterBPFDecap=true&"
+  -G --data-urlencode "FilterBPF=icmp"
+```
+
+
 
 ### **TSBegin**, **TSEnd** and **TSMax**
 
