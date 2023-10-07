@@ -196,6 +196,14 @@ Stream capture name.
 BPF Filter to be applied to the stream.
 {% endswagger-parameter %}
 
+{% swagger-parameter in="query" name="FilterBPFDecap" type="string" %}
+**true** : Run BPF filter on a De-Encapsulated version of the packet
+
+**false** : Run BPF on raw packet
+
+Default: false
+{% endswagger-parameter %}
+
 {% swagger-parameter in="query" name="FilterFrame" %}
 Filter on the Packet Frame
 
@@ -389,6 +397,14 @@ Stop time in nanoseconds epoch.
 
 {% swagger-parameter in="query" name="FilterBPF" type="string" %}
 
+{% endswagger-parameter %}
+
+{% swagger-parameter in="query" name="FilterBPFDecap" type="string" %}
+true : Run BPF filter on a De-Encapsulated version of the packet
+
+false : Run BPF on raw packet
+
+Default: false
 {% endswagger-parameter %}
 
 {% swagger-parameter in="query" name="FilterFrame" %}
