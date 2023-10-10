@@ -328,8 +328,6 @@ cisco3550 - Cisco 3550 (Exablaze)
 {% endswagger-response %}
 {% endswagger %}
 
-
-
 {% swagger baseUrl="/api/v1/pcap/timerange" path="" method="get" summary="TimeRange PCAP Download (optional BPF and Frame Filter)" %}
 {% swagger-description %}
 Download a timerange of pcap data that can cross over a multiple pcap files.\
@@ -589,9 +587,7 @@ Example:
 {% endswagger-description %}
 {% endswagger %}
 
-###
-
-{% swagger method="get" path="" baseUrl="/api/v1/status" summary="Get system status" %}
+{% swagger method="get" path="" baseUrl="/api/v1/system/status" summary="Get system status" %}
 {% swagger-description %}
 Returns the system status, this is identical to the Telemetry data
 
@@ -607,6 +603,12 @@ Resulting JSON blob
 
 Pretty print output
 
+
+{% endswagger-description %}
+{% endswagger %}
+
+{% swagger method="get" path="" baseUrl="/api/v1/system/stats" summary="" %}
+{% swagger-description %}
 
 {% endswagger-description %}
 {% endswagger %}
