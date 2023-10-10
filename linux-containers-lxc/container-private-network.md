@@ -25,6 +25,7 @@ echo 1 >/proc/sys/net/ipv4/ip_forward
 sudo iptables -A FORWARD -i fmad0 -o man0 -j ACCEPT
 sudo iptables -A FORWARD -i man0 -o fmad0 -m state --state ESTABLISHED,RELATED -j ACCEPT
 sudo iptables -t nat -A POSTROUTING -o man0 -j MASQUERADE
+sudo iptables -t nat -A PREROUTING -i man0 -p tcp --dport 9000 -j DNAT --to-destination 192.168.255.191:9000 
 sudo iptables-save > /opt/fmadio/etc/iptables.conf
 ```
 
@@ -50,6 +51,22 @@ COMMIT
 COMMIT
 # Completed on Tue Apr 19 16:29:55 2022
 
+```
+
+### Forwarding a specific TCP Port to the LXC
+
+The above is general setup, to forward a specific port from the Host IP to the LXC container IP run as follows.
+
+1\) Forwarding port 9000 on the host to port 3000 on the LXC&#x20;
+
+(in this case LXC is configured as 192.168.255.191)
+
+```
+sudo iptables -A FORWARD -i fmad0 -o man0 -j ACCEPT
+sudo iptables -A FORWARD -i man0 -o fmad0 -m state --state ESTABLISHED,RELATED -j ACCEPT
+sudo iptables -t nat -A POSTROUTING -o man0 -j MASQUERADE
+sudo iptables -t nat -A PREROUTING -i man0 -p tcp --dport 9000 -j DNAT --to-destination 192.168.255.191:9000 
+sudo iptables-save > /opt/fmadio/etc/iptables.conf
 ```
 
 ## Container Network Settings
