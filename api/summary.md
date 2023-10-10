@@ -576,6 +576,19 @@ Example:
 {% endswagger-description %}
 {% endswagger %}
 
+{% swagger method="get" path="" baseUrl="/api/v1/system/io_stats" summary="Get IO Statistics on the system" %}
+{% swagger-description %}
+Example:
+
+`fmadio@fmadio100v2-228U:$ curl -s http://127.0.0.1/api/v1/system/io_stats | jq` \
+`{` \
+`"timestamp": "1696925340903886080",`\
+`"ioqueue_active": "1"` \
+`}`\
+`fmadio@fmadio100v2-228U:$`
+{% endswagger-description %}
+{% endswagger %}
+
 ###
 
 {% swagger method="get" path="" baseUrl="/api/v1/status" summary="Get system status" %}
