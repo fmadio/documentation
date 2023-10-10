@@ -57,6 +57,8 @@ COMMIT
 
 The above is general setup, to forward a specific port from the Host IP to the LXC container IP run as follows.
 
+**NOTE: if using 10G management interface replace man0 with man10**
+
 1\) Forwarding port 9000 on the host to port 3000 on the LXC&#x20;
 
 (in this case LXC is configured as 192.168.255.191)
