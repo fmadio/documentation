@@ -607,12 +607,6 @@ Pretty print output
 {% endswagger-description %}
 {% endswagger %}
 
-{% swagger method="get" path="" baseUrl="/api/v1/system/stats" summary="" %}
-{% swagger-description %}
-
-{% endswagger-description %}
-{% endswagger %}
-
 ### Legacy Download
 
 NOTE: These interfaces are legacy, recommend using the V1 API interfaces
