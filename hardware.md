@@ -61,3 +61,55 @@ The above behavior can be overridden to always be in HOT-HOT load balancing mode
 ![](<.gitbook/assets/image (81).png>)
 
 ![](<.gitbook/assets/image (76).png>)
+
+## Specification
+
+### Physical Dimensions:
+
+* 438 x 43.5 x 730mm
+* 17.2" x 1.7" x 28.7"
+* (Designed for EIA 19” rack)
+
+### Weight:
+
+* 26KG / 57 lbs
+
+### Color:
+
+* Silver metallic
+
+### Power Supply:
+
+* 2 x Redundant Hot swappable 1200W&#x20;
+* 110-240AC, 12-7A, 50-60Hz
+
+### Fan:
+
+* 8 x 40x40x56mm (23,000rpm) Chassis
+* 2 x 1 x 40x40x56mm (Power Supply)
+
+### Airflow:
+
+* Front to back
+
+### Operating Conditions:
+
+* Operating temperature: 10°C to 25°C
+* Operating humidity: 8-80% (non-condensing)
+
+### Storage:
+
+* 10 x U.2 NVMe Front panel drives
+
+### Network:
+
+* 1 x IPMI BMC out of band management (RJ45)
+* 2 x RJ45 Management ports
+* 2 x SFP+(or QSFP+) High speed management ports
+* 2 x QSFP28 Capture ports
+* 1 x Serial port (RJ45 connector)
+
+### Platform:
+
+* Dual socket Intel Xeon Platform
+* DDR4 RDIMM RAM
