@@ -94,7 +94,7 @@ The above behavior can be overridden to always be in HOT-HOT load balancing mode
 
 ### Operating Conditions:
 
-* Operating temperature: 10°C to 25°C
+* Operating temperature: 10°C to 28°C
 * Operating humidity: 8-80% (non-condensing)
 
 ### Storage:
