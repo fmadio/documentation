@@ -277,7 +277,7 @@ BIOS update, bios update is located in
 
 Files look like the following
 
-<figure><img src="../.gitbook/assets/image (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 To update the BIOS run the command
 
@@ -301,7 +301,7 @@ Setting the Boot settings as follows
 
 Advanced -> Trusted computing set the following
 
-<figure><img src="../.gitbook/assets/image (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 Advanced -> Serial Port Console
 
@@ -317,7 +317,7 @@ Advanced -> Network Stack&#x20;
 
 Advance -> NVMe Configuration, configure as follows
 
-<figure><img src="../.gitbook/assets/image (3) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (3) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 Advanced -> Chipset Configuration
 

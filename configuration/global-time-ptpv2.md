@@ -104,7 +104,7 @@ Use phy11 interface
 
 Rename to man11
 
-<figure><img src="../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 ### 2) Set the IP address of man11
 
@@ -145,7 +145,7 @@ _**NOTE: PTPv2 can not be run on the primary/first 1G interface as this is a sof
 
 Set the phy1 interface renamed to man1 as shown below
 
-<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
 
 ### &#x20;2) Set the IP address of man1
 

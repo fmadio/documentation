@@ -59,3 +59,8 @@ fmadio@fmadio20v3-287:/etc$
 
 ```
 
+After setting the new password, it needs to be copied to persistent storage
+
+```
+sudo cp /etc/shadow /opt/fmadio/etc/
+```
